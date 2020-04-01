@@ -4,14 +4,14 @@ import it.contrader.controller.Request;
 import it.contrader.main.MainDispatcher;
 import it.contrader.view.AbstractView;
 
-public class WishListDeleteView extends AbstractView {
+public class WishListDeleteView  {
 	private Request request;
 	
 	private int id;
 	private final String mode = "DELETE";
 	
 	public WishListDeleteView() {}
-	
+	/*
 	@Override
 	public void showResults(Request request) 
 	{
@@ -21,6 +21,6 @@ public class WishListDeleteView extends AbstractView {
 			MainDispatcher.getInstance().callView("WishList", null);
 		}
 		
-	}
+	}*/
 
 }
