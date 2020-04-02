@@ -1,4 +1,4 @@
-package it.contrader.Prodotto;
+package it.contrader.view.Prodotto;
 
 import it.contrader.controller.Request;
 import it.contrader.main.MainDispatcher;

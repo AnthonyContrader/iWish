@@ -1,4 +1,4 @@
-package it.contrader.Prodotto;
+package it.contrader.view.Prodotto;
 
 import it.contrader.controller.Request;
 import it.contrader.main.MainDispatcher;
@@ -49,5 +49,7 @@ public class ProdottoUpdateView extends AbstractView {
 			request.put("description", description);
 			request.put("price", price);
 			request.put("priority", priority);
+			request.put("mode", mode);
+			MainDispatcher.getInstance().callAction("Prodotto", "doControl", request);
 	}
 }
