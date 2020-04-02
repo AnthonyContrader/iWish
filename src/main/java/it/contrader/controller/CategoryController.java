@@ -7,11 +7,17 @@ import it.contrader.main.MainDispatcher;
 import it.contrader.service.CategoryService;
 import java.sql.Date;
 
+//ha compito di collegare l'app alla view
+//invocano il service per inviare dati alla view tramite request
+// implements evoca una interfaccia specifica per usare i metodi di quella classe
+
 public class CategoryController implements Controller {
 	
 
 		
 		private static String sub_package = "category.";
+		
+		//crea oggetto service per chiamarne i servizi (inserisci,leggi,update,...)
 		
 		private CategoryService categoryService;
 
@@ -22,6 +28,9 @@ public class CategoryController implements Controller {
 		
 		@Override
 		public void doControl(Request request) {
+			
+			//mode ti da possibilita di scelta tra le azioni
+			//choice ti da la possibilità di navigare all'interno dell'app tramite determinati comandi
 			
 			String mode = (String) request.get("mode");			
 			String choice = (String) request.get("choice");
