@@ -34,7 +34,7 @@ public class HomeAdminView extends AbstractView {
     public void showOptions() {
         System.out.println("-------------MENU------------\n");
         System.out.println(" Seleziona cosa vuoi gestire:");
-        System.out.println("[U]tenti  [E]sci");
+        System.out.println("[U]tenti [C]ategory [P]rodotto [W]allet [L]istaDesideri [T]imeLine  [E]sci");
         //Il metodo che salva l'input nella stringa choice.
         //getInput() è definito in AbstractView.
         choice = this.getInput();
@@ -52,7 +52,32 @@ public class HomeAdminView extends AbstractView {
         	this.request.put("mode", "USERLIST");
         	MainDispatcher.getInstance().callAction("User", "doControl", request);
         	break;
- 
+        
+        case "c":
+        	this.request.put("mode", "CATEGORYLIST");
+        	MainDispatcher.getInstance().callAction("Category", "doControl", request);
+        	break;
+        
+        case "p":
+        	this.request.put("mode", "PRODOTTOLIST");
+        	MainDispatcher.getInstance().callAction("Prodotto", "doControl", request);
+        	break;
+        	
+        case "w":
+        	this.request.put("mode", "PORTFOLIOLIST");
+        	MainDispatcher.getInstance().callAction("portfolio","doControl", request);
+        	break;
+        
+        case "l":
+        	this.request.put("mode", "WISHLISTS");
+        	MainDispatcher.getInstance().callAction("WishList", "doControl", request);
+        	break;
+        	
+        case "t":
+        	this.request.put("mode", "PROGRESSLIST");
+        	MainDispatcher.getInstance().callAction("Progress", "doControl", request);
+        	break;
+        	
         case "e":
         	MainDispatcher.getInstance().callAction("Login", "doControl", null);
         	break;
