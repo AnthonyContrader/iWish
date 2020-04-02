@@ -66,7 +66,7 @@ public class ProdottoController implements Controller {
 			
 		case "PRODOTTOLIST":
 			List<ProdottoDTO> prodottiDTO = prodottoService.getAll();
-			request.put("prodotto", prodottiDTO);
+			request.put("prodotti", prodottiDTO);
 			MainDispatcher.getInstance().callView("Prodotto", request);
 			break;
 			

@@ -88,7 +88,7 @@ public void doControl(Request request) {
 		case "PORTFOLIOLIST":
 			List<portfolioDTO> PortfoliolistDTO = PortfolioService.getAll();
 				//Impacchetta la request con la lista degli user
-				request.put("Portfolio", PortfoliolistDTO);
+				request.put("Portfoliolist", PortfoliolistDTO);
 				MainDispatcher.getInstance().callView("portfolio", request);
 				break;
 				
