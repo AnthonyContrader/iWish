@@ -9,8 +9,8 @@ import it.contrader.dto.ProgressDTO;
 
 public class ProgressService {
 
-	private progressDAO progressDAO;
-	private ProgressConverter progressConverter;
+	private progressDAO progressDAO; // creazione oggetto progress dao
+	private ProgressConverter progressConverter;//creazione oggetto progress converter
 	
 	//????????????????????????????????????
 	

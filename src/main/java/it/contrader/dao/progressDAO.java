@@ -8,7 +8,7 @@ import it.contrader.model.Progress;
 
 public class progressDAO {
      
-	// sono le query che comunicano con il workbanch
+	// query il lignuaggio sql con il modificatore "final" perché non devono essere modificate
 	private final String QUERY_ALL = "SELECT * FROM progress";
 	private final String QUERY_CREATE = "INSERT INTO progress (cash, time, expectation) VALUES (?,?,?)";
 	private final String QUERY_READ = "SELECT * FROM progress WHERE id=?";
@@ -16,11 +16,11 @@ public class progressDAO {
 	private final String QUERY_DELETE = "DELETE FROM progress WHERE id=?";
 
 
-     // costruttori e metodi 
+     // costruttore vuoto
 
 	public progressDAO() {
      }
-
+      
      public List<Progress> getAll(){
     	 List<Progress> progressList= new ArrayList<>();  //la lista dei progressi viene associato un array
     	 Connection connection = ConnectionSingleton.getInstance();
@@ -30,9 +30,9 @@ public class progressDAO {
     	 Progress progress;
     	 while(resultSet.next()) {
     		int id = resultSet.getInt("id");
-    		float cash = resultSet.getFloat(0);
-    		double time=resultSet.getDouble(0);
-    		double expectation =resultSet.getDouble(0);
+    		float cash = resultSet.getFloat("cash");
+    		double time=resultSet.getDouble("time");
+    		double expectation =resultSet.getDouble("expectation");
     		progress = new Progress (time,expectation,cash);
     		progress.setId(id);
     		progressList.add(progress);
@@ -58,13 +58,8 @@ public class progressDAO {
     		}
     	 
     	 
-    	
-    	 
-    	 
      }
     	 
-    	 
-      
      public Progress read(int progressId) {
     	 Connection connection = ConnectionSingleton.getInstance();
     	 try {
@@ -76,9 +71,9 @@ public class progressDAO {
     		 double time,expectation;
     		 float cash;
     		 
-    		 time= resultSet.getDouble(0);
-    		 expectation = resultSet.getDouble(0);
-    		 cash = resultSet.getFloat(0);
+    		 time= resultSet.getDouble("time");
+    		 expectation = resultSet.getDouble("expectation");
+    		 cash = resultSet.getFloat("cash");
     		 Progress progress =new Progress ( time, expectation, cash);
     		 progress.setId(resultSet.getInt("id"));
     		  return progress;
