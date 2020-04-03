@@ -30,12 +30,22 @@ public class CategoryInsertView extends AbstractView{
 	   public void showOptions() {
 		   System.out.println("Inserisci nome della categoria:");
 		   name = getInput();
+		   while (name.contentEquals("")) {
+			   System.out.println("Inserire un nome per favore:");
+			   name = getInput();
+		   }
 		   System.out.println("Inserisci descrizione della categoria;");
 		   description = getInput();
 		   System.out.println("Inserisci data:");
 		   date = getInput();
-		   System.out.println("Inserisci valutazione:");
-		   rating = Integer.parseInt(getInput());
+		   System.out.println("Inserisci preferenza:");
+		  // rating = Integer.parseInt(getInput());
+		   String ratingString = getInput();
+		    if(ratingString.equals("")) {
+		    	rating = 0;
+		    } else {
+		    	rating = Integer.parseInt(ratingString);
+		    }
 		   System.out.println("Inserisci etichetta:");
 		   tags = getInput();
 		   

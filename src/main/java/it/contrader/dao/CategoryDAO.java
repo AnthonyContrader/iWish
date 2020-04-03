@@ -121,7 +121,7 @@ public class CategoryDAO {
 					if (categoryToUpdate.getDate() == null || categoryToUpdate.getDate().equals("")) {
 						categoryToUpdate.setDate(categoryRead.getDate());
 					}
-					if (categoryToUpdate.getRating() < 0 || Integer.toString(categoryToUpdate.getRating()).equals("")) {
+					if (categoryToUpdate.getRating() <= 0 || Integer.toString(categoryToUpdate.getRating()).equals("")) {
 						categoryToUpdate.setRating(categoryRead.getRating());
 					}
 
