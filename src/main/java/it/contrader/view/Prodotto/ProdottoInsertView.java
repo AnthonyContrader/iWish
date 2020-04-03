@@ -29,12 +29,31 @@ public class ProdottoInsertView extends AbstractView{
 	public void showOptions() {
 		System.out.println("Inserisci nome del prodotto:");
 		name = getInput();
+		while (name.equals("")) {
+			System.out.println("Sei pregato di inserire il nome del prodotto.");
+			name = getInput();
+		}
 		System.out.println("Inserisci descrizione del prodotto:");
 		description = getInput();
+		
 		System.out.println("Inserisci il prezzo del prodotto:");
-		price = Float.parseFloat(getInput());
+//		price = Float.parseFloat(getInput());
+		String priceString = getInput();
+		if (priceString.equals("")) {
+			price = 0;
+		}
+		else {
+			price = Float.parseFloat(priceString);
+		}
 		System.out.println("Inserisci la priorità del prodotto:");
-		priority = Integer.parseInt(getInput());
+		String priorityString = getInput();
+		if (priorityString.contentEquals("")) {
+			priority = 1;
+		}
+		else {
+			priority = Integer.parseInt(priorityString);
+		}
+		//		priority = Integer.parseInt(getInput());
 	}
 	
 	@Override

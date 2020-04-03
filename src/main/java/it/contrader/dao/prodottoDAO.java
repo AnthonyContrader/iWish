@@ -99,11 +99,11 @@ public class prodottoDAO {
 				prodottoToUpdate.setDescription(prodottoRead.getDescription());
 
 				}
-				if (prodottoToUpdate.getPrice() == 0) {
+				if (prodottoToUpdate.getPrice() < 0) {
 					prodottoToUpdate.setPrice(prodottoRead.getPrice());
 				}
 
-				if (prodottoToUpdate.getPriority() == 0) {
+				if (prodottoToUpdate.getPriority() <= 0) {
 					prodottoToUpdate.setPriority(prodottoRead.getPriority());
 				}
 
