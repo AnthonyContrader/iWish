@@ -35,9 +35,23 @@ public class ProdottoUpdateView extends AbstractView {
 			System.out.println("Inserisci la descrizione del prodotto:");
 			description = getInput();
 			System.out.println("Inserisci costo del prodotto:");
-			price = Float.parseFloat(getInput());
+			String priceString = getInput();
+			if (priceString.equals("")) {
+				price = -1;
+			}
+			else {
+				price = Float.parseFloat(priceString);
+			}
+			//			price = Float.parseFloat(getInput());
 			System.out.println("Inserisci la priorità del prodotto:");
-			priority = Integer.parseInt(getInput());
+			String priorityString = getInput();
+			if (priorityString.contentEquals("")) {
+				priority = -1;
+			}
+			else {
+				priority = Integer.parseInt(priorityString);
+			}
+			//			priority = Integer.parseInt(getInput());
 		} catch (Exception e) {
 			
 		}
