@@ -46,4 +46,4 @@ public class ProdottoView extends AbstractView {
 		MainDispatcher.getInstance().callAction("Prodotto", "doControl", this.request);
 	}
 
-}
+} 

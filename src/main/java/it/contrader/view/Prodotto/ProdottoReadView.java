@@ -20,7 +20,7 @@ public class ProdottoReadView extends AbstractView {
 		if (request != null) {
 			ProdottoDTO prodotto = (ProdottoDTO) request.get("prodotto");
 			System.out.println(prodotto);
-			MainDispatcher.getInstance().callView("Prodotta", null);
+			MainDispatcher.getInstance().callView("Prodotto", null);
 		}
 	}
 	

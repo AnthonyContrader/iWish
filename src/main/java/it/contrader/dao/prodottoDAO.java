@@ -9,8 +9,8 @@ public class prodottoDAO {
 
 	private final String QUERY_ALL = "SELECT * FROM prodotto";
 	private final String QUERY_CREATE = "INSERT INTO prodotto (name, description, price, priority) VALUES (?,?,?,?)";
-	private final String QUERY_READ = "SELECT + FROM prodotto WHERE id=?";
-	private final String QUERY_UPDATE ="UPDATE prodotto SET name=?, description=?, price=?, priority=?";
+	private final String QUERY_READ = "SELECT * FROM prodotto WHERE id=?";
+	private final String QUERY_UPDATE ="UPDATE prodotto SET name=?, description=?, price=?, priority=? WHERE id=?";
 	private final String QUERY_DELETE = "DELETE FROM prodotto WHERE id=?";
 	
 	public prodottoDAO() {
@@ -73,7 +73,6 @@ public class prodottoDAO {
 			priority = resultSet.getInt("priority");
 			Prodotto prodotto = new Prodotto(name, description, price, priority);
 			prodotto.setId(resultSet.getInt("id"));
-
 			return prodotto;
 		} catch (SQLException e) {
 			return null;
@@ -93,9 +92,13 @@ public class prodottoDAO {
 			try {
 				// Riempi prodottoToUpdate object
 				if (prodottoToUpdate.getName() == null || prodottoToUpdate.getName().equals("")) {
-					prodottoToUpdate.setDescription(prodottoRead.getDescription());
+					prodottoToUpdate.setName(prodottoRead.getName());
 				}
+				
+				if (prodottoToUpdate.getDescription() == null || prodottoToUpdate.getDescription().equals("")) {
+				prodottoToUpdate.setDescription(prodottoRead.getDescription());
 
+				}
 				if (prodottoToUpdate.getPrice() == 0) {
 					prodottoToUpdate.setPrice(prodottoRead.getPrice());
 				}

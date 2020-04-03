@@ -33,6 +33,6 @@ public class ProdottoDeleteView extends AbstractView {
 		request = new Request();
 		request.put("id", id);
 		request.put("mode", mode);
-		MainDispatcher.getInstance().callAction("User", "doControl", request);
+		MainDispatcher.getInstance().callAction("Prodotto", "doControl", request);
 	}
 }

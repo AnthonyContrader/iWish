@@ -8,7 +8,7 @@ import it.contrader.service.ProdottoService;
 
 public class ProdottoController implements Controller {
 
-	private static String sub_package = "prodotto.";
+	private static String sub_package = "Prodotto.";
 	
 	private ProdottoService prodottoService;
 	
@@ -48,6 +48,14 @@ public class ProdottoController implements Controller {
 			request = new Request();
 			request.put("mode", "mode");
 			MainDispatcher.getInstance().callView(sub_package + "ProdottoInsert", request);
+			break;
+			
+		case "DELETE":
+			id = Integer.parseInt(request.get("id").toString());
+			prodottoService.delete(id);
+			request = new Request();
+			request.put("mode", "mode");
+			MainDispatcher.getInstance().callView(sub_package + "ProdottoDelete", request);
 			break;
 			
 		case "UPDATE":

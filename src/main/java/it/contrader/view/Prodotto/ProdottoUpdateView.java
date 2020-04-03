@@ -32,6 +32,8 @@ public class ProdottoUpdateView extends AbstractView {
 			id = Integer.parseInt(getInput());
 			System.out.println("Inserisci nome del prodotto:");
 			name = getInput();
+			System.out.println("Inserisci la descrizione del prodotto:");
+			description = getInput();
 			System.out.println("Inserisci costo del prodotto:");
 			price = Float.parseFloat(getInput());
 			System.out.println("Inserisci la priorità del prodotto:");
