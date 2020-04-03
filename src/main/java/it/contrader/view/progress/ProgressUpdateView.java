@@ -32,12 +32,19 @@ public class ProgressUpdateView extends AbstractView {
 			System.out.println("Inserisci id del progresso:");
 			id = Integer.parseInt(getInput());
 			System.out.println("Inserisci il saldo dell'utente:");
-			cash = Float.parseFloat(getInput());
+		    cash = Float.parseFloat(getInput());
 			System.out.println("Inserisci il prospetto dell'utente:");
 			expectation = Double.parseDouble(getInput());
 			System.out.println("Inserisci tempo dell'utente:");
-			time = Double.parseDouble(getInput());
-		} catch (Exception e) {
+			String timeString= getInput();
+			if (timeString.equals("")) {
+				time=0;
+			}
+			else {
+			time=Double.parseDouble(timeString);
+			}
+			//time = Double.parseDouble(getInput());
+		} catch (Exception e){
 
 		}
 	}

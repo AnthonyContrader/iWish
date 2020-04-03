@@ -48,9 +48,9 @@ public class progressDAO {
     	 Connection connection = ConnectionSingleton.getInstance();
     	 try {
     		PreparedStatement preparedStatement = connection.prepareStatement(QUERY_CREATE);
-    		preparedStatement.setDouble(1, progressToInsert.getTime());
-    		preparedStatement.setDouble(2, progressToInsert.getExpectation());
-    		preparedStatement.setFloat(3, progressToInsert.getCash());
+    		preparedStatement.setDouble(2, progressToInsert.getTime());
+    		preparedStatement.setDouble(3, progressToInsert.getExpectation());
+    		preparedStatement.setFloat(1, progressToInsert.getCash());
     		preparedStatement.execute();
     		return true;
     		}catch (SQLException e) {
@@ -98,20 +98,20 @@ public class progressDAO {
 	 Progress progressRead = read (progressToUpdate.getId());
 	 if(!progressRead.equals(progressToUpdate)) {
 		 try {
-			 if(progressToUpdate.getTime()==0 ) {
+			 if(progressToUpdate.getTime()<=0 )  {
 			progressToUpdate.setTime(progressRead.getTime());	 
 			 }
-			 if(progressToUpdate.getExpectation()==0 ) {
+			 if(progressToUpdate.getExpectation()<=0|| Double.toString( progressToUpdate.getExpectation()).equals("") ) {
 					progressToUpdate.setExpectation(progressRead.getExpectation());	 
 					 }
-			 if(progressToUpdate.getCash()==0) {
+			 if( Float.toString( progressToUpdate.getCash()).equals("")) {
 					progressToUpdate.setCash(progressRead.getCash());	 
 					 }
 		 
 			 PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(QUERY_UPDATE);
-				preparedStatement.setDouble(1, progressToUpdate.getTime());
-				preparedStatement.setDouble(2, progressToUpdate.getExpectation());
-				preparedStatement.setFloat(3, progressToUpdate.getCash());
+				preparedStatement.setFloat(1, progressToUpdate.getCash());
+				preparedStatement.setDouble(2, progressToUpdate.getTime());
+				preparedStatement.setDouble(3, progressToUpdate.getExpectation());
 				preparedStatement.setInt(4, progressToUpdate.getId());
 				int a = preparedStatement.executeUpdate();
 				if (a > 0)

@@ -95,6 +95,7 @@ public void doControl(Request request){
         	MainDispatcher.getInstance().callView(sub_package + "ProgressUpdate", request);
         	break;
         	
+        
         	
         // invoca il service e invia alla userview il risultato da mostrare 
         	
