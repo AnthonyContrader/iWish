@@ -5,7 +5,7 @@ import java.util.List;
 import it.contrader.dto.CategoryDTO;
 import it.contrader.main.MainDispatcher;
 import it.contrader.service.CategoryService;
-import java.sql.Date;
+
 
 //ha compito di collegare l'app alla view
 //invocano il service per inviare dati alla view tramite request
@@ -38,7 +38,7 @@ public class CategoryController implements Controller {
 			int id;
 			String name;
 			String description;
-			Date date;
+			String date;
 			int rating;
 			String tags;
 
@@ -55,7 +55,7 @@ public class CategoryController implements Controller {
 			case "INSERT":
 				name = request.get("name").toString();
 				description = request.get("description").toString();
-				date = Date.valueOf(request.get("date").toString());
+				date = request.get("date").toString();
 				rating =Integer.parseInt(request.get("rating").toString());
 				tags = request.get("tags").toString();
 				CategoryDTO categorytoinsert = new CategoryDTO(name, description, date, rating, tags);
@@ -77,7 +77,7 @@ public class CategoryController implements Controller {
 				id = Integer.parseInt(request.get("id").toString());
 				name = request.get("name").toString();
 				description = request.get("description").toString();
-				date = Date.valueOf(request.get("date").toString());
+				date = request.get("date").toString();
 				rating = Integer.parseInt(request.get("rating").toString());
 				tags = request.get("tags").toString();
 				CategoryDTO categorytoupdate = new CategoryDTO(name, description, date, rating, tags);

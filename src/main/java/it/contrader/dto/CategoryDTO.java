@@ -1,6 +1,6 @@
 package it.contrader.dto;
 
-import java.sql.Date;
+
 
 
 public class CategoryDTO {
@@ -8,7 +8,7 @@ public class CategoryDTO {
 		private int id;
 		private String name;		
 		private String description;		
-		private Date date;		
+		private String date;		
 		private int rating;		
 		private String tags;
 		
@@ -17,7 +17,7 @@ public class CategoryDTO {
 			
 		}		
 
-		public CategoryDTO (String name, String description, Date date, int rating, String tags) {
+		public CategoryDTO (String name, String description, String date, int rating, String tags) {
 			this.name = name;
 			this.description = description;
 			this.date = date;
@@ -25,7 +25,7 @@ public class CategoryDTO {
 			this.tags = tags;
 		}
 
-		public CategoryDTO (int id, String name, String description, Date date, int rating, String tags) {
+		public CategoryDTO (int id, String name, String description, String date, int rating, String tags) {
 			this.id = id;
 			this.name = name;
 			this.description = description;
@@ -58,11 +58,11 @@ public class CategoryDTO {
 			this.description = description;
 		}
 		
-		public Date getDate() {
+		public String getDate() {
 			return this.date;
 		}
 		
-		public void setDate_create(Date date) {
+		public void setDate_create(String date) {
 			this.date = date;
 		}
 		

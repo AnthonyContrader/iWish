@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import it.contrader.main.ConnectionSingleton;
 import it.contrader.model.Category;
-import java.sql.Date;
+
 
 
 public class CategoryDAO {
@@ -40,7 +40,7 @@ public class CategoryDAO {
 					int id = resultSet.getInt("id");
 					String name = resultSet.getString("name");
 					String description = resultSet.getString("description");
-					Date date = resultSet.getDate("date");
+					String date = resultSet.getString("date");
 					int rating = resultSet.getInt("rating");
 					String tags  = resultSet.getString("tags");
 					category = new Category(name, description, date, rating, tags);
@@ -59,7 +59,7 @@ public class CategoryDAO {
 				PreparedStatement preparedStatement = connection.prepareStatement(QUERY_CREATE);
 				preparedStatement.setString(1, categoryToInsert.getName());
 				preparedStatement.setString(2, categoryToInsert.getDescription());
-				preparedStatement.setDate(3, categoryToInsert.getDate());
+				preparedStatement.setString(3, categoryToInsert.getDate());
 				preparedStatement.setInt(4, categoryToInsert.getRating());
 				preparedStatement.setString(5, categoryToInsert.getTags());
 				
@@ -82,14 +82,14 @@ public class CategoryDAO {
 				ResultSet resultSet = preparedStatement.executeQuery();
 				resultSet.next();
 				String name, description;
-				Date date;
+				String date;
 				int rating;
 				String tags;
 
 				name = resultSet.getString("name");
 				description = resultSet.getString("description");
 				tags = resultSet.getString("tags");
-				date = resultSet.getDate("date");
+				date = resultSet.getString("date");
 				rating = resultSet.getInt("rating");
 				Category category = new Category(name, description, date, rating, tags);
 				category.setId(resultSet.getInt("id"));
@@ -110,30 +110,30 @@ public class CategoryDAO {
 			Category categoryRead = read(categoryToUpdate.getId());
 			if (!categoryRead.equals(categoryToUpdate)) {
 				try {
-					// Fill the userToUpdate object
+					
 					if (categoryToUpdate.getName() == null || categoryToUpdate.getName().equals("")) {
 						categoryToUpdate.setName(categoryRead.getName());
 					}
 
-					if (categoryToUpdate.getDescription() == null || categoryToUpdate.getDescription().equals("")) {
+					if (categoryToUpdate.getDescription() == null || categoryToUpdate.getDescription().equals("") ) {
 						categoryToUpdate.setDescription(categoryRead.getDescription());
+					}
+					if (categoryToUpdate.getDate() == null || categoryToUpdate.getDate().equals("")) {
+						categoryToUpdate.setDate(categoryRead.getDate());
+					}
+					if (categoryToUpdate.getRating() < 0 || Integer.toString(categoryToUpdate.getRating()).equals("")) {
+						categoryToUpdate.setRating(categoryRead.getRating());
 					}
 
 					if (categoryToUpdate.getTags() == null || categoryToUpdate.getTags().equals("")) {
 						categoryToUpdate.setTags(categoryRead.getTags());
 					}
-					if (categoryToUpdate.getDate() == null ) {
-						categoryToUpdate.setDate(categoryRead.getDate()); 
-						}
-					if (categoryToUpdate.getRating() == 0) {
-						categoryToUpdate.setRating(categoryRead.getRating());
-					}
-
+					
 					// Update the user
 					PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(QUERY_UPDATE);
 					preparedStatement.setString(1, categoryToUpdate.getName());
 					preparedStatement.setString(2, categoryToUpdate.getDescription());
-					preparedStatement.setDate(3, categoryToUpdate.getDate());
+					preparedStatement.setString(3, categoryToUpdate.getDate());
 					preparedStatement.setInt(4, categoryToUpdate.getRating());
 					preparedStatement.setString(5, categoryToUpdate.getTags());
 					preparedStatement.setInt(6, categoryToUpdate.getId());

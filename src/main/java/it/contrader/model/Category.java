@@ -1,6 +1,5 @@
 package it.contrader.model;
 
-import java.sql.Date;
 
 public class Category {
 	
@@ -8,7 +7,7 @@ public class Category {
 	// in private poichè chiamabili solo dalla classe stessa?
 	
 	private int id;	
-	private Date date;	
+	private String date;	
 	private String name;	
 	private String description;	
 	private int rating;	
@@ -21,7 +20,7 @@ public class Category {
 		
 	}
 	
-	public Category (String name, String description, Date date, int rating, String tags) {
+	public Category (String name, String description, String date, int rating, String tags) {
 	     this.name = name;
 	     this.description = description;
 	     this.date = date;
@@ -29,7 +28,7 @@ public class Category {
 	     this.tags = tags;
 	}
 	
-	public Category (int id, String name, String description, Date date, int rating, String tags ) {
+	public Category (int id, String name, String description, String date, int rating, String tags ) {
 		 this.id = id;
 		 this.name = name;
 	     this.description = description;
@@ -78,10 +77,10 @@ public class Category {
 	public String getName() {
 		return this.name;
 	}
-		public void setDate(Date date) {
+		public void setDate(String date) {
 		this.date = date;
 	}
-	public Date getDate() {
+	public String getDate() {
 			return this.date;
 		}
 	//trasforma oggetto in stringa per vedere tutto nel complesso

@@ -5,7 +5,7 @@ import java.util.List;
 
 import it.contrader.dto.CategoryDTO;
 import it.contrader.model.Category;
-import java.sql.Date;
+
 
 public class CategoryConverter {
 	
