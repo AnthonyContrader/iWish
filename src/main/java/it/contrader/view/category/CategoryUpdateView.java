@@ -51,11 +51,11 @@ public class CategoryUpdateView extends AbstractView {
 	public void submit() {
 		request = new Request();
 		request.put("id", id);
-		request.put("nome", name);
-		request.put("descrizione", description);
-		request.put("data", date);
-		request.put("valutazione", rating);
-		request.put("etichetta", tags);
+		request.put("name", name);
+		request.put("description", description);
+		request.put("date", date);
+		request.put("rating", rating);
+		request.put("tags", tags);
 		request.put("mode", mode);
 		MainDispatcher.getInstance().callAction("Category", "doControl", request);
 	}

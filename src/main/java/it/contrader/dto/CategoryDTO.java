@@ -84,7 +84,7 @@ public class CategoryDTO {
 
 		@Override
 		public String toString() {
-			return  id + "\t"  + name +"\t\t" +  description + "\t\t" + date + "\t\t" + rating + "\t\t" + tags;
+			return  id + "\t"  + name +"\t" +  description + "\t\t" + date + "\t" + rating + "\t" + tags;
 		}
 
 

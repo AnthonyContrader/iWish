@@ -81,9 +81,10 @@ public class CategoryDAO {
 				preparedStatement.setInt(1, categoryId);
 				ResultSet resultSet = preparedStatement.executeQuery();
 				resultSet.next();
-				String name, description, tags;
-				int rating;
+				String name, description;
 				Date date;
+				int rating;
+				String tags;
 
 				name = resultSet.getString("name");
 				description = resultSet.getString("description");
@@ -120,9 +121,11 @@ public class CategoryDAO {
 
 					if (categoryToUpdate.getTags() == null || categoryToUpdate.getTags().equals("")) {
 						categoryToUpdate.setTags(categoryRead.getTags());
-					if (categoryToUpdate.getDate() == null ) 
-						categoryToUpdate.setDate(categoryRead.getDate());
-					if (categoryToUpdate.getRating() == 0)
+					}
+					if (categoryToUpdate.getDate() == null ) {
+						categoryToUpdate.setDate(categoryRead.getDate()); 
+						}
+					if (categoryToUpdate.getRating() == 0) {
 						categoryToUpdate.setRating(categoryRead.getRating());
 					}
 
@@ -130,10 +133,10 @@ public class CategoryDAO {
 					PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(QUERY_UPDATE);
 					preparedStatement.setString(1, categoryToUpdate.getName());
 					preparedStatement.setString(2, categoryToUpdate.getDescription());
-					preparedStatement.setString(3, categoryToUpdate.getTags());
-					preparedStatement.setDate(4, categoryToUpdate.getDate());
-					preparedStatement.setInt(5, categoryToUpdate.getRating());
-					preparedStatement.setInt(4, categoryToUpdate.getId());
+					preparedStatement.setDate(3, categoryToUpdate.getDate());
+					preparedStatement.setInt(4, categoryToUpdate.getRating());
+					preparedStatement.setString(5, categoryToUpdate.getTags());
+					preparedStatement.setInt(6, categoryToUpdate.getId());
 					int a = preparedStatement.executeUpdate();
 					if (a > 0)
 						return true;
