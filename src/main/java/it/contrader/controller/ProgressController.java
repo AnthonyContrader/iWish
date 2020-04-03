@@ -128,7 +128,7 @@ public void doControl(Request request){
         		break;
         		
         	case "E":
-        		MainDispatcher.getInstance().callView(sub_package+ "Login",null);
+        		MainDispatcher.getInstance().callView("Login",null);
         		break;
         	
         	case "B":
