@@ -27,8 +27,15 @@ public class WishListInsertView extends AbstractView {
 	public void showOptions()
 	{
 		System.out.println("Inserisci il nome della wish list:");
+		
 		name = getInput();
+		while(name.equals("")) {
+			System.out.println("Il nome è obbligatorio!");
+			System.out.println("Inserisci il nome della wish list:");
+			name = getInput();
+		}
 		System.out.println("Inserisci una descrizione della wish list");
+		
 		description = getInput();
 		
 	}
