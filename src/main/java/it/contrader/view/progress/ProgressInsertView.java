@@ -1,5 +1,7 @@
 package it.contrader.view.progress;
 
+import java.util.regex.Pattern;
+
 import it.contrader.controller.Request;
 import it.contrader.main.MainDispatcher;
 import it.contrader.view.AbstractView;
@@ -29,12 +31,38 @@ public class ProgressInsertView extends AbstractView {
 	//chiede all'utente cosa inserire 
 	@Override
 	public void showOptions() {
-		System.out.println("inserisci il Saldo:");
-		cash=Float.parseFloat(getInput());
+		//System.out.println("inserisci il Saldo:");
+		//cash=Float.parseFloat(getInput());
+		String cashString;
+        System.out.println("inserisci il valore del saldo:");
+        cashString= getInput();
+        while (cashString.equals("")||Pattern.matches("^[1-9]+", cashString) == false) {
+        System.out.println("\t  WARNING!!!\nIL VALORE INSERITO NON E'CORRETTO\n\ninserisci il valore del saldo:");
+        cashString=getInput();
+        }
+		cash=Float.parseFloat(cashString);
 		System.out.println("inserisci la Proiezione");
-		expectation=Double.parseDouble(getInput());
+		//expectation=Double.parseDouble(getInput());
+		String expectationString=getInput();
+		if(expectationString.equals("")) {
+			expectation=0;
+		}
+		else {
+			expectation = Double.parseDouble(expectationString);
+			
+		}
 		System.out.println("inserisci il Tempo");
-		time=Double.parseDouble(getInput());
+		//time=Double.parseDouble(getInput());
+	
+		String timeString=getInput();
+		if(timeString.equals("")) {
+			time=0;
+		}
+		else {
+			time = Double.parseDouble(timeString);
+			
+		} 	
+	
 	}
 
     @Override
@@ -47,3 +75,5 @@ public class ProgressInsertView extends AbstractView {
     	MainDispatcher.getInstance().callAction("Progress","doControl",request);
     }
 }
+
+
