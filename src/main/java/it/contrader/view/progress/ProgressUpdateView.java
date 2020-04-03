@@ -29,7 +29,7 @@ public class ProgressUpdateView extends AbstractView {
 	@Override
 	public void showOptions() {
 		try {
-			System.out.println("Inserisci id dell'utente:");
+			System.out.println("Inserisci id del progresso:");
 			id = Integer.parseInt(getInput());
 			System.out.println("Inserisci il saldo dell'utente:");
 			cash = Float.parseFloat(getInput());
@@ -50,7 +50,7 @@ public class ProgressUpdateView extends AbstractView {
 		request.put("expectation", expectation);
 		request.put("time", time);
 		request.put("mode", mode);
-		MainDispatcher.getInstance().callAction("User", "doControl", request);
+		MainDispatcher.getInstance().callAction("Progress", "doControl", request);
 	}
 
 }

@@ -22,9 +22,9 @@ public class ProgressView extends AbstractView{
 	@Override
 	public void showResults(Request request) {
 		if ( request!= null) {
-		System.out.println("\n-----------The Progress Are-----------\n");
-		System.out.println("Cash\tExpectation\tTime");
-		System.out.println("----------------------------------------");
+		System.out.println("\n-----------****-The Progress Are-****-----------\n");
+		System.out.println("id\tCash\t     Expectation\tTime");
+		System.out.println("------------------------------------------------");
 	
 	@SuppressWarnings("unchecked")
 	List<ProgressDTO> progressi = (List<ProgressDTO>) request.get("progress");

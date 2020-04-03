@@ -88,7 +88,7 @@ public class Category {
 	// "\t" sta per tabulatore serve a inserire spazi
 	@Override
 	public String toString() {
-		return  id + "\t"  + date +"\t\t" + name + "\t\t" + description +"\t\t" + rating +"\t\t" + tags;
+		return  id + "\t" + name + "\t" + description +"\t\t" + date + "\t" + rating +"\t" + tags;
 	}
 	
 	//Confrontiamo gli oggetti

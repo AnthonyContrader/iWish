@@ -64,7 +64,7 @@ public class Progress {   //  nome della classe
 	}
     
 	
-	//Trasforma un oggetto in una stringa
+	//Trasforma un oggetto in una stringa formata dai valori con il metodo toString
 		@Override
 		public String toString() {
 			return  id + "\t"  + cash +"\t\t" +   expectation + "\t\t" + time;
@@ -87,9 +87,7 @@ public class Progress {   //  nome della classe
 			return false;
 		if (expectation	!= other.expectation)
 			return false;
-		
-	
-		return true;
+		    return true;
 	
 	}
 

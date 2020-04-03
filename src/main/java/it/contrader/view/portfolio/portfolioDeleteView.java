@@ -33,7 +33,7 @@ public class portfolioDeleteView extends AbstractView {
 	request = new Request();
 	request.put("id", id);
 	request.put("mode", mode);
-	MainDispatcher.getInstance().callAction("User", "doControl", request);
+	MainDispatcher.getInstance().callAction("portfolio", "doControl", request);
 			}
 	
 

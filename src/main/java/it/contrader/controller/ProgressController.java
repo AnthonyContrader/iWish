@@ -7,11 +7,11 @@ import it.contrader.service.ProgressService;
 
 
 
-
+// ci sono solo oggetti dto 
 
 public class ProgressController implements Controller {
 	  // definisce il pacchetto di vista progress 
-       private static String sub_package ="progress.";
+       private static String sub_package ="progress."; //corretto visto test
        
        private ProgressService progressService;
         // costruisce un oggetto di tipo progress service per potere usare  i metodi
@@ -29,12 +29,13 @@ public class ProgressController implements Controller {
     	
 @Override
 public void doControl(Request request){
-		// estrae dalla request mode e choice
+
+	// estrae dalla request mode e choice
 		String mode =(String) request.get("mode");
 		
 		String choice = (String) request.get("choice");
 		
-		// definisce i campi della classe(serviranno)
+		// definisce i campi della classe
         int id;
         float cash;
         double expectation;
@@ -47,7 +48,7 @@ public void doControl(Request request){
         	ProgressDTO progressDTO= progressService.read(id);
         	request.put("progress", progressDTO);
         	MainDispatcher.getInstance().callView(sub_package+ "ProgressRead", request);
-        	
+        	break;
         //	estrae i parametri da inerire e chiama il service per inserire un progress con questi parametri
        
         
@@ -102,7 +103,7 @@ public void doControl(Request request){
         	// impacchetta la request con i progress
         	request.put("progress",progresslistDTO);
         	MainDispatcher.getInstance().callView("Progress", request);
-        	
+        	break;
         	// c'è uno switch sul comando e ti porta tramite il Dispatcher alla view scelta
         	
         case "GETCHOICE":
@@ -135,7 +136,7 @@ public void doControl(Request request){
         		
         	default:
         		MainDispatcher.getInstance().callView("Login", null);
-        		break;
+        		
         		
         	
         	
@@ -144,7 +145,8 @@ public void doControl(Request request){
         	}
         	
         	
-        	
+        default:
+			MainDispatcher.getInstance().callView("Login", null);
         
         
         

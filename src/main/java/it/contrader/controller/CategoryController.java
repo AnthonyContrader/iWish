@@ -58,8 +58,6 @@ public class CategoryController implements Controller {
 				date = Date.valueOf(request.get("date").toString());
 				rating =Integer.parseInt(request.get("rating").toString());
 				tags = request.get("tags").toString();
-				
-				
 				CategoryDTO categorytoinsert = new CategoryDTO(name, description, date, rating, tags);
 				categoryService.insert(categorytoinsert);
 				request = new Request();

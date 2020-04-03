@@ -26,7 +26,7 @@ public class CategoryView extends AbstractView {
 	public void showResults(Request request) {
 		if(request != null) {
 			System.out.println("\n---------Gestione categorie-----\n");
-			System.out.println("ID\tname\tdescription\tdate\trating\ttags\n");
+			System.out.println("ID\tname\tdescription\tdate\t\trating\ttags\n");
 			System.out.println("--------------------------------------\n");
 			
 			@SuppressWarnings("unchecked")

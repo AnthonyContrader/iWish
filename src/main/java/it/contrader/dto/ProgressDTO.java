@@ -69,7 +69,7 @@ public class ProgressDTO {
     
 	@Override
      public String toString() {
-    	 return id + "/t" + cash +"/t/t"+ expectation + "/t/t"+ time;
+    	 return id + "\t" + cash +"\t\t"+ expectation + "\t\t"+ time;
     	 
      }
      
