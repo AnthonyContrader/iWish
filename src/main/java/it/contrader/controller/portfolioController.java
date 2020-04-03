@@ -11,7 +11,7 @@ import it.contrader.service.portfolioService;
 
 public class portfolioController implements Controller {
 	
-private static String sub_package = "Portfolio.";
+private static String sub_package = "portfolio.";
 	
 	private portfolioService PortfolioService;
 	
@@ -48,7 +48,7 @@ public void doControl(Request request) {
 			
 			totalmoney = Float.parseFloat(request.get("totalmoney").toString());
 			revenue = Float.parseFloat(request.get("revenue").toString());
-			outputs = Float.parseFloat(request.get("uoutputs").toString());
+			outputs = Float.parseFloat(request.get("outputs").toString());
 			
 			portfolioDTO Portfoliotoinsert = new portfolioDTO(totalmoney, revenue, outputs);
 			//invoca il service
@@ -74,7 +74,7 @@ public void doControl(Request request) {
 			id = Integer.parseInt(request.get("id").toString());
 			totalmoney = Float.parseFloat(request.get("totalmoney").toString());
 			revenue = Float.parseFloat(request.get("revenue").toString());
-			outputs = Float.parseFloat(request.get("uoutputs").toString());
+			outputs = Float.parseFloat(request.get("outputs").toString());
 			portfolioDTO Portfoliotoupdate = new portfolioDTO(totalmoney, revenue, outputs);
 			Portfoliotoupdate.setId(id);
 			PortfolioService.update(Portfoliotoupdate);

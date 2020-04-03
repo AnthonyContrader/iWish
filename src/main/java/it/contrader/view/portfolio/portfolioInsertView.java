@@ -21,7 +21,7 @@ public class portfolioInsertView extends AbstractView {
 	public void showResults(Request request) {
 		if (request!=null) {
 			System.out.println("Inserimento andato a buon fine.\n");
-			MainDispatcher.getInstance().callView("User", null);
+			MainDispatcher.getInstance().callView("portfolio", null);
 		}
 	}
 	@Override
