@@ -114,6 +114,7 @@ public class WishListDAO {
 				PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(QUERY_UPDATE);
 				preparedStatement.setString(1, wishlistToUpdate.getName());
 				preparedStatement.setString(2, wishlistToUpdate.getDescription());
+				preparedStatement.setInt(3, wishlistToUpdate.getId());
 				int a = preparedStatement.executeUpdate();
 				if(a>0) return true;
 				else return false;

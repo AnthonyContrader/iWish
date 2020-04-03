@@ -44,7 +44,7 @@ public class WishListUpdateView extends AbstractView {
 		request = new Request();
 		request.put("id", id);
 		request.put("name", name);
-		request.put("desciption", description);
+		request.put("description", description);
 		request.put("mode", mode);
 		MainDispatcher.getInstance().callAction("WishList", "doControl", request);
 	}
