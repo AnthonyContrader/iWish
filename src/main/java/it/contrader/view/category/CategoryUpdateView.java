@@ -3,7 +3,7 @@ package it.contrader.view.category;
 import it.contrader.controller.Request;
 import it.contrader.main.MainDispatcher;
 import it.contrader.view.AbstractView;
-import java.sql.Date;
+
 
 public class CategoryUpdateView extends AbstractView {
 	private Request request;
@@ -11,7 +11,7 @@ public class CategoryUpdateView extends AbstractView {
 	private int id;
 	private String name;
 	private String description;
-	private Date date;
+	private String date;
 	private int rating;
 	private String tags;
 	private final String mode = "UPDATE";
@@ -37,9 +37,13 @@ public class CategoryUpdateView extends AbstractView {
 			System.out.println("Inserisci descrizione della categoria:");
 			description = getInput();
 			System.out.println("Inserisci la data:");
-			date = Date.valueOf(getInput());
+			date = getInput();		
 			System.out.println("Inserisci valutazione:");
-			rating = Integer.parseInt(getInput());
+			String ratingString = getInput();
+			if (ratingString.equals("")) {
+				rating = -1;
+				} else { 
+			rating = Integer.parseInt(ratingString); }
 			System.out.println("Inserisci etichetta:");
 			tags = getInput();
 		    } catch (Exception e) {
