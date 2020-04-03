@@ -27,11 +27,34 @@ public class portfolioInsertView extends AbstractView {
 	@Override
 	public void showOptions() {
 			System.out.println("Inserisci saldo dell'utente:");
-			totalmoney = Float.parseFloat(getInput());
+			
+			String totalmoneyString = getInput();
+					if (totalmoneyString.contentEquals("")) {
+							totalmoney = (float)0 ;
+    	         }
+	      else {
+	      totalmoney = Float.parseFloat (totalmoneyString);
+	   }
 			System.out.println("Inserisci entrate dell'utente:");
-			revenue = Float.parseFloat(getInput());
+           String revenueString = getInput();
+			if (revenueString.contentEquals("")) {
+			revenue = (float)0 ;
+			}
+			else {
+			revenue = Float.parseFloat (revenueString);
+	}
+			
 			System.out.println("Inserisci uscite dell'utente:");
-			outputs = Float.parseFloat(getInput());
+			String outputsString = getInput();
+			if (outputsString.contentEquals("")) {
+				outputs = (float)0;
+			
+			}
+			else {
+				
+			
+			outputs = Float.parseFloat(outputsString);
+			}
 	}
 	@Override
 	public void submit() {
