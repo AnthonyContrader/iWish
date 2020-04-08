@@ -54,34 +54,37 @@
 
 <form id="floatright" action="ProdottoServlet?mode=insert" method="post">
 	<div class="row">
-	  <div class="col-25"></div>
+	  <div class="col-25">
 		<label for="name">Name</label>
 	  </div>
 	  <div class="col-75">
 	  	<input type="text" id="name" name="name" placeholder="inserisci nome">
 	  </div>
+	  </div>
 	<div class="row">
-	  <div class="col-25"></div>
+	  <div class="col-25">
 		<label for="description">Description</label>
 	</div>
 	  <div class="col-75">
 	  	<input type="text" id="description" name="description" placeholder="inserisci descrizione">
 	  </div>
+	  </div>
 	<div class="row">
-	  <div class="col-25"></div>
+	  <div class="col-25">
 		<label for="price">Price</label>
 	</div>
 	  <div class="col-75">
 	  	<input type="text" id="price" name="price" placeholder="inserisci prezzo">
 	  </div>
+	  </div>
 	<div class="row">
-	  <div class="col-25"></div>
+	  <div class="col-25">
 		<label for="priority">Priority</label>
 	 </div>
 	<div class="col-75">
 	  	<input type="text" id="priority" name="priority" placeholder="inserisci priorità">
 	</div>
-	
+	</div>
 	<button type="submit" >Insert</button>
 </form>
 
