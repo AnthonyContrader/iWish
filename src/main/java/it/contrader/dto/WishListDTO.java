@@ -7,15 +7,26 @@ public class WishListDTO {
 	private String name;
 	
 	private String description;
+	
+	private String proprietario;
 
 	public WishListDTO() {
 	}
+	
 
-	public WishListDTO(String name, String description) {
+	public WishListDTO(String name, String description, String proprietario) {
 		this.name = name;
 		this.description = description;
+		this.proprietario = proprietario;
 	}
 
+	public WishListDTO(int id, String name, String description, String proprietario) {
+		this.id = id;
+		this.name = name;
+		this.description = description;
+		this.proprietario = proprietario;
+	}
+	
 	public WishListDTO(int id, String name, String description) {
 		this.id = id;
 		this.name = name;
@@ -46,8 +57,12 @@ public class WishListDTO {
 		this.description = description;
 	}
 	
+	public String getProprietario() {
+		return proprietario;
+	}
+	
 	@Override
 	public String toString() {
-		return id + "\t" + name + "\t\t" + description;
+		return id + "\t" + name + "\t\t" + description + "\t\t"+proprietario;
 	}
 }

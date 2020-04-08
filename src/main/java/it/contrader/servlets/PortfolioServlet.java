@@ -60,7 +60,7 @@ public class PortfolioServlet extends HttpServlet {
 			ans = service.insert(dto);
 			request.setAttribute("ans", ans);
 			updateList(request);
-			getServletContext().getRequestDispatcher("/portfolio/portfoliomanager.jsp").forward(request, response);
+			getServletContext().getRequestDispatcher("/Portfolio/Portfoliomanager.jsp").forward(request, response);
 			break;
 			
 		case "UPDATE":
@@ -71,7 +71,7 @@ public class PortfolioServlet extends HttpServlet {
 			dto = new PortfolioDTO (id,totalmoney, revenue, outputs);
 			ans = service.update(dto);
 			updateList(request);
-			getServletContext().getRequestDispatcher("/portfolio/portfoliomanager.jsp").forward(request, response);
+			getServletContext().getRequestDispatcher("/Portfolio/Portfoliomanager.jsp").forward(request, response);
 			break;
 			
 		case "DELETE":
@@ -79,7 +79,7 @@ public class PortfolioServlet extends HttpServlet {
 			ans = service.delete(id);
 			request.setAttribute("ans", ans);
 			updateList(request);
-			getServletContext().getRequestDispatcher("/portfolio/portfoliomanager.jsp").forward(request, response);
+			getServletContext().getRequestDispatcher("/Portfolio/Portfoliomanager.jsp").forward(request, response);
 			break;
 		}
 	}
