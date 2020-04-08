@@ -14,7 +14,7 @@
 	<a href="homeadmin.jsp">Home</a>
 	<a  href="UserServlet?mode=userlist">Users</a>
 	 <a href="WishListServlet?mode=wishlists">Wishlist</a>
-	<a class="active" href="ProdottoServlet?mode=prodottilist">Prodotti</a>
+	<a class="active" href="ProdottoServlet?mode=prodottolist">Prodotti</a>
 	 <a href="PortfolioServlet?mode=portfoliolist">Portafoglio</a>
 	 <a href="ProgressServlet?mode=progresslist">Timeline</a>
 	 <a href="CategoryServlet?mode=categorylist">Categorie</a>
