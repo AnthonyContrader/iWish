@@ -25,7 +25,7 @@
 	<table>
 		<tr>
 			<th>Name</th>
-			<th>Description></th>
+			<th>Description</th>
 			<th>Price</th>
 			<th>Priority</th>
 		</tr>
@@ -61,21 +61,21 @@
 	  	<input type="text" id="name" name="name" placeholder="inserisci nome">
 	  </div>
 	<div class="row">
-	  <div class="col-75"></div>
+	  <div class="col-25"></div>
 		<label for="description">Description</label>
 	</div>
 	  <div class="col-75">
 	  	<input type="text" id="description" name="description" placeholder="inserisci descrizione">
 	  </div>
 	<div class="row">
-	  <div class="col-75"></div>
+	  <div class="col-25"></div>
 		<label for="price">Price</label>
 	</div>
 	  <div class="col-75">
 	  	<input type="text" id="price" name="price" placeholder="inserisci prezzo">
 	  </div>
 	<div class="row">
-	  <div class="col-75"></div>
+	  <div class="col-25"></div>
 		<label for="priority">Priority</label>
 	 </div>
 	<div class="col-75">
