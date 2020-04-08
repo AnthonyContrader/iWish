@@ -8,7 +8,7 @@ import it.contrader.utils.ConnectionSingleton;
 
 public class WishListDAO implements DAO<WishList> {
 	private final String QUERY_ALL = "SELECT * FROM WishList";
-	private final String QUERY_CREATE = "INSERT INTO WishList (name, description) VALUES (?,?)";
+	private final String QUERY_CREATE = "INSERT INTO WishList (name, description, proprietario) VALUES (?,?,?)";
 	private final String QUERY_READ = "SELECT * FROM WishList WHERE id=?";
 	private final String QUERY_UPDATE = "UPDATE WishList SET name=?, description=? WHERE id=?";
 	private final String QUERY_DELETE = "DELETE FROM WishList WHERE id=?";
@@ -26,7 +26,8 @@ public class WishListDAO implements DAO<WishList> {
 				int id = resultSet.getInt("id");
 				String name = resultSet.getString("name");
 				String description = resultSet.getString("description");
-				wishlist = new WishList(name, description);
+				String proprietario = resultSet.getString("proprietario");
+				wishlist = new WishList(name, description, proprietario);
 				wishlist.setId(id);
 				wishlistList.add(wishlist);
 				}
@@ -42,6 +43,7 @@ public class WishListDAO implements DAO<WishList> {
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_CREATE);
 			preparedStatement.setString(1, wishlistToInsert.getName());
 			preparedStatement.setString(2, wishlistToInsert.getDescription());
+			preparedStatement.setString(3, wishlistToInsert.getProprietario());
 			preparedStatement.execute();
 			return true;
 		}catch(SQLException e) {
@@ -56,10 +58,11 @@ public class WishListDAO implements DAO<WishList> {
 			preparedStatement.setInt(1, wishlistId);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			resultSet.next();
-			String name, description;
+			String name, description, proprietario;
 			name = resultSet.getString("name");
 			description = resultSet.getString("description");
-			WishList wishlist = new WishList(name, description);
+			proprietario = resultSet.getString("proprietario");
+			WishList wishlist = new WishList(name, description, proprietario);
 			wishlist.setId(resultSet.getInt("id"));
 			return wishlist;
 		}catch(SQLException e) {

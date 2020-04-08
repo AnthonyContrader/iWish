@@ -3,6 +3,7 @@ package it.contrader.servlets;
 import it.contrader.service.WishListService;
 import it.contrader.service.Service;
 import it.contrader.dto.WishListDTO;
+import it.contrader.dto.UserDTO;
 
 import java.util.List;
 import java.io.IOException;
@@ -51,9 +52,11 @@ public class WishListServlet extends HttpServlet {
 			break;
 			
 		case "INSERT":
-			String name = request.getParameter("name").toString();
+			UserDTO userDTO = (UserDTO) request.getSession(false).getAttribute("user");
+			String name = request.getParameter("name").toString(); 
 			String description = request.getParameter("description").toString();
-			dto = new WishListDTO(name, description);
+			String proprietario =userDTO.getUsername();
+			dto = new WishListDTO(name, description, proprietario);
 			ans = service.insert(dto);
 			request.setAttribute("ans", ans);
 			updateList(request);

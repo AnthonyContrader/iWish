@@ -8,17 +8,21 @@ public class WishList {
 	
 	private String description;
 	
+	private String proprietario;
+	
 	public WishList() {}
 	
-	public WishList(String name, String description) {
+	public WishList(String name, String description, String proprietario) {
 		this.name = name;
 		this.description = description;
+		this.proprietario = proprietario;
 	}
 	
-	public WishList(int id, String name, String description) {
+	public WishList(int id, String name, String description, String proprietario) {
 		this.id = id;
 		this.name = name;
 		this.description = description;
+		this.proprietario = proprietario;
 	}
 
 	public int getId() {
@@ -44,13 +48,16 @@ public class WishList {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
+	public String getProprietario() {
+		return proprietario;
+	}
+	
 
 	@Override
 	public String toString() {
-		return id + "\t" + name +"\t\t"+description;
+		return id + "\t" + name +"\t\t"+description+"\t\t"+ proprietario;
 	}
-
- 
 
 	@Override
 	public boolean equals(Object obj) {
@@ -73,8 +80,17 @@ public class WishList {
 				return false;
 		} else if (!name.equals(other.name))
 			return false;
+		if (proprietario == null) {
+			if (other.proprietario != null)
+				return false;
+		} else if (!proprietario.equals(other.proprietario))
+			return false;
 		return true;
 	}
+
+ 
+
+	
 
 	
 	

@@ -9,13 +9,13 @@ public class WishListConverter implements Converter<WishList, WishListDTO> {
 	
 	@Override
 	public WishListDTO toDTO(WishList wishlist) {
-		WishListDTO wishlistDTO = new WishListDTO(wishlist.getId(), wishlist.getName(), wishlist.getDescription());
+		WishListDTO wishlistDTO = new WishListDTO(wishlist.getId(), wishlist.getName(), wishlist.getDescription(), wishlist.getProprietario());
 		return wishlistDTO;
 	}
 	
 	@Override
 	public WishList toEntity(WishListDTO wishlistDTO) {
-		WishList wishlist = new WishList(wishlistDTO.getId(), wishlistDTO.getName(), wishlistDTO.getDescription());
+		WishList wishlist = new WishList(wishlistDTO.getId(), wishlistDTO.getName(), wishlistDTO.getDescription(), wishlistDTO.getProprietario());
 		return wishlist;
 	}
 	
