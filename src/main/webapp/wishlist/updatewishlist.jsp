@@ -11,7 +11,7 @@
 <div class="navbar">
 <a href="homeadmin.jsp">Home</a>
 <a class="active" href="WishListServlet?mode=wishlists">WishLists</a>
-<a class="LogoutServlet" id="Logout">Logout</a>
+<a class="LogoutServlet" id="logout">Logout</a>
 </div>
 <br>
 <div class="main">
