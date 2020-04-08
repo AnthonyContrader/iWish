@@ -56,25 +56,27 @@
 <form id="floatright" action="PortfolioServlet?mode=insert" method="post">
   <div class="row">
     <div class="col-25">
-      <label for="portfolio">Totalmoney</label>
+      <label for="portfolio">Saldo</label>
     </div>
     <div class="col-75">
-      <input type="text" id="portfolio" name="totalmoney" placeholder="inserisci totalmoney">
+      <input type="text" id="portfolio" name="totalmoney" placeholder="inserisci saldo totale">
     </div>
   </div>
   <div class="row">
     <div class="col-25">
-     <label for="pass">Revenue</label>
+     <label for="pass">Entrate</label>
     </div>
     <div class="col-75">
-      <input type="text" id="pass" name="revenue" placeholder="inserisci revenue"> 
+      <input type="text" id="rev" name="revenue" placeholder="inserisci entrate"> 
     </div>
   </div>
   <div class="row">
     <div class="col-25">
-      <label for="type">Outputs</label>
+      <label for="type">Uscite</label>
     </div>
    		 <div class="col-75">
+   		  <input type="text" id="out" name="outputs" placeholder="inserisci uscite"> 
+    
  			
  
 			
