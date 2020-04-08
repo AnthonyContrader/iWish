@@ -34,13 +34,13 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>WishlistServlet</display-name>
-    <servlet-name>WishlistServlet</servlet-name>
-    <servlet-class>it.contrader.servlets.WishlistServlet</servlet-class>
+    <display-name>WishListServlet</display-name>
+    <servlet-name>WishListServlet</servlet-name>
+    <servlet-class>it.contrader.servlets.WishListServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>WishlistServlet</servlet-name>
-    <url-pattern>/WishlistServlet</url-pattern>
+    <servlet-name>WishListServlet</servlet-name>
+    <url-pattern>/WishListServlet</url-pattern>
   </servlet-mapping>
    <servlet>
     <description></description>
