@@ -11,9 +11,10 @@ private int id;
     
     private double expectation;
     
-    private String Foreing_prodotto;
-
+    private int Foreing_prodotto;
     
+    private String Foreing_proprietario;
+     
     public ProgressDTO() {
     	
     }
@@ -31,6 +32,25 @@ private int id;
     	this.id=id;
     }
 
+    
+    public ProgressDTO(float cash, double expectation, double time,String Foreing_proprietario,int Foreing_prodotto) {
+    	this.cash=cash;
+    	this.expectation=expectation;
+    	this.time=time;
+    	this.Foreing_prodotto=Foreing_prodotto;
+    	this.setForeing_proprietario(Foreing_proprietario);
+    }
+    
+    
+    public ProgressDTO(int id,float cash, double expectation, double time,String Foreing_proprietario,int Foreing_prodotto) {
+    	this.id=id;
+    	this.cash=cash;
+    	this.expectation=expectation;
+    	this.time=time;
+    	this.Foreing_prodotto=Foreing_prodotto;
+    	this.setForeing_proprietario(Foreing_proprietario);
+    }
+    
 	public int getId() {
 		return this.id;
 	}
@@ -63,15 +83,23 @@ private int id;
 		this.expectation = expectation;
 	}
 
-	public String getForeing_prodotto() {
+	public int getForeing_prodotto() {
 		return this.Foreing_prodotto;
 	}
 
-	public void setForeing_prodotto(String Foreing_prodotto) {
+	public void setForeing_prodotto(int Foreing_prodotto) {
 		this.Foreing_prodotto = Foreing_prodotto;
 	}
 	@Override
 	public String toString() {
-		return  id + "\t"  + cash +"\t\t" +   expectation + "\t\t" + time; 
+		return  id + "\t"  + cash +"\t\t" +   expectation + "\t\t" + time+ "\t"+Foreing_proprietario+ "\t"+Foreing_prodotto; 
     }
+
+	public String getForeing_proprietario() {
+		return Foreing_proprietario;
+	}
+
+	public void setForeing_proprietario(String foreing_proprietario) {
+		Foreing_proprietario = foreing_proprietario;
+	}
 }

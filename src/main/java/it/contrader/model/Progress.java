@@ -13,8 +13,11 @@ public class Progress {
     
     private double expectation;
     
-    private String Foreing_prodotto;
+    private int Foreing_prodotto;
+    
+    private String Foreing_proprietario;
 
+    
     
 
 
@@ -32,6 +35,24 @@ public Progress(float cash, double expectation, double time) {
 	this.setExpectation(expectation);
 	this.setTime(time);
 	
+}
+
+public Progress(float cash, double expectation, double time,String Foreing_proprietario, int Foreing_prodotto ) {
+	this.setId(id);
+	this.setCash(cash);
+	this.setExpectation(expectation);
+	this.setTime(time);
+	this.setForeing_prodotto(Foreing_prodotto);
+	this.setForeing_proprietario(Foreing_proprietario);
+}
+
+public Progress(int id,float cash, double expectation, double time,String Foreing_proprietario, int Foreing_prodotto ) {
+	this.setId(id);
+	this.setCash(cash);
+	this.setExpectation(expectation);
+	this.setTime(time);
+	this.setForeing_prodotto(Foreing_prodotto);
+	this.setForeing_proprietario(Foreing_proprietario);
 }
 
 public Progress(int id, float cash, double expectation, double time) {
@@ -80,20 +101,29 @@ public void setExpectation(double expectation) {
 	this.expectation = expectation;
 }
 
-public String getForeing_prodotto() {
+public int getForeing_prodotto() {
 	return this.Foreing_prodotto;
 }
 
-public void setForeing_prodotto(String Foreing_prodotto) {
+public void setForeing_prodotto(int Foreing_prodotto) {
 	this.Foreing_prodotto = Foreing_prodotto;
 }
 
+public String getForeing_proprietario() {
+	return this.Foreing_proprietario;
+}
 
+public void setForeing_proprietario(String Foreing_proprietario) {
+	this.Foreing_proprietario = Foreing_proprietario;
+}
 
 @Override
 public String toString() {
-	return id+"\t"+ cash+"\t\t"+ expectation +"\t\t"+time;
+	return id+"\t"+ cash+"\t\t"+ expectation +"\t\t"+time+"\t"+Foreing_proprietario+"\t"+Foreing_prodotto;
 }
+
+
+
 
 
 @Override
@@ -105,10 +135,12 @@ public boolean equals(Object obj) {
 	if (getClass() != obj.getClass())
 		return false;
 	Progress other = (Progress) obj;
-	if (Foreing_prodotto == null) {
-		if (other.Foreing_prodotto != null)
+	if (Foreing_prodotto != other.Foreing_prodotto)
+		return false;
+	if (Foreing_proprietario == null) {
+		if (other.Foreing_proprietario != null)
 			return false;
-	} else if (!Foreing_prodotto.equals(other.Foreing_prodotto))
+	} else if (!Foreing_proprietario.equals(other.Foreing_proprietario))
 		return false;
 	if (Float.floatToIntBits(cash) != Float.floatToIntBits(other.cash))
 		return false;
@@ -120,6 +152,7 @@ public boolean equals(Object obj) {
 		return false;
 	return true;
 }
+
 
 
 

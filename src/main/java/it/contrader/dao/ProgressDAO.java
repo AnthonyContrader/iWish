@@ -9,8 +9,8 @@ import it.contrader.model.Progress;
 
 public class ProgressDAO implements DAO<Progress>{
 
-	private final String QUERY_ALL= "SELECT * FROM user";
-	private final String QUERY_CREATE="INSERT INTO progress(cash, expectation , time) VALUES (?,?,? )";
+	private final String QUERY_ALL= "SELECT * FROM progress";
+	private final String QUERY_CREATE="INSERT INTO progress(cash, expectation , time,prodotto_id, proprietario_fk) VALUES (?,?,?,?,? )";
 	private final String QUERY_READ="SELECT *FROM progress WHERE id=?";
 	private final String QUERY_UPDATE ="UPDATE progress SET cash=?,expectation=?,time=?";
 	private final String QUERY_DELETE= "DELETE FROM user WHERE id=?";
@@ -31,7 +31,9 @@ public class ProgressDAO implements DAO<Progress>{
 	    		float cash = resultSet.getFloat("cash");
 	    		double time=resultSet.getDouble("time");
 	    		double expectation =resultSet.getDouble("expectation");
-				progress = new Progress(cash , expectation, time);
+				String proprietario_progress=resultSet.getString("proprietario_fk");
+				int id_prodotto=resultSet.getInt("prodotto_id");
+	    		progress = new Progress(cash,expectation,time,proprietario_progress,id_prodotto);
 				progress.setId(id);
 				progressList.add(progress);
 					}
@@ -49,6 +51,8 @@ public class ProgressDAO implements DAO<Progress>{
     		preparedStatement.setFloat(1, progressToInsert.getCash());
     		preparedStatement.setDouble(2, progressToInsert.getExpectation());
     		preparedStatement.setDouble(3, progressToInsert.getTime());
+    		preparedStatement.setInt(4, progressToInsert.getForeing_prodotto());
+    		preparedStatement.setString(5, progressToInsert.getForeing_proprietario());
     		preparedStatement.execute();
     		return true;
     		}
