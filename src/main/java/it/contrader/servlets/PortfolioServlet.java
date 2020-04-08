@@ -34,7 +34,7 @@ public class PortfolioServlet extends HttpServlet {
 		
 		case "PORTFOLIOLIST":
 			updateList(request);
-			getServletContext().getRequestDispatcher("/portfolio/portfoliomanager.jsp").forward(request, response);
+			getServletContext().getRequestDispatcher("/Portfolio/Portfoliomanager.jsp").forward(request, response);
 			break;
 			
 		case "READ":
@@ -43,11 +43,11 @@ public class PortfolioServlet extends HttpServlet {
 			request.setAttribute("dto", dto);
 			
 		if (request.getParameter("totalmoney") == null) {
-			getServletContext().getRequestDispatcher("/portfolio/readportfolio.jsp").forward(request, response);
+			getServletContext().getRequestDispatcher("/Portfolio/readPortfolio.jsp").forward(request, response);
 				
 		}
 		
-		else getServletContext().getRequestDispatcher("/portfolio/updateportfolio.jsp").forward(request, response);
+		else getServletContext().getRequestDispatcher("/Portfolio/updatePortfolio.jsp").forward(request, response);
 		
 		break;
 

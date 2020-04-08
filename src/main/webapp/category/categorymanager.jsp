@@ -13,6 +13,7 @@
 <div class="navbar">
   <a  href="homeadmin.jsp">Home</a>
   <a  href="UserServlet?mode=userlist">Users</a>
+  <a href="ProdottoServlet?mode=prodottolist">Prodotto</a>
   <a class="active" href="CategoryServlet?mode=categorylist">Categories</a>
   <a href="LogoutServlet" id="logout">Logout</a>
 </div>
