@@ -75,6 +75,7 @@
       <input type="number" id="time" name="time" placeholder="inserisci il Tempo">
     </div>
   </div>
+  <button type="submit">Insert</button>
 </form>
  </div>
  <br>
