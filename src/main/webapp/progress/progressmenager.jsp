@@ -61,7 +61,7 @@
       <label for="cash">Soldi</label>
     </div>
     <div class="col-75">
-      <input type="number" id="cash" name="cash" placeholder="inserisci i Soldi">
+      <input type="number" step=0.01 id="cash" name="cash" placeholder="inserisci i Soldi">
     </div>
   </div>
   <div class="row">
@@ -69,7 +69,7 @@
       <label for="expectation">Progress</label>
     </div>
     <div class="col-75">
-      <input type="number" id="expectation" name="expectation" placeholder="inserisci il Progresso">
+      <input type="number" step=0.00001 id="expectation" name="expectation" placeholder="inserisci il Progresso">
     </div>
   </div>
    <div class="row">
@@ -77,7 +77,7 @@
       <label for="time">Tempo</label>
     </div>
     <div class="col-75">
-      <input type="number" id="time" name="time" placeholder="inserisci il Tempo">
+      <input type="number" step=0.00001 id="time" name="time" placeholder="inserisci il Tempo">
     </div>
   </div>
   <button type="submit">Insert</button>
