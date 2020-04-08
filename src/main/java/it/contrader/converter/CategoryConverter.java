@@ -10,14 +10,14 @@ public class CategoryConverter implements Converter<Category, CategoryDTO> {
 	
 	 @Override
 	 public CategoryDTO toDTO(Category category) {
-		 CategoryDTO categoryDTO = new CategoryDTO(category.getId(), category.getName(), category.getDescription(), category.getDate(), category.getRating(), category.getTags());
+		 CategoryDTO categoryDTO = new CategoryDTO(category.getId(), category.getName(), category.getDescription(), category.getRating());
 		 return categoryDTO;
 		 
 	 }
 
 	 @Override
 	 public Category toEntity(CategoryDTO categoryDTO) {
-		 Category category = new Category (categoryDTO.getId(), categoryDTO.getName(), categoryDTO.getDescription(), categoryDTO.getDate(), categoryDTO.getRating(), categoryDTO.getTags());
+		 Category category = new Category (categoryDTO.getId(), categoryDTO.getName(), categoryDTO.getDescription(), categoryDTO.getRating());
 		 return category;
 	 }
 	 

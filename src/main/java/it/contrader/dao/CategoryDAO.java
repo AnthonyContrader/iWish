@@ -31,10 +31,8 @@ public class CategoryDAO implements DAO<Category> {
 				int id = resultSet.getInt("id");
 				String name = resultSet.getString("name");
 				String description = resultSet.getString("description");
-				String date = resultSet.getString("date");
 				int rating = resultSet.getInt("rating");
-				String tags = resultSet.getString("tags");
-				category = new Category(name, description, date, rating, tags);
+				category = new Category(name, description, rating);
 				category.setId(id);
 				categoriesList.add(category);
 			}
@@ -50,9 +48,7 @@ public class CategoryDAO implements DAO<Category> {
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_CREATE);
 			preparedStatement.setString(1, categoryToInsert.getName());
 			preparedStatement.setString(2, categoryToInsert.getDescription());
-			preparedStatement.setString(3, categoryToInsert.getDate());
-			preparedStatement.setInt(4, categoryToInsert.getRating());
-			preparedStatement.setString(5, categoryToInsert.getTags());
+			preparedStatement.setInt(3, categoryToInsert.getRating());
 			preparedStatement.execute();
 			return true;
 		} catch (SQLException e) {
@@ -69,16 +65,13 @@ public class CategoryDAO implements DAO<Category> {
 			preparedStatement.setInt(1, categoryId);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			resultSet.next();
-			String name, description, date;
+			String name, description;
 			Integer rating;
-			String tags;
-
+			
 			name = resultSet.getString("name");
 			description = resultSet.getString("description");
-			date = resultSet.getString("date");
 			rating = resultSet.getInt("rating");
-			tags = resultSet.getString("tags");
-			Category category = new Category(name, description, date, rating, tags);
+			Category category = new Category(name, description, rating);
 			category.setId(resultSet.getInt("id"));
 
 			return category;
@@ -106,24 +99,15 @@ public class CategoryDAO implements DAO<Category> {
 					categoryToUpdate.setDescription(categoryRead.getDescription());
 				}
 
-				if (categoryToUpdate.getDate() == null || categoryToUpdate.getDate().equals("")) {
-					categoryToUpdate.setDate(categoryRead.getDate());
-				}
 				if (categoryToUpdate.getRating() == 0 ) {
 					categoryToUpdate.setRating(categoryRead.getRating());
 				}
 
-				if (categoryToUpdate.getTags() == null || categoryToUpdate.getTags().equals("")) {
-					categoryToUpdate.setTags(categoryRead.getTags());
-				}
-
-				PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(QUERY_UPDATE);
+			    PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(QUERY_UPDATE);
 				preparedStatement.setString(1, categoryToUpdate.getName());
 				preparedStatement.setString(2, categoryToUpdate.getDescription());
-				preparedStatement.setString(3, categoryToUpdate.getDate());
-				preparedStatement.setInt(4, categoryToUpdate.getRating());
-				preparedStatement.setString(5, categoryToUpdate.getTags());
-				preparedStatement.setInt(6, categoryToUpdate.getId());
+				preparedStatement.setInt(3, categoryToUpdate.getRating());
+				preparedStatement.setInt(4, categoryToUpdate.getId());
 				int a = preparedStatement.executeUpdate();
 				if (a > 0)
 					return true;

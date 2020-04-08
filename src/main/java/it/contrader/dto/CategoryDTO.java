@@ -8,31 +8,25 @@ public class CategoryDTO {
 	
 	private String description;
 	
-	private String date;
-	
 	private int rating;
-	
-	private String tags;
 	
 public CategoryDTO() {
 		
 	}
 
-	public CategoryDTO (String name, String description, String date, int rating, String tags) {
+	public CategoryDTO (String name, String description, int rating) {
 		this.name = name;
 		this.description = description;
-		this.date = date;
 		this.rating = rating;
-		this.tags = tags;
+		
 	}
 
-	public CategoryDTO (int id, String name, String description, String date, int rating, String tags) {
+	public CategoryDTO (int id, String name, String description, int rating) {
 		this.id = id;
 		this.name = name;
 		this.description = description;
-		this.date = date;
 		this.rating = rating;
-		this.tags = tags;
+		
 	}
 
 	public int getId() {
@@ -59,14 +53,6 @@ public CategoryDTO() {
 		this.description = description;
 	}
 
-	public String getDate() {
-		return date;
-	}
-
-	public void setDate(String date) {
-		this.date = date;
-	}
-
 	public int getRating() {
 		return rating;
 	}
@@ -75,16 +61,10 @@ public CategoryDTO() {
 		this.rating = rating;
 	}
 
-	public String getTags() {
-		return tags;
-	}
-
-	public void setTags(String tags) {
-		this.tags = tags;
-	}
+	
 	
 	@Override
 	public String toString() {
-		return id + "\t" + name + "\t" + description + "\t" + date + "\t" + rating + "\t" + tags;
+		return id + "\t" + name + "\t" + description + "\t" + rating;
 	}
 }

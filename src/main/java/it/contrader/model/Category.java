@@ -8,32 +8,26 @@ public class Category {
 	
 	private String description;
 	
-	private String date;
-	
 	private int rating;
-	
-	private String tags;
-	
+		
 	
 	public Category() {
 		
 	}
 
-	 public Category (String name, String description, String date, int rating, String tags) {
+	 public Category (String name, String description, int rating) {
 		this.name = name;
 		this.description = description;
-		this.date = date;
 		this.rating = rating;
-		this.tags = tags;
+		
 	 }
 	 
-	 public Category (int id, String name, String description, String date, int rating, String tags) {
+	 public Category (int id, String name, String description, int rating) {
 		this.id = id;
 		this.name = name;
 		this.description = description;
-		this.date = date;
 		this.rating = rating;
-		this.tags = tags;
+		
 	 }
 	 
 	 
@@ -61,14 +55,6 @@ public class Category {
 		this.description = description;
 	}
 
-	public String getDate() {
-		return date;
-	}
-
-	public void setDate(String date) {
-		this.date = date;
-	}
-
 	public int getRating() {
 		return rating;
 	}
@@ -77,16 +63,8 @@ public class Category {
 		this.rating = rating;
 	}
 
-	public String getTags() {
-		return tags;
-	}
-
-	public void setTags(String tags) {
-		this.tags = tags;
-	}
-	
 	public String toString() {
-		return id + "\t" + name + "\t" + description + "\t" + date + "\t" + rating + "\t" + tags;
+		return id + "\t" + name + "\t" + description + "\t" + rating;
 		
 	}
 
@@ -111,17 +89,7 @@ public class Category {
 				return false;
 		} else if (!description.equals(other.description))
 			return false;
-		if (date == null) {
-			if (other.date != null)
-				return false;
-		} else if (!date.equals(other.date))
-			return false;
-		if (rating != other.rating)
-			return false;
-		if (tags == null) {
-			if (other.tags != null)
-				return false;
-		} else if (!tags.equals(other.tags))
+				if (rating != other.rating)
 			return false;
 		return true;
 	
