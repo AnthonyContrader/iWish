@@ -52,10 +52,8 @@ public class CategoryServlet extends HttpServlet {
 		case "INSERT":
 			String name = request.getParameter("name").toString();
 			String description = request.getParameter("description").toString();
-			String date = request.getParameter("date").toString();
 			int rating = Integer.parseInt(request.getParameter("rating").toString());
-			String tags = request.getParameter("tags").toString();
-			dto = new CategoryDTO (name, description, date, rating, tags);
+			dto = new CategoryDTO (name, description, rating);
 			ans = service.insert(dto);
 			request.setAttribute("ans", ans);
 			updateList(request);
@@ -65,11 +63,9 @@ public class CategoryServlet extends HttpServlet {
 		case "UPDATE":
 			name = request.getParameter("name");
 			description = request.getParameter("description");
-			date = request.getParameter("date");
 			rating = Integer.parseInt(request.getParameter("rating"));
-			tags = request.getParameter("tags");
 			id = Integer.parseInt(request.getParameter("id"));
-			dto = new CategoryDTO (id, name, description, date, rating, tags);
+			dto = new CategoryDTO (id, name, description, rating);
 			ans = service.update(dto);
 			updateList(request);
 			getServletContext().getRequestDispatcher("/category/categorymanager.jsp").forward(request, response);

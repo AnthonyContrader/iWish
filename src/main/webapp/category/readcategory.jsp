@@ -23,16 +23,14 @@
    <tr>
       <th>Name</th>
       <th>Description</th>
-      <th>Date</th>
       <th>Rating</th>
-      <th>Tags</th>
+     
       </tr>
       <tr>
       <td><%=c.getName()%></td>
       <td><%=c.getDescription()%></td>
-      <td><%=c.getDate()%></td>
       <td><%=c.getRating()%></td>
-      <td><%=c.getTags()%></td>
+     
       </tr>
 </table>
 

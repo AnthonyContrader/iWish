@@ -37,16 +37,7 @@
 			type="text" id="desc" name="description" value=<%=c.getDescription()%>> 
     </div>
   </div>
-  <div class="row">
-    <div class="col-25">
-      <label for="type">Date</label>
-    </div>
-   	  <div class="col-75">
-   	    <input
-			type="text" id="date" name="date" value=<%=c.getDate()%>> 
-    </div>
-    </div>
-    <div class="row">
+     <div class="row">
     <div class="col-25">
      <label for="pass">Rating</label>
     </div>
@@ -55,16 +46,7 @@
 			type="number" id="rate" name="rating" value=<%=c.getRating()%>> 
     </div>
   </div>
-  <div class="row">
-    <div class="col-25">
-      <label for="type">Tags</label>
-    </div>
-   	  <div class="col-75">
-   	    <input
-			type="text" id="tags" name="tags" value=<%=c.getTags()%>> 
-    </div>
-    </div>
- 			   <button type="submit" >Edit</button>
+     <button type="submit" >Edit</button>
 </form>
 
 	

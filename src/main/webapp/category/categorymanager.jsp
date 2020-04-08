@@ -12,6 +12,7 @@
 
 <div class="navbar">
   <a  href="homeadmin.jsp">Home</a>
+  <a  href="UserServlet?mode=userlist">Users</a>
   <a class="active" href="CategoryServlet?mode=categorylist">Categories</a>
   <a href="LogoutServlet" id="logout">Logout</a>
 </div>
@@ -26,9 +27,7 @@
 		<tr>
 			<th>Name</th>
 			<th>Description</th>
-			<th>Date</th>
 			<th>Rating</th>
-			<th>Tags</th>
 			<th></th>
 			<th></th>
 		</tr>
@@ -40,9 +39,7 @@
 					<%=c.getName()%>
 			</a></td>
 			<td><%=c.getDescription()%></td>
-			<td><%=c.getDate()%></td>
 			<td><%=c.getRating()%></td>
-			<td><%=c.getTags()%></td>
 			<td><a href=CategoryServlet?mode=read&update=true&id=<%=c.getId()%>>Edit</a>
 			</td>
 			<td><a href=CategoryServlet?mode=delete&id=<%=c.getId()%>>Delete</a>
@@ -65,41 +62,23 @@
     </div>
   <div class="row">
     <div class="col-25">
-     <label for="pass">Description</label>
+     <label for="description">Description</label>
     </div>
     <div class="col-75">
       <input
-			type="text" id="desc" name="description" placeholder="inserisci descrizione"> 
+			type="text" id="description" name="description" placeholder="inserisci descrizione"> 
     </div>
   </div>
-  <div class="row">
-    <div class="col-25">
-      <label for="type">Date</label>
-    </div>
-   	  <div class="col-75">
-   	    <input
-			type="text" id="date" name="date" placeholder="inserisci data"> 
-    </div>
-    </div>
     <div class="row">
     <div class="col-25">
-     <label for="pass">Rating</label>
+     <label for="rate">Rating</label>
     </div>
     <div class="col-75">
       <input
 			type="number" id="rate" name="rating" placeholder="inserisci valutazione"> 
     </div>
   </div>
-  <div class="row">
-    <div class="col-25">
-      <label for="type">Tags</label>
-    </div>
-   	  <div class="col-75">
-   	    <input
-			type="text" id="tags" name="tags" placeholder="inserisci etichette"> 
-    </div>
-    </div>
-    <button type="submit" >Insert</button>
+   <button type="submit" >Insert</button>
 </form>
 
 </div>
