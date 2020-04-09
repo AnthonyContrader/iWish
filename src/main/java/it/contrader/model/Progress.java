@@ -13,9 +13,9 @@ public class Progress {
     
     private double expectation;
     
-    private int Foreing_prodotto;
+    private int Foreign_prodotto;
     
-    private String Foreing_proprietario;
+    private String Foreign_proprietario;
 
     
     
@@ -37,22 +37,22 @@ public Progress(float cash, double expectation, double time) {
 	
 }
 
-public Progress(float cash, double expectation, double time,String Foreing_proprietario, int Foreing_prodotto ) {
+public Progress(float cash, double expectation, double time, int Foreign_prodotto ,String Foreign_proprietario) {
 	this.setId(id);
 	this.setCash(cash);
 	this.setExpectation(expectation);
 	this.setTime(time);
-	this.setForeing_prodotto(Foreing_prodotto);
-	this.setForeing_proprietario(Foreing_proprietario);
+	this.setForeign_prodotto(Foreign_prodotto);
+	this.setForeign_proprietario(Foreign_proprietario);
 }
 
-public Progress(int id,float cash, double expectation, double time,String Foreing_proprietario, int Foreing_prodotto ) {
+public Progress(int id,float cash, double expectation, double time, int Foreign_prodotto,String Foreign_proprietario ) {
 	this.setId(id);
 	this.setCash(cash);
 	this.setExpectation(expectation);
 	this.setTime(time);
-	this.setForeing_prodotto(Foreing_prodotto);
-	this.setForeing_proprietario(Foreing_proprietario);
+	this.setForeign_prodotto(Foreign_prodotto);
+	this.setForeign_proprietario(Foreign_proprietario);
 }
 
 public Progress(int id, float cash, double expectation, double time) {
@@ -101,25 +101,25 @@ public void setExpectation(double expectation) {
 	this.expectation = expectation;
 }
 
-public int getForeing_prodotto() {
-	return this.Foreing_prodotto;
+public int getForeign_prodotto() {
+	return this.Foreign_prodotto;
 }
 
-public void setForeing_prodotto(int Foreing_prodotto) {
-	this.Foreing_prodotto = Foreing_prodotto;
+public void setForeign_prodotto(int Foreign_prodotto) {
+	this.Foreign_prodotto = Foreign_prodotto;
 }
 
-public String getForeing_proprietario() {
-	return this.Foreing_proprietario;
+public String getForeign_proprietario() {
+	return this.Foreign_proprietario;
 }
 
-public void setForeing_proprietario(String Foreing_proprietario) {
-	this.Foreing_proprietario = Foreing_proprietario;
+public void setForeign_proprietario(String Foreign_proprietario) {
+	this.Foreign_proprietario = Foreign_proprietario;
 }
 
 @Override
 public String toString() {
-	return id+"\t"+ cash+"\t\t"+ expectation +"\t\t"+time+"\t"+Foreing_proprietario+"\t"+Foreing_prodotto;
+	return id+"\t"+ cash+"\t\t"+ expectation +"\t\t"+time+"\t"+Foreign_proprietario+"\t"+Foreign_prodotto;
 }
 
 
@@ -135,12 +135,12 @@ public boolean equals(Object obj) {
 	if (getClass() != obj.getClass())
 		return false;
 	Progress other = (Progress) obj;
-	if (Foreing_prodotto != other.Foreing_prodotto)
+	if (Foreign_prodotto != other.Foreign_prodotto)
 		return false;
-	if (Foreing_proprietario == null) {
-		if (other.Foreing_proprietario != null)
+	if (Foreign_proprietario == null) {
+		if (other.Foreign_proprietario != null)
 			return false;
-	} else if (!Foreing_proprietario.equals(other.Foreing_proprietario))
+	} else if (!Foreign_proprietario.equals(other.Foreign_proprietario))
 		return false;
 	if (Float.floatToIntBits(cash) != Float.floatToIntBits(other.cash))
 		return false;

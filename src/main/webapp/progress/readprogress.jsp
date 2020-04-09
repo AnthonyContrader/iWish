@@ -21,11 +21,13 @@
 
 <table>
    <tr>
+   <th>Id_prodotto</th>
    <th>Soldi</th>
    <th>Previsione</th>
    <th>Tempo</th>
    </tr>
    <tr>
+   <td><%= p.getForeign_prodotto() %></td>  
    <td><%=p.getCash() %></td>
    <td><%=p.getExpectation() %></td>
    <td><%=p.getTime() %></td>

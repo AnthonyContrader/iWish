@@ -10,15 +10,15 @@ import it.contrader.model.Progress;
 public class ProgressDAO implements DAO<Progress>{
 
 	private final String QUERY_ALL= "SELECT * FROM progress";
-	private final String QUERY_CREATE="INSERT INTO progress(cash, expectation , time,prodotto_id, proprietario_fk) VALUES (?,?,?,?,? )";
+	private final String QUERY_CREATE="INSERT INTO progress(cash, expectation , time, prodotto_id,proprietario_fk) VALUES (?,?,?,?,? )";
 	private final String QUERY_READ="SELECT *FROM progress WHERE id=?";
-	private final String QUERY_UPDATE ="UPDATE progress SET cash=?,expectation=?,time=?";
-	private final String QUERY_DELETE= "DELETE FROM user WHERE id=?";
+	private final String QUERY_UPDATE ="UPDATE progress SET cash=?,expectation=?,time=? WHERE id=?";
+	private final String QUERY_DELETE= "DELETE FROM progress WHERE id=?";
 	
 	public ProgressDAO() {
 		
 	}
-	
+	// questo fa riferimento ai nomi delle colonne all'interno del database
 	public List<Progress> getAll(){
 		List<Progress> progressList= new ArrayList<>();
 		Connection connection =ConnectionSingleton.getInstance();
@@ -31,9 +31,9 @@ public class ProgressDAO implements DAO<Progress>{
 	    		float cash = resultSet.getFloat("cash");
 	    		double time=resultSet.getDouble("time");
 	    		double expectation =resultSet.getDouble("expectation");
-				String proprietario_progress=resultSet.getString("proprietario_fk");
 				int id_prodotto=resultSet.getInt("prodotto_id");
-	    		progress = new Progress(cash,expectation,time,proprietario_progress,id_prodotto);
+				String proprietario_fk=resultSet.getString("proprietario_fk");
+	    		progress = new Progress(cash,expectation,time,id_prodotto,proprietario_fk);
 				progress.setId(id);
 				progressList.add(progress);
 					}
@@ -51,8 +51,8 @@ public class ProgressDAO implements DAO<Progress>{
     		preparedStatement.setFloat(1, progressToInsert.getCash());
     		preparedStatement.setDouble(2, progressToInsert.getExpectation());
     		preparedStatement.setDouble(3, progressToInsert.getTime());
-    		preparedStatement.setInt(4, progressToInsert.getForeing_prodotto());
-    		preparedStatement.setString(5, progressToInsert.getForeing_proprietario());
+    		preparedStatement.setInt(4, progressToInsert.getForeign_prodotto());
+    		preparedStatement.setString(5, progressToInsert.getForeign_proprietario());
     		preparedStatement.execute();
     		return true;
     		}
@@ -70,12 +70,16 @@ public class ProgressDAO implements DAO<Progress>{
 	       preparedStatement.setInt(1,progressId);
 	       ResultSet resultSet = preparedStatement.executeQuery();
 	       resultSet.next();
+	       String Foreign_proprietario;
+	       int Foreign_prodotto;
 	       float cash;
 	       double expectation, time;
 	       cash= resultSet.getFloat("cash");
 	       expectation = resultSet.getDouble("expectation");
 	       time= resultSet.getDouble("time");
-	       Progress progress = new Progress(cash,expectation, time);
+	       Foreign_prodotto=resultSet.getInt("prodotto_id");
+	       Foreign_proprietario=resultSet.getString("proprietario_fk");
+	       Progress progress = new Progress(cash,expectation, time,Foreign_prodotto,Foreign_proprietario);
 	       progress.setId(resultSet.getInt("id"));
 	       return progress;
 	   }

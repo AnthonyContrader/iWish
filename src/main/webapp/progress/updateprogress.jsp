@@ -33,7 +33,7 @@
   <label for="expectation"> Previsione </label> 
   </div>
   <div class="col-75">
-  <input type="number" id="expectation" value=<%=p.getExpectation() %>>
+  <input type="number" id="expectation" name ="expectation" value=<%=p.getExpectation() %>>
   </div>
   </div>
 <div class="raw">
@@ -41,14 +41,15 @@
 <label for="time">Tempo</label>
 </div>
 <div class="col-75">
-<input type="number" id="time" value=<%=p.getTime() %>>
+<input type="number" id="time" name ="time" value=<%=p.getTime() %>>
+
 </div>
 
 </div>
 
 <button type="submit">Edit</button>
 </form> 
-
+</div>
 <br>
 <%@ include file="../css/footer.jsp" %>
 </body>

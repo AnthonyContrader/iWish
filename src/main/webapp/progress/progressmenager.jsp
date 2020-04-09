@@ -29,6 +29,7 @@
  <br>
      <table>
      <tr>
+     	<th>id_Prodotto</th>
      	<th>Soldi</th>
 			<th>Progressi</th>
 			<th>Tempo</th>
@@ -40,14 +41,16 @@
 		%>
 		<tr>
 		<td><a href=ProgressServlet?mode=read&id=<%=p.getId()%>>
-		<%=p.getCash() %>
+					<%=p.getForeign_prodotto() %>
 		</a></td>
+		<td><%=p.getCash()%></td>
 		<td><%=p.getExpectation()%></td>
 		<td><%=p.getTime()%></td>
 		<td><a href=ProgressServlet?mode=read&update=true&id=<%=p.getId()%>>Edit</a>
 			</td>
 			<td><a href=ProgressServlet?mode=delete&id=<%=p.getId()%>>Delete</a>
 			</td>
+			
 		</tr>
 	<%
 		} 
@@ -56,6 +59,14 @@
 
 
 <form id="floatright" action="ProgressServlet?mode=insert" method="post">
+  <div class="row">
+    <div class="col-25">
+      <label for="prodotto_id">Prodotto_id</label>
+    </div>
+    <div class="col-75">
+      <input type="number"  id="prodotto_id" name="prodotto_id" placeholder="inserisci id del Prodotto">
+    </div>
+  </div>
   <div class="row">
     <div class="col-25">
       <label for="cash">Soldi</label>

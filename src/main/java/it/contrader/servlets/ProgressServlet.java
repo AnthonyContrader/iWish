@@ -46,7 +46,7 @@ public class ProgressServlet extends HttpServlet {
 		updateList(request);
 		
 		getServletContext().getRequestDispatcher("/progress/progressmenager.jsp").forward(request, response);
-		System.out.println("test");
+		
 		break;
 	
 	case "READ":
@@ -68,7 +68,8 @@ public class ProgressServlet extends HttpServlet {
 		double expectation=Double.parseDouble(request.getParameter("expectation").toString());
 		double time= Double.parseDouble(request.getParameter("time").toString());
 	    String proprietario=userDTO.getUsername();
-		dto=new ProgressDTO(cash,expectation,time,proprietario,5);//da debuggare in futuro
+	    int id_prodotto=Integer.parseInt(request.getParameter("prodotto_id"));
+		dto=new ProgressDTO(cash,expectation,time,id_prodotto,proprietario);//da debuggare in futuro
 	    ans =service.insert(dto);
 	    request.setAttribute("ans", ans);
 	    updateList(request);
@@ -80,14 +81,22 @@ public class ProgressServlet extends HttpServlet {
 		expectation= Double.parseDouble(request.getParameter("expectation"));
 		time=Double.parseDouble(request.getParameter("time"));
 		id=Integer.parseInt(request.getParameter("id"));
+		dto = new ProgressDTO (id,cash, expectation, time);
+		ans = service.update(dto);
+		
+		updateList(request);
+		getServletContext().getRequestDispatcher("/progress/progressmenager.jsp").forward(request, response);
+		
 		break;
+
 		
 	case "DELETE":
 		id = Integer.parseInt(request.getParameter("id"));
 		ans = service.delete(id);
 		request.setAttribute("ans", ans);
 		updateList(request);
-		getServletContext().getRequestDispatcher("/user/progressmanager.jsp").forward(request, response);
+		getServletContext().getRequestDispatcher("/progress/progressmenager.jsp").forward(request, response);
+		
 		break;
 	}
 	

@@ -11,9 +11,9 @@ private int id;
     
     private double expectation;
     
-    private int Foreing_prodotto;
+    private int Foreign_prodotto;
     
-    private String Foreing_proprietario;
+    private String Foreign_proprietario;
      
     public ProgressDTO() {
     	
@@ -33,22 +33,22 @@ private int id;
     }
 
     
-    public ProgressDTO(float cash, double expectation, double time,String Foreing_proprietario,int Foreing_prodotto) {
+    public ProgressDTO(float cash, double expectation, double time,int Foreign_prodotto,String Foreign_proprietario) {
     	this.cash=cash;
     	this.expectation=expectation;
     	this.time=time;
-    	this.Foreing_prodotto=Foreing_prodotto;
-    	this.setForeing_proprietario(Foreing_proprietario);
+    	this.Foreign_prodotto=Foreign_prodotto;
+    	this.Foreign_proprietario= Foreign_proprietario;
     }
     
     
-    public ProgressDTO(int id,float cash, double expectation, double time,String Foreing_proprietario,int Foreing_prodotto) {
+    public ProgressDTO(int id,float cash, double expectation, double time,int Foreign_prodotto,String Foreign_proprietario) {
     	this.id=id;
     	this.cash=cash;
     	this.expectation=expectation;
     	this.time=time;
-    	this.Foreing_prodotto=Foreing_prodotto;
-    	this.setForeing_proprietario(Foreing_proprietario);
+    	this.Foreign_prodotto=Foreign_prodotto;
+    	this.Foreign_proprietario=Foreign_proprietario;
     }
     
 	public int getId() {
@@ -83,23 +83,23 @@ private int id;
 		this.expectation = expectation;
 	}
 
-	public int getForeing_prodotto() {
-		return this.Foreing_prodotto;
+	public int getForeign_prodotto() {
+		return this.Foreign_prodotto;
 	}
 
-	public void setForeing_prodotto(int Foreing_prodotto) {
-		this.Foreing_prodotto = Foreing_prodotto;
+	public void setForeign_prodotto(int Foreign_prodotto) {
+		this.Foreign_prodotto = Foreign_prodotto;
 	}
 	@Override
 	public String toString() {
-		return  id + "\t"  + cash +"\t\t" +   expectation + "\t\t" + time+ "\t"+Foreing_proprietario+ "\t"+Foreing_prodotto; 
+		return  id + "\t"  + cash +"\t\t" +   expectation + "\t\t" + time+ "\t"+Foreign_proprietario+ "\t"+Foreign_prodotto; 
     }
 
-	public String getForeing_proprietario() {
-		return Foreing_proprietario;
+	public String getForeign_proprietario() {
+		return Foreign_proprietario;
 	}
 
-	public void setForeing_proprietario(String foreing_proprietario) {
-		Foreing_proprietario = foreing_proprietario;
+	public void setForeign_proprietario(String Foreing_proprietario) {
+		this.Foreign_proprietario = Foreing_proprietario;
 	}
 }
