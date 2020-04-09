@@ -31,7 +31,7 @@
 		<td><%=u.getName()%></td>
 		<td><%=u.getDescription()%></td>
 		<td><%=u.getPrice()%></td>
-		<td><&=u.getPriority%></td>
+		<td><%=u.getPriority()%></td>
 	</tr>			
 </table>
 
