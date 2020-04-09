@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" import="java.util.List"
+    pageEncoding="ISO-8859-1" import="java.util.List" import="it.contrader.dto.UserDTO"
      import="it.contrader.dto.CategoryDTO"%>
 <!DOCTYPE html>
 <html>
@@ -23,7 +23,9 @@
 </div>
 <div class="main">
 	<%
+	    UserDTO userDTO = (UserDTO)request.getSession(false).getAttribute("user");
 		List<CategoryDTO> list = (List<CategoryDTO>) request.getAttribute("list");
+	
 	%>
 
 <br>
@@ -38,6 +40,8 @@
 		</tr>
 		<%
 			for (CategoryDTO c:list) {
+				  String proprietario_c = c.getProprietario_c();
+				   if(proprietario_c.equals(userDTO.getUsername())){
 		%>
 		<tr>
 			<td><a href=CategoryServlet?mode=read&id=<%=c.getId()%>>
@@ -52,7 +56,7 @@
 
 		</tr>
 		<%
-			}
+			}}
 		%>
 	</table>
 
