@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" import="java.util.List"
-	import="it.contrader.dto.PortfolioDTO"%>
+	import="it.contrader.dto.PortfolioDTO" import = "it.contrader.dto.UserDTO"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +15,7 @@
   <a  href="homeadmin.jsp">Home</a>
    <a href="UserServlet?mode=userlist">Users</a>
     <a href="WishListServlet?mode=wishlists">Wishlist</a>
-  <a class="active" href="PortfolioServlet?mode=portfoliolist">PortfolioList</a>
+  <a class="active" href="PortfolioServlet?mode=portfoliolist">Portafoglio</a>
   <a href="ProdottoServlet?mode=prodottolist">Prodotto</a>
    <a href="ProgressServlet?mode=progresslist">Timeline</a>
    <a href="CategoryServlet?mode=categorylist">Categorie</a>
@@ -23,6 +23,7 @@
 </div>
 <div class="main">
 	<%
+	    UserDTO userDTO = (UserDTO) request.getSession(false).getAttribute("user");
 		List<PortfolioDTO> list = (List<PortfolioDTO>) request.getAttribute("list");
 	%>
 
@@ -38,6 +39,7 @@
 		</tr>
 		<%
 			for (PortfolioDTO u : list) {
+				String proprietario = u.getProprietario();
 		%>
 		<tr>
 			<td><a href=PortfolioServlet?mode=read&id=<%=u.getId()%>>
@@ -45,13 +47,18 @@
 			</a></td>
 			<td><%=u.getRevenue()%></td>
 			<td><%=u.getOutputs()%></td>
+			<td><%=proprietario%></td>
+           <%if(proprietario.equals(userDTO.getUsername())){ %>
+			
 			<td><a href=PortfolioServlet?mode=read&update=true&id=<%=u.getId()%>>Edit</a>
 			</td>
 			<td><a href=PortfolioServlet?mode=delete&id=<%=u.getId()%>>Delete</a>
 			</td>
+	
 
 		</tr>
 		<%
+			}
 			}
 		%>
 	</table>
