@@ -9,10 +9,10 @@
 </head>
 <body>
 <%@ include file="../css/header.jsp" %>
-<div class="navebar">
+<div class="navbar">
 	<a href="homeadmin.jsp">Home</a>
 	<a class="active" href="ProgressServlet?mode=progresslist">Progress</a>
-    <a href="LogoutServlet" id ="Logout">Logout</a>
+    <a href="LogoutServlet" id ="logout">Logout</a>
 </div>
 <br>
 
