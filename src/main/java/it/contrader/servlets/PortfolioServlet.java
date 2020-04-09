@@ -25,6 +25,8 @@ public class PortfolioServlet extends HttpServlet {
 	
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		UserDTO userDTO = (UserDTO) request.getSession(false).getAttribute("user");
+		String proprietario = userDTO.getUsername();
 		Service<PortfolioDTO> service = new PortfolioService();
 		String mode = request.getParameter("mode");
 		PortfolioDTO dto;
@@ -53,11 +55,10 @@ public class PortfolioServlet extends HttpServlet {
 		break;
 
 		case "INSERT":
-			UserDTO userDTO = (UserDTO) request.getSession(false).getAttribute("user");
 			float totalmoney = Float.parseFloat(request.getParameter("totalmoney").toString());
 			float revenue = Float.parseFloat(request.getParameter("revenue").toString());
 			float outputs = Float.parseFloat(request.getParameter("outputs").toString());
-			String proprietario =userDTO.getUsername();
+			
 			
 			dto = new PortfolioDTO (totalmoney,revenue,outputs, proprietario);
 			ans = service.insert(dto);
@@ -67,24 +68,37 @@ public class PortfolioServlet extends HttpServlet {
 			break;
 			
 		case "UPDATE":
+		    id = Integer.parseInt(request.getParameter("id"));
+		    dto = service.read(id);
+		    if(dto.getProprietario().equals(proprietario)) {
 			totalmoney = Float.parseFloat(request.getParameter("totalmoney").toString());
 			revenue = Float.parseFloat(request.getParameter("revenue").toString());
 			outputs = Float.parseFloat(request.getParameter("outputs").toString());
-			id = Integer.parseInt(request.getParameter("id"));
+			
 			dto = new PortfolioDTO (id,totalmoney, revenue, outputs);
 			ans = service.update(dto);
+		    }
+		    else {
+		    	ans = false;
+		    }
 			updateList(request);
 			getServletContext().getRequestDispatcher("/Portfolio/Portfoliomanager.jsp").forward(request, response);
 			break;
 			
 		case "DELETE":
 			id = Integer.parseInt(request.getParameter("id"));
-			ans = service.delete(id);
+			dto = service.read(id);
+			if(dto.getProprietario().equals(proprietario)) {
+			ans = service.delete(id);}
+			else {
+				ans = false;
+			}
 			request.setAttribute("ans", ans);
 			updateList(request);
 			getServletContext().getRequestDispatcher("/Portfolio/Portfoliomanager.jsp").forward(request, response);
 			break;
 		}
 	}
-
 }
+
+
