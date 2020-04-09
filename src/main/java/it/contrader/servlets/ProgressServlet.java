@@ -71,27 +71,33 @@ public class ProgressServlet extends HttpServlet {
 	    break;
 	
 	case "INSERT":
+		
 		UserDTO userDTO=(UserDTO) request.getSession(false).getAttribute("user");
+		try {//gestisce le eccezioni se non inserisci
+			
 		float cash= Float.parseFloat(request.getParameter("cash").toString());
 		double expectation=Double.parseDouble(request.getParameter("expectation").toString());
 		double time= Double.parseDouble(request.getParameter("time").toString());
 	    String proprietario=userDTO.getUsername();
 	    int id_prodotto=Integer.parseInt(request.getParameter("prodotto_id"));
-		dto=new ProgressDTO(cash,expectation,time,id_prodotto,proprietario);//da debuggare in futuro
+		dto=new ProgressDTO(cash,expectation,time,id_prodotto,proprietario);
 	    ans =service.insert(dto);
-	    request.setAttribute("ans", ans);
+	    request.setAttribute("ans", ans);}
+		catch (Exception e) {}
 	    updateList(request);
 	    getServletContext().getRequestDispatcher("/progress/progressmenager.jsp").forward(request, response);
 	    break;
 	    
 	case "UPDATE":
-		cash= Float.parseFloat(request.getParameter("cash"));
-		expectation= Double.parseDouble(request.getParameter("expectation"));
-		time=Double.parseDouble(request.getParameter("time"));
+		try {
+		float cash= Float.parseFloat(request.getParameter("cash"));
+		double expectation= Double.parseDouble(request.getParameter("expectation"));
+		double time=Double.parseDouble(request.getParameter("time"));
 		id=Integer.parseInt(request.getParameter("id"));
 		dto = new ProgressDTO (id,cash, expectation, time);
 		ans = service.update(dto);
-		
+		}
+		catch(Exception e) {}
 		updateList(request);
 		getServletContext().getRequestDispatcher("/progress/progressmenager.jsp").forward(request, response);
 		

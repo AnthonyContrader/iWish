@@ -9,10 +9,10 @@
 </head>
 <body>
 <%@ include file="/css/header.jsp" %>
-<div class="navebar">
+<div class="navbar">
 	<a href="homeadmin.jsp">Home</a>
 	<a class="active" href="UserServlet?mode=userList">Users</a>
-	<a href="LogoutServlet" id="Logout">Logout</a>
+	<a href="LogoutServlet" id="logout">Logout</a>
 </div>
 <br>
 <div class="main">
@@ -25,7 +25,7 @@
   <label for="cash"> Soldi </label> 
   </div>
   <div class="col-75">
-  <input type="number" id="cash" name="cash" value=<%=p.getCash() %>>
+  <input type="number" step=0.01 id="cash" name="cash" value="<%=p.getCash() %>"required>
   </div>
   </div>
   <div class="raw">
@@ -33,7 +33,7 @@
   <label for="expectation"> Previsione </label> 
   </div>
   <div class="col-75">
-  <input type="number" id="expectation" name ="expectation" value=<%=p.getExpectation() %>>
+  <input type="number"step=0.00001 id="expectation" name ="expectation" value="<%=p.getExpectation()%>"required>
   </div>
   </div>
 <div class="raw">
@@ -41,7 +41,7 @@
 <label for="time">Tempo</label>
 </div>
 <div class="col-75">
-<input type="number" id="time" name ="time" value=<%=p.getTime() %>>
+<input type="number"  step=0.00001 id="time" name ="time" value="<%=p.getTime() %>"required>
 
 </div>
 

@@ -85,7 +85,7 @@
       <label for="prodotto_id">Prodotto_id</label>
     </div>
     <div class="col-75">
-      <input type="number"  id="prodotto_id" name="prodotto_id" placeholder="inserisci id del Prodotto">
+      <input type="number"  id="prodotto_id" name="prodotto_id" placeholder="inserisci id del Prodotto" required>
     </div>
   </div>
   <div class="row">
@@ -93,7 +93,7 @@
       <label for="cash">Soldi</label>
     </div>
     <div class="col-75">
-      <input type="number" step=0.01 id="cash" name="cash" placeholder="inserisci i Soldi">
+      <input type="number" step=0.01 id="cash" name="cash" placeholder="inserisci i Soldi"required>
     </div>
   </div>
   <div class="row">
@@ -101,7 +101,7 @@
       <label for="expectation">Progress</label>
     </div>
     <div class="col-75">
-      <input type="number" step=0.00001 id="expectation" name="expectation" placeholder="inserisci il Progresso">
+      <input type="number" step=0.00001 id="expectation" name="expectation" placeholder="inserisci il Progresso"required>
     </div>
   </div>
    <div class="row">
@@ -109,7 +109,7 @@
       <label for="time">Tempo</label>
     </div>
     <div class="col-75">
-      <input type="number" step=0.00001 id="time" name="time" placeholder="inserisci il Tempo">
+      <input type="number" step=0.00001 id="time" name="time" placeholder="inserisci il Tempo" required>
     </div>
   </div>
   <button type="submit">Insert</button>

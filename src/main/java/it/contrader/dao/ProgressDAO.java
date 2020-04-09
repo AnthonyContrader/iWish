@@ -103,7 +103,7 @@ public class ProgressDAO implements DAO<Progress>{
 			   if(progressToUpdate.getExpectation()<=0|| Double.toString( progressToUpdate.getExpectation()).equals("") ) {
 							progressToUpdate.setExpectation(progressRead.getExpectation());	 
 							 }
-			   if( Float.toString( progressToUpdate.getCash()).equals("")) {
+			   if(progressToUpdate.getCash()<=0 || Float.toString( progressToUpdate.getCash()).equals("")) {
 							progressToUpdate.setCash(progressRead.getCash());	 
 							 }
 			   
