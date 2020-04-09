@@ -36,18 +36,18 @@
    <%
    for(WishListDTO w:list){
 	   String proprietario = w.getProprietario();
-	   if(proprietario.equals(userDTO.getUsername())){
+	   //if(proprietario.equals(userDTO.getUsername())){
    %>
    <tr>
    <td><a href=WishListServlet?mode=read&id=<%=w.getId()%> ><%=w.getName() %></a></td>
    <td><%=w.getDescription()%></td>
    <td><%=proprietario%></td>
-   <%//if(proprietario.equals(userDTO.getUsername())){ %>
+   <%if(proprietario.equals(userDTO.getUsername())){ %>
    <td><a href=WishListServlet?mode=read&update=true&id=<%=w.getId()%>>Edit</a></td>
    <td><a href=WishListServlet?mode=delete&id=<%=w.getId()%>>Delete</a></td>
-   <%//} %>
+   <%} %>
    </tr>
-   <%}} %>
+   <%}//} %>
    </table>
    
    <form id="floatright" action="WishListServlet?mode=insert" method="post">
