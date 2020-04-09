@@ -10,13 +10,13 @@ public class ProdottoConverter implements Converter<Prodotto, ProdottoDTO> {
 
 	@Override
 	public ProdottoDTO toDTO(Prodotto prodotto) {
-		ProdottoDTO prodottoDTO = new ProdottoDTO(prodotto.getId(), prodotto.getName(), prodotto.getDescription(), prodotto.getPrice(), prodotto.getPriority());
+		ProdottoDTO prodottoDTO = new ProdottoDTO(prodotto.getId(), prodotto.getName(), prodotto.getDescription(), prodotto.getPrice(), prodotto.getPriority(), prodotto.getProprietario());
 		return prodottoDTO;
 	}
 	
 	@Override
 	public Prodotto toEntity(ProdottoDTO prodottoDTO) {
-		Prodotto prodotto = new Prodotto(prodottoDTO.getId(), prodottoDTO.getName(), prodottoDTO.getDescription(), prodottoDTO.getPrice(), prodottoDTO.getPriority());
+		Prodotto prodotto = new Prodotto(prodottoDTO.getId(), prodottoDTO.getName(), prodottoDTO.getDescription(), prodottoDTO.getPrice(), prodottoDTO.getPriority(), prodottoDTO.getProprietario());
 		return prodotto;
 	}
 	

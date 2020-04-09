@@ -21,10 +21,12 @@
 
 <form id="floatleft" action="ProdottoServlet?mode=update&id=<%=u.getId()%>" method="post">
 	<div class="row">
+	<div class="col-25">
 	<label for="name">Name</label>
 	</div>
 	<div class="col-75">
 		<input type="text" id="prodotto" name="name" value=<%=u.getName()%>>
+	</div>
 	</div>
    <div class="row">
    	<div class="col-25">
@@ -32,22 +34,26 @@
    	</div>
    	<div class="col-75">
    	<input
-   			type="text" id="description" name="description" <%=u.getDescription()%>>
+   			type="text" id="description" name="description" value=<%=u.getDescription()%>>
 	</div>
    </div>
    <div class="row">
+   <div class="col-25">
 	<label for="price">Price</label>
 	</div>
    <div class="col-75">
    	<input
-   			type="text" id="price" name="price" <%=u.getPrice()%>>
+   			type="text" id="price" name="price" value=<%=u.getPrice()%>>
+	</div>
 	</div>
    <div class="row">
+   <div class="col-25">
 	<label for="priority">Priority</label>
 	</div>
    <div class="col-75">
    	<input
-   			type="text" id="priority" name="priority" <%=u.getPriority()%>>
+   			type="text" id="priority" name="priority" value=<%=u.getPriority()%>>
+	</div>
 	</div>
  
    	<button type="submit" >Edit</button>
