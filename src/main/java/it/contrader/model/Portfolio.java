@@ -9,23 +9,27 @@ public class Portfolio {
 	private float revenue;
 
 	private float outputs;
+	
+	private String proprietario;
 
 	public Portfolio() {
 		
 	}
 
-	public Portfolio (float totalmoney, float revenue, float outputs) {
+	public Portfolio (float totalmoney, float revenue, float outputs, String proprietario) {
 		this.totalmoney = totalmoney;
 		this.revenue = revenue;
 		this.outputs = outputs;
+		this.proprietario = proprietario;
 		
 	}
 
-	public Portfolio (int id, float totalmoney, float revenue, float outputs) {
+	public Portfolio (int id, float totalmoney, float revenue, float outputs, String proprietario) {
 		this.id = id;
 		this.totalmoney = totalmoney;
 		this.revenue = revenue;
 		this.outputs = outputs;
+		this.proprietario = proprietario;
 		
 	}
 	/**
@@ -59,9 +63,12 @@ public class Portfolio {
 	public void setOutputs(float outputs) {
 		this.outputs = outputs;
 	}
+	public String getProprietario() {
+		return proprietario;
+	}
 
 	public String toString() {
-		return id + "\t" + totalmoney + "\t\t" + revenue + "\t\t" + outputs;
+		return id + "\t" + totalmoney + "\t\t" + revenue + "\t\t" + outputs + "\t\t" + proprietario;
 	}
 	//metodo per il confronto degli oggetti
 	@Override
@@ -84,7 +91,13 @@ public class Portfolio {
 		if (outputs != other.outputs) 
 			return false;
 		
-	return true;
+		if (proprietario == null) {
+			if (other.proprietario != null)
+				return false;
+		} else if (!proprietario.equals(other.proprietario))
+			return false;
+		return true;
+	
 		
 	}
 }

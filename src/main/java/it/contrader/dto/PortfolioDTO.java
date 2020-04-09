@@ -4,27 +4,40 @@ public class PortfolioDTO {
 	
 	private int id;
 
-	private Float totalmoney;
+	private float totalmoney;
 	
-	private Float revenue;
+	private float revenue;
 	
-	private Float outputs;
+	private float outputs;
+	
+	private String proprietario;
 	
 	public PortfolioDTO() {
 
 }
-	public PortfolioDTO (Float totalmoney, Float revenue, Float outputs) {
+	public PortfolioDTO (float totalmoney, float revenue, float outputs, String proprietario) {
 		this.totalmoney = totalmoney;
 		this.revenue = revenue;
 		this.outputs = outputs;
+		this.proprietario = proprietario;
 	}
 
-	public PortfolioDTO (int id, float totalmoney, float revenue, float outputs) {
+	public PortfolioDTO (int id, float totalmoney, float revenue, float outputs, String proprietario) {
+		this.id = id;
+		this.totalmoney = totalmoney;
+		this.revenue = revenue;
+		this.outputs = outputs;
+		this.proprietario = proprietario;
+	}
+	
+	public PortfolioDTO (int id, Float totalmoney, Float revenue, Float outputs) {
 		this.id = id;
 		this.totalmoney = totalmoney;
 		this.revenue = revenue;
 		this.outputs = outputs;
 	}
+		
+		
 	public int getId() {
 		return this.id;
 }
@@ -56,9 +69,13 @@ public class PortfolioDTO {
 		public Float getTotalmoney() {
 			return totalmoney;
 		}
+		public String getProprietario() {
+			return proprietario;
+		}
 		
 @Override
 public String toString() {
 	return  id + "\t"  + totalmoney +"\t\t" +   revenue + "\t\t" + outputs;
 }
+
 }

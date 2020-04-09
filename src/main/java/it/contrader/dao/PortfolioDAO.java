@@ -12,7 +12,7 @@ import it.contrader.model.Portfolio;
 public class PortfolioDAO implements DAO<Portfolio> {
 	
 	private final String QUERY_ALL = "SELECT * FROM portfolio";
-	private final String QUERY_CREATE = "INSERT INTO portfolio (totalmoney, revenue, outputs) VALUES (?,?,?)";
+	private final String QUERY_CREATE = "INSERT INTO portfolio (totalmoney, revenue, outputs, proprietario) VALUES (?,?,?,?)";
 	private final String QUERY_READ = "SELECT * FROM portfolio WHERE id=?";
 	private final String QUERY_UPDATE = "UPDATE portfolio SET totalmoney=?, revenue=?, outputs=? WHERE id=?";
 	private final String QUERY_DELETE = "DELETE FROM portfolio WHERE id=?";
@@ -32,7 +32,8 @@ public class PortfolioDAO implements DAO<Portfolio> {
 				float totalmoney = resultSet.getFloat("totalmoney");
 				float revenue = resultSet.getFloat("revenue");
 				float outputs = resultSet.getFloat("outputs");
-				portfolio = new Portfolio(totalmoney, revenue, outputs);
+				String proprietario = resultSet.getString("proprietario");
+				portfolio = new Portfolio(totalmoney, revenue, outputs, proprietario);
 				portfolio.setId(id);
 				portfolioList.add(portfolio);
 			}
@@ -49,6 +50,7 @@ public class PortfolioDAO implements DAO<Portfolio> {
 			preparedStatement.setFloat(1, portfolioToInsert.getTotalmoney());
 			preparedStatement.setFloat(2, portfolioToInsert.getRevenue());
 			preparedStatement.setFloat(3, portfolioToInsert.getOutputs());
+			preparedStatement.setString(4, portfolioToInsert.getProprietario());
 			preparedStatement.execute();
 			return true;
 		} catch (SQLException e) {
@@ -67,11 +69,13 @@ public class PortfolioDAO implements DAO<Portfolio> {
 			ResultSet resultSet = preparedStatement.executeQuery();
 			resultSet.next();
 			float totalmoney, revenue, outputs;
+			String proprietario;
 
 			totalmoney = resultSet.getFloat("totalmoney");
 			revenue = resultSet.getFloat("revenue");
 			outputs = resultSet.getFloat("outputs");
-			Portfolio portfolio = new Portfolio(totalmoney, revenue, outputs);
+			proprietario = resultSet.getString("proprietario");
+			Portfolio portfolio = new Portfolio(totalmoney, revenue, outputs, proprietario);
 			portfolio.setId(resultSet.getInt("id"));
 
 			return portfolio;

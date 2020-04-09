@@ -14,13 +14,13 @@ public class PortfolioConverter implements Converter<Portfolio, PortfolioDTO> {
 	
 	@Override
 	public PortfolioDTO toDTO(Portfolio portfolio) {
-		PortfolioDTO portfolioDTO = new PortfolioDTO(portfolio.getId(), portfolio.getTotalmoney(), portfolio.getRevenue(), portfolio.getOutputs());
+		PortfolioDTO portfolioDTO = new PortfolioDTO(portfolio.getId(), portfolio.getTotalmoney(), portfolio.getRevenue(), portfolio.getOutputs(), portfolio.getProprietario());
 		return portfolioDTO;
 	}
 	
 	@Override
 	public Portfolio toEntity(PortfolioDTO portfolioDTO) {
-		Portfolio portfolio = new Portfolio(portfolioDTO.getId(), portfolioDTO.getTotalmoney(), portfolioDTO.getRevenue(), portfolioDTO.getOutputs());
+		Portfolio portfolio = new Portfolio(portfolioDTO.getId(), portfolioDTO.getTotalmoney(), portfolioDTO.getRevenue(), portfolioDTO.getOutputs(), portfolioDTO.getProprietario());
 		return portfolio;
 	}
 		
