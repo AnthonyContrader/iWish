@@ -10,12 +10,12 @@ public class ProgressConverter implements Converter<Progress, ProgressDTO> {
 
 	@Override
 	public ProgressDTO toDTO(Progress progress) {
-		ProgressDTO progressDTO= new ProgressDTO(progress.getId(),progress.getCash(),progress.getExpectation(),progress.getTime());
+		ProgressDTO progressDTO= new ProgressDTO(progress.getId(),progress.getCash(),progress.getExpectation(),progress.getTime(),progress.getForeing_proprietario(),progress.getForeing_prodotto());
 	    return progressDTO;
 	}
 	@Override
 	public Progress toEntity(ProgressDTO progressDTO) {
-		Progress progress = new Progress(progressDTO.getId(), progressDTO.getCash(), progressDTO.getExpectation(), progressDTO.getTime());
+		Progress progress = new Progress(progressDTO.getId(), progressDTO.getCash(), progressDTO.getExpectation(), progressDTO.getTime(),progressDTO.getForeing_proprietario(),progressDTO.getForeing_prodotto());
 		return progress;
 	}
 

@@ -12,15 +12,27 @@ public class ProdottoDTO {
 	
 	private Integer priority;
 	
+	private String proprietario;
+	
 	public ProdottoDTO() {
 		
 	}
 	
-	public ProdottoDTO (String name, String description, Float price, Integer priority) {
+	public ProdottoDTO (String name, String description, Float price, Integer priority, String proprietario) {
 		this.name = name;
 		this.description = description;
 		this.price = price;
 		this.priority = priority;
+		this.proprietario = proprietario;
+	}
+	
+	public ProdottoDTO (int id, String name, String description, Float price, Integer priority, String proprietario) {
+		this.id = id;
+		this.name = name;
+		this.description = description;
+		this.price = price;
+		this.priority = priority;
+		this.proprietario = proprietario;
 	}
 	
 	public ProdottoDTO (int id, String name, String description, Float price, Integer priority) {
@@ -29,6 +41,7 @@ public class ProdottoDTO {
 		this.description = description;
 		this.price = price;
 		this.priority = priority;
+	
 	}
 
 	public int getId() {
@@ -71,9 +84,13 @@ public class ProdottoDTO {
 		this.priority = priority;
 	}
 	
+	public String getProprietario() {
+		return proprietario;
+	}
+	
 	@Override
 	public String toString() {
-		return id + "\t" + name + "\t\t" + description + "\t\t" + price + "\t\t" + priority;
+		return id + "\t" + name + "\t\t" + description + "\t\t" + price + "\t\t" + priority + proprietario;
 	}
 	
 	}

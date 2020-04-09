@@ -12,23 +12,27 @@ public class Prodotto {
 	
 	private int priority;
 	
+	private String proprietario;
+		
 	public Prodotto() {
 		
 	}
 	
-	public Prodotto (String name, String description, float price, int priority) {
+	public Prodotto (String name, String description, float price, int priority, String proprietario) {
 		this.name = name;
 		this.description = description;
 		this.price = price;
 		this.priority = priority;
+		this.proprietario = proprietario;
 	}
 	
-	public Prodotto (int id, String name, String description, float price, int priority) {
+	public Prodotto (int id, String name, String description, float price, int priority, String proprietario) {
 		this.id = id;
 		this.name = name;
 		this.description = description;
 		this.price = price;
 		this.priority = priority;
+		this.proprietario = proprietario;
 	}
 	
 	public int getId() {
@@ -71,10 +75,14 @@ public class Prodotto {
 		this.priority = priority;
 	}
 	
+	public String getProprietario() {
+		return proprietario;
+	}
+	
 	@Override
 	
 	public String toString() {
-		return id + "\t" + name + "\t\t" + description + "\t\t" + price + "\t\t" + priority;
+		return id + "\t" + name + "\t\t" + description + "\t\t" + price + "\t\t" + priority +"\t\t" + proprietario;
 	}
 
 	
@@ -102,6 +110,11 @@ public class Prodotto {
 		if (Float.floatToIntBits(price) != Float.floatToIntBits(other.price))
 			return false;
 		if (priority != other.priority)
+			return false;
+		if (proprietario == null) {
+			if (other.proprietario != null)
+				return false;
+		} else if (!proprietario.equals(other.proprietario))
 			return false;
 		return true;
 	}

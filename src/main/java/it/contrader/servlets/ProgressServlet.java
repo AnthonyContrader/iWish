@@ -12,6 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import it.contrader.dto.ProgressDTO;
 import it.contrader.service.Service;
 import it.contrader.service.ProgressService;
+import it.contrader.dto.UserDTO;
+
+
 
 public class ProgressServlet extends HttpServlet {
 	private static final long serialVersionUID=1L;
@@ -39,9 +42,12 @@ public class ProgressServlet extends HttpServlet {
 	
 	
 	case "PROGRESSLIST":
-	updateList(request);
-	getServletContext().getRequestDispatcher("/progress/progressmenager.jsp").forward(request, response);
-	break;
+	
+		updateList(request);
+		
+		getServletContext().getRequestDispatcher("/progress/progressmenager.jsp").forward(request, response);
+		System.out.println("test");
+		break;
 	
 	case "READ":
 		id = Integer.parseInt(request.getParameter("id"));
@@ -57,10 +63,12 @@ public class ProgressServlet extends HttpServlet {
 	    break;
 	
 	case "INSERT":
+		UserDTO userDTO=(UserDTO) request.getSession(false).getAttribute("user");
 		float cash= Float.parseFloat(request.getParameter("cash").toString());
 		double expectation=Double.parseDouble(request.getParameter("expectation").toString());
 		double time= Double.parseDouble(request.getParameter("time").toString());
-	    dto=new ProgressDTO(cash,expectation,time);
+	    String proprietario=userDTO.getUsername();
+		dto=new ProgressDTO(cash,expectation,time,proprietario,5);//da debuggare in futuro
 	    ans =service.insert(dto);
 	    request.setAttribute("ans", ans);
 	    updateList(request);

@@ -10,7 +10,7 @@ import it.contrader.model.Prodotto;
 public class ProdottoDAO implements DAO<Prodotto> {
 
 	private final String QUERY_ALL = "SELECT * FROM prodotto";
-	private final String QUERY_CREATE = "INSERT INTO prodotto (name, description, price, priority) VALUES (?,?,?,?)";
+	private final String QUERY_CREATE = "INSERT INTO prodotto (name, description, price, priority, proprietario) VALUES (?,?,?,?,?)";
 	private final String QUERY_READ = "SELECT * FROM prodotto WHERE id=?";
 	private final String QUERY_UPDATE = "UPDATE prodotto SET name=?, description=?, price=?, priority=? WHERE id=?";
 	private final String QUERY_DELETE = "DELETE FROM prodotto WHERE id=?";
@@ -32,7 +32,8 @@ public class ProdottoDAO implements DAO<Prodotto> {
 				String description = resultSet.getString("description");
 				float price = resultSet.getFloat("price");
 				int priority = resultSet.getInt("priority");
-				prodotto = new Prodotto(name, description, price, priority);
+				String proprietario = resultSet.getString("proprietario");
+				prodotto = new Prodotto(name, description, price, priority, proprietario);
 				prodotto.setId(id);
 				prodottiList.add(prodotto);
 			}
@@ -50,6 +51,8 @@ public class ProdottoDAO implements DAO<Prodotto> {
 			preparedStatement.setString(2, prodottoToInsert.getDescription());
 			preparedStatement.setFloat(3, prodottoToInsert.getPrice());
 			preparedStatement.setInt(4, prodottoToInsert.getPriority());
+			preparedStatement.setString(5, prodottoToInsert.getProprietario());
+			preparedStatement.execute();
 			return true;			
 		} catch (SQLException e) {
 			return false;
@@ -67,12 +70,14 @@ public class ProdottoDAO implements DAO<Prodotto> {
 			String name, description;
 			Float price;
 			Integer priority;
+			String proprietario;
 			
 			name = resultSet.getString("name");
 			description = resultSet.getString("description");
 			price = resultSet.getFloat("price");
 			priority = resultSet.getInt("priority");
-			Prodotto prodotto = new Prodotto(name, description, price, priority);
+			proprietario = resultSet.getString("proprietario");
+			Prodotto prodotto = new Prodotto(name, description, price, priority, proprietario);
 			prodotto.setId(resultSet.getInt("id"));
 			
 			return prodotto;
