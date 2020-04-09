@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" import="java.util.List"
-    import="it.contrader.dto.ProgressDTO"%>
+    import="it.contrader.dto.ProgressDTO" import="it.contrader.dto.ProdottoDTO"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,11 +25,13 @@
  <div class="main">
  <%
  List<ProgressDTO> list= (List<ProgressDTO>) request.getAttribute("list");
+ List<ProdottoDTO> prodotti_list=(List<ProdottoDTO>) request.getAttribute("lista_prodotti");
+ 
  %>
  <br>
      <table>
      <tr>
-     	<th>id_Prodotto</th>
+     	<th>Prodotto</th>
      	<th>Soldi</th>
 			<th>Progressi</th>
 			<th>Tempo</th>
@@ -37,11 +39,30 @@
 			<th></th>
 		</tr>
 		<%
+		
 			for (ProgressDTO p : list) {
+				String nome_prodotto="";
+				for ( ProdottoDTO pr : prodotti_list){
+					if (pr.getId()==p.getForeign_prodotto()   ){
+						  nome_prodotto= pr.getName();
+						 
+                       	
+                      		 break;
+					 }
+					
+				} 
+				
+				
+				
 		%>
 		<tr>
 		<td><a href=ProgressServlet?mode=read&id=<%=p.getId()%>>
-					<%=p.getForeign_prodotto() %>
+					
+						 
+						
+					
+						<%out.println(nome_prodotto);%>
+					
 		</a></td>
 		<td><%=p.getCash()%></td>
 		<td><%=p.getExpectation()%></td>

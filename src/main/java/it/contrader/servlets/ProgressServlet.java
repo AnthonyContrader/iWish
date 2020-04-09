@@ -9,8 +9,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import it.contrader.dto.ProdottoDTO;
 import it.contrader.dto.ProgressDTO;
 import it.contrader.service.Service;
+import it.contrader.service.ProdottoService;
 import it.contrader.service.ProgressService;
 import it.contrader.dto.UserDTO;
 
@@ -24,6 +27,11 @@ public class ProgressServlet extends HttpServlet {
 	}
  
  public void updateList(HttpServletRequest request) {
+	 
+	 Service <ProdottoDTO> service_prodotto= new ProdottoService();
+	 List<ProdottoDTO>list_prodottiDTO= service_prodotto.getAll();
+	 request.setAttribute("lista_prodotti", list_prodottiDTO);
+	 
 	 Service <ProgressDTO> service = new ProgressService();
 	 List<ProgressDTO>listDTO= service.getAll();
 	 request.setAttribute("list", listDTO);
