@@ -20,6 +20,7 @@
 <%CategoryDTO c = (CategoryDTO) request.getAttribute("dto");%>
 
 <form id="floatleft" action="CategoryServlet?mode=update&id=<%=c.getId()%>" method="post">
+
   <div class="row">
   <div class="col-25">
    <label for="category">name</label>
@@ -28,28 +29,27 @@
       <input type="text" id="category" name="name" value=<%=c.getName()%>>
     </div>
     </div>
+    
   <div class="row">
     <div class="col-25">
-     <label for="pass">Description</label>
+     <label for="c_description">Description</label>
     </div>
     <div class="col-75">
       <input
-			type="text" id="desc" name="description" value=<%=c.getDescription()%>> 
+			type="text" id="c_description" name="description" value=<%=c.getDescription()%>> 
     </div>
   </div>
      <div class="row">
     <div class="col-25">
-     <label for="pass">Rating</label>
+     <label for="c_rate">Rating</label>
     </div>
     <div class="col-75">
       <input
-			type="number" id="rate" name="rating" value=<%=c.getRating()%>> 
+			type="number" id="c_rate" name="rating" value=<%=c.getRating()%>> 
     </div>
   </div>
      <button type="submit" >Edit</button>
 </form>
-
-	
 </div>
 <br>
 <%@ include file="../css/footer.jsp" %>	

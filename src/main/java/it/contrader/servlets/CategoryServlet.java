@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import it.contrader.dto.CategoryDTO;
 import it.contrader.service.Service;
 import it.contrader.service.CategoryService;
+import it.contrader.dto.UserDTO;
 
 public class CategoryServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -50,10 +51,12 @@ public class CategoryServlet extends HttpServlet {
 		    break;
 		    
 		case "INSERT":
+			UserDTO userDTO = (UserDTO) request.getSession(false).getAttribute("user");
 			String name = request.getParameter("name").toString();
 			String description = request.getParameter("description").toString();
 			int rating = Integer.parseInt(request.getParameter("rating").toString());
-			dto = new CategoryDTO (name, description, rating);
+		    String proprietario_c = userDTO.getUsername();
+			dto = new CategoryDTO (name, description, rating, proprietario_c);
 			ans = service.insert(dto);
 			request.setAttribute("ans", ans);
 			updateList(request);

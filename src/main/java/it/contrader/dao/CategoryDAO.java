@@ -11,10 +11,10 @@ import it.contrader.model.Category;
 public class CategoryDAO implements DAO<Category> {
 	
 	private final String QUERY_ALL = "SELECT * FROM category";
-	private final String QUERY_CREATE = "INSERT INTO category (name, description, date, rating, tags) VALUES (?,?,?,?,?)";
+	private final String QUERY_CREATE = "INSERT INTO category (name, description, rating, proprietario_c) VALUES (?,?,?,?)";
 	private final String QUERY_READ = "SELECT * FROM category WHERE id=?";
-	private final String QUERY_UPDATE = "UPDATE category SET name=?, description=?, date=?, rating=?, tags=? WHERE id=?";
-	private final String QUERY_DELETE = "DELETE FROM cateogry WHERE id=?";
+	private final String QUERY_UPDATE = "UPDATE category SET name=?, description=?, rating=? WHERE id=?";
+	private final String QUERY_DELETE = "DELETE FROM category WHERE id=?";
 
 	public CategoryDAO() {
 		
@@ -32,7 +32,8 @@ public class CategoryDAO implements DAO<Category> {
 				String name = resultSet.getString("name");
 				String description = resultSet.getString("description");
 				int rating = resultSet.getInt("rating");
-				category = new Category(name, description, rating);
+				String proprietario_c = resultSet.getString("proprietario_c");
+				category = new Category(name, description, rating, proprietario_c);
 				category.setId(id);
 				categoriesList.add(category);
 			}
@@ -49,6 +50,7 @@ public class CategoryDAO implements DAO<Category> {
 			preparedStatement.setString(1, categoryToInsert.getName());
 			preparedStatement.setString(2, categoryToInsert.getDescription());
 			preparedStatement.setInt(3, categoryToInsert.getRating());
+			preparedStatement.setString(4, categoryToInsert.getProprietario_c());
 			preparedStatement.execute();
 			return true;
 		} catch (SQLException e) {
@@ -67,11 +69,13 @@ public class CategoryDAO implements DAO<Category> {
 			resultSet.next();
 			String name, description;
 			Integer rating;
+			String proprietario_c;
 			
 			name = resultSet.getString("name");
 			description = resultSet.getString("description");
 			rating = resultSet.getInt("rating");
-			Category category = new Category(name, description, rating);
+			proprietario_c = resultSet.getString("proprietario_c");
+			Category category = new Category(name, description, rating, proprietario_c);
 			category.setId(resultSet.getInt("id"));
 
 			return category;

@@ -10,17 +10,27 @@ public class CategoryDTO {
 	
 	private int rating;
 	
+	private String proprietario_c;
+	
 public CategoryDTO() {
 		
 	}
 
-	public CategoryDTO (String name, String description, int rating) {
+	public CategoryDTO (String name, String description, int rating, String proprietario_c) {
 		this.name = name;
 		this.description = description;
 		this.rating = rating;
-		
+		this.proprietario_c = proprietario_c;
 	}
 
+	public CategoryDTO (int id, String name, String description, int rating, String proprietario_c) {
+		this.id = id;
+		this.name = name;
+		this.description = description;
+		this.rating = rating;
+		this.proprietario_c = proprietario_c;
+	}
+	
 	public CategoryDTO (int id, String name, String description, int rating) {
 		this.id = id;
 		this.name = name;
@@ -60,11 +70,15 @@ public CategoryDTO() {
 	public void setRating(int rating) {
 		this.rating = rating;
 	}
+	
+	public String getProprietario_c() {
+		return proprietario_c;
+	}
 
 	
 	
 	@Override
 	public String toString() {
-		return id + "\t" + name + "\t" + description + "\t" + rating;
+		return id + "\t" + name + "\t" + description + "\t" + rating + "\t" + proprietario_c;
 	}
 }

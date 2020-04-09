@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" import="java.util.List" import="it.contrader.dto.CategoryDTO"%>
+    pageEncoding="ISO-8859-1" import="java.util.List"
+     import="it.contrader.dto.CategoryDTO"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,10 +14,10 @@
 <div class="navbar">
   <a  href="homeadmin.jsp">Home</a>
   <a  href="UserServlet?mode=userlist">Users</a>
-   <a href="WishListServlet?mode=wishlists">Wishlist</a>
-    <a href="PortfolioServlet?mode=portfoliolist">Portafoglio</a>
+  <a href="WishListServlet?mode=wishlists">Wishlist</a>
+  <a href="PortfolioServlet?mode=portfoliolist">Portafoglio</a>
   <a href="ProdottoServlet?mode=prodottolist">Prodotto</a>
-   <a href="ProgressServlet?mode=progresslist">Timeline</a>
+  <a href="ProgressServlet?mode=progresslist">Timeline</a>
   <a class="active" href="CategoryServlet?mode=categorylist">Categories</a>
   <a href="LogoutServlet" id="logout">Logout</a>
 </div>
@@ -36,7 +37,7 @@
 			<th></th>
 		</tr>
 		<%
-			for (CategoryDTO c : list) {
+			for (CategoryDTO c:list) {
 		%>
 		<tr>
 			<td><a href=CategoryServlet?mode=read&id=<%=c.getId()%>>
@@ -66,11 +67,11 @@
     </div>
   <div class="row">
     <div class="col-25">
-     <label for="description">Description</label>
+     <label for="c_description">Description</label>
     </div>
     <div class="col-75">
       <input
-			type="text" id="description" name="description" placeholder="inserisci descrizione"> 
+			type="text" id="c_description" name="description" placeholder="inserisci descrizione"> 
     </div>
   </div>
     <div class="row">
