@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import it.contrader.dto.PortfolioDTO;
+import it.contrader.dto.UserDTO;
 import it.contrader.service.Service;
 import it.contrader.service.PortfolioService;
 
@@ -42,7 +43,7 @@ public class PortfolioServlet extends HttpServlet {
 			dto = service.read(id);
 			request.setAttribute("dto", dto);
 			
-		if (request.getParameter("totalmoney") == null) {
+		if (request.getParameter("update") == null) {
 			getServletContext().getRequestDispatcher("/Portfolio/readPortfolio.jsp").forward(request, response);
 				
 		}
@@ -52,11 +53,13 @@ public class PortfolioServlet extends HttpServlet {
 		break;
 
 		case "INSERT":
+			UserDTO userDTO = (UserDTO) request.getSession(false).getAttribute("user");
 			float totalmoney = Float.parseFloat(request.getParameter("totalmoney").toString());
 			float revenue = Float.parseFloat(request.getParameter("revenue").toString());
 			float outputs = Float.parseFloat(request.getParameter("outputs").toString());
+			String proprietario =userDTO.getUsername();
 			
-			dto = new PortfolioDTO (totalmoney,revenue,outputs);
+			dto = new PortfolioDTO (totalmoney,revenue,outputs, proprietario);
 			ans = service.insert(dto);
 			request.setAttribute("ans", ans);
 			updateList(request);
