@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import it.contrader.dto.ProdottoDTO;
 import it.contrader.dto.UserDTO;
+import it.contrader.dto.WishListDTO;
 import it.contrader.service.Service;
 import it.contrader.service.ProdottoService;
 
@@ -26,6 +27,8 @@ public class ProdottoServlet extends HttpServlet {
 
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		UserDTO userDTO = (UserDTO) request.getSession(false).getAttribute("user");
+		String proprietario = userDTO.getUsername();
 		Service<ProdottoDTO> service = new ProdottoService();
 		String mode = request.getParameter("mode");
 		ProdottoDTO dto;
@@ -53,10 +56,9 @@ public class ProdottoServlet extends HttpServlet {
 		    break;
 			
 		case "INSERT":
-			UserDTO userDTO = (UserDTO) request.getSession(false).getAttribute("user");
+			
 			String name = request.getParameter("name").toString();
 			String description = request.getParameter("description").toString();
-			String proprietario = userDTO.getUsername();
 			float price = Float.parseFloat(request.getParameter("price").toString());
 			int priority = Integer.parseInt(request.getParameter("priority").toString());
 			dto = new ProdottoDTO (name,description,price,priority, proprietario);
@@ -67,20 +69,32 @@ public class ProdottoServlet extends HttpServlet {
 			break;
 			
 		case "UPDATE":
+			
+			id = Integer.parseInt(request.getParameter("id"));
+			dto  = service.read(id);
+			if(dto.getProprietario().equals(proprietario)) {
 			name = request.getParameter("name");
 			description = request.getParameter("description");
 			price = Float.parseFloat(request.getParameter("price"));
 			priority = Integer.parseInt(request.getParameter("priority"));
-			id = Integer.parseInt(request.getParameter("id"));
-			dto = new ProdottoDTO (id, name, description, price, priority);
+			dto = new ProdottoDTO(id, name, description, price, priority);
 			ans = service.update(dto);
+			}
+			else {
+				ans = false;
+			}
 			updateList(request);
 			getServletContext().getRequestDispatcher("/prodotto/prodottomanager.jsp").forward(request, response);
 			break;
 			
 		case "DELETE":
 			id = Integer.parseInt(request.getParameter("id"));
-			ans = service.delete(id);
+			dto = service.read(id);
+			if(dto.getProprietario().equals(proprietario)) {
+			ans = service.delete(id);}
+			else {
+				ans = false;
+			}
 			request.setAttribute("ans", ans);
 			updateList(request);
 			getServletContext().getRequestDispatcher("/prodotto/prodottomanager.jsp").forward(request, response);

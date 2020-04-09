@@ -33,6 +33,7 @@
 			<th>Description</th>
 			<th>Price</th>
 			<th>Priority</th>
+			<th>Proprietario</th>
 			<th></th>
 			<th></th>
 		</tr>
@@ -46,6 +47,7 @@
 			<td><%=u.getDescription()%></td>
 			<td><%=u.getPrice()%></td>
 			<td><%=u.getPriority()%></td>
+			<td><%=u.getProprietario() %></td>
 			<td><a href=ProdottoServlet?mode=read&update=true&id=<%=u.getId()%>>Edit</a>
 			</td>
 			<td><a href=ProdottoServlet?mode=delete&id=<%=u.getId()%>>Delete</a>
