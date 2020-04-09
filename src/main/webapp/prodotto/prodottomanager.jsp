@@ -33,6 +33,8 @@
 			<th>Description</th>
 			<th>Price</th>
 			<th>Priority</th>
+			<th></th>
+			<th></th>
 		</tr>
 		<%
 			for (ProdottoDTO u : list) {
