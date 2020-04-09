@@ -26,7 +26,7 @@
       <label for="portfolio">Totalmoney</label>
     </div>
     <div class="col-75">
-      <input type="text" id="portfolio" name="totalmoney" value=<%=u.getTotalmoney()%>>
+      <input type="text" id="portfolio" name="totalmoney" value="<%=u.getTotalmoney()%>"required>
     </div>
   </div>
   <div class="row">
@@ -35,7 +35,7 @@
     </div>
     <div class="col-75">
       <input
-			type="text" id="rev" name="revenue" value=<%=u.getRevenue()%>> 
+			type="time" id="rev" name="revenue" value=<%=u.getRevenue()%>> 
     </div>
   </div>
   <div class="row">
