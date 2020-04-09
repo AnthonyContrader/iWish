@@ -24,7 +24,7 @@
 <label for="wishlist">Name</label>
 </div>
 <div class="col-75">
-<input type="text" id="wishlist" name="name" value=<%=w.getName()%>>
+<input type="text" id="wishlist" name="name" value="<%=w.getName()%>">
 </div>
 </div>
 
@@ -33,7 +33,7 @@
 <label for="w_description">Description</label>
 </div>
 <div class="col-75">
-<input type="text" id="w_description" name="description" value=<%=w.getDescription()%>>
+<input type="text" id="w_description" name="description" value="<%=w.getDescription()%>">
 </div>
 </div>
 <button type="submit">Edit</button>
