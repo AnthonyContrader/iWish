@@ -28,6 +28,7 @@ public class WishListServlet extends HttpServlet {
 		UserDTO userDTO = (UserDTO) request.getSession(false).getAttribute("user");
 		String proprietario =userDTO.getUsername();
 		Service<WishListDTO> service = new WishListService();
+		String description;
 		String mode = request.getParameter("mode");
 		WishListDTO dto;
 		int id;
@@ -55,10 +56,13 @@ public class WishListServlet extends HttpServlet {
 			
 		case "INSERT":
 			String name = request.getParameter("name").toString(); 
-			String description = request.getParameter("description").toString();
+			if(!name.equals("")) 
+			{
+			description = request.getParameter("description").toString();
 			dto = new WishListDTO(name, description, proprietario);
 			ans = service.insert(dto);
 			request.setAttribute("ans", ans);
+			}
 			updateList(request);
 			getServletContext().getRequestDispatcher("/wishlist/wishlistmanager.jsp").forward(request, response);
 			break;
@@ -67,10 +71,11 @@ public class WishListServlet extends HttpServlet {
 			dto  = service.read(id);
 			if(dto.getProprietario().equals(proprietario)) {
 			name = request.getParameter("name");
+			if(!name.equals("")) {
 			description = request.getParameter("description");
-			
 			dto = new WishListDTO(id, name, description);
 			ans = service.update(dto);
+			}
 			updateList(request);
 			getServletContext().getRequestDispatcher("/wishlist/wishlistmanager.jsp").forward(request, response);
 			}

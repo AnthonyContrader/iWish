@@ -56,7 +56,7 @@
    <label for="wishlist">Name</label>
    </div>
    <div class="col-75">
-   <input type="text" id="wishlist" name="name" placeholder="inserisci nome">
+   <input type="text" id="wishlist" name="name" placeholder="inserisci nome" required>
    </div>
    </div>
    <div class="row">
