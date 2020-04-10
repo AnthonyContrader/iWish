@@ -54,8 +54,16 @@ public class ProdottoDAO implements DAO<Prodotto> {
 			preparedStatement.setFloat(3, prodottoToInsert.getPrice());
 			preparedStatement.setInt(4, prodottoToInsert.getPriority());
 			preparedStatement.setString(5, prodottoToInsert.getProprietario());
-			preparedStatement.setInt(6, prodottoToInsert.getId_categoria_fk());
-			preparedStatement.setInt(7, prodottoToInsert.getId_whishlist_fk());
+			if (prodottoToInsert.getId_categoria_fk() == null)
+				{
+				preparedStatement.setNull(6, java.sql.Types.NULL);
+				} else {
+			preparedStatement.setInt(6, prodottoToInsert.getId_categoria_fk());}
+			if (prodottoToInsert.getId_whishlist_fk() == null)
+			{
+			preparedStatement.setNull(7, java.sql.Types.NULL);
+			} else {
+			preparedStatement.setInt(7, prodottoToInsert.getId_whishlist_fk());}
 			preparedStatement.execute();
 			return true;			
 		} catch (SQLException e) {
@@ -132,8 +140,16 @@ public class ProdottoDAO implements DAO<Prodotto> {
 				preparedStatement.setString(2, prodottoToUpdate.getDescription());
 				preparedStatement.setFloat(3, prodottoToUpdate.getPrice());
 				preparedStatement.setInt(4, prodottoToUpdate.getPriority());
-				preparedStatement.setInt(5, prodottoToUpdate.getId_categoria_fk());
-				preparedStatement.setInt(6, prodottoToUpdate.getId_whishlist_fk());
+				if (prodottoToUpdate.getId_categoria_fk() == null)
+					{
+						preparedStatement.setNull(5, java.sql.Types.NULL);
+					} else {
+				preparedStatement.setInt(5, prodottoToUpdate.getId_categoria_fk());}
+				if (prodottoToUpdate.getId_whishlist_fk() == null)
+				{
+					preparedStatement.setNull(6, java.sql.Types.NULL);
+				} else {
+				preparedStatement.setInt(6, prodottoToUpdate.getId_whishlist_fk());}
 				preparedStatement.setInt(7, prodottoToUpdate.getId());
 				int a = preparedStatement.executeUpdate();
 				if (a > 0)
