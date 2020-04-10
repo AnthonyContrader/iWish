@@ -10,8 +10,11 @@ import javax.servlet.http.HttpServletResponse;
 import it.contrader.dto.ProdottoDTO;
 import it.contrader.dto.UserDTO;
 import it.contrader.dto.WishListDTO;
+import it.contrader.dto.CategoryDTO;
 import it.contrader.service.Service;
 import it.contrader.service.ProdottoService;
+import it.contrader.service.WishListService;
+import it.contrader.service.CategoryService;
 
 public class ProdottoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -23,6 +26,12 @@ public class ProdottoServlet extends HttpServlet {
 		Service<ProdottoDTO> service = new ProdottoService();
 		List<ProdottoDTO>listDTO = service.getAll();
 		request.setAttribute("list", listDTO);
+		Service<CategoryDTO> service_categoria = new CategoryService();
+		List<CategoryDTO>listCategoriaDTO = service_categoria.getAll();
+		request.setAttribute("listaCategorie", listCategoriaDTO);
+		Service<WishListDTO> service_wishlist = new WishListService();
+		List<WishListDTO>listWishListDTO = service_wishlist.getAll();
+		request.setAttribute("listaWishlists", listWishListDTO);
 	}
 
 	@Override
@@ -34,6 +43,8 @@ public class ProdottoServlet extends HttpServlet {
 		String description;
 		float price;
 		int priority;
+		Integer categoria;
+		Integer wishlist;
 		ProdottoDTO dto;
 		int id;
 		boolean ans;
@@ -49,12 +60,12 @@ public class ProdottoServlet extends HttpServlet {
 			id = Integer.parseInt(request.getParameter("id"));
 			dto = service.read(id);
 			request.setAttribute("dto", dto);
-			
+			updateList(request);
 			if (request.getParameter("update") == null) {
 				getServletContext().getRequestDispatcher("/prodotto/readprodotto.jsp").forward(request, response);
 			}
 			
-			else { getServletContext().getRequestDispatcher("/prodotto/updateprodotto.jsp").forward(request, response);
+			else {getServletContext().getRequestDispatcher("/prodotto/updateprodotto.jsp").forward(request, response);
 		}
 		    break;
 			
@@ -67,11 +78,20 @@ public class ProdottoServlet extends HttpServlet {
 			description = request.getParameter("description").toString();
 			price = Float.parseFloat(request.getParameter("price").toString());
 			priority = Integer.parseInt(request.getParameter("priority").toString());
-			dto = new ProdottoDTO (name,description,price,priority, proprietario);
+			
+			if (request.getParameter("categoria").toString().equals(""))
+					{categoria = null;}
+			else 
+				{categoria = Integer.parseInt(request.getParameter("categoria").toString());}
+			
+			if (request.getParameter("wishlist").toString().equals(""))
+					{wishlist = null;}
+			else
+				{wishlist = Integer.parseInt(request.getParameter("wishlist").toString());}
+			
+			dto = new ProdottoDTO (name, description, price, priority, proprietario, categoria, wishlist);
 			ans = service.insert(dto);
 			request.setAttribute("ans", ans);
-			updateList(request);
-			getServletContext().getRequestDispatcher("/prodotto/prodottomanager.jsp").forward(request, response);
 			}
 			} catch (Exception e) {}
 			updateList(request);
@@ -88,7 +108,18 @@ public class ProdottoServlet extends HttpServlet {
 			description = request.getParameter("description");
 			price = Float.parseFloat(request.getParameter("price"));
 			priority = Integer.parseInt(request.getParameter("priority"));
-			dto = new ProdottoDTO(id, name, description, price, priority);
+			
+			if (request.getParameter("categoria").toString().equals(""))
+				{categoria = null;}
+			else 
+				{categoria = Integer.parseInt(request.getParameter("categoria").toString());}
+	
+			if (request.getParameter("wishlist").toString().equals(""))
+				{wishlist = null;}
+			else
+				{wishlist = Integer.parseInt(request.getParameter("wishlist").toString());}
+			
+			dto = new ProdottoDTO(id, name, description, price, priority, categoria, wishlist);
 			ans = service.update(dto);
 			}
 			else {

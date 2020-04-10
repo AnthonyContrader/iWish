@@ -10,9 +10,9 @@ import it.contrader.model.Prodotto;
 public class ProdottoDAO implements DAO<Prodotto> {
 
 	private final String QUERY_ALL = "SELECT * FROM prodotto";
-	private final String QUERY_CREATE = "INSERT INTO prodotto (name, description, price, priority, proprietario) VALUES (?,?,?,?,?)";
+	private final String QUERY_CREATE = "INSERT INTO prodotto (name, description, price, priority, proprietario, categoria, wishlist_id) VALUES (?,?,?,?,?,?,?)";
 	private final String QUERY_READ = "SELECT * FROM prodotto WHERE id=?";
-	private final String QUERY_UPDATE = "UPDATE prodotto SET name=?, description=?, price=?, priority=? WHERE id=?";
+	private final String QUERY_UPDATE = "UPDATE prodotto SET name=?, description=?, price=?, priority=?, categoria=?, wishlist_id=? WHERE id=?";
 	private final String QUERY_DELETE = "DELETE FROM prodotto WHERE id=?";
 	
 	public ProdottoDAO() {
@@ -33,7 +33,9 @@ public class ProdottoDAO implements DAO<Prodotto> {
 				float price = resultSet.getFloat("price");
 				int priority = resultSet.getInt("priority");
 				String proprietario = resultSet.getString("proprietario");
-				prodotto = new Prodotto(name, description, price, priority, proprietario);
+				int id_categoria_fk = resultSet.getInt("categoria");
+				int id_whishlist_fk = resultSet.getInt("wishlist_id");
+				prodotto = new Prodotto(name, description, price, priority, proprietario, id_categoria_fk, id_whishlist_fk);
 				prodotto.setId(id);
 				prodottiList.add(prodotto);
 			}
@@ -52,6 +54,8 @@ public class ProdottoDAO implements DAO<Prodotto> {
 			preparedStatement.setFloat(3, prodottoToInsert.getPrice());
 			preparedStatement.setInt(4, prodottoToInsert.getPriority());
 			preparedStatement.setString(5, prodottoToInsert.getProprietario());
+			preparedStatement.setInt(6, prodottoToInsert.getId_categoria_fk());
+			preparedStatement.setInt(7, prodottoToInsert.getId_whishlist_fk());
 			preparedStatement.execute();
 			return true;			
 		} catch (SQLException e) {
@@ -71,13 +75,17 @@ public class ProdottoDAO implements DAO<Prodotto> {
 			Float price;
 			Integer priority;
 			String proprietario;
-			
+			Integer id_categoria_fk;
+			Integer id_wishlist_fk;
 			name = resultSet.getString("name");
 			description = resultSet.getString("description");
 			price = resultSet.getFloat("price");
 			priority = resultSet.getInt("priority");
 			proprietario = resultSet.getString("proprietario");
-			Prodotto prodotto = new Prodotto(name, description, price, priority, proprietario);
+			id_categoria_fk = resultSet.getInt("categoria");
+			id_wishlist_fk = resultSet.getInt("wishlist_id");
+			
+			Prodotto prodotto = new Prodotto(name, description, price, priority, proprietario, id_categoria_fk, id_wishlist_fk);
 			prodotto.setId(resultSet.getInt("id"));
 			
 			return prodotto;
@@ -111,12 +119,22 @@ public class ProdottoDAO implements DAO<Prodotto> {
 					prodottoToUpdate.setPriority(prodottoRead.getPriority());
 				}
 				
+//				if (prodottoToUpdate.getId_categoria_fk()  == null) {
+//					prodottoToUpdate.setId_categoria_fk(prodottoRead.getId_categoria_fk());
+//				}
+//				
+//				if (prodottoToUpdate.getId_categoria_fk()  == null) {
+//					prodottoToUpdate.setId_whishlist_fk(prodottoRead.getId_whishlist_fk());
+//				}
+				
 				PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(QUERY_UPDATE);
 				preparedStatement.setString(1, prodottoToUpdate.getName());
 				preparedStatement.setString(2, prodottoToUpdate.getDescription());
 				preparedStatement.setFloat(3, prodottoToUpdate.getPrice());
 				preparedStatement.setInt(4, prodottoToUpdate.getPriority());
-				preparedStatement.setInt(5, prodottoToUpdate.getId());
+				preparedStatement.setInt(5, prodottoToUpdate.getId_categoria_fk());
+				preparedStatement.setInt(6, prodottoToUpdate.getId_whishlist_fk());
+				preparedStatement.setInt(7, prodottoToUpdate.getId());
 				int a = preparedStatement.executeUpdate();
 				if (a > 0)
 					return true;

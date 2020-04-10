@@ -14,6 +14,10 @@ public class ProdottoDTO {
 	
 	private String proprietario;
 	
+	private Integer id_categoria_fk;
+	
+	private Integer id_whishlist_fk;
+	
 	public ProdottoDTO() {
 		
 	}
@@ -41,6 +45,38 @@ public class ProdottoDTO {
 		this.description = description;
 		this.price = price;
 		this.priority = priority;
+	
+	}
+	
+	public ProdottoDTO (int id, String name, String description, float price, int priority, String proprietario, Integer id_categoria_fk, Integer id_whishlist_fk) {
+		this.id = id;
+		this.name = name;
+		this.description = description;
+		this.price = price;
+		this.priority = priority;
+		this.proprietario = proprietario;
+		this.id_categoria_fk = id_categoria_fk;
+		this.id_whishlist_fk = id_whishlist_fk;
+	}
+	
+	public ProdottoDTO (String name, String description, float price, int priority, String proprietario, Integer id_categoria_fk, Integer id_whishlist_fk) {
+		this.name = name;
+		this.description = description;
+		this.price = price;
+		this.priority = priority;
+		this.proprietario = proprietario;
+		this.id_categoria_fk = id_categoria_fk;
+		this.id_whishlist_fk = id_whishlist_fk;
+	}
+	
+	public ProdottoDTO (int id, String name, String description, Float price, Integer priority, Integer id_categoria_fk, Integer id_wishlist_fk) {
+		this.id = id;
+		this.name = name;
+		this.description = description;
+		this.price = price;
+		this.priority = priority;
+		this.id_categoria_fk = id_categoria_fk;
+		this.id_whishlist_fk = id_wishlist_fk;
 	
 	}
 
@@ -87,10 +123,26 @@ public class ProdottoDTO {
 	public String getProprietario() {
 		return proprietario;
 	}
-	
+		
+	public Integer getId_categoria_fk() {
+		return id_categoria_fk;
+	}
+
+	public void setId_categoria_fk(Integer id_categoria_fk) {
+		this.id_categoria_fk = id_categoria_fk;
+	}
+
+	public Integer getId_whishlist_fk() {
+		return id_whishlist_fk;
+	}
+
+	public void setId_whishlist_fk(Integer id_whishlist_fk) {
+		this.id_whishlist_fk = id_whishlist_fk;
+	}
+
 	@Override
 	public String toString() {
-		return id + "\t" + name + "\t\t" + description + "\t\t" + price + "\t\t" + priority + proprietario;
+		return id + "\t" + name + "\t\t" + description + "\t\t" + price + "\t\t" + priority +"\t\t" + proprietario +"\t\t" + id_categoria_fk + "\t\t" + id_whishlist_fk;
 	}
 	
 	}
