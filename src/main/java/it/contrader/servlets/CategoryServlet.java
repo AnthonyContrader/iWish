@@ -8,8 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import it.contrader.dto.CategoryDTO;
+import it.contrader.dto.ProdottoDTO;
 import it.contrader.service.Service;
 import it.contrader.service.CategoryService;
+import it.contrader.service.ProdottoService;
 import it.contrader.dto.UserDTO;
 
 public class CategoryServlet extends HttpServlet {
@@ -47,8 +49,12 @@ public class CategoryServlet extends HttpServlet {
 			id = Integer.parseInt(request.getParameter("id"));
 		    dto = service.read(id);
 		    request.setAttribute("dto", dto);
-				   
+				  
 		    if(request.getParameter("update") == null ) {
+		    	Service<ProdottoDTO> service_prodotto = new ProdottoService();
+		    	List<ProdottoDTO> prodotto_list = service_prodotto.getAll();
+		    	request.setAttribute("prodotto_list", prodotto_list);
+		    	updateList(request);
 		    	getServletContext().getRequestDispatcher("/category/readcategory.jsp").forward(request, response);
 		    }
 		    else getServletContext().getRequestDispatcher("/category/updatecategory.jsp").forward(request, response);
