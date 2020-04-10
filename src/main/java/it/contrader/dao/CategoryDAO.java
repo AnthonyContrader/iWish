@@ -99,10 +99,6 @@ public class CategoryDAO implements DAO<Category> {
 					categoryToUpdate.setName(categoryRead.getName());
 				}
 
-				if (categoryToUpdate.getDescription() == null || categoryToUpdate.getDescription().equals("")) {
-					categoryToUpdate.setDescription(categoryRead.getDescription());
-				}
-
 				if (categoryToUpdate.getRating() == 0 ) {
 					categoryToUpdate.setRating(categoryRead.getRating());
 				}

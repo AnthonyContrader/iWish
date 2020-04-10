@@ -26,7 +26,7 @@
    <label for="category">name</label>
    </div>
     <div class="col-75">
-      <input type="text" id="category" name="name" value="<%=c.getName()%>">
+      <input type="text" id="category" name="name" value="<%=c.getName()%>" required>
     </div>
     </div>
     
@@ -41,14 +41,21 @@
   </div>
      <div class="row">
     <div class="col-25">
-     <label for="c_rate">Rating</label>
-    </div>
-    <div class="col-75">
-      <input
-			type="number" id="c_rate" name="rating" value=<%=c.getRating()%>> 
-    </div>
-  </div>
-     <button type="submit" >Edit</button>
+     <label for="rate">Preferenza</label>
+      </div>
+       <div class="col-75">
+ 			<select id="type" name="rating">
+  				<option value="0">0</option>
+  				<option value="1">1</option>
+  				<option value="2">2</option>
+  				<option value="3">3</option>
+  				<option value="4">4</option>
+  				<option value="5">5</option>
+ 
+			</select>
+			</div>
+		</div>
+			     <button type="submit" >Edit</button>
 </form>
 </div>
 <br>

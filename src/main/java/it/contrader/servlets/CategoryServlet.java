@@ -26,9 +26,13 @@ public class CategoryServlet extends HttpServlet {
 	
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		UserDTO userDTO = (UserDTO) request.getSession(false).getAttribute("user");
+		String proprietario_c = userDTO.getUsername();
 		Service<CategoryDTO> service = new CategoryService();
 		String mode = request.getParameter("mode");
 		CategoryDTO dto;
+		String name, description;
+		int rating;
 		int id;
 		boolean ans;
 		
@@ -51,32 +55,47 @@ public class CategoryServlet extends HttpServlet {
 		    break;
 		    
 		case "INSERT":
-			UserDTO userDTO = (UserDTO) request.getSession(false).getAttribute("user");
-			String name = request.getParameter("name").toString();
-			String description = request.getParameter("description").toString();
-			int rating = Integer.parseInt(request.getParameter("rating").toString());
-		    String proprietario_c = userDTO.getUsername();
-			dto = new CategoryDTO (name, description, rating, proprietario_c);
+			try {
+			name = request.getParameter("name").toString();
+			if (!name.equals("")) {
+				
+			description = request.getParameter("description").toString();
+			rating = Integer.parseInt(request.getParameter("rating").toString());
+		    dto = new CategoryDTO (name, description, rating, proprietario_c);
 			ans = service.insert(dto);
 			request.setAttribute("ans", ans);
 			updateList(request);
 			getServletContext().getRequestDispatcher("/category/categorymanager.jsp").forward(request, response);
+		} } catch (Exception e) {}  
+			updateList(request);
+		    getServletContext().getRequestDispatcher("/category/categorymanager.jsp").forward(request, response);
 			break;
 			
 		case "UPDATE":
+			
 			name = request.getParameter("name");
 			description = request.getParameter("description");
 			rating = Integer.parseInt(request.getParameter("rating"));
 			id = Integer.parseInt(request.getParameter("id"));
+			dto  = service.read(id);
+			if(dto.getProprietario_c().equals(proprietario_c)) {
 			dto = new CategoryDTO (id, name, description, rating);
 			ans = service.update(dto);
+			} else {
+				ans = false;
+			}
 			updateList(request);
 			getServletContext().getRequestDispatcher("/category/categorymanager.jsp").forward(request, response);
 			break;
 			
 		case "DELETE":
 			id = Integer.parseInt(request.getParameter("id"));
+			dto = service.read(id);
+			if(dto.getProprietario_c().equals(proprietario_c)) {
 			ans = service.delete(id);
+			} else {
+				ans = false;
+			}
 			request.setAttribute("ans", ans);
 			updateList(request);
 			getServletContext().getRequestDispatcher("/category/categorymanager.jsp").forward(request, response);

@@ -18,7 +18,7 @@
   <a href="PortfolioServlet?mode=portfoliolist">Portafoglio</a>
   <a href="ProdottoServlet?mode=prodottolist">Prodotto</a>
   <a href="ProgressServlet?mode=progresslist">Timeline</a>
-  <a class="active" href="CategoryServlet?mode=categorylist">Categories</a>
+  <a class="active" href="CategoryServlet?mode=categorylist">Categorie</a>
   <a href="LogoutServlet" id="logout">Logout</a>
 </div>
 <div class="main">
@@ -37,11 +37,12 @@
 			<th>Rating</th>
 			<th></th>
 			<th></th>
+			<th></th>
 		</tr>
 		<%
 			for (CategoryDTO c:list) {
 				  String proprietario_c = c.getProprietario_c();
-				   if(proprietario_c.equals(userDTO.getUsername())){
+				if(proprietario_c.equals(userDTO.getUsername())){
 		%>
 		<tr>
 			<td><a href=CategoryServlet?mode=read&id=<%=c.getId()%>>
@@ -49,6 +50,7 @@
 			</a></td>
 			<td><%=c.getDescription()%></td>
 			<td><%=c.getRating()%></td>
+			<td><%=c.getProprietario_c()%></td>
 			<td><a href=CategoryServlet?mode=read&update=true&id=<%=c.getId()%>>Edit</a>
 			</td>
 			<td><a href=CategoryServlet?mode=delete&id=<%=c.getId()%>>Delete</a>
@@ -66,8 +68,8 @@
    <label for="category">name</label>
    </div>
     <div class="col-75">
-      <input type="text" id="category" name="name" placeholder= "Inserisci nome categoria">
-    </div>
+      <input type="text" id="category" name="name" placeholder= "Inserisci nome categoria" required>
+       </div>
     </div>
   <div class="row">
     <div class="col-25">
@@ -80,11 +82,18 @@
   </div>
     <div class="row">
     <div class="col-25">
-     <label for="rate">Rating</label>
-    </div>
-    <div class="col-75">
-      <input
-			type="number" id="rate" name="rating" placeholder="inserisci valutazione"> 
+     <label for="rate">Preferenza</label>
+       </div>
+   		 <div class="col-75">
+ 			<select id="type" name="rating">
+  				<option value="0">0</option>
+  				<option value="1">1</option>
+  				<option value="2">2</option>
+  				<option value="3">3</option>
+  				<option value="4">4</option>
+  				<option value="5">5</option>
+ 
+			</select>
     </div>
   </div>
    <button type="submit" >Insert</button>
