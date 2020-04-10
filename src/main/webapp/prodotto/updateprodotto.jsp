@@ -16,12 +16,17 @@
 <%@ include file="../css/header.jsp" %>
 <div class="navbar">
 	<a href="homeadmin.jsp">Home</a>
-	<a class="active" href="UserServlet?mode=userlist">Users</a>
- 	<a href="LogoutServlet" id="logout">Logout</a>
+	<a  href="UserServlet?mode=userlist">Users</a>
+	 <a href="WishListServlet?mode=wishlists">Wishlists</a>
+	 <a href="PortfolioServlet?mode=portfoliolist">Portafoglio</a>
+	<a class="active" href="ProdottoServlet?mode=prodottolist">Prodotti</a>
+	 <a href="ProgressServlet?mode=progresslist">Timeline</a>
+	 <a href="CategoryServlet?mode=categorylist">Categorie</a>
+	<a href="LogoutServlet" id="logout">Logout</a>
 </div>
 <br>
 <div class="main">
-<%
+	<%
 		UserDTO userDTO = (UserDTO)request.getSession(false).getAttribute("user");
 		List<CategoryDTO> listaCategorie = (List<CategoryDTO>) request.getAttribute("listaCategorie");
 		List<WishListDTO> listawishlist = (List<WishListDTO>) request.getAttribute("listaWishlists");
