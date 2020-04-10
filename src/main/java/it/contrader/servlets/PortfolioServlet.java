@@ -55,31 +55,42 @@ public class PortfolioServlet extends HttpServlet {
 		break;
 
 		case "INSERT":
+			try {
 			float totalmoney = Float.parseFloat(request.getParameter("totalmoney").toString());
 			float revenue = Float.parseFloat(request.getParameter("revenue").toString());
 			float outputs = Float.parseFloat(request.getParameter("outputs").toString());
 			
 			
+			
 			dto = new PortfolioDTO (totalmoney,revenue,outputs, proprietario);
 			ans = service.insert(dto);
 			request.setAttribute("ans", ans);
+			}
+			catch (Exception e) {
+			
+			}
 			updateList(request);
 			getServletContext().getRequestDispatcher("/Portfolio/Portfoliomanager.jsp").forward(request, response);
 			break;
 			
 		case "UPDATE":
+			try {
 		    id = Integer.parseInt(request.getParameter("id"));
 		    dto = service.read(id);
 		    if(dto.getProprietario().equals(proprietario)) {
-			totalmoney = Float.parseFloat(request.getParameter("totalmoney").toString());
-			revenue = Float.parseFloat(request.getParameter("revenue").toString());
-			outputs = Float.parseFloat(request.getParameter("outputs").toString());
+			Float totalmoney = Float.parseFloat(request.getParameter("totalmoney").toString());
+			Float revenue = Float.parseFloat(request.getParameter("revenue").toString());
+			Float outputs = Float.parseFloat(request.getParameter("outputs").toString());
 			
 			dto = new PortfolioDTO (id,totalmoney, revenue, outputs);
 			ans = service.update(dto);
 		    }
 		    else {
 		    	ans = false;
+		    }
+			}
+		    catch (Exception e) {
+		    
 		    }
 			updateList(request);
 			getServletContext().getRequestDispatcher("/Portfolio/Portfoliomanager.jsp").forward(request, response);

@@ -71,24 +71,32 @@ public class WishListServlet extends HttpServlet {
 			
 			dto = new WishListDTO(id, name, description);
 			ans = service.update(dto);
+			updateList(request);
+			getServletContext().getRequestDispatcher("/wishlist/wishlistmanager.jsp").forward(request, response);
 			}
 			else {
 				ans = false;
+				request.getSession().invalidate();
+				getServletContext().getRequestDispatcher("/illegal_operation.jsp").forward(request, response);
 			}
-			updateList(request);
-			getServletContext().getRequestDispatcher("/wishlist/wishlistmanager.jsp").forward(request, response);
+			
 			break;
 		case "DELETE":
 			id = Integer.parseInt(request.getParameter("id"));
 			dto = service.read(id);
 			if(dto.getProprietario().equals(proprietario)) {
-			ans = service.delete(id);}
-			else {
-				ans = false;
-			}
+			ans = service.delete(id);
 			request.setAttribute("ans", ans);
 			updateList(request);
-			getServletContext().getRequestDispatcher("/wishlist/wishlistmanager.jsp").forward(request, response);
+			getServletContext().getRequestDispatcher("/wishlist/wishlistmanager.jsp").forward(request, response);}
+			else {
+				ans = false;
+				request.getSession().invalidate();
+				request.setAttribute("ans", ans);
+				getServletContext().getRequestDispatcher("/illegal_operation.jsp").forward(request, response);
+			}
+			
+			
 			break;
 			}
 		
