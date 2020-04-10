@@ -47,7 +47,7 @@ public class CategoryServlet extends HttpServlet {
 			id = Integer.parseInt(request.getParameter("id"));
 		    dto = service.read(id);
 		    request.setAttribute("dto", dto);
-		    
+				   
 		    if(request.getParameter("update") == null ) {
 		    	getServletContext().getRequestDispatcher("/category/readcategory.jsp").forward(request, response);
 		    }
