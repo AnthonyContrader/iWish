@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" import="it.contrader.dto.CategoryDTO"%>
+    pageEncoding="ISO-8859-1" import="it.contrader.dto.CategoryDTO" import="it.contrader.dto.ProdottoDTO" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,29 +10,30 @@
 <body>
 <%@ include file="../css/header.jsp" %>
 <div class="navbar">
-    <a href="homeadmin.jsp">Home</a>
-    <a class="active" href="CategoryServlet?mode=categorylist">Categories</a>
-    <a href="LogoutServlet" id="logout">Logout</a>
+  <a href="homeadmin.jsp">Home</a>
+  <a href="UserServlet?mode=userlist">Users</a>
+  <a href="WishListServlet?mode=wishlists">Wishlists</a>
+  <a href="PortfolioServlet?mode=portfoliolist">Portafoglio</a>
+  <a href="ProdottoServlet?mode=prodottolist">Prodotti</a>
+  <a href="ProgressServlet?mode=progresslist">Timeline</a>
+  <a class="active" href="CategoryServlet?mode=categorylist">Categorie</a>
+  <a href="LogoutServlet" id="logout">Logout</a>
 </div>
 <br>
 
 <div class= "main">
+
 <%CategoryDTO c = (CategoryDTO) request.getAttribute("dto");%>
 
-<table>
-   <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Rating</th>
-     
-      </tr>
-      <tr>
-      <td><%=c.getName()%></td>
-      <td><%=c.getDescription()%></td>
-      <td><%=c.getRating()%></td>
-     
-      </tr>
-</table>
+
+
+	
+		<th><%=c.getName()%>
+		&ensp;&ensp;&ensp;&ensp;
+		    <%=c.getRating() %>
+		</th>
+		
+		
 
 <br>
 <br>
@@ -45,9 +46,8 @@
 <br>
 <br>
 <br>
-
-
-</div>
+<br>
+			
 
 <%@ include file="../css/footer.jsp" %>
 </body>

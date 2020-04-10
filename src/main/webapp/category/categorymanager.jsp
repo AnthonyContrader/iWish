@@ -14,7 +14,7 @@
 <div class="navbar">
   <a  href="homeadmin.jsp">Home</a>
   <a  href="UserServlet?mode=userlist">Users</a>
-  <a href="WishListServlet?mode=wishlists">Wishlist</a>
+  <a href="WishListServlet?mode=wishlists">Wishlists</a>
   <a href="PortfolioServlet?mode=portfoliolist">Portafoglio</a>
   <a href="ProdottoServlet?mode=prodottolist">Prodotto</a>
   <a href="ProgressServlet?mode=progresslist">Timeline</a>
@@ -39,6 +39,7 @@
 			<th></th>
 			<th></th>
 		</tr>
+		
 		<%
 			for (CategoryDTO c:list) {
 				  String proprietario_c = c.getProprietario_c();
@@ -50,7 +51,6 @@
 			</a></td>
 			<td><%=c.getDescription()%></td>
 			<td><%=c.getRating()%></td>
-			<td><%=c.getProprietario_c()%></td>
 			<td><a href=CategoryServlet?mode=read&update=true&id=<%=c.getId()%>>Edit</a>
 			</td>
 			<td><a href=CategoryServlet?mode=delete&id=<%=c.getId()%>>Delete</a>
