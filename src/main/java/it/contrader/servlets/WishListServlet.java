@@ -1,8 +1,10 @@
 package it.contrader.servlets;
 
 import it.contrader.service.WishListService;
+import it.contrader.service.ProdottoService;
 import it.contrader.service.Service;
 import it.contrader.dto.WishListDTO;
+import it.contrader.dto.ProdottoDTO;
 import it.contrader.dto.UserDTO;
 
 import java.util.List;
@@ -43,8 +45,11 @@ public class WishListServlet extends HttpServlet {
 			id = Integer.parseInt(request.getParameter("id"));
 			dto = service.read(id);
 			request.setAttribute("dto", dto);
-			
+
 			if(request.getParameter("update")==null) {
+				Service<ProdottoDTO> service_prodotto = new ProdottoService();
+				List<ProdottoDTO> lista_prodotti = service_prodotto.getAll();
+				request.setAttribute("prodotti", lista_prodotti);
 				getServletContext().getRequestDispatcher("/wishlist/readwishlist.jsp").forward(request, response);
 			}
 			
