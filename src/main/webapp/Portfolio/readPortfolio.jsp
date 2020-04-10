@@ -13,10 +13,9 @@
 
   
   
-  <a href="LogoutServlet" id="logout">Logout</a>
+  
 
-<br>
-<br>
+
 
 <div class="navbar">
   <a  href="homeadmin.jsp">Home</a>
@@ -29,7 +28,7 @@
   <a href="LogoutServlet" id="logout">Logout</a>
 </div>
 <br>
-<br>
+
 
 
 <div class="main">
