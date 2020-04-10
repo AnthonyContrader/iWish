@@ -14,7 +14,7 @@
 <div class="navbar">
   <a  href="homeadmin.jsp">Home</a>
    <a href="UserServlet?mode=userlist">Users</a>
-    <a href="WishListServlet?mode=wishlists">Wishlist</a>
+    <a href="WishListServlet?mode=wishlists">Wishlists</a>
   <a class="active" href="PortfolioServlet?mode=portfoliolist">Portafoglio</a>
   <a href="ProdottoServlet?mode=prodottolist">Prodotto</a>
    <a href="ProgressServlet?mode=progresslist">Timeline</a>

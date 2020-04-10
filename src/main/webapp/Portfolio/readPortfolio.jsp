@@ -10,12 +10,27 @@
 <body>
 
 <%@ include file="../css/header.jsp" %>
+
+  
+  
+  <a href="LogoutServlet" id="logout">Logout</a>
+
+<br>
+<br>
+
 <div class="navbar">
-  <a href="homeadmin.jsp">Home</a>
-  <a class="active"  href="PortfolioServlet?mode=portfoliolist">PortfolioList</a>
+  <a  href="homeadmin.jsp">Home</a>
+   <a href="UserServlet?mode=userlist">Users</a>
+    <a href="WishListServlet?mode=wishlists">Wishlists</a>
+  <a class="active" href="PortfolioServlet?mode=portfoliolist">Portafoglio</a>
+  <a href="ProdottoServlet?mode=prodottolist">Prodotto</a>
+   <a href="ProgressServlet?mode=progresslist">Timeline</a>
+   <a href="CategoryServlet?mode=categorylist">Categorie</a>
   <a href="LogoutServlet" id="logout">Logout</a>
 </div>
 <br>
+<br>
+
 
 <div class="main">
 <%PortfolioDTO u = (PortfolioDTO) request.getAttribute("dto");%>
