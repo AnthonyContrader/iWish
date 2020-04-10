@@ -31,6 +31,9 @@ public class ProdottoServlet extends HttpServlet {
 		String proprietario = userDTO.getUsername();
 		Service<ProdottoDTO> service = new ProdottoService();
 		String mode = request.getParameter("mode");
+		String description;
+		float price;
+		int priority;
 		ProdottoDTO dto;
 		int id;
 		boolean ans;
@@ -58,18 +61,26 @@ public class ProdottoServlet extends HttpServlet {
 		case "INSERT":
 			
 			String name = request.getParameter("name").toString();
-			String description = request.getParameter("description").toString();
-			float price = Float.parseFloat(request.getParameter("price").toString());
-			int priority = Integer.parseInt(request.getParameter("priority").toString());
+			try {
+			if (!name.equals("")) {
+				
+			description = request.getParameter("description").toString();
+			price = Float.parseFloat(request.getParameter("price").toString());
+			priority = Integer.parseInt(request.getParameter("priority").toString());
 			dto = new ProdottoDTO (name,description,price,priority, proprietario);
 			ans = service.insert(dto);
 			request.setAttribute("ans", ans);
+			updateList(request);
+			getServletContext().getRequestDispatcher("/prodotto/prodottomanager.jsp").forward(request, response);
+			}
+			} catch (Exception e) {}
 			updateList(request);
 			getServletContext().getRequestDispatcher("/prodotto/prodottomanager.jsp").forward(request, response);
 			break;
 			
 		case "UPDATE":
 			
+			try {
 			id = Integer.parseInt(request.getParameter("id"));
 			dto  = service.read(id);
 			if(dto.getProprietario().equals(proprietario)) {
@@ -82,7 +93,8 @@ public class ProdottoServlet extends HttpServlet {
 			}
 			else {
 				ans = false;
-			}
+			}} catch (Exception e) {}
+			
 			updateList(request);
 			getServletContext().getRequestDispatcher("/prodotto/prodottomanager.jsp").forward(request, response);
 			break;

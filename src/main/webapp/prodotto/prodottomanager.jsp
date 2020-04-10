@@ -67,7 +67,7 @@
 		<label for="name">Name</label>
 	  </div>
 	  <div class="col-75">
-	  	<input type="text" id="name" name="name" placeholder="inserisci nome">
+	  	<input type="text" id="name" name="name" placeholder="inserisci nome" required>
 	  </div>
 	  </div>
 	<div class="row">
