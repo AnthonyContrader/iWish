@@ -21,20 +21,20 @@ public class WishListController {
 	@GetMapping("/getall")
 	public String getAll(HttpServletRequest request) {
 		setAll(request);
-		return "wishlists";
+		return "wishlist/wishlists";
 	}
 	
 	@GetMapping("/delete")
 	public String delete(HttpServletRequest request, @RequestParam("id") Long id) {
 		service.delete(id);
 		setAll(request);
-		return "wishlists";
+		return "wishlist/wishlists";
 	}
 	
 	@GetMapping("/preupdate")
 	public String preUpdate(HttpServletRequest request, @RequestParam("id") Long id) {
 		request.getSession().setAttribute("dto", service.read(id));
-		return "updatewishlist";
+		return "wishlist/updatewishlist";
 	}
 	
 	@PostMapping("/update")
@@ -46,7 +46,7 @@ public class WishListController {
 		dto.setDescription(description);
 		service.update(dto);
 		setAll(request);
-		return "wishlists";
+		return "wishlist/wishlists";
 		}
 	
 	@PostMapping("/insert")
@@ -56,13 +56,13 @@ public class WishListController {
 		dto.setDescription(description);
 		service.insert(dto);
 		setAll(request);
-		return "wishlists";
+		return "wishlist/wishlists";
 	}
 	
 	@GetMapping("/read")
 	public String read(HttpServletRequest request, @RequestParam("id") Long id) {
 		request.getSession().setAttribute("dto", service.read(id));
-		return "readwishlist";
+		return "wishlist/readwishlist";
 	}
 	
 	private void setAll(HttpServletRequest request) {
