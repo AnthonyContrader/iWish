@@ -31,7 +31,9 @@
 
 		<button class="btn btn-lg btn-primary btn-block" type="submit">Log
 			in</button>
+			<a href="/user/presignup">SIGN UP</a>
 	</form>
+	
 
 </body>
 </html>

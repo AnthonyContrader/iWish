@@ -85,6 +85,23 @@ public class UserController {
 		setAll(request);
 		return "users";
 	}
+	
+	@GetMapping("/presignup")
+	public String presignup(HttpServletRequest request) {
+		return "signup";
+	}
+	
+	@PostMapping("/signup")
+	public String signup(HttpServletRequest request, @RequestParam(value="username", required=true) String username, @RequestParam(value="password", required=true) String password) {
+	UserDTO dto = new UserDTO();
+	dto.setUsername(username);
+	dto.setPassword(password);
+	dto.setUsertype(Usertype.USER);
+	service.insert(dto);
+	//setAll(request);
+	return "index";
+	
+	}
 
 	@GetMapping("/read")
 	public String read(HttpServletRequest request, @RequestParam("id") Long id) {
