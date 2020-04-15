@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta charset="utf-8">
-<link href="/css/vittoriostyle.css" rel="stylesheet">
+<link href="../css/vittoriostyle.css" rel="stylesheet">
 <title>Update WishList</title>
 </head>
 <body>
-<%@ include file="./css/header.jsp" %>
+<%@ include file="../css/header.jsp" %>
 <div class="navbar">
 <a href="/homeadmin.jsp">Home</a> 
 <a href="/user/getall">Users</a>
@@ -44,6 +44,6 @@
 </form> 
 </div>
 <br>
-<%@ include file="./css/footer.jsp" %>
+<%@ include file="../css/footer.jsp" %>
 </body>
 </html>

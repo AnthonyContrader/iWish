@@ -21,14 +21,14 @@ public class WishListController {
 	@GetMapping("/getall")
 	public String getAll(HttpServletRequest request) {
 		setAll(request);
-		return "wishlist/wishlists";
+		return "/wishlist/wishlists";
 	}
 	
 	@GetMapping("/delete")
 	public String delete(HttpServletRequest request, @RequestParam("id") Long id) {
 		service.delete(id);
 		setAll(request);
-		return "wishlist/wishlists";
+		return "/wishlist/wishlists";
 	}
 	
 	@GetMapping("/preupdate")
