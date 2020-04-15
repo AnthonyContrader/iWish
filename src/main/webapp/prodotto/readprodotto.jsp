@@ -7,11 +7,11 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="Prodotto Read">
 <meta name="author" content="Vittorio Valent">
-<link href="/css/vittoriostyle.css" rel="stylesheet">	
+<link href="../css/vittoriostyle.css" rel="stylesheet">	
 <title>Read Prodotto</title>
 </head>
 <body>
-	<%@ include file="./css.header.jsp"%>
+	<%@ include file="../css.header.jsp"%>
 	<div class="navbar">
      <a href="/homeadmin.jsp">Home</a> 
      <a href="/user/getall">Users</a>
@@ -50,7 +50,7 @@
 	
 	</div>
 	
-	<%@ include file="./css/footer.jsp"%>
+	<%@ include file="../css/footer.jsp"%>
 
 </body>
 </html>

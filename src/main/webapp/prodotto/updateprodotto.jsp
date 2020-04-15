@@ -8,11 +8,11 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="User Edit page">
 <meta name="author" content="Vittorio Valent">
-<link href="/css/vittoriostyle.css" rel="stylesheet">
+<link href="../css/vittoriostyle.css" rel="stylesheet">
 <title>Update Prodotto</title>
 </head>
 <body>
-<%@ include file="./css/header.jsp" %>
+<%@ include file="../css/header.jsp" %>
 <div class="navbar">
      <a href="/homeadmin.jsp">Home</a> 
      <a href="/user/getall">Users</a>
@@ -58,14 +58,15 @@
 			<label for="user">Priority</label>
 		</div>
 		<div class="col-75">
-			<input type="text" id="priority" name="name" value=<%=p.getPriority()%>>
+			<input type="text" id="priority" name="priority" value=<%=p.getPriority()%>>
 		</div>
+	<input type="hidden" name="id" value="<%=p.getId()%>">
 	</div>
 	 <button type="submit" >Edit</button>
 </form>
 
 </div>
 <br>
-<%@ include file="./css/footer.jsp"%>
+<%@ include file="../css/footer.jsp"%>
 </body>
 </html>
