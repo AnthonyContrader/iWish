@@ -1,6 +1,6 @@
 package it.contrader.controller;
 
-import org.apache.catalina.servlet4preview.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,20 +22,20 @@ public class ProdottoController {
 	@GetMapping("/getall")
 	public String getAll(HttpServletRequest request) {
 		setAll(request);
-		return "prodotto";
+		return "/prodotto/prodotto";
 	}
 	
 	@GetMapping("/delete")
 	public String delete(HttpServletRequest request, @RequestParam("id") Long id) {
 		service.delete(id);
 		setAll(request);
-		return "prodotto";
+		return "/prodotto/prodotto";
 	}
 	
 	@GetMapping("/preupdate")
 	public String preUpdate(HttpServletRequest request, @RequestParam("id") Long id) {
 		request.getSession().setAttribute("dto", service.read(id));
-		return "updateprodotto";
+		return "/prodotto/updateprodotto";
 	}
 	
 	@PostMapping("/update")
@@ -50,7 +50,7 @@ public class ProdottoController {
 		dto.setPriority(priority);
 		service.update(dto);
 		setAll(request);
-		return "prodotto";
+		return "/prodotto/prodotto";
 			
 	}
 	
@@ -67,14 +67,14 @@ public class ProdottoController {
 		dto.setPriority(priority);
 		service.update(dto);
 		setAll(request);
-		return "prodotto";
+		return "/prodotto/prodotto";
 		
 	}
 	
 	@GetMapping("/read")
 	public String read(HttpServletRequest request, @RequestParam("id") Long id) {
 		request.getSession().setAttribute("dto", service.read(id));
-		return "readprodotto";
+		return "/prodotto/readprodotto";
 	}
 	
 	private void setAll(HttpServletRequest request) {
