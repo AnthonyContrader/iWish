@@ -13,12 +13,16 @@ skrink-to-fit=no">
 </head>
 <body>
     <%@ include file="./css/header.jsp" %>
-   <div class="navbar">
-   <a href="/homeadmin.jsp">Home</a>
-   <a href="user/getall">Users</a>
-   <a class="active" href="progress/getall">Timeline</a>
-   <a href="/user/logout" id="logout">Logout</a>
-   </div>
+  <div class="navbar">
+     <a href="/homeadmin.jsp">Home</a> 
+     <a href="/user/getall">Users</a>
+     <a href="/wishlist/getall">WishLists</a>
+     <a href="/portfolio/getall">Portfolio</a>
+     <a href="/prodotto/getall">Prodotti</a>
+     <a class="active" href="/progress/getall">Progressi</a>
+     <a  href="/category/getall">Categorie</a>
+     <a href="/user/logout" id="logout">Logout</a>
+     </div>
 <br>
 
 <div class="main">

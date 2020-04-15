@@ -13,15 +13,15 @@
 <body>
 	<%@ include file="./css.header.jsp"%>
 	<div class="navbar">
-		<a href="/homeadmin.jsp">Home</a>
-		<a href="/user.jsp">Users</a>
-		<a href="/wishlists.jsp">Wishlists</a>
-		<a href="/portfolio.jsp">Portafoglio</a>
-		<a class="active" href="/prodotto/gettall"> Prodotti</a>
-		<a href="/progress.jsp">Timeline</a>
-		<a href="/categorie.jsp">Categorie</a>
-		<a href="/user/logout" id="logout">Logout</a>
-	</div>
+     <a href="/homeadmin.jsp">Home</a> 
+     <a href="/user/getall">Users</a>
+     <a href="/wishlist/getall">WishLists</a>
+     <a href="/portfolio/getall">Portfolio</a>
+     <a class="active" href="/prodotto/getall">Prodotti</a>
+     <a href="/progress/getall">Progressi</a>
+     <a  href="/category/getall">Categorie</a>
+     <a href="/user/logout" id="logout">Logout</a>
+     </div>
 	<br>
 	
 	<div class="main">

@@ -21,9 +21,15 @@
 
 
 	<div class="navbar">
-		<a class="active" href="/homeadmin.jsp">Home</a> <a href=/user/getall>Users</a>
-		<a href="/user/logout" id="logout">Logout</a>
-	</div>
+     <a class="active" href="/homeadmin.jsp">Home</a> 
+     <a href="/user/getall">Users</a>
+     <a href="/wishlist/getall">WishLists</a>
+     <a href="/portfolio/getall">Portfolio</a>
+     <a href="/prodotto/getall">Prodotti</a>
+     <a href="/progress/getall">Progressi</a>
+     <a href="/category/getall">Categorie</a>
+     <a href="/user/logout" id="logout">Logout</a>
+     </div>
 
 	<div class="main">
 		<h1>Welcome ${user.getUsername()}</h1>
