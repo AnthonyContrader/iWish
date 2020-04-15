@@ -6,17 +6,17 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="Portfolio Management">
 <meta name="author" content="Vittorio Valent">
-<link href="/css/vittoriostyle.css" rel="stylesheet">
+<link href="../css/vittoriostyle.css" rel="stylesheet">
 <title>Portfolio Manager</title>
 
 </head>
 <body>
-	<%@ include file="./css/header.jsp"%>
+	<%@ include file="../css/header.jsp"%>
 <div class="navbar">
      <a href="/homeadmin.jsp">Home</a> 
      <a href="/user/getall">Users</a>
      <a href="/wishlist/getall">WishLists</a>
-     <a class="active" href="/portfolio/getall">Portfolio</a>
+     <a class="active" href="/portfolio/getall">Portafoglio</a>
      <a href="/prodotto/getall">Prodotti</a>
      <a href="/progress/getall">Progressi</a>
      <a  href="/category/getall">Categorie</a>
@@ -84,6 +84,8 @@
 					<label for="type">Uscite</label>
 				</div>
 				<div class="col-75">
+				<input type="text" id="pass" name="outputs"
+						placeholder="inserisci uscite">
 					
 				</div>
 			</div>
@@ -92,6 +94,6 @@
 
 	</div>
 	<br>
-	<%@ include file="./css/footer.jsp"%>
+	<%@ include file="../css/footer.jsp"%>
 </body>
 </html>

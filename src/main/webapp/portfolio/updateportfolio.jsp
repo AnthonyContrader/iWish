@@ -8,17 +8,17 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="User Edit page">
 <meta name="author" content="Vittorio Valent">
-<link href="/css/vittoriostyle.css" rel="stylesheet">
+<link href="../css/vittoriostyle.css" rel="stylesheet">
 <title>Edit Portfolio</title>
 
 </head>
 <body>
-<%@ include file="./css/header.jsp" %>
+<%@ include file="../css/header.jsp" %>
 <div class="navbar">
      <a href="/homeadmin.jsp">Home</a> 
      <a href="/user/getall">Users</a>
      <a href="/wishlist/getall">WishLists</a>
-     <a class="active" href="/portfolio/getall">Portfolio</a>
+     <a class="active" href="/portfolio/getall">Portafoglio</a>
      <a href="/prodotto/getall">Prodotti</a>
      <a href="/progress/getall">Progressi</a>
      <a  href="/category/getall">Categorie</a>
@@ -45,7 +45,7 @@
     </div>
     <div class="col-75">
       <input
-			type="time" id="rev" name="revenue" value=<%=u.getRevenue()%>> 
+			type="text" id="rev" name="revenue" value=<%=u.getRevenue()%>> 
     </div>
   </div>
   <div class="row">
@@ -56,6 +56,7 @@
    		<input
 			type="text" id="out" name="outputs" value=<%=u.getOutputs()%>>
     </div>
+    <input type="hidden" name="id" value=<%=u.getId() %>>
   </div>
       <button type="submit" >Edit</button>
 </form>
