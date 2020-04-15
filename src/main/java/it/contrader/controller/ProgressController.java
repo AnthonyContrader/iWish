@@ -25,7 +25,7 @@ public class ProgressController {
 	   @GetMapping("/getall")
 	   public String getAll(HttpServletRequest request) {
 		   setAll(request);
-		   return "progress";
+		   return "/progress/progress";
 		   
 	   }
 	   
@@ -33,13 +33,13 @@ public class ProgressController {
 		   public String delete(HttpServletRequest request,@RequestParam("id")Long id) {
 		   service.delete(id);
 		   setAll(request);
-		   return "progress";
+		   return "/progress/progress";
 	   }
 	   
 	   @GetMapping("/preupdate")
 	   public String preUpdate(HttpServletRequest request, @RequestParam("id")Long id) {
 		   request.getSession().setAttribute("dto", service.read(id));
-		   return "updateprogress";
+		   return "/progress/updateprogress";
 		   
 	   }
 	   
@@ -53,7 +53,7 @@ public class ProgressController {
 		   dto.setTime(time);
 		   service.update(dto);
 		   setAll(request);
-		   return "progress";
+		   return "/progress/progress";
 		   
 	   }
 	   
@@ -65,13 +65,13 @@ public class ProgressController {
 		   dto.setTime(time);
 		   service.insert(dto);
 		   setAll(request);
-		   return "progress";
+		   return "/progress/progress";
 	   }
 	
 	   @GetMapping("/read")
 	   public String read(HttpServletRequest request, @RequestParam ("id") Long id) {
 		   request.getSession().setAttribute("dto",service.read(id));
-		   return "readprogress";
+		   return "/progress/readprogress";
 	   }
 	   
 	   private void setAll(HttpServletRequest request) {
