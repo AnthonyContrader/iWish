@@ -8,11 +8,11 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="User Edit page">
 <meta name="author" content="Vittorio Valent">
-<link href="/css/vittoriostyle.css" rel="stylesheet">
+<link href="../css/vittoriostyle.css" rel="stylesheet">
 <title>Edit Category</title>
 </head>
 <body>
-<%@ include file="./css/header.jsp" %>
+<%@ include file="../css/header.jsp" %>
 <div class="navbar">
      <a href="/homeadmin.jsp">Home</a> 
      <a href="/user/getall">Users</a>
@@ -27,7 +27,7 @@
 <div class="main">
 
 <%
-  CategoryDTO c = (CategoryDTO) request.getSession().getAttribute(dto);
+  CategoryDTO c = (CategoryDTO) request.getSession().getAttribute("dto");
 %>
 
 <form id="floatleft" action="/category/update" method="post">
@@ -70,6 +70,6 @@
 	
 </div>
 <br>
-<%@ include file="./css/footer.jsp" %>	
+<%@ include file="../css/footer.jsp" %>	
 </body>
 </html>
