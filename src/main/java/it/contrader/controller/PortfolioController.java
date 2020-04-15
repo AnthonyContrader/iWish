@@ -15,7 +15,7 @@ import it.contrader.service.PortfolioService;
 
 
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/portfolio")
 public class PortfolioController {
 	
 	@Autowired
@@ -32,20 +32,20 @@ public class PortfolioController {
 @GetMapping("/getall")
 public String getAll(HttpServletRequest request) {
 	setAll(request);
-	return "users";
+	return "/portfolio/portfolio";
 }
 
 @GetMapping("/delete")
 public String delete(HttpServletRequest request, @RequestParam("id") Long id) {
 	service.delete(id);
 	setAll(request);
-	return "users";
+	return "/portfolio/portfolio";
 }
 
 @GetMapping("/preupdate")
 public String preUpdate(HttpServletRequest request, @RequestParam("id") Long id) {
 	request.getSession().setAttribute("dto", service.read(id));
-	return "updateuser";
+	return "/portfolio/updateportfolio";
 }
 
 @PostMapping("/update")
@@ -59,7 +59,7 @@ public String update(HttpServletRequest request, @RequestParam("id") Long id, @R
 	dto.setOutputs(outputs);
 	service.update(dto);
 	setAll(request);
-	return "users";
+	return "/portfolio/portfolio";
 
 }
 
@@ -72,20 +72,17 @@ public String insert(HttpServletRequest request, @RequestParam("totalmoney") flo
 	dto.setOutputs(outputs);
 	service.insert(dto);
 	setAll(request);
-	return "users";
+	return "/portfolio/portfolio";
 }
 
 @GetMapping("/read")
 public String read(HttpServletRequest request, @RequestParam("id") Long id) {
 	request.getSession().setAttribute("dto", service.read(id));
-	return "readuser";
+	return "/portfolio/readportfolio";
 }
 
-@GetMapping("/logout")
-public String logout(HttpServletRequest request) {
-	request.getSession().invalidate();
-	return "index";
-}
+
+
 
 private void setAll(HttpServletRequest request) {
 	request.getSession().setAttribute("list", service.getAll());

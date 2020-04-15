@@ -13,7 +13,7 @@ import it.contrader.model.Portfolio;
 @Transactional
 public interface PortfolioRepository extends CrudRepository<Portfolio, Long> {
 
-	Portfolio findByPortfolioname(float totalmoney, float revenue, float outputs);
+	
 
 	}
 
