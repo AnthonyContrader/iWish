@@ -12,5 +12,5 @@ import it.contrader.model.Progress;// importo il model
 
 public interface ProgressRepository extends CrudRepository<Progress,Long> { // <entity ,primarykey> nel nostro caso id long
 
-	Progress findByCashExpectationAndTime( float cash,double expectation,double time); // uso il model e non le query
+	//Progress findByCashExpectationAndTime( float cash,double expectation,double time); // uso il model e non le query
 }
