@@ -24,20 +24,20 @@ public class CategoryController {
 	@GetMapping("/getall")
 	public String getAll(HttpServletRequest request) {
 		setAll(request);
-		return "categories";
+		return "/category/categories";
 	}
 	
 	@GetMapping("/delete")
 	public String delete(HttpServletRequest request, @RequestParam("id") Long id) {
 		service.delete(id);
 		setAll(request);
-		return "categories";
+		return "/category/categories";
 	}
 	
 	@GetMapping("/preupdate")
 	public String preUpdate(HttpServletRequest request, @RequestParam("id") Long id) {
 		request.getSession().setAttribute("dto", service.read(id));
-		return "updatecategory";
+		return "/category/updatecategory";
 	}
 	
 	@PostMapping("/update")
@@ -54,7 +54,7 @@ public class CategoryController {
 	    dto.setRating(rating);
 		service.update(dto);
 		setAll(request);
-		return "categories";
+		return "/category/categories";
 
 	}
 	
@@ -68,13 +68,13 @@ public class CategoryController {
 		dto.setRating(rating);
 		service.insert(dto);
 		setAll(request);
-		return "categories";
+		return "/category/categories";
 	}
 	
 	@GetMapping("/read")
 	public String read(HttpServletRequest request, @RequestParam("id") Long id) {
 		request.getSession().setAttribute("dto", service.read(id));
-		return "readcategory";
+		return "/category/readcategory";
 	}
 
 	private void setAll(HttpServletRequest request) {

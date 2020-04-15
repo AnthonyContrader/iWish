@@ -10,5 +10,4 @@ import it.contrader.model.Category;
 
 public interface CategoryRepository extends CrudRepository<Category, Long> {
 
-	Category findByAttributes(String name, String description, int rating);
 }
