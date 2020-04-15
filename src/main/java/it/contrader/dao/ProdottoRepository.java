@@ -11,6 +11,4 @@ import it.contrader.model.Prodotto;
 @Transactional
 public interface ProdottoRepository extends CrudRepository<Prodotto, Long> {
 	
-	Prodotto findByProdottoname(String name, String description, float price, int priority);
-
 }
