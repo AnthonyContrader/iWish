@@ -14,5 +14,7 @@ public class WishListDTO {
 	private String name;
 	
 	private String description;
+	
+	private UserDTO proprietario;
 
 }

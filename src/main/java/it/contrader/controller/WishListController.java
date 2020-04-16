@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import it.contrader.dto.WishListDTO;
 import it.contrader.service.WishListService;
+import it.contrader.dto.UserDTO;
 
 @Controller
 @RequestMapping("/wishlist")
@@ -52,8 +53,10 @@ public class WishListController {
 	@PostMapping("/insert")
 	public String insert(HttpServletRequest request, @RequestParam("name") String name, @RequestParam("description") String description) {
 		WishListDTO dto = new WishListDTO();
+		
 		dto.setName(name);
 		dto.setDescription(description);
+		dto.setProprietario((UserDTO)request.getSession().getAttribute("user"));
 		service.insert(dto);
 		setAll(request);
 		return "wishlist/wishlists";
