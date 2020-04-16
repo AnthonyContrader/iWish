@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import it.contrader.dto.PortfolioDTO;
-
+import it.contrader.dto.UserDTO;
 import it.contrader.service.PortfolioService;
 
 
@@ -21,13 +21,6 @@ public class PortfolioController {
 	@Autowired
 	private PortfolioService service;
 
-	
-
-
-	
-		
-
-	
 
 @GetMapping("/getall")
 public String getAll(HttpServletRequest request) {
@@ -70,6 +63,7 @@ public String insert(HttpServletRequest request, @RequestParam("totalmoney") flo
 	dto.setTotalmoney(totalmoney);
 	dto.setRevenue(revenue);
 	dto.setOutputs(outputs);
+	dto.setProprietario((UserDTO)request.getSession().getAttribute("user"));
 	service.insert(dto);
 	setAll(request);
 	return "/portfolio/portfolio";

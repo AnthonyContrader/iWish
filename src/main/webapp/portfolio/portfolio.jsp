@@ -1,4 +1,4 @@
-<%@ page import="it.contrader.dto.PortfolioDTO" import="java.util.*"%>
+<%@ page import="it.contrader.dto.PortfolioDTO" import="java.util.*" import="it.contrader.dto.UserDTO"%>
 <html>
 <head>
 <meta charset="utf-8">
@@ -26,6 +26,7 @@
 	
 	<div class="main">
 		<%
+		 UserDTO userDTO = (UserDTO) request.getSession().getAttribute("user");
 			List<PortfolioDTO> list = (List<PortfolioDTO>) request.getSession().getAttribute("list");
 		%>
 
@@ -41,6 +42,8 @@
 			</tr>
 			<%
 				for (PortfolioDTO u : list) {
+					
+					if(u.getProprietario().equals(userDTO)){
 			%>
 			<tr>
 				<td><a href="/user/read?id=<%=u.getId()%>"> <%=u.getTotalmoney()%>
@@ -54,7 +57,7 @@
 
 			</tr>
 			<%
-				}
+					}}
 			%>
 		</table>
 
