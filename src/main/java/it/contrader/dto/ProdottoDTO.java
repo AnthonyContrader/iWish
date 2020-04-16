@@ -19,5 +19,7 @@ public class ProdottoDTO {
 	private float price;
 	
 	private int priority;
+	
+	private WishListDTO wishlist;
 
 }
