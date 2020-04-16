@@ -32,6 +32,7 @@ content="width=device-width, initial-scale=1, shrink-to-fit=no">
    
    <table>
    <tr>
+                <th>Prodotto</th>
                 <th>Cash</th>
 				<th>Expectation</th>
 				<th>Time</th>
@@ -45,11 +46,14 @@ content="width=device-width, initial-scale=1, shrink-to-fit=no">
    
    %> 
    
+  
    <tr>
-   <td><a href="/progress/read?id=<%=p.getId() %>"><%=p.getCash() %>
+   <td><a href="/progress/read?id=<%=p.getId() %>"><%=p.getProdotto().getName() %>
    </a></td>
+        <td><%=p.getCash()%></td>
    		<td><%=p.getExpectation()%></td>
 		<td><%=p.getTime()%></td>
+		
    
       <td><a href="/progress/preupdate?id=<%=p.getId()%>">Edit</a></td>
 
@@ -68,6 +72,16 @@ content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
   
    <form id="floatright" action="/progress/insert" method="post">
+			
+			<div class="row">
+				<div class="col-25">
+					<label for="prodotto_id">id Prodotto</label>
+				</div>
+				<div class="col-75">
+					<input type="number" id="prodotto_id" name="prodotto_id"
+						placeholder="inserisci id del Prodotto">
+				</div>
+			</div>
 			<div class="row">
 				<div class="col-25">
 					<label for="cash">Cash</label>

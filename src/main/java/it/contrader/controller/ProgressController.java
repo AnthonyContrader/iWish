@@ -9,8 +9,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import it.contrader.dto.ProdottoDTO;
 import it.contrader.dto.ProgressDTO;
-
+import it.contrader.service.ProdottoService;
 import it.contrader.service.ProgressService;
 
 @Controller
@@ -18,7 +19,8 @@ import it.contrader.service.ProgressService;
 
 public class ProgressController {
 
-	
+	   @Autowired 
+	   private ProdottoService prodottoservice; // usato per ottenere l'oggetto prodotto per la read per inserire l'id del prodotto
 	   @Autowired
 	   private ProgressService service;
 	   
@@ -58,11 +60,15 @@ public class ProgressController {
 	   }
 	   
 	   @PostMapping("/insert")
-	   public String insert (HttpServletRequest request, @RequestParam("cash") float cash,@RequestParam("expectation") double expectation, @RequestParam("time") double time) {
+	   public String insert (HttpServletRequest request, @RequestParam("cash") float cash,@RequestParam("expectation") double expectation, @RequestParam("time") double time
+			   ,@RequestParam ("prodotto_id") Long prodotto_id) {// tra le virgolette va il nome del name dell'input della view 
 		   ProgressDTO dto = new ProgressDTO();
+		   ProdottoDTO prodottodto= new ProdottoDTO();
+		   prodottodto= prodottoservice.read(prodotto_id);
 		   dto.setCash(cash);
 		   dto.setExpectation(expectation);
 		   dto.setTime(time);
+		   dto.setProdotto(prodottodto);
 		   service.insert(dto);
 		   setAll(request);
 		   return "/progress/progress";
