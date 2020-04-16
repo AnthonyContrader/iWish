@@ -38,6 +38,21 @@ public class Prodotto {
 			)
 	private WishList wishlist;
 	
+	@ManyToOne()
+	@JoinColumn(
+			name="category_fk",
+			referencedColumnName = "id"
+			)
+	private Category category;
+	
+	@ManyToOne()
+	@JoinColumn(
+			name="proprietario_fk",
+			referencedColumnName = "username"
+			)
+	private User proprietario;
+	
+	
 	
 	
 }

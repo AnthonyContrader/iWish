@@ -21,5 +21,9 @@ public class ProdottoDTO {
 	private int priority;
 	
 	private WishListDTO wishlist;
+	
+	private CategoryDTO category;
+	
+	private UserDTO proprietario;
 
 }

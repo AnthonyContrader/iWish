@@ -41,6 +41,8 @@
 		</tr>
 		<%
 			for (ProdottoDTO p : list) {
+			
+				if(p.getProprietario_p().equals(userDTO)){	
 		%>
 		<tr>
 			<td><a href="/prodotto/read?id=<%=p.getId() %>"> <%=p.getName()%></a></td>
@@ -52,7 +54,7 @@
 			
 		</tr>
 		<%
-			}
+			}}
 		%>	
 	</table>		
 
