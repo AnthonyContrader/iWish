@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import it.contrader.dto.CategoryDTO;
 import it.contrader.service.CategoryService;
+import it.contrader.dto.UserDTO;
+
+
 
 @Controller
 @RequestMapping("/category")
@@ -19,6 +22,7 @@ public class CategoryController {
 	
 	@Autowired
 	private CategoryService service;
+
 	
 			
 	@GetMapping("/getall")
@@ -66,6 +70,7 @@ public class CategoryController {
 		dto.setName(name);
 		dto.setDescription(description);
 		dto.setRating(rating);
+		dto.setProprietario_c((UserDTO)request.getSession().getAttribute("user"));
 		service.insert(dto);
 		setAll(request);
 		return "/category/categories";

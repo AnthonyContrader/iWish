@@ -1,5 +1,8 @@
 package it.contrader.dto;
 
+
+
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,5 +20,6 @@ public class CategoryDTO {
 	private String description;
 	
 	private int rating;
-
+	
+    private UserDTO proprietario_c;
 }
