@@ -19,6 +19,8 @@ public class PortfolioDTO {
 	private float revenue;
 	
 	private float outputs;
+	
+	private UserDTO proprietario;
 
 	
 }

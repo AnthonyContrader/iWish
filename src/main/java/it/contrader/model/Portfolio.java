@@ -3,9 +3,9 @@ package it.contrader.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-
 import javax.persistence.Id;
-
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -34,6 +34,14 @@ public class Portfolio {
 	@Column(nullable = false)
 	
 	private float outputs;
+	
+	@OneToOne()
+	@JoinColumn(
+			name="proprietario",
+			referencedColumnName = "username"
+			)
+			
+			private User proprietario;
 	
 }
 
