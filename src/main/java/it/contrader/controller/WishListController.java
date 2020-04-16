@@ -19,6 +19,7 @@ public class WishListController {
 	@Autowired 
 	WishListService service;
 	
+	
 	@GetMapping("/getall")
 	public String getAll(HttpServletRequest request) {
 		setAll(request);
@@ -27,7 +28,10 @@ public class WishListController {
 	
 	@GetMapping("/delete")
 	public String delete(HttpServletRequest request, @RequestParam("id") Long id) {
+		WishListDTO wishlistDTO = service.read(id);
+		if(wishlistDTO.getProprietario().equals((UserDTO) request.getSession().getAttribute("user"))) {
 		service.delete(id);
+		}
 		setAll(request);
 		return "/wishlist/wishlists";
 	}
@@ -41,11 +45,14 @@ public class WishListController {
 	@PostMapping("/update")
 	public String update(HttpServletRequest request, @RequestParam("id") Long id,
 			@RequestParam("name") String name, @RequestParam("description") String description) {
+		WishListDTO wishlistDTO = service.read(id);
+		if(wishlistDTO.getProprietario().equals((UserDTO) request.getSession().getAttribute("user"))) {
 		WishListDTO dto = new WishListDTO();
 		dto.setId(id);
 		dto.setName(name);
 		dto.setDescription(description);
-		service.update(dto);
+		dto.setProprietario((UserDTO) request.getSession().getAttribute("user"));
+		service.update(dto);}
 		setAll(request);
 		return "wishlist/wishlists";
 		}
@@ -53,7 +60,6 @@ public class WishListController {
 	@PostMapping("/insert")
 	public String insert(HttpServletRequest request, @RequestParam("name") String name, @RequestParam("description") String description) {
 		WishListDTO dto = new WishListDTO();
-		
 		dto.setName(name);
 		dto.setDescription(description);
 		dto.setProprietario((UserDTO)request.getSession().getAttribute("user"));

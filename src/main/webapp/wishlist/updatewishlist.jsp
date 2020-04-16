@@ -28,7 +28,7 @@
 <label for="name">Name</label>
 </div>
 <div class="col-75">
-<input type="text" id="name" name="name" value=<%=w.getName()%>>
+<input type="text" id="name" name="name" value="<%=w.getName()%>">
 </div>
 </div>
 <div class="row">
@@ -36,7 +36,7 @@
 <label for="description">Description</label>
 </div>
 <div class="col-75">
-<input type="text" id="description" name="description" value=<%=w.getDescription() %>>
+<input type="text" id="description" name="description" value="<%=w.getDescription() %>">
 </div>
 <input type="hidden" name="id" value=<%=w.getId()%>>
 </div>

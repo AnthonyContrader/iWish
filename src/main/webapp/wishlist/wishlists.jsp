@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" import="it.contrader.dto.WishListDTO" import="java.util.*"%>
+    pageEncoding="ISO-8859-1" import="it.contrader.dto.WishListDTO" import="it.contrader.dto.UserDTO" import="java.util.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,6 +24,7 @@
 
 <div class="main">
 <%
+UserDTO userDTO = (UserDTO) request.getSession().getAttribute("user");
 List<WishListDTO> list = (List<WishListDTO>) request.getSession().getAttribute("list");
 %>
 <br>
@@ -36,6 +37,7 @@ List<WishListDTO> list = (List<WishListDTO>) request.getSession().getAttribute("
 </tr>
 <%
 for(WishListDTO w: list){
+	if(w.getProprietario().equals(userDTO)){
 %>
 <tr>
 <td><a href="/wishlist/read?id=<%=w.getId()%>"><%=w.getName()%></a></td>
@@ -43,7 +45,7 @@ for(WishListDTO w: list){
 <td><a href="/wishlist/preupdate?id=<%=w.getId()%>">Edit</a></td>
 <td><a href="/wishlist/delete?id=<%=w.getId()%>">Delete</a></td>
 </tr>
-<%} %>
+<%}} %>
 </table>
 
 <form id="floatright" action="/wishlist/insert" method="post">
