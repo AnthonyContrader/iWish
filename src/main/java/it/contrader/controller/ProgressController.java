@@ -44,7 +44,7 @@ public class ProgressController {
 	   }
 	   
 	   
-	   @GetMapping ("/update")
+	   @PostMapping ("/update")
 	   public String update(HttpServletRequest request,@RequestParam("id")Long id, @RequestParam("cash") float cash, @RequestParam("expectation") double expectation, @RequestParam("time") double time){
 		   ProgressDTO dto = new ProgressDTO();
 		   dto.setId(id);

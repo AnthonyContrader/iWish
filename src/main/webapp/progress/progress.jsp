@@ -7,13 +7,13 @@
 content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="Progress Managment">
 <meta name="author" content="Vittorio Valent">
-<link href="/css/vittoriostyle.css" rel="stylesheet">
+<link href="../css/vittoriostyle.css" rel="stylesheet">
 
 <title>Timeline</title>
 </head>
 <body>
    
-   <%@ include file="./css/header.jsp" %>
+   <%@ include file="../css/header.jsp" %>
    <div class="navbar">
      <a href="/homeadmin.jsp">Home</a> 
      <a href="/user/getall">Users</a>
@@ -46,7 +46,7 @@ content="width=device-width, initial-scale=1, shrink-to-fit=no">
    %> 
    
    <tr>
-   <td><a href="/user/read?id=<%=p.getId() %>"><%=p.getCash() %>
+   <td><a href="/progress/read?id=<%=p.getId() %>"><%=p.getCash() %>
    </a></td>
    		<td><%=p.getExpectation()%></td>
 		<td><%=p.getTime()%></td>
@@ -104,6 +104,6 @@ content="width=device-width, initial-scale=1, shrink-to-fit=no">
    </div>
   
     <br>
-	<%@ include file="./css/footer.jsp"%>
+	<%@ include file="../css/footer.jsp"%>
 </body>
 </html>

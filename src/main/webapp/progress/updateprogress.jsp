@@ -8,12 +8,12 @@
 content="tidth=devide-width, initial-scale=1, shrink-to-fit=no">
 <meta name= "description" content="Progress Edit page">
 <meta name="author" content="Vittorio Valent">
-<link href="/css/vittoriostyle.css" rel="stylesheet">
+<link href="../css/vittoriostyle.css" rel="stylesheet">
 
 <title>Timeline</title>
 </head>
 <body>
- <%@ include file="./css/header.jsp" %>
+ <%@ include file="../css/header.jsp" %>
    <div class="navbar">
      <a href="/homeadmin.jsp">Home</a> 
      <a href="/user/getall">Users</a>
@@ -53,6 +53,7 @@ content="tidth=devide-width, initial-scale=1, shrink-to-fit=no">
     <div class="col-75">
       <input type="number" id="time" name="time" value=<%=p.getTime()%>>
     </div>
+    <input type="hidden" name="id" value =<%=p.getId() %>>
     </div>
     <button type="submit" >Edit</button>
 </form>
@@ -63,7 +64,7 @@ content="tidth=devide-width, initial-scale=1, shrink-to-fit=no">
    
    </div>
    <br>
-   <%@ include file="./css/footer.jsp" %>	
+   <%@ include file="../css/footer.jsp" %>	
    
 </body>
 </html>
