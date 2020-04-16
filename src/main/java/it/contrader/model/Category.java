@@ -1,6 +1,6 @@
 package it.contrader.model;
 
-import javax.persistence.Column;
+import javax.persistence.*;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -16,14 +16,23 @@ import lombok.NoArgsConstructor;
 
 public class Category {
 	
+
 	@Id
 	@GeneratedValue
 	private Long id;
 	
-	@Column
+	@Column (nullable = false)
 	private String name;
 	
 	private String description;
 	
 	int rating;
-}
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(
+        name = "proprietario_c",
+        referencedColumnName = "username"
+    )
+    private User proprietario_c;
+	
+			}

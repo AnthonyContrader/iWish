@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,6 +30,14 @@ public class Prodotto {
 	private float price;
 	
 	private int priority;
+	
+	@ManyToOne()
+	@JoinColumn(
+			name="wishlist_fk",
+			referencedColumnName = "id"
+			)
+	private WishList wishlist;
+	
 	
 	
 }

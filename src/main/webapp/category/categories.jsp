@@ -1,4 +1,4 @@
-<%@ page import="it.contrader.dto.CategoryDTO" import ="java.util.*"%>
+<%@ page import="it.contrader.dto.CategoryDTO" import="it.contrader.dto.UserDTO" import ="java.util.*"%>
 <html>
 <head>
 <meta charset="utf-8">
@@ -26,13 +26,13 @@
 
 
 <%
-
+     UserDTO userDTO = (UserDTO) request.getSession().getAttribute("user");
      List<CategoryDTO> list = (List<CategoryDTO>) request.getSession().getAttribute("list");
-
+     
 %>
 
 <br>
-
+ 
 <table>
      <tr>
           <th>Name</th>
@@ -42,8 +42,14 @@
           <th></th>
      </tr>
      <%
-         for (CategoryDTO c: list) {
-     %>
+     
+		for (CategoryDTO c:list) {
+		
+		if(c.getProprietario_c().equals(userDTO)){	
+			
+		
+	%>
+     
               
               <tr>
 				<td><a href="/category/read?id=<%=c.getId()%>"> 
@@ -58,7 +64,7 @@
 
 			</tr>
 			<%
-				}
+			}}
 			%>
 
 </table>
