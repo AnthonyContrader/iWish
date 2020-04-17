@@ -55,7 +55,7 @@ import="it.contrader.dto.CategoryDTO" import="it.contrader.dto.WishListDTO"%>
 		<tr>
 			<td><a href="/prodotto/read?id=<%=p.getId() %>"> <%=p.getName()%></a></td>
 			<td><%=p.getDescription()%></td>
-			<td><%=p.getPrice()%></td>
+			<td><%=p.getPrice()%> &euro;</td>
 			<td><%=p.getPriority()%></td>
 			<td><%
 			if (p.getWishlist() != null){
