@@ -22,7 +22,7 @@
      <a  href="/category/getall">Categorie</a>
      <a href="/user/logout" id="logout">Logout</a>
      </div>
-<br>
+
 	
 	<div class="main">
 		<%

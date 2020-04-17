@@ -50,6 +50,7 @@ public String update(HttpServletRequest request, @RequestParam("id") Long id, @R
 	dto.setTotalmoney(totalmoney);
 	dto.setRevenue(revenue);
 	dto.setOutputs(outputs);
+	dto.setProprietario((UserDTO)request.getSession().getAttribute("user"));
 	service.update(dto);
 	setAll(request);
 	return "/portfolio/portfolio";
