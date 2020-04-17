@@ -2,6 +2,7 @@ package it.contrader.model;
 
 
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -32,7 +33,7 @@ private float cash;
 private double expectation;
 @Column (nullable = false)
 private double time;
- @OneToOne
+ @OneToOne(cascade=CascadeType.MERGE)
  @JoinColumn(
 		 name="prodotto_id",referencedColumnName="id"// nome della foreign key e colonna a cui fa riferimento 
 		 
