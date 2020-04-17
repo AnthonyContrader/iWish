@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" import="it.contrader.dto.ProdottoDTO"%>
+    pageEncoding="ISO-8859-1" import="it.contrader.dto.ProdottoDTO"
+    import="it.contrader.dto.CategoryDTO" import="it.contrader.dto.UserDTO" import="it.contrader.dto.WishListDTO" import = "java.util.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,7 +27,10 @@
 <br>
 <div class="main">
 
-<%ProdottoDTO p = (ProdottoDTO) request.getSession().getAttribute("dto");%>
+<%ProdottoDTO p = (ProdottoDTO) request.getSession().getAttribute("dto");
+UserDTO userDTO = (UserDTO)request.getSession().getAttribute("user");
+List<CategoryDTO> listaCategorie = (List<CategoryDTO>)request.getSession().getAttribute("category_list");
+List<WishListDTO> listawishlist = (List<WishListDTO>)request.getSession().getAttribute("wishlists");%>
 
 <form id="floatleft" action="/prodotto/update" method="post">
 	<div class="row">
@@ -62,6 +66,52 @@
 		</div>
 	<input type="hidden" name="id" value="<%=p.getId()%>">
 	</div>
+	<div class="row">
+    <div class="col-25">
+      <label for="category">Categoria</label>
+    </div>
+   		 <div class="col-75">
+ 			<select id="category" name="category">
+ 				<%
+ 				for (CategoryDTO c:listaCategorie) 
+ 					
+ 					{
+ 					if (c.getProprietario_c().equals(userDTO))
+ 							{
+ 								out.print(String.format("<option value= '%d'>", c.getId()) + c.getName() + "</option>");
+ 							}
+ 				    }
+ 				%>
+ 				
+  				
+  				<option value="">vuoto</option>
+  					
+			</select>
+    	</div>
+  </div>
+  
+  <div class="row">
+    <div class="col-25">
+      <label for="wishlists">Wishlist</label>
+    </div>
+   		 <div class="col-75">
+ 			<select id="wishlists" name="wishlist">
+ 				<%
+ 				for (WishListDTO w:listawishlist) 
+ 					
+ 					{
+ 					if (w.getProprietario().equals(userDTO))
+ 							{
+ 								out.print(String.format("<option value= '%d'>", w.getId()) + w.getName() + "</option>");
+ 							}
+ 				    }
+ 				%>
+ 				  				
+  				<option value="">vuoto</option>
+  					
+			</select>
+    	</div>
+  </div>
 	 <button type="submit" >Edit</button>
 </form>
 

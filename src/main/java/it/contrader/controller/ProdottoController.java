@@ -1,6 +1,7 @@
 package it.contrader.controller;
 
 import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,8 +9,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import it.contrader.dto.CategoryDTO;
 import it.contrader.dto.ProdottoDTO;
+import it.contrader.dto.UserDTO;
+import it.contrader.dto.WishListDTO;
+import it.contrader.service.CategoryService;
 import it.contrader.service.ProdottoService;
+import it.contrader.service.WishListService;
 
 
 @Controller
@@ -18,6 +24,16 @@ public class ProdottoController {
 
 	@Autowired
 	private ProdottoService service;
+	
+	@Autowired
+	private WishListService wishlist_service;
+	
+	@Autowired
+	private CategoryService category_service;
+	
+	private CategoryDTO categoryDTO;
+	
+	private WishListDTO wishlistDTO;
 	
 	@GetMapping("/getall")
 	public String getAll(HttpServletRequest request) {
@@ -40,7 +56,8 @@ public class ProdottoController {
 	
 	@PostMapping("/update")
 	public String update(HttpServletRequest request, @RequestParam("id") Long id, @RequestParam("name") String name,
-			@RequestParam("description") String description, @RequestParam("price") float price, @RequestParam("priority") int priority) {
+			@RequestParam("description") String description, @RequestParam("price") float price, @RequestParam("priority") int priority,
+			@RequestParam("wishlist") Long wishlist_id, @RequestParam("category") Long category_id) {
 		
 		ProdottoDTO dto = new ProdottoDTO();
 		dto.setId(id);
@@ -48,6 +65,20 @@ public class ProdottoController {
 		dto.setDescription(description);
 		dto.setPrice(price);
 		dto.setPriority(priority);
+		dto.setProprietario((UserDTO)request.getSession().getAttribute("user"));
+		
+		if (category_id == null)
+			{categoryDTO = null;}
+		else 
+			{categoryDTO = category_service.read(category_id);}
+
+		if (wishlist_id == null)
+			{wishlistDTO = null;}
+		else
+			{wishlistDTO = wishlist_service.read(wishlist_id);}
+		
+		dto.setWishlist(wishlistDTO);
+		dto.setCategory(categoryDTO);
 		service.update(dto);
 		setAll(request);
 		return "/prodotto/prodotti";
@@ -57,13 +88,33 @@ public class ProdottoController {
 	
 	@PostMapping("/insert")
 	public String insert(HttpServletRequest request, @RequestParam("name") String name,
-			@RequestParam("description") String description, @RequestParam("price") float price, @RequestParam("priority") int priority) {
+			@RequestParam("description") String description, @RequestParam("price") float price, @RequestParam("priority") int priority,
+			@RequestParam("wishlist") Long wishlist_id, @RequestParam("category") Long category_id) {
+		
+		
+		
+
+		if (category_id == null)
+				{categoryDTO = null;}
+		else 
+			{categoryDTO = category_service.read(category_id);}
+		
+		if (wishlist_id == null)
+				{wishlistDTO = null;}
+		else
+			{wishlistDTO = wishlist_service.read(wishlist_id);}
+		
+		
+		
 		
 		ProdottoDTO dto = new ProdottoDTO();
 		dto.setName(name);
 		dto.setDescription(description);
 		dto.setPrice(price);
 		dto.setPriority(priority);
+		dto.setWishlist(wishlistDTO);
+		dto.setCategory(categoryDTO);
+		dto.setProprietario((UserDTO)request.getSession().getAttribute("user"));
 		service.update(dto);
 		setAll(request);
 		return "/prodotto/prodotti";
@@ -78,6 +129,8 @@ public class ProdottoController {
 	
 	private void setAll(HttpServletRequest request) {
 		request.getSession().setAttribute("list", service.getAll());
+		request.getSession().setAttribute("wishlists", wishlist_service.getAll());
+		request.getSession().setAttribute("category_list", category_service.getAll());
 	}
 			
 }
