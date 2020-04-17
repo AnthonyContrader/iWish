@@ -28,7 +28,11 @@ public class CategoryController {
 	
 	@Autowired
 	private ProdottoService prodotto_service;
-
+	
+	private void setAll(HttpServletRequest request) {
+		request.getSession().setAttribute("list", service.getAll());
+		request.getSession().setAttribute("prodotto_list", prodotto_service.getAll());
+	}
 	
 			
 	@GetMapping("/getall")
@@ -89,10 +93,7 @@ public class CategoryController {
 		return "/category/readcategory";
 	}
 
-	private void setAll(HttpServletRequest request) {
-		request.getSession().setAttribute("list", service.getAll());
-		request.getSession().setAttribute("prodotto_list", prodotto_service.getAll());
-	}
+	
 }
 
 	
