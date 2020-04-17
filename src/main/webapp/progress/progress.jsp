@@ -33,6 +33,7 @@ content="width=device-width, initial-scale=1, shrink-to-fit=no">
    <table>
    <tr>
                 <th>Prodotto</th>
+                <th>Prezzo Prodotto euro</th>
                 <th>Cash</th>
 				<th>Expectation</th>
 				<th>Time</th>
@@ -50,6 +51,7 @@ content="width=device-width, initial-scale=1, shrink-to-fit=no">
    <tr>
    <td><a href="/progress/read?id=<%=p.getId() %>"><%=p.getProdotto().getName() %>
    </a></td>
+        <td><%=p.getProdotto().getPrice()%></td>
         <td><%=p.getCash()%></td>
    		<td><%=p.getExpectation()%></td>
 		<td><%=p.getTime()%></td>
@@ -87,7 +89,7 @@ content="width=device-width, initial-scale=1, shrink-to-fit=no">
 					<label for="cash">Cash</label>
 				</div>
 				<div class="col-75">
-					<input type="number" id="cash" name="cash"
+					<input type="number" step=0.01 id="cash" name="cash"
 						placeholder="inserisci Cash">
 				</div>
 		<div class="row">
@@ -95,7 +97,7 @@ content="width=device-width, initial-scale=1, shrink-to-fit=no">
 					<label for="expectation">Expectation</label>
 				</div>
 				<div class="col-75">
-					<input type="number" id="expectation" name="expectation"
+					<input type="number"step=0.01 id="expectation" name="expectation"
 						placeholder="inserisci Expectation">
 				</div>
 			</div>
@@ -104,7 +106,7 @@ content="width=device-width, initial-scale=1, shrink-to-fit=no">
 					<label for="time">Time</label>
 				</div>
 				<div class="col-75">
-					<input type="number" id="time" name="time"
+					<input type="number"step=0.01 id="time" name="time"
 						placeholder="inserisci Time">
 				</div>
 			</div>

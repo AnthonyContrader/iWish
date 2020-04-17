@@ -48,11 +48,16 @@ public class ProgressController {
 	   
 	   @PostMapping ("/update")
 	   public String update(HttpServletRequest request,@RequestParam("id")Long id, @RequestParam("cash") float cash, @RequestParam("expectation") double expectation, @RequestParam("time") double time){
+		   ProgressDTO progressDTO= service.read(id);// service.read mi restituisce tutto il progresso che ha quell'id
+		   ProdottoDTO prodottodto =progressDTO.getProdotto();// così ottendo il prodotto
 		   ProgressDTO dto = new ProgressDTO();
+		  
+		   
 		   dto.setId(id);
 		   dto.setCash(cash);
 		   dto.setExpectation(expectation);
 		   dto.setTime(time);
+		   dto.setProdotto(prodottodto);
 		   service.update(dto);
 		   setAll(request);
 		   return "/progress/progress";
