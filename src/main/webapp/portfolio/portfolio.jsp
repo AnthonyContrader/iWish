@@ -46,10 +46,10 @@
 					if(u.getProprietario().equals(userDTO)){
 			%>
 			<tr>
-				<td><a href="/user/read?id=<%=u.getId()%>"> <%=u.getTotalmoney()%>
+				<td><a href="/user/read?id=<%=u.getId()%>"> <%=u.getTotalmoney()%> &euro;
 				</a></td>
-				<td><%=u.getRevenue()%></td>
-				<td><%=u.getOutputs()%></td>
+				<td><%=u.getRevenue()%> &euro;</td>
+				<td><%=u.getOutputs()%> &euro;</td>
 				<td><a href="/portfolio/preupdate?id=<%=u.getId()%>">Edit</a></td>
 
 
