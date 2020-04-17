@@ -32,7 +32,7 @@ content="tidth=devide-width, initial-scale=1, shrink-to-fit=no">
    <form id="floatleft" action="/progress/update" method="post">
   <div class="row">
     <div class="col-25">
-      <label for="cash">Cash</label>
+      <label for="cash">Soldi&euro;</label>
     </div>
     <div class="col-75">
       <input type="number" id="cash" name="cash" value=<%=p.getCash()%>>
@@ -40,7 +40,7 @@ content="tidth=devide-width, initial-scale=1, shrink-to-fit=no">
     </div>
     <div class="row">
     <div class="col-25">
-      <label for="expectation">Expectation</label>
+      <label for="expectation">Percentuale</label>
     </div>
     <div class="col-75">
       <input type="number" id="expectation" name="expectation" value=<%=p.getExpectation()%>>
@@ -48,7 +48,7 @@ content="tidth=devide-width, initial-scale=1, shrink-to-fit=no">
     </div>
     <div class="row">
     <div class="col-25">
-      <label for="time">Time</label>
+      <label for="time">Tempo</label>
     </div>
     <div class="col-75">
       <input type="number" id="time" name="time" value=<%=p.getTime()%>>

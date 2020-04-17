@@ -20,14 +20,23 @@ public class ProgressService extends AbstractService <Progress,ProgressDTO>{
 
 
 
-//public void CalocloProgressi_soldi(ProdottoDTO prodottodto) {
-//	double tempo;
-//	prodottodto=new ProdottoDTO();
-//	ProgressDTO progressdto=new ProgressDTO();
-//	tempo= (prodottodto.getPrice()/progressdto.getClass());
-//	progressdto.setTime(tempo);
+public void CalcoloProgressi_soldi( ProgressDTO progressdto) {
+	double tempo;
 	
-//	
-//}	
+	
+	ProdottoDTO prodottodto= progressdto.getProdotto();
+	tempo=prodottodto.getPrice()/ progressdto.getCash();
+	progressdto.setTime(tempo);
+	progressdto.setExpectation(1*100/tempo);// ha mezzo senso da completare
+}	
+
+public void CalcoloProgressi_giorni(ProgressDTO progressdto) {
+	double soldi;
+	
+	ProdottoDTO prodottodto= progressdto.getProdotto();
+	soldi=prodottodto.getPrice()/progressdto.getTime() ;
+	progressdto.setCash((float)soldi);
+	progressdto.setExpectation((soldi*100)/prodottodto.getPrice());// idem con patate
+}	
 
 }

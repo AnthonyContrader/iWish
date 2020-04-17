@@ -2,11 +2,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
+<meta  charset="utf-8" >
 <meta name="viewport"
 content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="Progress Managment">
 <meta name="author" content="Vittorio Valent">
+
 <link href="../css/vittoriostyle.css" rel="stylesheet">
 
 <title>Timeline</title>
@@ -32,11 +33,11 @@ content="width=device-width, initial-scale=1, shrink-to-fit=no">
    
    <table>
    <tr>
-                <th>Prodotto</th>
-                <th>Prezzo Prodotto euro</th>
-                <th>Cash</th>
-				<th>Expectation</th>
-				<th>Time</th>
+                <th>Nome Prodotto</th>
+                <th>Prezzo Prodotto&euro;</th>
+                <th>Soldi&euro;</th>
+				<th>Percentuale</th>
+				<th>Giorni</th>
 				<th></th>
 				<th></th>
 			</tr>
@@ -51,9 +52,9 @@ content="width=device-width, initial-scale=1, shrink-to-fit=no">
    <tr>
    <td><a href="/progress/read?id=<%=p.getId() %>"><%=p.getProdotto().getName() %>
    </a></td>
-        <td><%=p.getProdotto().getPrice()%></td>
-        <td><%=p.getCash()%></td>
-   		<td><%=p.getExpectation()%></td>
+        <td><%=p.getProdotto().getPrice()%>Euro</td>
+        <td><%=p.getCash()%>&euro;</td>
+   		<td><%out.print(String.format("%.2f",p.getExpectation()));%>%</td>
 		<td><%=p.getTime()%></td>
 		
    
@@ -73,7 +74,7 @@ content="width=device-width, initial-scale=1, shrink-to-fit=no">
   </table>
   
   
-   <form id="floatright" action="/progress/insert" method="post">
+   <form id="floatright" action="/progress/insertTime" method="post">
 			
 			<div class="row">
 				<div class="col-25">
@@ -83,33 +84,25 @@ content="width=device-width, initial-scale=1, shrink-to-fit=no">
 					<input type="number" id="prodotto_id" name="prodotto_id"
 						placeholder="inserisci id del Prodotto">
 				</div>
-			</div>
+			</div>		
 			<div class="row">
 				<div class="col-25">
-					<label for="cash">Cash</label>
+					<label for="time">Per quanti giorni vuoi risparmiare?</label>
 				</div>
 				<div class="col-75">
-					<input type="number" step=0.01 id="cash" name="cash"
-						placeholder="inserisci Cash">
+					<input type="number" step=0.01 id="time" name="time"
+						placeholder="inserisci quanti giorni vuoi risparmiare">
 				</div>
-		<div class="row">
+		
+			<!-- <div class="row">
 				<div class="col-25">
-					<label for="expectation">Expectation</label>
-				</div>
-				<div class="col-75">
-					<input type="number"step=0.01 id="expectation" name="expectation"
-						placeholder="inserisci Expectation">
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-25">
-					<label for="time">Time</label>
+					<label for="time">In Quanto tempo vuoi completare l'acquisto?</label>
 				</div>
 				<div class="col-75">
 					<input type="number"step=0.01 id="time" name="time"
-						placeholder="inserisci Time">
+						placeholder="inserisci il tempo">
 				</div>
-			</div>
+			</div>-->
 				</div>
 			
 			<button type="submit">Insert</button>

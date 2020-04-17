@@ -64,21 +64,33 @@ public class ProgressController {
 		   
 	   }
 	   
-	   @PostMapping("/insert")
-	   public String insert (HttpServletRequest request, @RequestParam("cash") float cash,@RequestParam("expectation") double expectation, @RequestParam("time") double time
+	   @PostMapping("/insertTime")
+	   public String insertTime (HttpServletRequest request, @RequestParam("time") double time
+			   ,@RequestParam ("prodotto_id") Long prodotto_id) {// tra le virgolette va il nome del name dell'input della view 
+		   ProgressDTO dto = new ProgressDTO();
+		   ProdottoDTO prodottodto= new ProdottoDTO();
+		   prodottodto= prodottoservice.read(prodotto_id);
+		  
+		   dto.setTime(time);
+		   dto.setProdotto(prodottodto);
+		   service.CalcoloProgressi_giorni(dto);
+		   service.insert(dto);
+		   setAll(request);
+		   return "/progress/progress";
+	   }
+	   @PostMapping("/insertCash")
+	   public String insertCash (HttpServletRequest request, @RequestParam("cash") float cash,@RequestParam("expectation") double expectation, @RequestParam("time") double time
 			   ,@RequestParam ("prodotto_id") Long prodotto_id) {// tra le virgolette va il nome del name dell'input della view 
 		   ProgressDTO dto = new ProgressDTO();
 		   ProdottoDTO prodottodto= new ProdottoDTO();
 		   prodottodto= prodottoservice.read(prodotto_id);
 		   dto.setCash(cash);
-		   dto.setExpectation(expectation);
-		   dto.setTime(time);
 		   dto.setProdotto(prodottodto);
+		   service.CalcoloProgressi_soldi(dto);
 		   service.insert(dto);
 		   setAll(request);
 		   return "/progress/progress";
-	   }
-	
+		   }
 	   @GetMapping("/read")
 	   public String read(HttpServletRequest request, @RequestParam ("id") Long id) {
 		   request.getSession().setAttribute("dto",service.read(id));

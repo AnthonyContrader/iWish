@@ -32,14 +32,14 @@ skrink-to-fit=no">
 
 <table>
 <tr>
-<th>Cash</th>
-<th>Expectation</th>
-<th>Time</th>
+<th>Soldi&euro;</th>
+<th>Percentuale</th>
+<th>Tempo</th>
 </tr>
 <tr>
-<td><%=p.getCash()%></td>
-<td><%=p.getExpectation()%></td>
-<td><%=p.getTime()%></td>
+<td><%=p.getCash()%>&euro;</td>
+<td><%=p.getExpectation()%>%</td>
+<td><%=p.getTime()%>g</td>
 </tr>
 </table>
 
