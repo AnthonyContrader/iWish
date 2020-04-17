@@ -165,6 +165,5 @@ import="it.contrader.dto.CategoryDTO" import="it.contrader.dto.WishListDTO"%>
 	</div>
 	<br>
 	<%@ include file="../css/footer.jsp"%>		
-
 </body>
 </html>
