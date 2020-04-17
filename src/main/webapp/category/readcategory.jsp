@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" import="it.contrader.dto.CategoryDTO"%>
+    pageEncoding="ISO-8859-1" import="it.contrader.dto.CategoryDTO" import= "java.util.List"
+    import="it.contrader.dto.ProdottoDTO"%>
 
 <html>
 <head>
@@ -29,23 +30,29 @@
 	<div class="main">
 	
 	<%
-	
+     
 	  CategoryDTO c = (CategoryDTO) request.getSession().getAttribute("dto");
-	
+	List<ProdottoDTO> prodotto_list = (List<ProdottoDTO>) request.getSession().getAttribute("prodotto_list");
+
+	 
 	%>
 
 <table>
-			<tr>
+			
 				
 				<th><%=c.getName()%></th>
-				
-			</tr>
+			<tr>
+		<%  
+		for (ProdottoDTO p: prodotto_list ){
+			if(p.getCategory().equals(c)){
+			   out.println(String.format("<tr><td>%s</tr></td>", p.getName())); 
+			   }}  %>	
+ </tr>
 		</table>
 
 		<br> <br> <br> <br> <br> <br> <br>
 		<br> <br> <br> <br> <br> <br> <br>
-
-
+      
 	</div>
 
     	<%@ include file="../css/footer.jsp"%>
