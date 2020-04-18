@@ -86,10 +86,6 @@ public class UserController {
 		return "users";
 	}
 	
-	@GetMapping("/presignup")
-	public String presignup(HttpServletRequest request) {
-		return "signup";
-	}
 	
 	@PostMapping("/signup")
 	public String signup(HttpServletRequest request, @RequestParam(value="username", required=true) String username, @RequestParam(value="password", required=true) String password) {

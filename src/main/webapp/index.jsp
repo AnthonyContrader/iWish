@@ -48,7 +48,7 @@ position:relative;
 </fieldset>
 	</form>
 	
-	<a href="/user/presignup"><button class = "btn btn-primary btn-block">SIGN UP</button></a>
+	<a href="/signup.jsp"><button class = "btn btn-primary btn-block">SIGN UP</button></a>
 	</div>
 	
 </body>
