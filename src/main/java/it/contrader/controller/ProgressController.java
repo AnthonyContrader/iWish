@@ -27,7 +27,7 @@ public class ProgressController {
 	   @GetMapping("/getall")
 	   public String getAll(HttpServletRequest request) {
 		   setAll(request);
-		   return "/progress/progress";
+		   return "/progress/progresschoice";
 		   
 	   }
 	   
@@ -35,7 +35,7 @@ public class ProgressController {
 		   public String delete(HttpServletRequest request,@RequestParam("id")Long id) {
 		   service.delete(id);
 		   setAll(request);
-		   return "/progress/progress";
+		   return "/progress/progresschoice";
 	   }
 	   
 	   @GetMapping("/preupdate")
@@ -47,20 +47,22 @@ public class ProgressController {
 	   
 	   
 	   @PostMapping ("/update")
-	   public String update(HttpServletRequest request,@RequestParam("id")Long id, @RequestParam("cash") float cash, @RequestParam("expectation") double expectation, @RequestParam("time") double time){
+	   public String update(HttpServletRequest request,@RequestParam("id")Long id,  @RequestParam("time") double time){
 		   ProgressDTO progressDTO= service.read(id);// service.read mi restituisce tutto il progresso che ha quell'id
 		   ProdottoDTO prodottodto =progressDTO.getProdotto();// così ottendo il prodotto
 		   ProgressDTO dto = new ProgressDTO();
 		  
 		   
 		   dto.setId(id);
-		   dto.setCash(cash);
-		   dto.setExpectation(expectation);
+		  // dto.setCash(cash);
+		   
 		   dto.setTime(time);
 		   dto.setProdotto(prodottodto);
+		   service.CalcoloProgressi_giorni(dto);
 		   service.update(dto);
+		   
 		   setAll(request);
-		   return "/progress/progress";
+		   return "/progress/progresschoice";
 		   
 	   }
 	   
@@ -76,10 +78,10 @@ public class ProgressController {
 		   service.CalcoloProgressi_giorni(dto);
 		   service.insert(dto);
 		   setAll(request);
-		   return "/progress/progress";
+		   return "/progress/progresschoice";
 	   }
 	   @PostMapping("/insertCash")
-	   public String insertCash (HttpServletRequest request, @RequestParam("cash") float cash,@RequestParam("expectation") double expectation, @RequestParam("time") double time
+	   public String insertCash (HttpServletRequest request, @RequestParam("cash") float cash
 			   ,@RequestParam ("prodotto_id") Long prodotto_id) {// tra le virgolette va il nome del name dell'input della view 
 		   ProgressDTO dto = new ProgressDTO();
 		   ProdottoDTO prodottodto= new ProdottoDTO();
@@ -89,7 +91,7 @@ public class ProgressController {
 		   service.CalcoloProgressi_soldi(dto);
 		   service.insert(dto);
 		   setAll(request);
-		   return "/progress/progress";
+		   return "/progress/progresschoice";
 		   }
 	   @GetMapping("/read")
 	   public String read(HttpServletRequest request, @RequestParam ("id") Long id) {
@@ -100,4 +102,13 @@ public class ProgressController {
 	   private void setAll(HttpServletRequest request) {
 		  request.getSession().setAttribute("list",service.getAll());
 	   }
+	   @GetMapping("/progresschoice")
+	   private void progressChoice(HttpServletRequest request) {
+		   setAll(request);
+	
+		   
+	   }
+     
+
+
 }

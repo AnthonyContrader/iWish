@@ -30,22 +30,15 @@ content="tidth=devide-width, initial-scale=1, shrink-to-fit=no">
    <%ProgressDTO p =(ProgressDTO) request.getSession().getAttribute("dto"); %>
    
    <form id="floatleft" action="/progress/update" method="post">
-  <div class="row">
+ <!--  <div class="row">
     <div class="col-25">
       <label for="cash">Soldi&euro;</label>
     </div>
     <div class="col-75">
-      <input type="number" id="cash" name="cash" value=<%=p.getCash()%>>
+      <input type="number" id="cash" name="cash" value=
     </div>
     </div>
-    <div class="row">
-    <div class="col-25">
-      <label for="expectation">Percentuale</label>
-    </div>
-    <div class="col-75">
-      <input type="number" id="expectation" name="expectation" value=<%=p.getExpectation()%>>
-    </div>
-    </div>
+    -->
     <div class="row">
     <div class="col-25">
       <label for="time">Tempo</label>

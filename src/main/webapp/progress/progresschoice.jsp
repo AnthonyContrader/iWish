@@ -1,20 +1,23 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"%>
 <%@ page import="it.contrader.dto.ProgressDTO" import = "java.util.*"%>
+
+
 <!DOCTYPE html>
-<html>
+
+<html lang = "en">
 <head>
-<meta  charset="utf-8" >
+<meta charset="utf-8">
 <meta name="viewport"
 content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="Progress Managment">
+<meta name="description" content="Progress Choice">
 <meta name="author" content="Vittorio Valent">
 
 <link href="../css/vittoriostyle.css" rel="stylesheet">
-
-<title>Timeline</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<title>Timeline Choice</title>
 </head>
 <body>
-   
-   <%@ include file="../css/header.jsp" %>
+ <%@ include file="../css/header.jsp" %>
    <div class="navbar">
      <a href="/homeadmin.jsp">Home</a> 
      <a href="/user/getall">Users</a>
@@ -25,7 +28,9 @@ content="width=device-width, initial-scale=1, shrink-to-fit=no">
      <a  href="/category/getall">Categorie</a>
      <a href="/user/logout" id="logout">Logout</a>
      </div>
-   <div class="main">
+     <div class="row">
+     <div class="col-sm-8">
+
    <%
             List<ProgressDTO> list = (List<ProgressDTO>) request.getSession().getAttribute("list");
    %>
@@ -72,47 +77,14 @@ content="width=device-width, initial-scale=1, shrink-to-fit=no">
    
    %>
   </table>
-  
-  
-   <form id="floatright" action="/progress/insertTime" method="post">
-			
-			<div class="row">
-				<div class="col-25">
-					<label for="prodotto_id">id Prodotto</label>
-				</div>
-				<div class="col-75">
-					<input type="number" id="prodotto_id" name="prodotto_id"
-						placeholder="inserisci id del Prodotto">
-				</div>
-			</div>		
-			<div class="row">
-				<div class="col-25">
-					<label for="time">Per quanti giorni vuoi risparmiare?</label>
-				</div>
-				<div class="col-75">
-					<input type="number" step=0.01 id="time" name="time"
-						placeholder="inserisci quanti giorni vuoi risparmiare">
-				</div>
-		
-			<!-- <div class="row">
-				<div class="col-25">
-					<label for="time">In Quanto tempo vuoi completare l'acquisto?</label>
-				</div>
-				<div class="col-75">
-					<input type="number"step=0.01 id="time" name="time"
-						placeholder="inserisci il tempo">
-				</div>
-			</div>-->
-				</div>
-			
-			<button type="submit">Insert</button>
-		</form>
-   
-   
-   
-   </div>
-  
-    <br>
-	<%@ include file="../css/footer.jsp"%>
+  </div>
+  <div class="col-sm-4">
+  <br>
+  <h1 style ="background-color : rgb(0, 128, 255); color:white">Come vuoi fare il tuo calcolo?</h1>
+  <a href="/progress/progressTimejsp.jsp"><button class = "btn btn-block" >Tempo </button></a>
+  <a href="/progress/progressCash.jsp"><button class = "btn  btn-block">Soldi</button></a>
+ </div>
+  </div>
+
 </body>
 </html>
