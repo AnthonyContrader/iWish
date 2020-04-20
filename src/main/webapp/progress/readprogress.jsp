@@ -17,7 +17,7 @@ skrink-to-fit=no">
      <a href="/homeadmin.jsp">Home</a> 
      <a href="/user/getall">Users</a>
      <a href="/wishlist/getall">WishLists</a>
-     <a href="/portfolio/getall">Portfolio</a>
+     <a href="/portfolio/getall">Portafoglio</a>
      <a href="/prodotto/getall">Prodotti</a>
      <a class="active" href="/progress/getall">Progressi</a>
      <a  href="/category/getall">Categorie</a>
