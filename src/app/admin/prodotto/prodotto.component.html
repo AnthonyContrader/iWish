@@ -1,0 +1,70 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-md-1">
+
+    </div>
+  <div class="col-md-10">
+  <table>
+    <tr>
+      <th>
+        Nome
+      </th>
+      <th>
+        Descrizione
+      </th>
+      <th>
+        Prezzo
+      </th>
+      <th>
+        Priorità
+      </th>
+    </tr>
+    <tr>
+      <td>
+        <input placeholder="Nome" [(ngModel)]="prodottotoinsert.nome">
+      </td>
+      <td>
+        <input placeholder="Descrizione" [(ngModel)]="prodottotoinsert.descrizione">
+      </td>
+      <td>
+        <input placeholder="Prezzo" [(ngModel)]="prodottotoinsert.prezzo">
+      </td>
+      <td>
+        <input placeholder="Priorità" [(ngModel)]="prodottotoinsert.priorita">
+      </td>
+      <td>
+        <button (click)="insert(prodottotoinsert)"> Insert </button>
+      </td>
+      <td>
+        <button (click)="clear()"> clear </button>
+      </td>
+    </tr>
+    <tr *ngFor="let prodotto of prodotti">
+      <td>
+        <input [(ngModel)]="prodotto.nome">
+      </td>
+      <td>
+        <input [(ngModel)]="prodotto.descrizione">
+      </td>
+      <td>
+        <input [(ngModel)]="prodotto.prezzo">
+      </td>
+      <td>
+        <input [(ngModel)]="prodotto.priorita">
+      </td>
+      <td>
+        <button (click)=update(prodotto)>Save</button>
+      </td>
+      <td>
+        <button (click)="delete(prodotto)">Delete</button>
+      </td>
+    </tr>
+  </table>
+  </div>
+    <div class="col-md-1">
+
+    </div>
+  </div>
+</div>
+
+
