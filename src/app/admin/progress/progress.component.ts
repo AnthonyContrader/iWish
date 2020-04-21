@@ -26,6 +26,9 @@ export class ProgressiComponent implements OnInit {
   this.service.delete(progress.id).subscribe(()=>this.getProgress());
 
   }
+  update(progress: ProgressDTO) {
+    this.service.update(progress).subscribe(() => this.getProgress());
+  }
 
   insert (progress: ProgressDTO){
     this.service.insert(progress).subscribe(() => this.getProgress());
