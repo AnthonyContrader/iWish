@@ -1,0 +1,81 @@
+ <div class="container">
+  <div class="row mt-5">
+    <div class="col-md-1">
+
+      </div>
+      <div class="col-md-10">
+         
+      
+            <table>
+          <tr>
+            <th>
+            Name
+            </th>
+            <th>
+              Description
+            </th>
+            <th>
+              Rating
+            </th>
+            <th>
+              Edit
+            </th>
+            <th>
+              Category
+            </th>
+          </tr>
+          <tr>
+            <td>
+              <input placeholder="inserisci nome" [(ngModel)]="categorytoinsert.name" required>
+              </td>
+              <td>
+                <input placeholder="inserisci descrizione" [(ngModel)]="categorytoinsert.description">
+              </td>
+              <td>
+                <select placeholder="inserisci valutazione" [(ngModel)]="categorytoinsert.rating">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                </select>
+              </td>
+            <td>
+              <button (click)="insert(categorytoinsert)">Inserisci</button>
+            </td>
+            <td>
+              <button (click)="clear()">Cancella</button>
+            </td>
+          </tr>
+          <tr *ngFor="let category of categories">
+            <td>
+              <input [(ngModel)]="category.name" required>
+            </td>
+            <td>
+              <input [(ngModel)]="category.description">
+            </td>
+            <td>
+              <select [(ngModel)]="category.rating">
+                <option [selected]="category.rating===0" value="0">0</option>
+                <option [selected]="category.rating===1" value="1">1</option>
+                <option [selected]="category.rating===2" value="2">2</option>
+                <option [selected]="category.rating===3" value="3">3</option>
+                <option [selected]="category.rating===4" value="4">4</option>
+                <option [selected]="category.rating===5" value="5">5</option>
+                </select>
+                </td>
+                <td>
+                  <button (click)=update(category)>Modifica</button>
+                </td>
+                <td>
+                  <button (click)="delete(category)">Cancella</button>
+                </td>
+          </tr>
+        </table>
+      </div>
+      <div class="col-md-1">
+        
+      </div>
+        </div>
+      </div> 
