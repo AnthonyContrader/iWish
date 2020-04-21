@@ -1,0 +1,73 @@
+<p>
+  portfolio works!
+</p>
+
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-md-1">
+
+    </div>
+    <div class="col-md-10">
+      <table>
+        <tr>
+          <th>
+            Totalmoney
+          </th>
+          <th>
+            Revenue
+          </th>
+          <th>
+            Outputs
+          </th>
+          <th>
+            Edit
+          </th>
+          <th>
+            User
+          </th>
+        </tr>
+        <tr>
+          <td>
+            <input placeholder="saldo" [(ngModel)]="portfoliotoinsert.totalmoney">
+          </td>
+          <td>
+            <input placeholder="entrate" [(ngModel)]="portfoliotoinsert.revenue">
+          </td>
+          <td>
+            <input placeholder="uscite" [(ngModel)]="portfoliotoinsert.outputs">
+              
+            
+          </td>
+          <td>
+            <button (click)="insert(portfoliotoinsert)">Insert</button>
+          </td>
+          <td>
+            <button (click)="clear()">Clear</button>
+          </td>
+        </tr>
+        <tr *ngFor="let user of users">
+          <td>
+            <input [(ngModel)]="portfolio.totalmoney">
+          </td>
+          <td>
+            <input [(ngModel)]="portfolio.revenue">
+          </td>
+          <td>
+            <input [(ngModel)]="portfolio.outputs">
+              
+            
+          </td>
+          <td>
+            <button (click)=update(portfolio)>Save</button>
+          </td>
+          <td>
+            <button (click)="delete(portfolio)">Delete</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-md-1">
+
+    </div>
+  </div>
+</div>
