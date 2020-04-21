@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-md-1">
+
+    </div>
+    <div class="col-md-10">
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Edit</th>
+          <th>WishList</th>
+        </tr>
+        <tr>
+          <td>
+            <input placeholder="Name" [(ngModel)]="wishlisttoinsert.name">
+          </td>
+          <td>
+            <input placeholder="Description" [(ngModel)] = "wishlisttoinsert.description">
+          </td>
+          <td>
+            <button (click)="insert(wishlisttoinsert)">Insert</button>
+          </td>
+          <td>
+            <button (click)="clear()">Clear</button>
+          </td>
+        </tr>
+        <tr *ngFor="let w of wishlists">
+          <td>
+            <input [(ngModel)]="w.name">
+          </td>
+          <td>
+            <input [(ngModel)]="w.description">
+          </td>
+          <td>
+            <button (click)=update(w)>Save</button>
+          </td>
+          <td>
+            <button (click)="delete(w)">Delete</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-md-1">
+      
+    </div>
+  </div>
+  </div>
