@@ -4,13 +4,13 @@ export class ProdottoDTO {
 
     id: number;
 
-    nome: string;
+    name: string;
 
-    descrizione: string;
+    description: string;
     
-    prezzo: number;
+    price: number;
 
-    priorita: number;
+    priority: number;
     
     proprietario: UserDTO;
 }

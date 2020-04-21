@@ -1,3 +1,4 @@
+CIAO {{proprietario.username}}
 <div class="container">
   <div class="row mt-5">
     <div class="col-md-1">
@@ -21,16 +22,16 @@
     </tr>
     <tr>
       <td>
-        <input placeholder="Nome" [(ngModel)]="prodottotoinsert.nome">
+        <input placeholder="Nome" [(ngModel)]="prodottotoinsert.name">
       </td>
       <td>
-        <input placeholder="Descrizione" [(ngModel)]="prodottotoinsert.descrizione">
+        <input placeholder="Descrizione" [(ngModel)]="prodottotoinsert.description">
       </td>
       <td>
-        <input placeholder="Prezzo" [(ngModel)]="prodottotoinsert.prezzo">
+        <input placeholder="Prezzo" [(ngModel)]="prodottotoinsert.price">
       </td>
       <td>
-        <input placeholder="Priorità" [(ngModel)]="prodottotoinsert.priorita">
+        <input placeholder="Priorità" [(ngModel)]="prodottotoinsert.priority">
       </td>
       <td>
         <button (click)="insert(prodottotoinsert)"> Insert </button>
@@ -41,16 +42,16 @@
     </tr>
     <tr *ngFor="let prodotto of prodotti">
       <td>
-        <input [(ngModel)]="prodotto.nome">
+        <input [(ngModel)]="prodotto.name">
       </td>
       <td>
-        <input [(ngModel)]="prodotto.descrizione">
+        <input [(ngModel)]="prodotto.description">
       </td>
       <td>
-        <input [(ngModel)]="prodotto.prezzo">
+        <input [(ngModel)]="prodotto.price">
       </td>
       <td>
-        <input [(ngModel)]="prodotto.priorita">
+        <input [(ngModel)]="prodotto.priority">
       </td>
       <td>
         <button (click)=update(prodotto)>Save</button>
