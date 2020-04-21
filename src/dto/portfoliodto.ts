@@ -1,3 +1,5 @@
+import { UserDTO } from './userdto';
+
 export class PortfolioDTO {
 
     id: number;
@@ -7,5 +9,7 @@ export class PortfolioDTO {
     revenue: number;
  
     outputs: number;
+
+    proprietario: UserDTO;
  
  }
