@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ProdottoService } from 'src/service/prodotto.service';
 import { ProdottoDTO } from 'src/dto/prodottodto';
 import { UserDTO } from 'src/dto/userdto';
+import { WishListDTO } from 'src/dto/wishlistdto';
+import { CategoryDTO } from 'src/dto/categorydto';
 
 @Component({
   selector: 'app-prodotto',
@@ -10,9 +12,12 @@ import { UserDTO } from 'src/dto/userdto';
 })
 export class ProdottoComponent implements OnInit {
 
-  prodotto: ProdottoDTO[];
+  prodotti: ProdottoDTO[];
   prodottotoinsert: ProdottoDTO = new ProdottoDTO();
   proprietario: UserDTO;
+  wishlist: WishListDTO;
+  category: CategoryDTO;
+  
   constructor(private service: ProdottoService) { }
 
   ngOnInit() {
@@ -21,7 +26,7 @@ export class ProdottoComponent implements OnInit {
   }
 
   getProdotto() {
-    this.service.getAll().subscribe(prodotto => this.prodotto = prodotto);
+    this.service.getAll().subscribe(prodotti => this.prodotti = prodotti);
   }
 
   delete(prodotto: ProdottoDTO) {
