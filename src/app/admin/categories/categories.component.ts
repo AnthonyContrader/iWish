@@ -25,6 +25,7 @@ export class CategoriesComponent implements OnInit {
     
   getCategory(){ 
        this.service.getAll().subscribe(categories => {
+         this.categories = [];
          for (let c of categories){
            if(c.proprietario_c.username === this.proprietario_c.username) {
           this.categories.push(c); }
@@ -37,7 +38,7 @@ export class CategoriesComponent implements OnInit {
       }
 
       update(category: CategoryDTO) {
-        this.service.update(category).subscribe(() => this.getCategory());
+       this.service.update(category).subscribe(() => this.getCategory());
       }
 
       insert(category: CategoryDTO) {   
