@@ -5,6 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -28,11 +31,13 @@ public class Category {
 	
 	int rating;
 	
-	@ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(
         name = "proprietario_c",
         referencedColumnName = "username"
-    )
+      )
+	@OnDelete(action = OnDeleteAction.CASCADE)
     private User proprietario_c;
+	
 	
 			}
