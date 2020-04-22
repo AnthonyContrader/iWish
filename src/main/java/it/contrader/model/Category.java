@@ -34,7 +34,8 @@ public class Category {
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(
         name = "proprietario_c",
-        referencedColumnName = "username"
+        referencedColumnName = "username",
+        nullable = false
       )
 	@OnDelete(action = OnDeleteAction.CASCADE)
     private User proprietario_c;

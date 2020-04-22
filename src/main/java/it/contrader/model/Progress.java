@@ -37,11 +37,10 @@ private double expectation;
 private double time;
  @OneToOne()
  @JoinColumn(
-		 name="prodotto_id",referencedColumnName="id"
+		 name="prodotto_id",referencedColumnName="id", nullable = false
 		 
 		 )
  @OnDelete(action = OnDeleteAction.CASCADE)
- 
  
  private Prodotto prodotto;
 

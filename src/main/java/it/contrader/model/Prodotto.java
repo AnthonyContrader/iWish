@@ -1,6 +1,6 @@
 package it.contrader.model;
 
-import javax.persistence.Column;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -47,7 +47,8 @@ public class Prodotto {
 	@ManyToOne()
 	@JoinColumn(
 			name="proprietario_fk",
-			referencedColumnName = "username"
+			referencedColumnName = "username",
+			nullable = false
 			)
 	private User proprietario;
 	

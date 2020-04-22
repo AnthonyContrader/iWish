@@ -39,7 +39,8 @@ public class Portfolio {
 	@OneToOne()
 	@JoinColumn(
 			name="proprietario",
-			referencedColumnName = "username"
+			referencedColumnName = "username",
+			nullable= false
 			)
 			
 			private User proprietario;

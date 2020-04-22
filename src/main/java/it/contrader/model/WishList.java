@@ -30,7 +30,8 @@ public class WishList {
     @ManyToOne()
     @JoinColumn(
     		name="proprietario",
-    		referencedColumnName = "username"
+    		referencedColumnName = "username",
+    		nullable = false
     		)
     private User proprietario;
     
