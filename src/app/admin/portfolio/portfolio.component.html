@@ -45,23 +45,23 @@
             <button (click)="clear()">Clear</button>
           </td>
         </tr>
-        <tr *ngFor="let user of users">
+        <tr *ngFor="let p of portfolio">
           <td>
-            <input [(ngModel)]="portfolio.totalmoney">
+            <input [(ngModel)]="p.totalmoney">
           </td>
           <td>
-            <input [(ngModel)]="portfolio.revenue">
+            <input [(ngModel)]="p.revenue">
           </td>
           <td>
-            <input [(ngModel)]="portfolio.outputs">
+            <input [(ngModel)]="p.outputs">
               
             
           </td>
           <td>
-            <button (click)=update(portfolio)>Save</button>
+            <button (click)=update(p)>Save</button>
           </td>
           <td>
-            <button (click)="delete(portfolio)">Delete</button>
+            <button (click)="delete(p)">Delete</button>
           </td>
         </tr>
       </table>

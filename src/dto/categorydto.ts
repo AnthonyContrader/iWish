@@ -7,10 +7,11 @@ id: number;
 
 name: string;
 
-description;
+description: string;
 
 rating: number;
 
 proprietario_c: UserDTO;
+  
 
 }
