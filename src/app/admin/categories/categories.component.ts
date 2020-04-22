@@ -3,25 +3,27 @@ import { CategoryService } from 'src/service/category.service';
 import { CategoryDTO } from 'src/dto/categorydto';
 import { UserDTO } from 'src/dto/userdto';
 
-
 @Component({
   selector: 'app-categories',
   templateUrl: './categories.component.html',
   styleUrls: ['./categories.component.css']
 })
 export class CategoriesComponent implements OnInit {
-
   categories: CategoryDTO[];
+  proprietario_c: UserDTO;
   categorytoinsert: CategoryDTO = new CategoryDTO();
-  proprietario_c: UserDTO[];
+  
 
   constructor(private service: CategoryService) { }
    
    
   ngOnInit() {
-    this.getCategories();
     this.proprietario_c = JSON.parse(localStorage.getItem('currentUser'));
-      }
+    this.getCategories();
+  }
+
+  
+
   getCategories(){
     this.service.getAll().subscribe(categories => this.categories = categories);
       }
@@ -35,6 +37,7 @@ export class CategoriesComponent implements OnInit {
       }
 
       insert(category: CategoryDTO) {
+        category.proprietario_c = this.proprietario_c;        
         this.service.insert(category).subscribe(() => this.getCategories());
       }
 
@@ -42,5 +45,4 @@ export class CategoriesComponent implements OnInit {
         this.categorytoinsert = new CategoryDTO();
       }
     }
-
-
+  
