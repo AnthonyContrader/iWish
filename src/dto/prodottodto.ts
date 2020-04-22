@@ -1,4 +1,7 @@
 import { UserDTO } from './userdto';
+import { WishListDTO } from './wishlistdto';
+import { CategoryDTO } from './categorydto';
+
 
 export class ProdottoDTO {
 
@@ -11,6 +14,10 @@ export class ProdottoDTO {
     price: number;
 
     priority: number;
+    
+    wishlist: WishListDTO;
+    
+    category: CategoryDTO;
     
     proprietario: UserDTO;
 }
