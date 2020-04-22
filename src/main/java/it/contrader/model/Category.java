@@ -28,7 +28,7 @@ public class Category {
 	
 	int rating;
 	
-	@ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.DETACH)
+	@ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
     @JoinColumn(
         name = "proprietario_c",
         referencedColumnName = "username"
