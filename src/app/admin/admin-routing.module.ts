@@ -5,6 +5,10 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
 import { UsersComponent } from './users/users.component';
 import { WorkInProgressComponent } from './work-in-progress/work-in-progress.component';
 import { ProdottoComponent } from './prodotto/prodotto.component';
+import {WishlistsComponent} from './wishlists/wishlists.component';
+import {CategoriesComponent} from './categories/categories.component';
+import {PortfolioComponent} from './portfolio/portfolio.component';
+import {ProgressComponent} from './progress/progress.component';
 /**
  * Modulo di routing dell'admin. Qui ci sono i percorsi che un admin può seguire:
  * appena fa il login viene caricato nel <router-outlet> di app-component il layout e nel 
@@ -22,7 +26,11 @@ const routes: Routes = [
     { path: '', component: AdminDashboardComponent},
     { path: 'users', component: UsersComponent},
     { path: 'work-in-progress', component: WorkInProgressComponent},
-    { path: 'prodotto', component: ProdottoComponent}
+    { path: 'prodotto', component: ProdottoComponent},
+    {path: 'wishlists', component: WishlistsComponent},
+    {path: 'categories', component: CategoriesComponent},
+    {path: 'portfolio', component: PortfolioComponent},
+    {path: 'progress', component: ProgressComponent}
   ]}
 ];
 
