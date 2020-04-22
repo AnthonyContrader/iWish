@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { PortfolioService } from 'src/service/portfolio.service';
 import { PortfolioDTO } from 'src/dto/portfoliodto';
+import { UserDTO } from 'src/dto/userdto';
+
+
 
 @Component({
   selector: 'app-portfolio',
@@ -10,11 +13,13 @@ import { PortfolioDTO } from 'src/dto/portfoliodto';
 export class PortfolioComponent implements OnInit {
   portfolio: PortfolioDTO[];
   portfoliotoinsert: PortfolioDTO = new PortfolioDTO();
+  proprietario: UserDTO;
   constructor(private service: PortfolioService) { }
 
 
   ngOnInit() {
     this.getPortfolio();
+    this.proprietario = JSON.parse(localStorage.getItem('currentUser'));
   }
 
   getPortfolio() {
@@ -30,6 +35,7 @@ export class PortfolioComponent implements OnInit {
   }
 
   insert(portfolio: PortfolioDTO) {
+  portfolio.proprietario = this.proprietario;
     this.service.insert(portfolio).subscribe(() => this.getPortfolio());
   }
 

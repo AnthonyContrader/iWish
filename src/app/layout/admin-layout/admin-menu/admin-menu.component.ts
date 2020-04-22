@@ -11,6 +11,11 @@ export class AdminMenuComponent implements OnInit {
   isUserCollapsed = false;
   isClientCollapsed = false;
   isAccountCollapsed = false;
+  isWishListCollapsed = false;
+  isCategoriesCollapsed = false;
+  isPortfolioCollapsed = false;
+  isProdottoCollapsed = false;
+  isProgressCollapsed = false;
 
   constructor(private router: Router) {
   }
@@ -34,4 +39,50 @@ export class AdminMenuComponent implements OnInit {
       this.isAccountCollapsed = true;
     } else { this.isAccountCollapsed = false; }
   }
+
+  wishlistsCollapse(){
+    if(this.isWishListCollapsed===false){
+      this.isWishListCollapsed = true;
+    }
+    else {
+      this.isWishListCollapsed = false;
+    }
+  }
+
+  categoriesCollapse(){
+    if(this.isCategoriesCollapsed===false){
+      this.isCategoriesCollapsed = true;
+    }
+    else{
+      this.isCategoriesCollapsed = false;
+    }
+  }
+
+  portfolioCollapse(){
+    if(this.isPortfolioCollapsed===false){
+      this.isPortfolioCollapsed = true;
+    }
+    else{
+      this.isPortfolioCollapsed = false;
+    }
+  }
+
+  prodottoCollapse(){
+    if(this.isProdottoCollapsed ===false){
+      this.isProdottoCollapsed = true;
+    }
+    else{
+      this.isProdottoCollapsed = false;
+    }
+  }
+
+  progressCollapse(){
+    if(this.isProgressCollapsed===false){
+      this.isProgressCollapsed = true;
+    }
+    else{
+      this.isProgressCollapsed = false;
+    }
+  }
+
 }

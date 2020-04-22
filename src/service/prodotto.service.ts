@@ -11,7 +11,7 @@ export class ProdottoService extends AbstractService<ProdottoDTO> {
 
   constructor(http: HttpClient) { 
     super(http);
-    this.type = 'user';
+    this.type = 'prodotto';
   }
 
   

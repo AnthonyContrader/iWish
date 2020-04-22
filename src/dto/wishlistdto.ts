@@ -1,16 +1,16 @@
 import { UserDTO } from './userdto';
 
-export class ProdottoDTO {
-
+export class WishListDTO{
     id: number;
 
     name: string;
 
     description: string;
-    
-    price: number;
 
-    priority: number;
-    
     proprietario: UserDTO;
+
+
+   
+    
+
 }

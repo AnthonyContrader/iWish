@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProdottoService } from 'src/service/prodotto.service';
 import { ProdottoDTO } from 'src/dto/prodottodto';
-
+import { UserDTO } from 'src/dto/userdto';
 
 @Component({
   selector: 'app-prodotto',
@@ -12,11 +12,12 @@ export class ProdottoComponent implements OnInit {
 
   prodotto: ProdottoDTO[];
   prodottotoinsert: ProdottoDTO = new ProdottoDTO();
-
+  proprietario: UserDTO;
   constructor(private service: ProdottoService) { }
 
   ngOnInit() {
     this.getProdotto();
+    this.proprietario = JSON.parse(localStorage.getItem('currentUser'));
   }
 
   getProdotto() {
@@ -32,6 +33,7 @@ export class ProdottoComponent implements OnInit {
   }
 
   insert(prodotto: ProdottoDTO) {
+    prodotto.proprietario=this.proprietario;
     this.service.insert(prodotto).subscribe(() => this.getProdotto());
   }
 

@@ -3,11 +3,11 @@ import { ProgressService } from 'src/service/progress.service';
 import { ProgressDTO } from 'src/dto/progressdto';
 
 @Component({
-  selector: 'app-progressi',
-  templateUrl: './progressi.component.html',
-  styleUrls: ['./progressi.component.css']
+  selector: 'app-progress',
+  templateUrl: './progress.component.html',
+  styleUrls: ['./progress.component.css']
 })
-export class ProgressiComponent implements OnInit {
+export class ProgressComponent implements OnInit {
 
    progressi: ProgressDTO[];
    progressinsert: ProgressDTO = new ProgressDTO();
@@ -25,6 +25,9 @@ export class ProgressiComponent implements OnInit {
   delete (progress: ProgressDTO){
   this.service.delete(progress.id).subscribe(()=>this.getProgress());
 
+  }
+  update(progress: ProgressDTO) {
+    this.service.update(progress).subscribe(() => this.getProgress());
   }
 
   insert (progress: ProgressDTO){
