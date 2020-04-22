@@ -4,6 +4,8 @@ import { ProdottoDTO } from 'src/dto/prodottodto';
 import { UserDTO } from 'src/dto/userdto';
 import { WishListDTO } from 'src/dto/wishlistdto';
 import { CategoryDTO } from 'src/dto/categorydto';
+import { WishListService } from 'src/service/wishlist.service';
+import { CategoryService } from 'src/service/category.service';
 
 @Component({
   selector: 'app-prodotto',
@@ -14,19 +16,48 @@ export class ProdottoComponent implements OnInit {
 
   prodotti: ProdottoDTO[];
   prodottotoinsert: ProdottoDTO = new ProdottoDTO();
-  proprietario: UserDTO;
   wishlist: WishListDTO;
   category: CategoryDTO;
-  
-  constructor(private service: ProdottoService) { }
+  me: UserDTO;
+  wishlists: WishListDTO[]=[];
+  categories: CategoryDTO[]=[];
+
+  constructor(private service: ProdottoService, private wishlistservice: WishListService, private categoryservice: CategoryService) { }
 
   ngOnInit() {
     this.getProdotto();
-    this.proprietario = JSON.parse(localStorage.getItem('currentUser'));
+    this.me = JSON.parse(localStorage.getItem('currentUser'));
+    this.getwishlists();
+    this.getcategories();
   }
 
   getProdotto() {
     this.service.getAll().subscribe(prodotti => this.prodotti = prodotti);
+  }
+
+  getwishlists() {
+    this.wishlistservice.getAll().subscribe(wish_lists => 
+      {
+        for (let w of wish_lists){
+          if (w.proprietario.username===this.me.username)
+          {this.wishlists.push(w);}
+        }
+      }
+    );
+    
+  }
+
+  getcategories() {
+    this.categoryservice.getAll().subscribe(categories => 
+      {
+        for (let c of categories){
+          console.log(this.me.username);
+          if (c.proprietario_c.username===this.me.username)
+          {this.categories.push(c);}
+        }
+      }
+    );
+    
   }
 
   delete(prodotto: ProdottoDTO) {
@@ -37,9 +68,14 @@ export class ProdottoComponent implements OnInit {
     this.service.update(prodotto).subscribe(() => this.getProdotto());
   }
 
-  insert(prodotto: ProdottoDTO) {
+  insert(prodotto: ProdottoDTO, wishlist_id: number, category_id: number) {
     prodotto.proprietario=this.proprietario;
+    this.wishlistservice.read(wishlist_id).subscribe(wishlist=>this.wishlist=wishlist);
+    prodotto.wishlist=this.wishlist;
+    this.categoryservice.read(category_id).subscribe(category=>this.category=category);
+    prodotto.category=this.category;
     this.service.insert(prodotto).subscribe(() => this.getProdotto());
+    
   }
 
   clear() {

@@ -39,10 +39,14 @@
         <input placeholder="Priorità" [(ngModel)]="prodottotoinsert.priority">
       </td>
       <td>
-        <input placeholder="WishList" [(ngModel)]="prodottotoinsert.WishList">
+      <select [(ngModel)]="wishlist_id">
+        <option *ngFor="let w of wishlists" [value]="w.id">{{ w.name }}</option>
+       </select>
       </td>
       <td>
-        <input placeholder="Categoria" [(ngModel)]="prodottotoinsert.Categoria">
+       <select [(ngModel)]="category_id">
+        <option *ngFor="let c of categories" [value]="c.id">{{ c.name }}</option>
+       </select>
       </td>
       <td>
         <button (click)="insert(prodottotoinsert)"> Insert </button>
@@ -65,10 +69,14 @@
         <input [(ngModel)]="prodotto.priority">
       </td>
       <td>
-        <input [(ngModel)]="prodotto.WishList">
+      <select [(ngModel)]="wishlist_id">
+        <option *ngFor="let w of wishlists" [value]="w.id">{{ w.name }}</option>
+       </select>
       </td>
       <td>
-        <input [(ngModel)]="prodotto.Categoria">
+       <select [(ngModel)]="category_id">
+        <option *ngFor="let c of categories" [value]="c.id">{{ c.name }}</option>
+       </select>
       </td>
       <td>
         <button (click)=update(prodotto)>Save</button>
