@@ -14,7 +14,7 @@ import it.contrader.service.ProgressService;
 
 @RestController
 @RequestMapping("/progress")
-@CrossOrigin(origins="://localhost:4200")
+@CrossOrigin(origins="http://localhost:4200")
 
 public class ProgressController extends AbstractController<ProgressDTO>{
 
