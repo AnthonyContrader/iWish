@@ -1,4 +1,3 @@
-CIAO {{proprietario.username}}
 <div class="container">
   <div class="row mt-5">
     <div class="col-md-1">
@@ -19,6 +18,12 @@ CIAO {{proprietario.username}}
       <th>
         Priorità
       </th>
+      <th>
+        WishList
+      </th>
+      <th>
+        Categoria
+      </th>
     </tr>
     <tr>
       <td>
@@ -32,6 +37,12 @@ CIAO {{proprietario.username}}
       </td>
       <td>
         <input placeholder="Priorità" [(ngModel)]="prodottotoinsert.priority">
+      </td>
+      <td>
+        <input placeholder="WishList" [(ngModel)]="prodottotoinsert.WishList">
+      </td>
+      <td>
+        <input placeholder="Categoria" [(ngModel)]="prodottotoinsert.Categoria">
       </td>
       <td>
         <button (click)="insert(prodottotoinsert)"> Insert </button>
@@ -52,6 +63,12 @@ CIAO {{proprietario.username}}
       </td>
       <td>
         <input [(ngModel)]="prodotto.priority">
+      </td>
+      <td>
+        <input [(ngModel)]="prodotto.WishList">
+      </td>
+      <td>
+        <input [(ngModel)]="prodotto.Categoria">
       </td>
       <td>
         <button (click)=update(prodotto)>Save</button>
