@@ -9,7 +9,7 @@ import { UserDTO } from 'src/dto/userdto';
   styleUrls: ['./categories.component.css']
 })
 export class CategoriesComponent implements OnInit {
-  categories: CategoryDTO[];
+  categories: CategoryDTO[] = [];
   proprietario_c: UserDTO;
   categorytoinsert: CategoryDTO = new CategoryDTO();
   
@@ -19,26 +19,30 @@ export class CategoriesComponent implements OnInit {
    
   ngOnInit() {
     this.proprietario_c = JSON.parse(localStorage.getItem('currentUser'));
-    this.getCategories();
+    this.getCategory();
   }
-
-  
-
-  getCategories(){
-    this.service.getAll().subscribe(categories => this.categories = categories);
+     
+    
+  getCategory(){ 
+       this.service.getAll().subscribe(categories => {
+         for (let c of categories){
+           if(c.proprietario_c.username === this.proprietario_c.username) {
+          this.categories.push(c); }
+          }
+        });
       }
 
       delete(category: CategoryDTO) {
-        this.service.delete(category.id).subscribe(() => this.getCategories());
+        this.service.delete(category.id).subscribe(() => this.getCategory());
       }
 
       update(category: CategoryDTO) {
-        this.service.update(category).subscribe(() => this.getCategories());
+        this.service.update(category).subscribe(() => this.getCategory());
       }
 
-      insert(category: CategoryDTO) {
+      insert(category: CategoryDTO) {   
         category.proprietario_c = this.proprietario_c;        
-        this.service.insert(category).subscribe(() => this.getCategories());
+        this.service.insert(category).subscribe(() => this.getCategory());
       }
 
       clear(){
