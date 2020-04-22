@@ -51,7 +51,6 @@ export class ProdottoComponent implements OnInit {
     this.categoryservice.getAll().subscribe(categories => 
       {
         for (let c of categories){
-          console.log(this.me.username);
           if (c.proprietario_c.username===this.me.username)
           {this.categories.push(c);}
         }
@@ -69,7 +68,7 @@ export class ProdottoComponent implements OnInit {
   }
 
   insert(prodotto: ProdottoDTO, wishlist_id: number, category_id: number) {
-    prodotto.proprietario=this.proprietario;
+    prodotto.proprietario=this.me;
     this.wishlistservice.read(wishlist_id).subscribe(wishlist=>this.wishlist=wishlist);
     prodotto.wishlist=this.wishlist;
     this.categoryservice.read(category_id).subscribe(category=>this.category=category);
