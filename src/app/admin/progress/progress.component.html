@@ -7,6 +7,9 @@
       <table>
         <tr>
           <th>
+            Prodotto Nome
+          </th>
+          <th>
             Soldi
           </th>
           <th>
@@ -15,8 +18,13 @@
           <th>
             Tempo
           </th>         
+        
         </tr>
         <tr>
+          <select [(ngModel)]="prodottoId">
+            <option *ngFor="let p of prodotti" [value]="p.id">{{ p.name }}</option>
+           
+          </select>
           <td>
             <input placeholder="cash" [(ngModel)]="progressinsert.cash">
           </td>
@@ -26,15 +34,18 @@
           <td>
             <input placeholder="time" [(ngModel)]="progressinsert.time">
           </td>
-          
           <td>
-            <button (click)="insert(progressinsert)">Insert</button>
+            <button (click)="insert(progressinsert, prodottoId)">Insert</button>
           </td>
+          
           <td>
             <button (click)="clear()">Clear</button>
           </td>
         </tr>
-        <tr *ngFor="let progress of progress">
+        <tr *ngFor="let progress of progressi">
+          <td>
+            <input [(ngModel)]="progress.prodotto_id">
+          </td>
           <td>
             <input [(ngModel)]="progress.cash">
           </td>

@@ -1,4 +1,4 @@
-
+import  { ProdottoDTO } from './prodottodto'
 
 
 
@@ -12,6 +12,6 @@ export class ProgressDTO{
 
     time: number;
 
-   /* prodotto: ProdottoDTO;*/
+    prodotto: ProdottoDTO;
 
 }
