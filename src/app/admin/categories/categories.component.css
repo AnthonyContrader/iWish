@@ -1,38 +1,91 @@
-*{
-    text-align: center;
+* {
+text-align: center;
 }
 
+
 /*Tables*/
+  
+   
+@keyframes example {
+	0%   {background-color: red;}
+	25%  {background-color: yellow;}
+	50%  {background-color: blue;}
+	100% {background-color: green;}
+}
+
 table {
 	border-collapse: collapse;
 	width: 100%;
-	float: left;
-	border-radius: 4px;
-	-moz-border-radius: 4px;
+	float: bottom;
+	border-radius: 300px;
+	-moz-border-radius: 300px;
 }
 
 th, td {
 	text-align: center;
 	padding: 2px;
-}
+	
+	}
 
 td{
-    font-size: 16px;
+	font-size: 20px;
+	color: black;
 }
 
 
 tr:nth-child(even) {
-	background-color: #ffdb99;
+	background-color: aqua;
+	animation-name: example;
+	animation-duration: 3s;
+}
+
+tr:nth-child(odd) {
+	background-color: silver;
+	animation-name: example;
+	animation-duration: 3s;
 }
 
 th {
-	background-color: darkorange;
+	background-color: rgb(255, 0, 0);
 	color: #ffffff;
 }
 
-a:hover {
-	color: #999999;
+
+button {
+display: inline-block;
+color: white;
+text-decoration: none;
+padding: .5em 2em;
+outline: none;
+border-width: 2px 0;
+border-style: solid none;
+border-color: #FDBE33 #000 #D77206;
+border-radius: 3px;
+background: linear-gradient(#F3AE0F, #E38916) #E38916;
+transition: 0.2s;
+
 }
+button:hover {
+	 background: linear-gradient(#f5ae00, #f59500) #f5ae00;
+	 }
+
+button:active {
+	 background: linear-gradient(#f59500, #f5ae00) #f59500;
+	 }
+
+	 div {
+        
+	font-size: inherit;
+	font-size: 20px;
+    background-image: url(star.jpg);
+	 }
+
+	 div:hover {
+		 
+		background-color: aqua;
+
+	 }
+
 
 input, select{
     background-color: inherit;
@@ -43,6 +96,41 @@ input:hover,  input:active, input:focus{
     border: 2px solid crimson;
 }
 
-button:hover{
-    background-color: crimson;
-}
+a {
+	position : relative;
+	z-index: 1;
+	display: inline-block;
+	width: 1.3em;
+	line-height: 1.3em;
+	vertical-align: middle;
+	text-align: center;
+	text-decoration: none;
+	text-shadow: 1px 1px rgba(255,255,255,.3);
+	font-size: 300%;
+	font-weight: 900;
+	color: #000;
+	border-radius: 100%;
+	background: rgb(144,142,105) linear-gradient(rgb(185,181,151), rgb(144,142,105));
+	box-shadow:
+	inset 0 -2px 1px rgba(0,0,0,.5),
+	inset 0 2px 1px rgba(255,255,255,.9),0 4px 4px rgba(0,0,0,.9);
+	
+	}
+	
+	a:after {
+	content: "";
+	position: absolute;
+	z-index: -1;
+	top: 12%;
+	left: 12%;
+	right: 12%;
+	bottom: 12%;
+	border-radius: 100%;
+	background: rgb(242,203,20) linear-gradient(rgb(242,203,20), rgb(255,182,7));
+	box-shadow:
+	inset 0 2px 1px rgba(0,0,0,.5),
+	inset 0 -2px 1px rgba(255,255,255,.3);
+	
+	}
+
+

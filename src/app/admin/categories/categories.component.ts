@@ -12,6 +12,7 @@ export class CategoriesComponent implements OnInit {
   categories: CategoryDTO[] = [];
   proprietario_c: UserDTO;
   categorytoinsert: CategoryDTO = new CategoryDTO();
+  table = true;
   
 
   constructor(private service: CategoryService) { }
@@ -44,10 +45,18 @@ export class CategoriesComponent implements OnInit {
       insert(category: CategoryDTO) {   
         category.proprietario_c = this.proprietario_c;        
         this.service.insert(category).subscribe(() => this.getCategory());
+        this.categorytoinsert = new CategoryDTO();
       }
 
       clear(){
         this.categorytoinsert = new CategoryDTO();
+      }
+
+      nascondi(){
+        if(this.table === true)
+        this.table = false;
+        else
+        this.table = true;
       }
     }
   
