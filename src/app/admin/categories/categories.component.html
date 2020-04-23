@@ -1,13 +1,11 @@
- <div class="container">
+<div class="container">
   <div class="row mt-5">
     <div class="col-md-1">
-
+      <a (click)="nascondi()">+</a>
       </div>
       <div class="col-md-10">
-         
-      
-            <table>
-          <tr>
+          <table *ngIf="table" >
+              <tr>
             <th>
             Name
             </th>
@@ -42,20 +40,25 @@
                 </select>
               </td>
             <td>
-              <button (click)="insert(categorytoinsert)">Inserisci</button>
+              <button (click)="insert(categorytoinsert)">Insert</button>
             </td>
             <td>
-              <button (click)="clear()">Cancella</button>
+              <button (click)="clear()">Clear</button>
             </td>
           </tr>
-          <tr *ngFor="let category of categories">
-            <td>
+        </table>
+           <br><br>
+           <br><br>
+           <br><br>
+           <br>
+           <br>
+           
+          <div *ngFor="let category of categories">
+            <div>
               <input [(ngModel)]="category.name" required>
-            </td>
-            <td>
+            
               <input [(ngModel)]="category.description">
-            </td>
-            <td>
+           
               <select [(ngModel)]="category.rating">
                 <option [selected]="category.rating===0" value="0">0</option>
                 <option [selected]="category.rating===1" value="1">1</option>
@@ -64,18 +67,18 @@
                 <option [selected]="category.rating===4" value="4">4</option>
                 <option [selected]="category.rating===5" value="5">5</option>
                 </select>
-                </td>
-                <td>
-                  <button (click)=update(category)>Salva</button>
-                </td>
-                <td>
-                  <button (click)="delete(category)">Cancella</button>
-                </td>
-          </tr>
-        </table>
+               
+                  <button (click)=update(category)>Insert</button>
+                
+                  <button (click)="delete(category)"> Delete </button>
+                </div>
+                </div>
+        
       </div>
       <div class="col-md-1">
-        
+       
       </div>
         </div>
       </div> 
+     
+      
