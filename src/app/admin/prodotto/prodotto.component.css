@@ -13,16 +13,16 @@ table {
 
 th, td {
 	text-align: center;
-	padding: 2px;
+	padding: 6px;
 }
 
 td{
-    font-size: 16px;
+    font-size: 18px;
 }
 
 
 tr:nth-child(even) {
-	background-color: #89bbe9;
+	background-color: linear-gradient (top,#657bb8 80%, #89bbe9 100%);
 }
 
 th {
@@ -42,7 +42,12 @@ input, select{
 input:hover,  input:active, input:focus{
     border: 2px solid goldenrod;
 }
-
+/*
 button:hover{
     background-color: goldenrod;
 }
+*/
+button:hover{
+    background-color: crimson;
+}
+
