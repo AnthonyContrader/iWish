@@ -14,23 +14,27 @@ img{
 
 input, input:hover, input::selection, input:checked, input:focus{
     border: 0;
-    background-color: darkorange;
+    background-color: rgb(140, 142, 224);
     border-radius: 0;
     color: white;
     border-bottom: 1px solid crimson;
-    margin: 0px; 
+    margin: 0px;
+    animation-name: pulse;
 }
 
 .container-fluid{
-    background-color: darkorange;
+    background-image: url("stars-pattern.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 0px;
     height: 100vh;
 }
 input::placeholder{
     color: white;
 }
 .form-control{
-border: none;
-background-color: darkorange;
+border: 1px;
+background-color: rgb(46, 41, 136);
 color: white;
 border-bottom: 1px solid white;
 }
@@ -46,8 +50,8 @@ padding-right: auto;
 padding-bottom: 10px;
 padding-left: auto;
 }
-
 p{
-font-size: 14px;
-color: white;
-}
+    font-size: 22px;
+    color: white;
+    }
+    
