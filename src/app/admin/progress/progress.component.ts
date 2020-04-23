@@ -18,6 +18,7 @@ export class ProgressComponent implements OnInit {
    prodotto: ProdottoDTO;
    me: UserDTO;
    prodotti: ProdottoDTO[]=[];
+   table_visible: boolean  = false;
   constructor(private service: ProgressService, private prodottoservice: ProdottoService) { }
 
   ngOnInit() {
@@ -53,14 +54,22 @@ export class ProgressComponent implements OnInit {
 
   insert (progress: ProgressDTO){
     
-   
+ 
     this.service.insert(progress).subscribe(() => this.getProgress());
   }
+
+  
 
   clear(){
     this.progressinsert= new ProgressDTO();
   }
-
+   nascondi(){
+    if (this.table_visible===true) 
+    this.table_visible=false;
+    else 
+    this.table_visible=true;
+     
+   }
 }
 
 

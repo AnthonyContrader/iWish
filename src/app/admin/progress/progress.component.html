@@ -18,7 +18,12 @@
           <th>
             Tempo
           </th>         
-        
+          <th>
+            
+          </th>  
+           <th>
+          
+          </th>  
         </tr>
         <tr>
           <select [(ngModel)]="progressinsert.prodotto">
@@ -42,9 +47,12 @@
             <button (click)="clear()">Clear</button>
           </td>
         </tr>
+      </table>
+      <br><br><br><br><br><br><br><br><br>
+      <table>
         <tr *ngFor="let progress of progressi">
           <td>
-            <input [(ngModel)]="progress.prodotto_id">
+            <input [(ngModel)]="progress.prodotto.name" disabled>
           </td>
           <td>
             <input [(ngModel)]="progress.cash">
