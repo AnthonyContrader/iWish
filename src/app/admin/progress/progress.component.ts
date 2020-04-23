@@ -51,11 +51,9 @@ export class ProgressComponent implements OnInit {
     this.service.update(progress).subscribe(() => this.getProgress());
   }
 
-  insert (progress: ProgressDTO, prodottoId: number){
+  insert (progress: ProgressDTO){
     
-    this.prodottoservice.read(prodottoId).subscribe(prodotto=>this.prodotto=prodotto);
-    progress.prodotto=this.prodotto;
-    console.log(prodottoId);
+   
     this.service.insert(progress).subscribe(() => this.getProgress());
   }
 

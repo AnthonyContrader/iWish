@@ -69,10 +69,6 @@ export class ProdottoComponent implements OnInit {
 
   insert(prodotto: ProdottoDTO, wishlist_id: number, category_id: number) {
     prodotto.proprietario=this.me;
-    this.wishlistservice.read(wishlist_id).subscribe(wishlist=>this.wishlist=wishlist);
-    prodotto.wishlist=this.wishlist;
-    this.categoryservice.read(category_id).subscribe(category=>this.category=category);
-    prodotto.category=this.category;
     this.service.insert(prodotto).subscribe(() => this.getProdotto());
     
   }

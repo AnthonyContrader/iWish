@@ -40,12 +40,12 @@
       </td>
       <td>
       <select [(ngModel)]="wishlist_id">
-        <option *ngFor="let w of wishlists" [value]="w.id">{{ w.name }}</option>
+        <option *ngFor="let w of wishlists" [ngValue]="w">{{ w.name }}</option>
        </select>
       </td>
       <td>
        <select [(ngModel)]="category_id">
-        <option *ngFor="let c of categories" [value]="c.id">{{ c.name }}</option>
+        <option *ngFor="let c of categories" [ngValue]="c">{{ c.name }}</option>
        </select>
       </td>
       <td>
@@ -70,12 +70,12 @@
       </td>
       <td>
       <select [(ngModel)]="wishlist_id">
-        <option *ngFor="let w of wishlists" [value]="w.id">{{ w.name }}</option>
+        <option *ngFor="let w of wishlists" [ngValue]="w">{{ w.name }}</option>
        </select>
       </td>
       <td>
        <select [(ngModel)]="category_id">
-        <option *ngFor="let c of categories" [value]="c.id">{{ c.name }}</option>
+        <option *ngFor="let c of categories" [ngValue]="c">{{ c.name }}</option>
        </select>
       </td>
       <td>
@@ -87,9 +87,7 @@
     </tr>
   </table>
   </div>
-    <div class="col-md-1">
-
-    </div>
+   
   </div>
 </div>
 

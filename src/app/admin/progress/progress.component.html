@@ -21,8 +21,8 @@
         
         </tr>
         <tr>
-          <select [(ngModel)]="prodottoId">
-            <option *ngFor="let p of prodotti" [value]="p.id">{{ p.name }}</option>
+          <select [(ngModel)]="progressinsert.prodotto">
+            <option *ngFor="let p of prodotti" [ngValue]="p">{{ p.name }}</option>
            
           </select>
           <td>
@@ -35,7 +35,7 @@
             <input placeholder="time" [(ngModel)]="progressinsert.time">
           </td>
           <td>
-            <button (click)="insert(progressinsert, prodottoId)">Insert</button>
+            <button (click)="insert(progressinsert)">Insert</button>
           </td>
           
           <td>
