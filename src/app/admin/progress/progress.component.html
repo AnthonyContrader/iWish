@@ -26,10 +26,12 @@
           </th>  
         </tr>
         <tr>
+          <div class="box">
           <select [(ngModel)]="progressinsert.prodotto">
             <option *ngFor="let p of prodotti" [ngValue]="p">{{ p.name }}</option>
            
           </select>
+          </div>
           <td>
             <input placeholder="cash" [(ngModel)]="progressinsert.cash">
           </td>

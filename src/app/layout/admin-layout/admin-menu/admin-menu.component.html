@@ -1,6 +1,7 @@
-<div class="row">
+<div id="mySidenav" class="row sidenav" >
+    <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
     <div class="col-md-12">
-        <div class="sidenav">
+        <div>
             <button class="menubtn">
                 <a [routerLink]="['/admin-dashboard']"> <i class="fas fa-home" style="margin-right: 10px"> </i>
                     Dashboard </a>
@@ -87,4 +88,8 @@
             </button>
         </div>
     </div>
+
+</div>
+<div id="main">
+<span style="font-size:30px;cursor:pointer" (click)="openNav()">&#9776; open</span>
 </div>

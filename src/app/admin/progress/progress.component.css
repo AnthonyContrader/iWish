@@ -8,9 +8,11 @@ table {
     float: left;
     border-radius: 4px;
     -moz-border-radius: 4px;
+    background-image: url('gift.jpg');
 
 
 }
+
 
 th, td {
     text-align: center;
@@ -21,18 +23,45 @@ td{
     font-size: 16px;
 }
 
+  
+  .box select {
+    background-color: #0562af00;
+    color: rgb(0, 0, 0);
+    padding: 2px;
+    margin-top: 3px;
+    width: 150px;
+    border: none;
+    font-size: 15px;
+    border-width: 2px;
+    border-style: inset;
+    border-color: initial;
+    border-image: initial;
 
-tr:nth-child(even) {
-	background-color: #ffdb99;
-}
+    -webkit-appearance: button;
+    appearance: button;
+    outline: none;
+    
+  
+  }
+  .box select:hover{
+
+    border: 2px solid goldenrod;  
+  }
+  
+  
+  
+
+  
+  .box select option {
+    padding: 30px;
+  }
 
 th {
-	background-color: darkorange;
-	color: #ffffff;
+    background-image: url('blue.jpg');
 }
 
 a:hover {
-	color: #999999;
+	color: #58c1db;
 }
 
 input, select{
@@ -41,9 +70,9 @@ input, select{
 }
 
 input:hover,  input:active, input:focus{
-    border: 2px solid crimson;
+    border: 2px solid goldenrod
 }
 
 button:hover{
-    background-color: crimson;
+    background-color: goldenrod;
 }
