@@ -22,16 +22,16 @@ td{
 
 
 tr:nth-child(even) {
-	background-color: #ffdb99;
+	background-color: #89bbe9;
 }
 
 th {
-	background-color: darkorange;
+	background-color: #171b61;
 	color: #ffffff;
 }
 
 a:hover {
-	color: #999999;
+	color: #000000;
 }
 
 input, select{
@@ -40,9 +40,9 @@ input, select{
 }
 
 input:hover,  input:active, input:focus{
-    border: 2px solid crimson;
+    border: 2px solid goldenrod;
 }
 
 button:hover{
-    background-color: crimson;
+    background-color: goldenrod;
 }
