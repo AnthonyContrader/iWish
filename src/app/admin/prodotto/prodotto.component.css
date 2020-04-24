@@ -3,13 +3,17 @@
 }
 
 /*Tables*/
+
 table {
 	border-collapse: collapse;
+	
 	width: 100%;
 	float: left;
-	border-radius: 4px;
-	-moz-border-radius: 4px;
+	animation-name: fadeInDown;
+	animation-duration: 2s;
+	font-size: 18px;
 }
+
 
 th, td {
 	text-align: center;
@@ -50,4 +54,100 @@ button:hover{
 button:hover{
     background-color: crimson;
 }
+@keyframes fadeIn {
+	from {
+	  opacity: 0;
+	}
+  
+	to {
+	  opacity: 1;
+	}
+  }
+  
+  .fadeIn {
+	animation-name: fadeIn;
+  }
 
+
+  table.blueTable {
+	float: left;
+	font-family: Arial, Helvetica, sans-serif;
+	border: 3px solid #1C6EA4;
+	
+	background-color: #EEEEEE;
+	width: 100%;
+	height: 100px;
+	text-align: left;
+	border-collapse: collapse;
+	text-shadow: 2px 3px 5px #000000;
+	-webkit-box-shadow: 5px 5px 15px 5px #000000; 
+	box-shadow: 5px 5px 15px 5px #000000;
+  }
+  table.blueTable td, table.blueTable th {
+	border: 3px solid #AAAAAA;
+	-webkit-border-radius: 8px;
+	
+  }
+  table.blueTable tbody td {
+	font-size: 18px;
+  }
+  table.blueTable tr:nth-child(even) {
+	background: #D0E4F5;
+  }
+  /*
+  table.blueTable thead {
+	background: #1C6EA4;
+	background: -moz-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+	background: -webkit-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+	background: linear-gradient(to bottom, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+	border-bottom: 2px solid #444444;
+  }
+  table.blueTable thead th {
+	font-size: 18px;
+	font-weight: bold;
+	color: #FFFFFF;
+	border-left: 2px solid #D0E4F5;
+  }
+  table.blueTable thead th:first-child {
+	border-left: none;
+  }
+  
+  table.blueTable tfoot {
+	font-size: 14px;
+	font-weight: bold;
+	color: #FFFFFF;
+	background: #D0E4F5;
+	background: -moz-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+	background: -webkit-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+	background: linear-gradient(to bottom, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+	border-top: 2px solid #444444;
+  }
+  table.blueTable tfoot td {
+	font-size: 14px;
+  }
+  table.blueTable tfoot .links {
+	text-align: right;
+  }
+  table.blueTable tfoot .links a{
+	display: inline-block;
+	background: #1C6EA4;
+	color: #FFFFFF;
+	padding: 2px 8px;
+	border-radius: 5px;
+  }*/
+  
+  @keyframes fadeInDown {
+	from {
+	  opacity: 0;
+	  transform: translate3d(0, -100%, 0);
+	}
+  
+	to {
+	  opacity: 1;
+	  transform: translate3d(0, 0, 0);
+	}
+  }
+  
+  .fadeInDown {
+	animation-name: fadeInDown;
+  }

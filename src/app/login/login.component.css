@@ -28,6 +28,11 @@ input, input:hover, input::selection, input:checked, input:focus{
     background-size: cover;
     border-radius: 0px;
     height: 100vh;
+    -webkit-transition: background 2s ease-in;
+-moz-transition: background 2s ease-in;
+-ms-transition: background 2s ease-in;
+-o-transition: background 2s ease-in;
+transition: background 2s ease-in;
 }
 input::placeholder{
     color: white;
