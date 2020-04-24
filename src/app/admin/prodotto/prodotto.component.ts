@@ -16,9 +16,9 @@ export class ProdottoComponent implements OnInit {
 
   prodotti: ProdottoDTO[];
   prodottotoinsert: ProdottoDTO = new ProdottoDTO();
+  me: UserDTO;
   wishlist: WishListDTO;
   category: CategoryDTO;
-  me: UserDTO;
   wishlists: WishListDTO[]=[];
   categories: CategoryDTO[]=[];
 
@@ -38,7 +38,7 @@ export class ProdottoComponent implements OnInit {
   getwishlists() {
     this.wishlistservice.getAll().subscribe(wish_lists => 
       {
-       
+       this.wishlists =[];
         for (let w of wish_lists){
           if (w.proprietario.username===this.me.username)
           {
@@ -55,6 +55,7 @@ export class ProdottoComponent implements OnInit {
   getcategories() {
     this.categoryservice.getAll().subscribe(categories => 
       {
+        this.categories = [];
         for (let c of categories){
           if (c.proprietario_c.username===this.me.username)
           {this.categories.push(new CategoryDTO(c.id, c.name));}
@@ -69,6 +70,11 @@ export class ProdottoComponent implements OnInit {
   }
 
   update(prodotto: ProdottoDTO) {
+    this.wishlist = new WishListDTO(prodotto.wishlist.id, prodotto.wishlist.name);
+    this.category = new CategoryDTO(prodotto.category.id, prodotto.category.name);
+    prodotto.wishlist = this.wishlist;
+    prodotto.category = this.category;
+    console.log(JSON.stringify(prodotto));
     this.service.update(prodotto).subscribe(() => this.getProdotto());
   }
 
