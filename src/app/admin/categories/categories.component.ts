@@ -12,7 +12,8 @@ export class CategoriesComponent implements OnInit {
   categories: CategoryDTO[] = [];
   proprietario_c: UserDTO;
   categorytoinsert: CategoryDTO = new CategoryDTO();
-  table = true;
+  table: boolean = false;
+  apri: boolean = false;
   
 
   constructor(private service: CategoryService) { }
@@ -58,5 +59,11 @@ export class CategoriesComponent implements OnInit {
         else
         this.table = true;
       }
+      open() {
+      if(this.apri === true)
+      this.apri = false;
+      else
+      this.apri = true;
     }
+  }
   
