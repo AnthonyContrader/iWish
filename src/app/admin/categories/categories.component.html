@@ -55,14 +55,13 @@
             <tr>
               <th (click)="open(category.id)" [title]="category.name + 'details'">
                 {{category.name}} </th>
-                &nbsp;&nbsp;&nbsp;&nbsp;
                 <th [title]="category.rating" type="radio">
                   {{category.rating}}
                   <button class="b1" (click)="delete(category)"> X </button>
-                </th>                      
-              </tr>
-
-            <div *ngIf="apri">
+                </th>    
+                <tr>
+               
+            <div *ngIf="apri===category.id">
             <p *ngIf="category.description">
               Description: {{ category.description }}
               </p>    

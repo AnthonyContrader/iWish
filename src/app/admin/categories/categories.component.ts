@@ -15,7 +15,7 @@ export class CategoriesComponent implements OnInit {
   proprietario_c: UserDTO;
   categorytoinsert: CategoryDTO = new CategoryDTO();
   table: boolean = false;
-  apri: boolean = false;
+  apri: number = 0;
   prodotto: ProdottoDTO;
   prodotti: ProdottoDTO[]=[];
   
@@ -64,11 +64,13 @@ export class CategoriesComponent implements OnInit {
         this.table = true;
       }
       open(category_id: number) {
-      if(this.apri === true)
-      this.apri = false;
-      else
-      this.apri = true;
-      this.getprodotti(category_id);
+        if (this.apri === category_id){
+          this.apri = 0;
+        } else {
+        this.apri = category_id;
+        }
+        
+       this.getprodotti(category_id);
       }
        getprodotti(category_id: number) {
       this.prodottoservice.getAll().subscribe(prodotti => 

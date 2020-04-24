@@ -22,20 +22,16 @@ table {
 	-moz-border-radius: 100px;
 }
 
-th, td {
+td {
 	text-align: center;
 	padding: 2px;
+	font-size: 20px;
+	color: black;
 	
 	}
 
-td{
-	font-size: 20px;
-	color: black;
-}
-
-
 tr:nth-child(even) {
-	background-color: blue;
+	background-color: ivory;
 	
 }
 
@@ -133,21 +129,17 @@ input:hover,  input:active, input:focus{
 	}
 
 .b1 {
-	position: relative;
-	display: inline-block;
-	width: 1em;
-	height: 1em;
-	line-height: 1em;
-	vertical-align: middle;
-	text-align: top;
-	text-decoration: none;
-	text-shadow: 0 -1px 1px #777;
-	color: #fff;
-	outline: none;
-	border: 2px solid #F64C2B;
-	border-radius: 50px;
-	box-shadow: 0 0 0 60px rgba(0,0,0,0) inset, .1em .1em .2em #800;
-	background: linear-gradient(#FB9575, #F45A38 48%, #EA1502 52%, #F02F17);
+	background-color: red;
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 50%;
 }
 
 .rate {
