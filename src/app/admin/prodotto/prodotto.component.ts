@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, wtfLeave } from '@angular/core';
 import { ProdottoService } from 'src/service/prodotto.service';
 import { ProdottoDTO } from 'src/dto/prodottodto';
 import { UserDTO } from 'src/dto/userdto';
@@ -38,9 +38,14 @@ export class ProdottoComponent implements OnInit {
   getwishlists() {
     this.wishlistservice.getAll().subscribe(wish_lists => 
       {
+       
         for (let w of wish_lists){
           if (w.proprietario.username===this.me.username)
-          {this.wishlists.push(w);}
+          {
+            
+            this.wishlists.push(new WishListDTO(w.id, w.name));
+          
+          }
         }
       }
     );
@@ -52,7 +57,7 @@ export class ProdottoComponent implements OnInit {
       {
         for (let c of categories){
           if (c.proprietario_c.username===this.me.username)
-          {this.categories.push(c);}
+          {this.categories.push(new CategoryDTO(c.id, c.name));}
         }
       }
     );
@@ -67,9 +72,10 @@ export class ProdottoComponent implements OnInit {
     this.service.update(prodotto).subscribe(() => this.getProdotto());
   }
 
-  insert(prodotto: ProdottoDTO, wishlist_id: number, category_id: number) {
-    
+  insert(prodotto: ProdottoDTO) {
+
     prodotto.proprietario=this.me;
+    console.log(JSON.stringify(prodotto));
     this.service.insert(prodotto).subscribe(() => this.getProdotto());
     this.clear();
     

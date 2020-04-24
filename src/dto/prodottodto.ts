@@ -20,4 +20,9 @@ export class ProdottoDTO {
     category: CategoryDTO;
     
     proprietario: UserDTO;
+
+    constructor(id: number, name: string){
+        this.id = id;
+        this.name = name;
+    }
 }
