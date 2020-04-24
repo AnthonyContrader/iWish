@@ -45,12 +45,12 @@
         <input placeholder="Priorità" [(ngModel)]="prodottotoinsert.priority">
       </td>
       <td>
-      <select [(ngModel)]="wishlist_id">
+      <select [(ngModel)]="prodottotoinsert.wishlist">
         <option *ngFor="let w of wishlists" [ngValue]="w">{{ w.name }}</option>
        </select>
       </td>
       <td>
-       <select [(ngModel)]="category_id">
+       <select [(ngModel)]="prodottotoinsert.category">
         <option *ngFor="let c of categories" [ngValue]="c">{{ c.name }}</option>
        </select>
       </td>
@@ -75,12 +75,12 @@
         <input [(ngModel)]="prodotto.priority">
       </td>
       <td>
-      <select [(ngModel)]="wishlist_id">
+      <select [(ngModel)]="prodotto.wishlist">
         <option *ngFor="let w of wishlists" [ngValue]="w">{{ w.name }}</option>
        </select>
       </td>
       <td>
-       <select [(ngModel)]="category_id">
+       <select [(ngModel)]="prodotto.category">
         <option *ngFor="let c of categories" [ngValue]="c">{{ c.name }}</option>
        </select>
       </td>

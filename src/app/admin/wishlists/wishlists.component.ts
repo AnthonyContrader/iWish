@@ -35,6 +35,7 @@ export class WishlistsComponent implements OnInit {
   insert(wishlist: WishListDTO){
     wishlist.proprietario = this.proprietario;
     this.service.insert(wishlist).subscribe(()=>this.getWishList());
+    this.clear();
   }
 
   clear(){
