@@ -32,7 +32,7 @@ export class ProgressComponent implements OnInit {
          for (let p of products){   
             if (p.proprietario.username===this.me.username)
             {
-                 this.prodotti.push(p);
+                 this.prodotti.push(new ProdottoDTO(p.id, p.name));
             }
           }
 
