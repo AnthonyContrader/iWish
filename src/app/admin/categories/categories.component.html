@@ -52,22 +52,21 @@
            <br>
            
           <div *ngFor="let category of categories">
-            <h1>
-              <a (click)="open(category.id)" [title]="category.name + 'details'">
-                {{category.name}} </a>
+            <tr>
+              <th (click)="open(category.id)" [title]="category.name + 'details'">
+                {{category.name}} </th>
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <a [title]="category.rating" type="radio">
+                <th [title]="category.rating" type="radio">
                   {{category.rating}}
-                </a>            
-                                                   
-                    <button class="b1" (click)="delete(category)"> X </button>
-            </h1>
+                  <button class="b1" (click)="delete(category)"> X </button>
+                </th>                      
+              </tr>
 
             <div *ngIf="apri">
             <p *ngIf="category.description">
               Description: {{ category.description }}
               </p>    
-              <p *ngFor="let p of prodotti">{{p.name}}
+              <p class="prod" *ngFor="let p of prodotti">{{p.name}}
               </p>                   
                           
                </div>

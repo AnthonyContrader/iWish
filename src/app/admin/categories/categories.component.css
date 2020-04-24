@@ -185,3 +185,8 @@ input:hover,  input:active, input:focus{
 .rate > label:hover ~ input:checked ~ label {
     color: #c59b08;
 }
+
+.prod {
+	font-size: 24px;
+	font-style: italic;
+}
