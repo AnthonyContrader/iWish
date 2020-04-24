@@ -31,11 +31,11 @@
                 <input placeholder="inserisci descrizione" [(ngModel)]="categorytoinsert.description">
               </td>
               <td class="rate">
-                <input [(ngModel)]="categorytoinsert.rating" type="radio" id="star5" name="rate" value="5" /><label for="star5" title="text">5 stars</label>
-                <input [(ngModel)]="categorytoinsert.rating" type="radio" id="star4" name="rate" value="4" /><label for="star4" title="text">4 stars</label>
-                <input [(ngModel)]="categorytoinsert.rating" type="radio" id="star3" name="rate" value="3" /><label for="star3" title="text">3 stars</label>
-                <input [(ngModel)]="categorytoinsert.rating" type="radio" id="star2" name="rate" value="2" /><label for="star2" title="text">2 stars</label>
-                <input [(ngModel)]="categorytoinsert.rating" type="radio" id="star1" name="rate" value="1" /><label for="star1" title="text">1 star</label>
+                <input [(ngModel)]="categorytoinsert.rating" type="radio" id="star5" name="rate" value="5" /><label for="star5">5 stars</label>
+                <input [(ngModel)]="categorytoinsert.rating" type="radio" id="star4" name="rate" value="4" /><label for="star4">4 stars</label>
+                <input [(ngModel)]="categorytoinsert.rating" type="radio" id="star3" name="rate" value="3" /><label for="star3">3 stars</label>
+                <input [(ngModel)]="categorytoinsert.rating" type="radio" id="star2" name="rate" value="2" /><label for="star2">2 stars</label>
+                <input [(ngModel)]="categorytoinsert.rating" type="radio" id="star1" name="rate" value="1" /><label for="star1">1 star</label>
                </td>
             <td>
               <button (click)="insert(categorytoinsert)">Insert</button>
@@ -53,11 +53,12 @@
            
           <div *ngFor="let category of categories">
             <h1>
-              <a (click)="open()" [title]="category.name + 'details'">
+              <a (click)="open(category.id)" [title]="category.name + 'details'">
                 {{category.name}} </a>
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <a [title]="category.rating">
-                  {{category.rating}} </a>                
+                <a [title]="category.rating" type="radio">
+                  {{category.rating}}
+                </a>            
                                                    
                     <button class="b1" (click)="delete(category)"> X </button>
             </h1>
@@ -65,8 +66,10 @@
             <div *ngIf="apri">
             <p *ngIf="category.description">
               Description: {{ category.description }}
-              </p>                       
-                                  
+              </p>    
+              <p *ngFor="let p of prodotti">{{p.name}}
+              </p>                   
+                          
                </div>
                 </div>
                 

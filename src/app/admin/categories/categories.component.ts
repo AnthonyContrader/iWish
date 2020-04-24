@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CategoryService } from 'src/service/category.service';
 import { CategoryDTO } from 'src/dto/categorydto';
 import { UserDTO } from 'src/dto/userdto';
+import { ProdottoService } from 'src/service/prodotto.service';
+import { ProdottoDTO } from 'src/dto/prodottodto';
 
 @Component({
   selector: 'app-categories',
@@ -14,17 +16,19 @@ export class CategoriesComponent implements OnInit {
   categorytoinsert: CategoryDTO = new CategoryDTO();
   table: boolean = false;
   apri: boolean = false;
+  prodotto: ProdottoDTO;
+  prodotti: ProdottoDTO[]=[];
   
 
-  constructor(private service: CategoryService) { }
+  constructor(private service: CategoryService, private prodottoservice: ProdottoService) { }
    
    
   ngOnInit() {
     this.proprietario_c = JSON.parse(localStorage.getItem('currentUser'));
     this.getCategory();
+       
   }
-     
-    
+      
   getCategory(){ 
        this.service.getAll().subscribe(categories => {
          this.categories = [];
@@ -59,11 +63,29 @@ export class CategoriesComponent implements OnInit {
         else
         this.table = true;
       }
-      open() {
+      open(category_id: number) {
       if(this.apri === true)
       this.apri = false;
       else
       this.apri = true;
+      this.getprodotti(category_id);
+      }
+       getprodotti(category_id: number) {
+      this.prodottoservice.getAll().subscribe(prodotti => 
+        {
+          this.prodotti = [];
+          for (let p of prodotti){
+            if(p.category !== null){
+            if (p.category.id === category_id)
+            {this.prodotti.push(p);}
+          }
+        }
+
+        }
+      );
+      
     }
+      
   }
-  
+
+
