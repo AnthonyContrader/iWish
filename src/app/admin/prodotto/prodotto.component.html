@@ -59,14 +59,14 @@
         <input [(ngModel)]="prodotto.priority">
       </td>
       <td>
-      <select [(ngModel)]="prodotto.wishlist">
+      <select [compareWith]="compareWishLists" [(ngModel)]="prodotto.wishlist">
         <option *ngFor="let w of wishlists" [ngValue]="w" [selected] = "prodotto.wishlist.id === w.id">{{ w.name }}</option>
        </select>
       </td>
       <td>
-       <select [(ngModel)]="prodotto.category">
-        <option *ngFor="let c of categories" [ngValue]="c" [selected] = "prodotto.category.id === c.id">{{ c.name }}</option>
-       </select>
+       <select [compareWith]="compareFn" [(ngModel)]="prodotto.category">
+        <option *ngFor="let c of categories" [ngValue]="c" >{{ c.name }}</option>
+       </select> 
       </td>
       <td>
         <button (click)=update(prodotto)>Save</button>

@@ -90,4 +90,13 @@ export class ProdottoComponent implements OnInit {
   clear() {
     this.prodottotoinsert = new ProdottoDTO();
   }
+
+  compareFn(c1: CategoryDTO, c2: CategoryDTO): boolean {
+    return c1 && c2 ? c1.id === c2.id : c1 === c2;
+}
+
+compareWishLists(w1: WishListDTO, w2: WishListDTO){
+  return w1 && w2 ? w1.id === w2.id: w1===w2;
+}
+
 }
