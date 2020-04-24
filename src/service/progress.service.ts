@@ -3,6 +3,7 @@ import {ProgressDTO} from 'src/dto/progressdto'
 import { AbstractService } from './abstractservice';
 import { HttpClient } from '@angular/common/http';
 import { ProdottoDTO } from 'src/dto/prodottodto';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -18,7 +19,7 @@ export class ProgressService extends AbstractService<ProgressDTO>{
     this.type = 'progress';
   }
  
-Calcolo_inserisci_soldi(progressdto: ProgressDTO){
+Calcolo_inserisci_soldi(progressdto: ProgressDTO): Observable<any>{
   
  const prodottodto : ProdottoDTO = progressdto.prodotto;
  
@@ -26,16 +27,16 @@ Calcolo_inserisci_soldi(progressdto: ProgressDTO){
  progressdto.time=this.tempo;
  progressdto.expectation=(1*100/this.tempo);
 
-  
+ return this.insert(progressdto);
  
 }
- Calcolo_inserisci_giorni(progressdto: ProgressDTO){
+ Calcolo_inserisci_giorni(progressdto: ProgressDTO): Observable<any>{
 
 const prodottodto: ProdottoDTO = progressdto.prodotto; 
 this.soldi=prodottodto.price/progressdto.time;
-progressdto.cash=this.soldi;
-progressdto.expectation=(progressdto.cash*100/prodottodto.price);
-
+const p : ProgressDTO= new ProgressDTO(0,this.soldi,(this.soldi*100/prodottodto.price),progressdto.time,prodottodto);
+console.log(this.soldi+" "+ prodottodto.price+" "+ progressdto.time);
+return this.insert(p);
  }
 
 }

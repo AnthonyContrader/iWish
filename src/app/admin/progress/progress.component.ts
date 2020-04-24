@@ -32,7 +32,7 @@ export class ProgressComponent implements OnInit {
          for (let p of products){   
             if (p.proprietario.username===this.me.username)
             {
-                 this.prodotti.push(new ProdottoDTO(p.id, p.name));
+                 this.prodotti.push(new ProdottoDTO(p.id, p.name,p.price));
             }
           }
 
@@ -57,7 +57,18 @@ export class ProgressComponent implements OnInit {
  
     this.service.insert(progress).subscribe(() => this.getProgress());
   }
+  
+  
+  Calcolo_inserisci_giorni(progress:  ProgressDTO){
+ 
+    this.service.Calcolo_inserisci_giorni(progress).subscribe(()=>this.getProgress());
+ 
+  }
+  Calcolo_inserisci_soldi(progress:  ProgressDTO){
+ 
+    this.service.Calcolo_inserisci_soldi(progress).subscribe(()=>this.getProgress());
 
+  }
   
 
   clear(){
