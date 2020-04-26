@@ -24,10 +24,9 @@ Calcolo_inserisci_soldi(progressdto: ProgressDTO): Observable<any>{
  const prodottodto : ProdottoDTO = progressdto.prodotto;
  
  this.tempo=prodottodto.price/progressdto.cash;
- progressdto.time=this.tempo;
- progressdto.expectation=(1*100/this.tempo);
-
- return this.insert(progressdto);
+const p: ProgressDTO=new ProgressDTO(0,progressdto.cash,(1*100/this.tempo),this.tempo,prodottodto)
+ 
+ return this.insert(p);
  
 }
  Calcolo_inserisci_giorni(progressdto: ProgressDTO): Observable<any>{
@@ -35,7 +34,7 @@ Calcolo_inserisci_soldi(progressdto: ProgressDTO): Observable<any>{
 const prodottodto: ProdottoDTO = progressdto.prodotto; 
 this.soldi=prodottodto.price/progressdto.time;
 const p : ProgressDTO= new ProgressDTO(0,this.soldi,(this.soldi*100/prodottodto.price),progressdto.time,prodottodto);
-console.log(this.soldi+" "+ prodottodto.price+" "+ progressdto.time);
+
 return this.insert(p);
  }
 

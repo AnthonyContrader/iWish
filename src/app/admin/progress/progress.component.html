@@ -1,16 +1,16 @@
 <div class="container">
   <div class="row mt-5">
     <div class="col-md-1">
-
+     
     </div>
-    <div class="col-md-10">
+    <div class="col-md-5">
       <table>
         <tr>
           <th>
             Prodotto Nome
           </th>
           <th>
-            Soldi
+           Soldi Risparmiati al Giorno
           </th>
                  
           <th>
@@ -29,46 +29,117 @@
           </div>
           
           <td>
-            <input placeholder="time" [(ngModel)]="progressinsert.time">
+            <input placeholder="Soldi €" class="color"[(ngModel)]="progressinsert.time">
           </td>
           <td>
-            <button (click)="Calcolo_inserisci_giorni(progressinsert)">Insert</button>
+            <button class="button" (click)="Calcolo_inserisci_giorni(progressinsert)">Insert</button>
           </td>
           
           <td>
-            <button (click)="clear()">Clear</button>
+            <button class="button" (click)="clear()">Clear</button>
           </td>
         </tr>
+
       </table>
+    </div>
+      <div class="col-md-5">
+        
+        <table>
+          <tr>
+            <th>
+              Prodotto Nome
+            </th>
+            <th>
+            Giorni che vuoi risparmiare
+            </th>
+                   
+            <th>
+              
+            </th>  
+             <th>
+            
+            </th>  
+          </tr>
+          <tr>
+            <div class="box">
+            <select [(ngModel)]="progressinsert.prodotto">
+              <option *ngFor="let p of prodotti" [ngValue]="p">{{ p.name }}</option>
+             
+            </select>
+            </div>
+            
+            <td>
+              <input placeholder="Giorni" class="color" [(ngModel)]="progressinsert.cash">
+            </td>
+            <td>
+              <button class="button" (click)="Calcolo_inserisci_soldi(progressinsert)">Insert</button>
+            </td>
+            
+            <td>
+              <button class="button" (click)="clear()">Clear</button>
+            </td>
+          </tr>
+        </table>
+      </div>
       <br><br><br><br><br><br><br><br><br>
       <table>
+        <tr>
+          <th>
+            Prodotto Nome
+          </th>
+          <th>
+           Tempo
+          </th>
+          <th>
+            progress
+           </th> 
+           <th>
+            soldi
+           </th>
+          <th>
+            
+          </th>  
+           <th>
+          
+          </th>  
+        </tr>
+        <tr>
         <tr *ngFor="let progress of progressi">
           <td>
-            <input [(ngModel)]="progress.prodotto.name" disabled>
+            <input class="color" [(ngModel)]="progress.prodotto.name" disabled>
           </td>
+          
           <td>
-            <input [(ngModel)]="progress.cash">
+
+            <input class="color" [(ngModel)]="progress.cash"disabled>
           </td>
-          <td>
-            <input [(ngModel)]="progress.expectation">
+          <td class="color">
+          
+            
+            <progress style="color: red" id="myProgress" [value]="arrotonda(progress.expectation)" max="100">
+            </progress>
+              
+            
           </td>
+
           <td>
-            <input [(ngModel)]="progress.time">
+            <input class="color"[(ngModel)]="progress.time"disabled>
           </td>
         
           <td>
-            <button (click)=update(progress)>Save</button>
+            <button class="button"(click)=update(progress)>Save</button>
           </td>
           <td>
-            <button (click)="delete(progress)">Delete</button>
+            <button class="button" (click)="delete(progress)">Delete</button>
           </td>
         
-        
+          
         </tr>
         </table>
-        </div>
-        <div class="col-md-1">
 
         </div>
+        <div class="col-md-1">
+          
+        
       </div>
     </div>

@@ -6,10 +6,17 @@ import{ProdottoService} from 'src/service/prodotto.service';
 import { UserDTO } from 'src/dto/userdto';
 
 
+  
+export class ProgressBarDeterminateExample {}
+
+
 @Component({
   selector: 'app-progress',
   templateUrl: './progress.component.html',
   styleUrls: ['./progress.component.css']
+  
+
+
 })
 export class ProgressComponent implements OnInit {
    prodottoId: number;
@@ -19,6 +26,8 @@ export class ProgressComponent implements OnInit {
    me: UserDTO;
    prodotti: ProdottoDTO[]=[];
    table_visible: boolean  = false;
+   y: number;
+
   constructor(private service: ProgressService, private prodottoservice: ProdottoService) { }
 
   ngOnInit() {
@@ -62,14 +71,15 @@ export class ProgressComponent implements OnInit {
   Calcolo_inserisci_giorni(progress:  ProgressDTO){
  
     this.service.Calcolo_inserisci_giorni(progress).subscribe(()=>this.getProgress());
- 
+    
   }
   Calcolo_inserisci_soldi(progress:  ProgressDTO){
  
     this.service.Calcolo_inserisci_soldi(progress).subscribe(()=>this.getProgress());
-
+    
   }
   
+ 
 
   clear(){
     this.progressinsert= new ProgressDTO();
@@ -80,6 +90,13 @@ export class ProgressComponent implements OnInit {
     else 
     this.table_visible=true;
      
+   }
+   arrotonda(x: number): number{
+    let y: number; 
+    y=Math.round(x);
+     return y;
+
+
    }
 }
 
