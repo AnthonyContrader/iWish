@@ -10,8 +10,7 @@ table {
 	border-collapse: collapse;
 	width: 100%;
 	float: bottom;
-	border-radius: 25%;
-	-moz-border-radius: 100px;
+	
 }
 
 td {
@@ -29,6 +28,9 @@ tr:nth-child(even) {
 
 th {
 	background-image: url('stars-pattern.png');
+	text-shadow: 1px 1px 2px black, 0 0 25px gold, 0 0 5px gold;
+	color: rgb(255, 255, 255);
+	
 }
 
 
@@ -114,10 +116,10 @@ input:hover,  input:active, input:focus{
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
+  font-size: 14px;
+  margin: 2px 1px;
   cursor: pointer;
-  border-radius: 50%;
+  border-radius: 20em;
 }
 
 .rate {
@@ -129,7 +131,7 @@ input:hover,  input:active, input:focus{
     position:absolute;
     top:-9999px;
 }
-.rate:not(:checked) > label {
+.rate:not(:checked) > label { /*crea le stelle BIANCHE */
     float:right;
     width:1em;
     overflow:hidden;
@@ -138,14 +140,14 @@ input:hover,  input:active, input:focus{
     font-size:30px;
     color:#ccc;
 }
-.rate:not(:checked) > label:before {
+.rate:not(:checked) > label:before { /*crea la forma a stelle*/
     content: '★ ';
 }
-.rate > input:checked ~ label {
+.rate > input:checked ~ label { /*fa restare gialla una stella cliccata*/
     color: #ffc700;    
 }
 .rate:not(:checked) > label:hover,
-.rate:not(:checked) > label:hover ~ label {
+.rate:not(:checked) > label:hover ~ label {  /*fa diventare gialle le stelle su cui passi sopra il mouse*/
     color: #deb217;  
 }
 .rate > input:checked + label:hover,
@@ -159,4 +161,8 @@ input:hover,  input:active, input:focus{
 .prod {
 	font-size: 24px;
 	font-style: italic;
+}
+
+th a {
+	color: red;
 }

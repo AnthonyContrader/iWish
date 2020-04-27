@@ -52,14 +52,18 @@
            <br>
            
           <div *ngFor="let category of categories">
-            <tr>
+           <tr>
               <th (click)="open(category.id)" [title]="category.name + 'details'">
                 {{category.name}} </th>
-                <th [title]="category.rating" type="radio">
+                 <th>&nbsp;&nbsp;&nbsp;</th>
+                <th [title]="category.rating">
                   {{category.rating}}
-                  <button class="b1" (click)="delete(category)"> X </button>
-                </th>    
-                <tr>
+                 </th>
+                  <th> 
+                   <a (click)="delete(category)">	&otimes; </a>
+                   </th>
+           </tr>
+              <br>
                
             <div *ngIf="apri===category.id">
             <p *ngIf="category.description">
