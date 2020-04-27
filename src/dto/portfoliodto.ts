@@ -1,5 +1,6 @@
 import { UserDTO } from './userdto';
 
+
 export class PortfolioDTO {
 
     id: number;
@@ -10,6 +11,11 @@ export class PortfolioDTO {
  
     outputs: number;
 
+    date: Date;
+
     proprietario: UserDTO;
+
+   
+    
  
  }

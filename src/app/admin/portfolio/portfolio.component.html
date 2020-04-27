@@ -17,6 +17,9 @@
             Uscite
           </th>
           <th>
+            Data
+          </th>
+          <th>
             Edit
           </th>
           <th>
@@ -25,21 +28,22 @@
         </tr>
         <tr>
           <td>
-            <input placeholder="saldo" [(ngModel)]="portfoliotoinsert.totalmoney">
-          </td>
-          <td>
-            <input placeholder="entrate" [(ngModel)]="portfoliotoinsert.revenue">
-          </td>
-          <td>
-            <input placeholder="uscite" [(ngModel)]="portfoliotoinsert.outputs">
-              
             
           </td>
           <td>
-            <button (click)="insert(portfoliotoinsert)">Insert</button>
+            <input class="color" placeholder="entrate" [(ngModel)]="portfoliotoinsert.revenue">
           </td>
           <td>
-            <button (click)="clear()">Clear</button>
+            <input class= "color" placeholder="uscite" [(ngModel)]="portfoliotoinsert.outputs">
+              
+            
+          </td>
+          <td></td>
+          <td>
+            <button class="button" (click)="insert(portfoliotoinsert)">Insert</button>
+          </td>
+          <td>
+            <button class="button"(click)="clear()">Clear</button>
           </td>
         </tr>
       </table>
@@ -47,24 +51,34 @@
       <table>
         <tr *ngFor="let p of portfolio">
           <td>
-            <input [(ngModel)]="p.totalmoney">
+            <input class= "color" [(ngModel)]="p.totalmoney">
           </td>
           <td>
-            <input [(ngModel)]="p.revenue">
+            <input class= "color" [(ngModel)]="p.revenue">
           </td>
           <td>
-            <input [(ngModel)]="p.outputs">
+            <input class= "color" [(ngModel)]="p.outputs">
               
             
           </td>
           <td>
-            <button (click)=update(p)>Save</button>
+            {{ p.date | date: 'medium'
+          
+
+            }}
           </td>
           <td>
-            <button (click)="delete(p)">Delete</button>
+            <button class="button" (click)=update(p)>Save</button>
+          </td>
+          <td>
+            <button class="button"(click)="delete(p)">Delete</button>
           </td>
         </tr>
       </table>
+    <div class="color">
+      {{
+        saldoAttuale
+      }}
     </div>
     <div class="col-md-1">
 

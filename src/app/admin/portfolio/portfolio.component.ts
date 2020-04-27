@@ -11,20 +11,40 @@ import { UserDTO } from 'src/dto/userdto';
   styleUrls: ['./portfolio.component.css']
 })
 export class PortfolioComponent implements OnInit {
-  portfolio: PortfolioDTO[];
+  portfolio: PortfolioDTO[]=[];
   portfoliotoinsert: PortfolioDTO = new PortfolioDTO();
   proprietario: UserDTO;
+  data : Date;
+  saldoAttuale: number = 0;
   constructor(private service: PortfolioService) { }
-
+  
 
   ngOnInit() {
-    this.getPortfolio();
     this.proprietario = JSON.parse(localStorage.getItem('currentUser'));
+    this.getPortfolio();
+    
+    console.log (this.saldoAttuale);
+    
   }
 
   getPortfolio() {
-    this.service.getAll().subscribe(portfolio => this.portfolio = portfolio);
+    this.service.getAll().subscribe(portafogli => {
+      this.portfolio=[] ;
+      let id=0;
+      this.saldoAttuale=0;
+      for(let p of portafogli){ 
+        if (p.proprietario.username===this.proprietario.username){
+          this.portfolio.push(p);
+          if (p.id>id){ 
+            id=p.id;
+            this.saldoAttuale=p.totalmoney;
+          }
+        }
+      }
+      
+    });
   }
+  
 
   delete (portfolio: PortfolioDTO) {
     this.service.delete(portfolio.id).subscribe(() => this.getPortfolio());
@@ -36,11 +56,15 @@ export class PortfolioComponent implements OnInit {
 
   insert(portfolio: PortfolioDTO) {
   portfolio.proprietario = this.proprietario;
-    this.service.insert(portfolio).subscribe(() => this.getPortfolio());
+  this.data = new Date();
+  portfolio.date = this.data;
+  this.service.operazione(portfolio, this.saldoAttuale).subscribe(() => this.getPortfolio());
   }
 
   clear(){
     this.portfoliotoinsert = new PortfolioDTO();
   }
+ 
+  
 }
 

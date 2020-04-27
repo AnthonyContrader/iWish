@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AbstractService } from './abstractservice';
 import { PortfolioDTO } from 'src/dto/portfoliodto';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -9,18 +10,16 @@ import { HttpClient } from '@angular/common/http';
   })
   export class PortfolioService extends AbstractService<PortfolioDTO>{
   
-    /*totalmoney: number; */
+    
 
     constructor(http: HttpClient) {
       super(http);
       this.type = 'portfolio';
     }
   
-   /* Saldo_totalmoney(portfoliodto: PortfolioDTO)
-{
-  const totalmoney=(portfoliodto.revenue-portfoliodto.outputs);
-  portfoliodto.totalmoney=this.totalmoney;
-  portfoliodto.totalmoney=(portfoliodto.revenue-portfoliodto.outputs);
-//
-  } */
+   operazione(portfoliodto:PortfolioDTO, saldoAttuale: number):Observable<PortfolioDTO> {
+     portfoliodto.totalmoney = saldoAttuale + (portfoliodto.revenue - portfoliodto.outputs);
+     console.log (JSON.stringify (portfoliodto));
+     return this.insert(portfoliodto);
+   }
 }

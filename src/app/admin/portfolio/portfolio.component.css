@@ -3,34 +3,76 @@
 }
 
 table {
-	border-collapse: collapse;
-	width: 100%;
-	float: left;
-	border-radius: 4px;
-	-moz-border-radius: 4px;
+    border-collapse:collapse;
+    width:100%;
+    float: left;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    background-image: url('money.jpg');
+
+
+}
+.color{
+color: rgb(0, 0, 0);
+
 }
 
 th, td {
-	text-align: center;
-	padding: 2px;
+    text-align: center;
+    padding: 2px;
+   color: rgb(255, 255, 255);
+
+  text-shadow: 1px 1px 2px black, 0 0 25px gold, 0 0 5px gold;
 }
 
 td{
     font-size: 16px;
 }
 
+  
+  .box select {
+    background-color: #0562af00;
+    color: rgb(10, 10, 10);
+    padding: 2px;
+    margin-top: 3px;
+    width: 150px;
+    border: none;
+    font-size: 15px;
+    border-width: 2px;
+    border-style: inset;
+    border-color: initial;
+    border-image: initial;
 
-tr:nth-child(even) {
-	background-color: #bbcff5;
-}
+    -webkit-appearance: button;
+    appearance: button;
+    outline: none;
+    
+  
+  }
+  .box select:hover{
+
+    border: 2px solid goldenrod;  
+  }
+  
+  
+  .button{
+    background-image: url('stars-pattern.png');
+    color: rgb(255, 255, 255);
+
+  text-shadow: 1px 1px 2px black, 0 0 5px gold, 0 0 1px gold;
+  }
+
+  
+  .box select option {
+    padding: 30px;
+  }
 
 th {
-	background-color: rgb(31, 67, 168);
-	color: #cfd1e9;
+    background-image: url('stars-pattern.png');
 }
 
 a:hover {
-	color: #353434;
+	color: #58c1db;
 }
 
 input, select{
@@ -39,16 +81,14 @@ input, select{
 }
 
 input:hover,  input:active, input:focus{
-    border: 2px solid crimson;
-}
-button{
-	padding: 10px;
-	border: none;
-	background-color: #3533b3;
-	color: white;
-	border-radius: 8px;
-}
-button:hover{
-    background-color: rgb(111, 113, 236);
+    border: 2px solid goldenrod
 }
 
+button:hover{
+    background-color: goldenrod;
+}
+ 
+mat-progress-bar {
+  color: blue;
+  background-color: red;
+}
