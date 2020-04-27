@@ -9,10 +9,18 @@ import { HttpClient } from '@angular/common/http';
   })
   export class PortfolioService extends AbstractService<PortfolioDTO>{
   
+    /*totalmoney: number; */
+
     constructor(http: HttpClient) {
       super(http);
       this.type = 'portfolio';
     }
   
-    
-  }
+   /* Saldo_totalmoney(portfoliodto: PortfolioDTO)
+{
+  const totalmoney=(portfoliodto.revenue-portfoliodto.outputs);
+  portfoliodto.totalmoney=this.totalmoney;
+  portfoliodto.totalmoney=(portfoliodto.revenue-portfoliodto.outputs);
+//
+  } */
+}
