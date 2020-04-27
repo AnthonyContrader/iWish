@@ -2,22 +2,20 @@
   <div class="row">
     <div class="col-md-7">
       <img src="../../assets/iwish-logo.png" alt="logo">
-    </div>
-
-    
-    <div class="col-md-5">
       <form #f="ngForm">
         
-        <p>Please insert username and password to Login or Sign Up</p>
+        <p>Insert username and password to Login or Sign Up</p>
         <div class="form-group">
           <input class="form-control" type="text" id="user" name="username" placeholder="Username" ngModel>
         </div>
         <div class="form-group">
           <input class="form-control" type="password" id="pass" name="password" placeholder="Password" ngModel>
         </div>
-        <button type="submit" (click)="login(f)">Login</button>
-        <button type="submit">Sign Up</button>
+        <button class ="button button1" type="submit" (click)="login(f)">Login</button>
+        <button class ="button button1" type="submit">Sign Up</button>
       </form>
     </div>
-  </div>
+
+   </div> 
+    
 </div>
