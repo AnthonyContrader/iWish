@@ -70,6 +70,7 @@
               Description: {{ category.description }}
               </p>    
               <p class="prod" *ngFor="let p of prodotti">{{p.name}}
+                <button (click)="cancellaprod(p)">X</button>
               </p>                   
                           
                </div>

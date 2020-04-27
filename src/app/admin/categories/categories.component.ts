@@ -4,6 +4,7 @@ import { CategoryDTO } from 'src/dto/categorydto';
 import { UserDTO } from 'src/dto/userdto';
 import { ProdottoService } from 'src/service/prodotto.service';
 import { ProdottoDTO } from 'src/dto/prodottodto';
+import { WishListDTO } from 'src/dto/wishlistdto';
 
 @Component({
   selector: 'app-categories',
@@ -14,6 +15,7 @@ export class CategoriesComponent implements OnInit {
   categories: CategoryDTO[] = [];
   proprietario_c: UserDTO;
   categorytoinsert: CategoryDTO = new CategoryDTO();
+  category: CategoryDTO = new CategoryDTO();
   table: boolean = false;
   apri: number = 0;
   prodotto: ProdottoDTO;
@@ -72,7 +74,8 @@ export class CategoriesComponent implements OnInit {
         
        this.getprodotti(category_id);
       }
-       getprodotti(category_id: number) {
+     
+      getprodotti(category_id: number) {
       this.prodottoservice.getAll().subscribe(prodotti => 
         {
           this.prodotti = [];
@@ -85,9 +88,15 @@ export class CategoriesComponent implements OnInit {
 
         }
       );
-      
-    }
-      
+     }
+     cancellaprod(prodotto: ProdottoDTO) { 
+       let id_category = prodotto.category.id;
+      prodotto.wishlist = new WishListDTO(prodotto.wishlist.id,prodotto.wishlist.name);
+      this.category = null;
+      prodotto.category = this.category;
+      this.prodottoservice.update(prodotto).subscribe(() => {        
+      this.getprodotti(id_category);      
+     });
   }
 
-
+}
