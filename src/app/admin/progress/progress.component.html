@@ -145,28 +145,47 @@
     </div>
 
   -->
-  
-<div class="container" >
-  
-    <div class="row " style="background-image:url(scales.jpg);">
+
+<div class="container">
+
+  <div class="row backgro">
+
+    <div class="col-md-12 " style="text-align: center;" >
       
-    <div class="col-md-6 "style="text-align:right;">
-      <button type="button" class=" button button1" data-toggle="modal" data-target="#exampleModalCenter">
-       Time
+      <button type="button" class=" button button1" data-toggle="modal" data-target="#tempo">
+        <i class="fas fa-euro-sign"></i>  Soldi  
       </button>
-      
+
       <!-- Modal -->
-      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal fade" id="tempo" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
+          <div class="modal-content backbus">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <h5 class="modal-title" id="exampleModalLongTitle">Inserisci i dati</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"> 
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
-              ...
+              <div class="box">
+                <div class="row">
+                  <div class="col-md-12">
+                <span style="text-align: center;"> <i class="fas fa-gifts"></i> Nome Prodotto:</span>
+                <br>
+                <select style="text-align: center;"[(ngModel)]="progressinsert.prodotto">
+                  <option  *ngFor="let p of prodotti" [ngValue]="p">{{ p.name }}</option>
+                 </select>
+                </div>
+              </div>
+                <div class="row">
+                  <div class="col-md-12">
+                 <span style="text-align: center ;color:blue"> <i class="fas fa-coins"></i> Quanti soldi vuoi risparmiare al giorno?</span>
+                 <input placeholder="Soldi €" class="color" [(ngModel)]="progressinsert.cash">
+                </div>
+              </div>
+              </div>
+                
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -176,35 +195,51 @@
         </div>
       </div>
     </div>
-    
-    <div class="col-md-6 " style="text-align:left;">
-      <!-- Button trigger modal -->
-<button   class=" button button1" data-toggle="modal" data-target="#exampleModalCenter">
- soldi 
-</button>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+    <div class="col-md-12 " style="text-align: center;" >
+      <!-- Button trigger modal -->
+      <button class=" button button1" data-toggle="modal" data-target="#soldi">
+        <i class="far fa-clock"></i>  Giorni
+      </button>
+
+      <!-- Modal -->
+      <div  class="modal fade " id="soldi" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered " role="document">
+          <div class="modal-content backbus">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Inserisci i dati</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="box">
+                <div class="row">
+                  <div class="col-md-12">
+                <span style="text-align: center;"> <i class="fas fa-gifts"></i> Nome Prodotto:</span>
+                <br>
+                <select style="text-align: center;"[(ngModel)]="progressinsert.prodotto">
+                  <option  *ngFor="let p of prodotti" [ngValue]="p">{{ p.name }}</option>
+                 </select>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+               <span style="text-align: center ;color:blue"> <i class="far fa-calendar-alt"></i> Quanti giorni vuoi risparmiare?</span>
+               <input placeholder="Giorni" class="color"[(ngModel)]="progressinsert.time">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+
+
     </div>
   </div>
 </div>
-      
-    
-    </div>
-  
-</div>
+
