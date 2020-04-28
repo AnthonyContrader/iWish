@@ -20,6 +20,8 @@ export class WishlistsComponent implements OnInit {
     this.getWishList();
   }
 
+  
+
   getWishList(){
     this.service.getAll().subscribe(wishlists => this.wishlists = wishlists)
   }

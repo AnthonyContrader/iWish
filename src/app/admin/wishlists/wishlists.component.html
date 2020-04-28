@@ -1,48 +1,79 @@
 <div class="container">
-  <div class="row mt-5">
-    <div class="col-md-1">
 
-    </div>
-    <div class="col-md-10">
-      <table>
-        <tr>
-          <th>Name</th>
-          <th>Description</th>
-          <th>Edit</th>
-          <th>WishList</th>
-        </tr>
-        <tr>
-          <td>
-            <input placeholder="Name" [(ngModel)]="wishlisttoinsert.name">
-          </td>
-          <td>
-            <input placeholder="Description" [(ngModel)] = "wishlisttoinsert.description">
-          </td>
-          <td>
-            <button (click)="insert(wishlisttoinsert)">Insert</button>
-          </td>
-          <td>
-            <button (click)="clear()">Clear</button>
-          </td>
-        </tr>
-        <tr *ngFor="let w of wishlists">
-          <td>
-            <input [(ngModel)]="w.name">
-          </td>
-          <td>
-            <input [(ngModel)]="w.description">
-          </td>
-          <td>
-            <button (click)=update(w)>Save</button>
-          </td>
-          <td>
-            <button (click)="delete(w)">Delete</button>
-          </td>
-        </tr>
-      </table>
-    </div>
-    <div class="col-md-1">
-      
+  <div class="row">
+    <div class="col-md-12">
+      <button class="fas fa-plus" style="width: 100%; background-color: green;" data-toggle="modal"
+        data-target="#exampleModal"></button>
+
+      <!---------------------------------INSERT MODAL --------------------------------------------->
+
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Insert a new wishlist</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <input class="form-control" type="text" [(ngModel)]="wishlisttoinsert.name" placeholder="Name"><br>
+              <textarea class="form-control" style="text-align: left;" [(ngModel)]="wishlisttoinsert.description"
+                placeholder="Description"></textarea>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" (click)="insert(wishlisttoinsert)" data-dismiss="modal">Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+  <div class="row">
+    <div class="col-md-12">
+      <ul class="list-group">
+        <li *ngFor="let w of wishlists" class="list-group-item">
+          <!--ITEM-->
+          <div class="row">
+            <div class="col-md-8">{{w.name}}</div>
+
+            <div class="col-md-2"><button class="fas fa-edit" data-toggle="modal"
+                 [attr.data-target]="'#editModal'+w.id"></button>
+              <!---------------------------------EDIT MODAL --------------------------------------------->
+
+              <div class="modal fade" id="editModal{{w.id}}" tabindex="-1" role="dialog"   
+                aria-labelledby="editModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="editModalLabel">Edit wishlist</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <input class="form-control" type="text" [(ngModel)]="w.name" placeholder="Name"><br>
+                      <textarea class="form-control" style="text-align: left;" [(ngModel)]="w.description"
+                        placeholder="Description"></textarea>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary" (click)="update(w)" data-dismiss="modal">Edit</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-2"><button class="fas fa-trash" style="background-color: red;"
+                (click)=delete(w)></button></div>
+
+          </div>
+
+        </li>
+      </ul>
+    </div>
   </div>
+</div>
