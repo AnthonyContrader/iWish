@@ -1,4 +1,4 @@
-progress {
+/*  progress {
   border: none;
   width: 300px;
   height: 10px;
@@ -148,4 +148,32 @@ mat-progress-bar {
       
       .fadeInDown {
     animation-name: fadeInDown;
+      }*/
+
+      .button {
+        background-color: rgb(22, 70, 143); 
+        border: none;
+        color: gold;
+        padding: 3% 20%;
+        text-align: center;
+        margin: 2%;
+        
+        
+        font-size: 12px;
+        
+        transition-duration: 0.4s;
+        cursor: pointer;
       }
+    
+      
+      .button1 {
+        background-color: white; 
+        color:rgb(22, 70, 143); 
+        border: 2px solid rgb(22, 70, 143);
+      }
+      
+      .button1:hover {
+        background-color:rgb(22, 70, 143);
+        color: white;
+      }
+      
