@@ -16,9 +16,11 @@
           <th>
             Uscite
           </th>
+          
           <th>
             Data
           </th>
+        
           <th>
             Edit
           </th>
@@ -47,7 +49,7 @@
           </td>
         </tr>
       </table>
-      <br><br><br><br><br><br><br>
+      <br><br><br><br><br>
       <table>
         <tr *ngFor="let p of portfolio">
           <td>
@@ -61,11 +63,15 @@
               
             
           </td>
-          <td>
+          <td class="color">
+          
             {{ p.date | date: 'medium'
           
 
             }}
+            
+
+            
           </td>
           <td>
             <button class="button" (click)=update(p)>Save</button>
@@ -76,9 +82,7 @@
         </tr>
       </table>
     <div class="color">
-      {{
-        saldoAttuale
-      }}
+     
     </div>
     <div class="col-md-1">
 

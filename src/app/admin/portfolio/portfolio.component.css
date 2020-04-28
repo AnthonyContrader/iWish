@@ -8,25 +8,30 @@ table {
     float: left;
     border-radius: 4px;
     -moz-border-radius: 4px;
-    background-image: url('money.jpg');
+    background-image: url('piggy.jpg');
 
 
 }
 .color{
 color: rgb(0, 0, 0);
+font-weight: 500;
 
 }
 
-th, td {
+th {
     text-align: center;
     padding: 2px;
    color: rgb(255, 255, 255);
 
-  text-shadow: 1px 1px 2px black, 0 0 25px gold, 0 0 5px gold;
+
+   text-shadow: 1px 1px 2px black, 0 0 25px rgb(212, 224, 42), 0 0 5px rgb(175, 194, 66);
 }
 
 td{
-    font-size: 16px;
+    font-size: 18px;
+    text-align: center;
+    padding: 2px;
+   color: rgb(255, 255, 255);
 }
 
   
