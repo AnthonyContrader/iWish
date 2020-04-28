@@ -1,5 +1,31 @@
-
+/*SCHERMI PICCOLI*/
+@media only screen and (max-width: 800px) {
+  
 form{
+  margin-left: 20%;
+  margin-right: 20%;
+  border-color: crimson;
+  align-items: center;
+
+  color: black;
+  
+}
+
+img{
+    position: inherit;
+    width:30%;
+  
+    margin-top: 20%;
+    align-items: center;
+    
+    -webkit-filter: drop-shadow(5px 5px 5px #222);
+    filter:         drop-shadow(5px 5px 5px rgb(199, 177, 50)); 
+    animation: shake 0.5s;
+}
+}
+/*SCHERMI MEDI*/
+@media only screen and (min-width: 800px){
+  form{
     margin-left: 20%;
     margin-right: 20%;
     border-color: crimson;
@@ -7,18 +33,45 @@ form{
   
     color: black;
     
-}
-
-img{
-    position: inherit;
-    width:50%;
-    margin-top: 100px;
-    align-items: center;
+  }
+  
+  img{
+      position: inherit;
+      width:30%;
     
-    -webkit-filter: drop-shadow(5px 5px 5px #222);
-    filter:         drop-shadow(5px 5px 5px rgb(199, 177, 50)); 
-    animation: shake 0.5s;
+      margin-top: 15%;
+      align-items: center;
+      
+      -webkit-filter: drop-shadow(5px 5px 5px #222);
+      filter:         drop-shadow(5px 5px 5px rgb(199, 177, 50)); 
+      animation: shake 0.5s;
+  }
+
 }
+/*SCHERMI GRANDI*/
+@media only screen and (min-width: 1300px) {
+  form{
+    margin-left: 35%;
+    margin-right: 35%;
+    border-color: crimson;
+    align-items: center;
+  
+    color: black;
+    
+  }
+
+  img{
+      position: inherit;
+      width:25%;
+    
+      margin-top: 5%;
+      align-items: center;
+      
+      -webkit-filter: drop-shadow(5px 5px 5px #222);
+      filter:         drop-shadow(5px 5px 5px rgb(199, 177, 50)); 
+      animation: shake 0.5s;
+  }
+  }
 /*
 input, input:hover, input::selection, input:checked, input:focus{
     border: 0;
@@ -32,8 +85,8 @@ input, input:hover, input::selection, input:checked, input:focus{
 */
 .container-fluid{
     background-image: url("stars-pattern.png");
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-repeat: repeat;
+    /*background-size: cover;*/
     border-radius: 0px;
     height: 100vh;
     -webkit-transition: background 2s ease-in;
@@ -114,6 +167,7 @@ img:hover {
     transition-duration: 0.4s;
     cursor: pointer;
   }
+
   
   .button1 {
     background-color: white; 
