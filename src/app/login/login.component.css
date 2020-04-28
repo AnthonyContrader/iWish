@@ -1,26 +1,25 @@
+
 form{
-    margin-top: 0ex;
-    width: 50%;
-    padding: 5px;
-    border-radius:0;
+    margin-left: 20%;
+    margin-right: 20%;
     border-color: crimson;
     align-items: center;
-    margin-left: 50em;
+  
     color: black;
     
 }
 
 img{
     position: inherit;
-    width:30%;
-    margin: 12%;
+    width:50%;
+    margin-top: 100px;
     align-items: center;
-    margin-left: 57em;
+    
     -webkit-filter: drop-shadow(5px 5px 5px #222);
     filter:         drop-shadow(5px 5px 5px rgb(199, 177, 50)); 
     animation: shake 0.5s;
 }
-
+/*
 input, input:hover, input::selection, input:checked, input:focus{
     border: 0;
     background-color: rgb(140, 142, 224);
@@ -30,7 +29,7 @@ input, input:hover, input::selection, input:checked, input:focus{
     margin: 0px;
     animation-name: pulse;
 }
-
+*/
 .container-fluid{
     background-image: url("stars-pattern.png");
     background-repeat: no-repeat;
@@ -44,6 +43,8 @@ input, input:hover, input::selection, input:checked, input:focus{
 transition: background 2s ease-in;
 
 }
+
+/*
 input::placeholder{
     color: rgb(0, 0, 0);
 }
@@ -68,8 +69,9 @@ padding-right: auto;
 padding-bottom: 10px;
 padding-left: auto;
 }
+*/
 p{
-    font-size: 16px;
+    font-size: 12px;
     color: white;
     text-shadow: 1px 1px 2px rgb(12, 15, 199), 0 0 25px gold, 0 0 5px rgb(34, 33, 139);
  text-align: center;
@@ -94,6 +96,7 @@ img:hover {
   90% { transform: translate(1px, 2px) rotate(0deg); }
   100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
+
 .color{
     color : black;
 }
@@ -101,10 +104,11 @@ img:hover {
     background-color: rgb(22, 70, 143); 
     border: none;
     color: gold;
-    padding: 5px 73px;
+    padding: 3% 20%;
     text-align: center;
-    text-decoration: none;
-    display: inline-block;
+    margin: 2%;
+    
+    
     font-size: 12px;
     
     transition-duration: 0.4s;
