@@ -16,7 +16,6 @@ export class CategoriesComponent implements OnInit {
   proprietario_c: UserDTO;
   categorytoinsert: CategoryDTO = new CategoryDTO();
   category: CategoryDTO = new CategoryDTO();
-  table: boolean = false;
   apri: number = 0;
   prodotto: ProdottoDTO;
   prodotti: ProdottoDTO[]=[];
@@ -59,12 +58,6 @@ export class CategoriesComponent implements OnInit {
         this.categorytoinsert = new CategoryDTO();
       }
 
-      nascondi(){
-        if(this.table === true)
-        this.table = false;
-        else
-        this.table = true;
-      }
       open(category_id: number) {
         if (this.apri === category_id){
           this.apri = 0;
