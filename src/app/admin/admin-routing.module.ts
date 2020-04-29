@@ -9,6 +9,7 @@ import {WishlistsComponent} from './wishlists/wishlists.component';
 import {CategoriesComponent} from './categories/categories.component';
 import {PortfolioComponent} from './portfolio/portfolio.component';
 import {ProgressComponent} from './progress/progress.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 /**
  * Modulo di routing dell'admin. Qui ci sono i percorsi che un admin può seguire:
  * appena fa il login viene caricato nel <router-outlet> di app-component il layout e nel 
@@ -31,7 +32,8 @@ const routes: Routes = [
     {path: 'categories', component: CategoriesComponent},
     {path: 'portfolio', component: PortfolioComponent},
     {path: 'progress', component: ProgressComponent}
-  ]}
+  ]},
+ {path: '**', component: PageNotFoundComponent}
 ];
 
 @NgModule({
