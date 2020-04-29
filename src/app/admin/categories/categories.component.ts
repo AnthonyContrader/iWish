@@ -18,7 +18,7 @@ export class CategoriesComponent implements OnInit {
   category: CategoryDTO = new CategoryDTO();
   prodotto: ProdottoDTO;
   prodotti: ProdottoDTO[]=[];
-  editable: boolean = false;
+  canEdit: boolean = false;
   
 
   constructor(private service: CategoryService, private prodottoservice: ProdottoService) { }
@@ -46,7 +46,8 @@ export class CategoriesComponent implements OnInit {
 
       update(category: CategoryDTO) {
        this.service.update(category).subscribe(() => this.getCategory());
-      }
+       this.makeNotEditable();
+         }
 
       insert(category: CategoryDTO) {   
         category.proprietario_c = this.proprietario_c;        
@@ -80,13 +81,10 @@ export class CategoriesComponent implements OnInit {
       this.getprodotti(id_category);      
      });
   }
-   
- /*  modificacat(){
-     if this.editable === false {
-       this.editable = true;
-     } else {
-       this.editable =false;
-     }
-
-  }*/
+   makeEditable() {
+     this.canEdit = true;
+   }
+   makeNotEditable() {
+     this.canEdit = false;
+   }
 }

@@ -60,19 +60,38 @@ table, th, td {
 	background-color: white;
 	color: black;
   border: 2px solid blue;
-  
+    
   }
+
+  .a1:hover {
+    background-color: blue;
+    color: black;
+    border: 2px solid blue;
+  }
+
   .a2 {
 	background-color: white;
 	color: black;
   border: 2px solid yellow;
   }
   
+  .a2:hover {
+    background-color: yellow;
+    color: black;
+    border: 2px solid yellow;
+  }
+
   .a4 {
 	background-color: white;
 	color: black;
 	border: 2px solid red;
   }
+
+  .a4:hover {
+    background-color: red;
+    color: black;
+    border: 2px solid red;
+    }
 
   .a5{
 	  margin-top: 30px;
@@ -100,8 +119,26 @@ display: inline-block;
 	transform: translateY(4px);
   }
 
-  div.border {
-    border-style: solid;
-    border-width: medium;
-    border-color: red;
+  .a6{
+    background-color: white;
+	color: black;
+	border: 2px solid green;
+  }
+
+  .a6:hover {
+  background-color: green;
+	color: black;
+	border: 2px solid green;
+  }
+
+  .a7{
+    background-color: white;
+	color: black;
+	border: 2px solid purple;
+  }
+
+  .a7:hover {
+  background-color: purple;
+	color: black;
+	border: 2px solid purple;
   }

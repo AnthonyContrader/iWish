@@ -41,15 +41,15 @@
                   </th>
                   <td class="rating">
                     <input [(ngModel)]="categorytoinsert.rating" type="radio" id="star5" name="rating"
-                      value="5" /><label class="full" for="star5" title="Awesome"></label>
+                      value="5" /><label for="star5" title="Awesome"></label>
                     <input [(ngModel)]="categorytoinsert.rating" type="radio" id="star4" name="rating"
-                      value="4" /><label class="full" for="star4" title="Pretty good"></label>
+                      value="4" /><label for="star4" title="Pretty good"></label>
                     <input [(ngModel)]="categorytoinsert.rating" type="radio" id="star3" name="rating"
-                      value="3" /><label class="full" for="star3" title="Meh"></label>
+                      value="3" /><label for="star3" title="Meh"></label>
                     <input [(ngModel)]="categorytoinsert.rating" type="radio" id="star2" name="rating"
-                      value="2" /><label class="full" for="star2" title="Kinda bad"></label>
+                      value="2" /><label for="star2" title="Kinda bad"></label>
                     <input [(ngModel)]="categorytoinsert.rating" type="radio" id="star1" name="rating"
-                      value="1" /><label class="full" for="star1" title="Sucks big time"></label>
+                      value="1" /><label for="star1" title="Sucks big time"></label>
                   </td>
                 </tr>
                 <tr>
@@ -85,30 +85,55 @@
                   aria-labelledby="editModalLabel" aria-hidden="true">
                   <div class="modal-dialog" role="document">
                     <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="editModalLabel">{{category.name | uppercase }}<span>
-                            {{category.rating}}
-                          </span></h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body">
-                        <tr>
-                          <th>Description:</th>
-                          <td [title]="category.description" style="text-align: left;">
-                            {{category.description}}</td>
-                        </tr>
-                        <br>
+                      <!--  non modificabile -->
+                      <div *ngIf="canEdit == false">
+                      <div class="modal-header">                       
+                          <h5 class="modal-title" id="editModalLabel">{{category.name | uppercase }}<span>
+                              {{category.rating}}
+                            </span></h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <tr>
+                            <th>Description:</th>
+                            <td [title]="category.description" style="text-align: left;">
+                              {{category.description}}</td>
+                          </tr>
+                           <br>
                         <div class="prod" *ngFor="let p of prodotti">
                           {{p.name}}
                           <a (click)="cancellaprod(p)">&times;</a>
                         </div>
-                      </div>
+                      </div></div>
+                        <!--           can edit   -->
+                      <div *ngIf="canEdit == true">
+                        <div class="modal-header">                       
+                            <h5 class="modal-title" id="editModalLabel"><input [(ngModel)]="category.name"> <span>
+                              <input [(ngModel)]="category.rating">
+                            </span></h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <tr>
+                              <th>Description:</th>
+                              <td style="text-align: left;">
+                                <input [(ngModel)]="category.description"></td>
+                            </tr>
+                             <br>
+                          <div class="prod" *ngFor="let p of prodotti">
+                            {{p.name}}
+                            <a (click)="cancellaprod(p)">&times;</a>
+                          </div>
+                        </div></div>
                       <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" (click)="editable()"
-                          data-dismiss="modal">Edit</button>
+                        <button class="a6" (click)="makeEditable()">Modifica</button>
+                        <button class="a7" (click)="update(category)" data-dismiss="modal">Salva</button>
+                        <button class="a4" data-dismiss="modal">Close</button>
+                        
                       </div>
                     </div>
                   </div>
@@ -126,7 +151,8 @@
     </div>
   </div>
 </div>
-                  <!--        modifica categoria    -->
+
+<!--        modifica categoria  
                   <div *ngIf="editable===true">
                   <div style="width: 100%;" class="modal fade" id="editModal{{category.id}}" tabindex="-1" role="dialog"
                   aria-labelledby="editModalLabel" aria-hidden="true">
@@ -160,5 +186,4 @@
                     </div>
                   </div>
                 </div>
-              </div>
-            
+              </div>  -->
