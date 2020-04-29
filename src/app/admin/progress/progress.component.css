@@ -234,3 +234,19 @@ mat-progress-bar {
       font-weight: bold;
       text-align: center;
     }
+    li{
+      background-color: grey;
+      color: black;
+      text-align:left;
+      font-weight: bold;
+      font-size:15px;
+      border: solid black 3px;
+      margin-right: 22%;
+      margin-left: 2%;
+
+
+    }
+    .buttonlist{
+      margin-left:40%;
+    }
+    
