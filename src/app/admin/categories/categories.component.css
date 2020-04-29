@@ -1,24 +1,18 @@
 @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
 
-
 *{
 	text-align: center;
 }
 
-fieldset, label { margin: 0; padding: 0; }
-body{ margin: 15px; }
-h1 { font-size: 1.5em; margin: 1px; }
-
-/****** Style Star Rating Widget *****/
-
 .rating { 
   border: none;
-  float: center;
+  float: left;
+  margin-left: 10px;
 }
 
 .rating > input { display: none; } 
 .rating > label:before { 
-  margin: 10px;
+  margin: 15px;
   font-size: 1.5em;
   font-family: FontAwesome;
   display: inline-block;
@@ -32,7 +26,7 @@ h1 { font-size: 1.5em; margin: 1px; }
 
 .rating > label { 
   color: #ddd; 
- float: center; 
+ float: right; 
 }
 
 /***** CSS Magic to Highlight Stars on Hover *****/
@@ -54,7 +48,8 @@ table, th, td {
   }
   th, td {
 	padding: 5px;
-	text-align: center;
+  text-align: center;
+  float:center;
   }
 
   h2{
@@ -64,23 +59,39 @@ table, th, td {
   .a1 {
 	background-color: white;
 	color: black;
-	border: 2px solid blue;
+  border: 2px solid blue;
+    
   }
+
+  .a1:hover {
+    background-color: blue;
+    color: black;
+    border: 2px solid blue;
+  }
+
   .a2 {
 	background-color: white;
 	color: black;
-	border: 2px solid yellow;
+  border: 2px solid yellow;
   }
-  .a3 {
-	background-color: white;
-	color: black;
-	border: 2px solid #4CAF50; 
+  
+  .a2:hover {
+    background-color: yellow;
+    color: black;
+    border: 2px solid yellow;
   }
+
   .a4 {
 	background-color: white;
 	color: black;
 	border: 2px solid red;
   }
+
+  .a4:hover {
+    background-color: red;
+    color: black;
+    border: 2px solid red;
+    }
 
   .a5{
 	  margin-top: 30px;
@@ -106,4 +117,28 @@ display: inline-block;
 	background-color: "stars.pattern.png";;
 	box-shadow: 0 5px #666;
 	transform: translateY(4px);
+  }
+
+  .a6{
+    background-color: white;
+	color: black;
+	border: 2px solid green;
+  }
+
+  .a6:hover {
+  background-color: green;
+	color: black;
+	border: 2px solid green;
+  }
+
+  .a7{
+    background-color: white;
+	color: black;
+	border: 2px solid purple;
+  }
+
+  .a7:hover {
+  background-color: purple;
+	color: black;
+	border: 2px solid purple;
   }

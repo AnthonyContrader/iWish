@@ -4,6 +4,7 @@ import { ProgressDTO } from 'src/dto/progressdto';
 import { ProdottoDTO } from 'src/dto/prodottodto';
 import{ProdottoService} from 'src/service/prodotto.service';
 import { UserDTO } from 'src/dto/userdto';
+import { shallowEqual } from '@angular/router/src/utils/collection';
 
 
   
@@ -27,6 +28,7 @@ export class ProgressComponent implements OnInit {
    prodotti: ProdottoDTO[]=[];
    table_visible: boolean  = false;
    y: number;
+   progress:ProgressDTO = new ProgressDTO(0,0,0,0,new ProdottoDTO(0,"",0));
 
   constructor(private service: ProgressService, private prodottoservice: ProdottoService) { }
 
@@ -97,7 +99,14 @@ export class ProgressComponent implements OnInit {
      return y;
 
 
-   }
+
+    }
+    show(progress: ProgressDTO){
+     
+      this.progress=progress;
+
+    }
 }
+
 
 
