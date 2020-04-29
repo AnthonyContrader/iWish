@@ -1,116 +1,164 @@
- <div class="container">
-        <div class="row-mt-5">
-          <div class="col-md-6">
-            <!-- Button trigger modal -->
-    <button type="button" class="a5" data-toggle="modal" data-target="#exampleModal">
-      Crea Nuova Categoria
-    </button>
-    
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Crea una nuova categoria</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <table style="width:100%">
-              <tr>
-              <th>
-                Nome
-              </th>
-              <td>
-                <input placeholder="nome" [(ngModel)]="categorytoinsert.name">
-                </td>
+<div class="container">
+  <div class="row-mt-5">
+    <div class="col-md-12">
+
+      <!-- inserisci categoria button -->
+      <button type="button" class="a5" data-toggle="modal" data-target="#Modal">
+        Crea Nuova Categoria
+      </button>
+
+      <!-- Inserisci categoria pop up -->
+      <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="ModalLabel">Crea una nuova categoria</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <table style="width:100%">
+                <tr>
+                  <th>
+                    Nome
+                  </th>
+                  <td>
+                    <input placeholder="nome" [(ngModel)]="categorytoinsert.name">
+                  </td>
                 </tr>
                 <tr>
-              <th>
-                Descrizione
-              </th>
-              <td>
-                <input placeholder="description" [(ngModel)]="categorytoinsert.description">
-              </td>
-              </tr>
-              <tr>
-              <th>
-                Valutazione
-              </th>
-              <td class="rating">
-                <input [(ngModel)]="categorytoinsert.rating" type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
-                <input [(ngModel)]="categorytoinsert.rating" type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
-                <input [(ngModel)]="categorytoinsert.rating" type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
-                <input [(ngModel)]="categorytoinsert.rating" type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label> 
-                <input [(ngModel)]="categorytoinsert.rating" type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
-                         
-                </td>
+                  <th>
+                    Descrizione
+                  </th>
+                  <td>
+                    <input placeholder="description" [(ngModel)]="categorytoinsert.description">
+                  </td>
                 </tr>
                 <tr>
-                 </table>
+                  <th>
+                    Valutazione
+                  </th>
+                  <td class="rating">
+                    <input [(ngModel)]="categorytoinsert.rating" type="radio" id="star5" name="rating"
+                      value="5" /><label class="full" for="star5" title="Awesome"></label>
+                    <input [(ngModel)]="categorytoinsert.rating" type="radio" id="star4" name="rating"
+                      value="4" /><label class="full" for="star4" title="Pretty good"></label>
+                    <input [(ngModel)]="categorytoinsert.rating" type="radio" id="star3" name="rating"
+                      value="3" /><label class="full" for="star3" title="Meh"></label>
+                    <input [(ngModel)]="categorytoinsert.rating" type="radio" id="star2" name="rating"
+                      value="2" /><label class="full" for="star2" title="Kinda bad"></label>
+                    <input [(ngModel)]="categorytoinsert.rating" type="radio" id="star1" name="rating"
+                      value="1" /><label class="full" for="star1" title="Sucks big time"></label>
+                  </td>
+                </tr>
+                <tr>
+              </table>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="a1" (click)="insert(categorytoinsert)"
+                data-dismiss="modal">Inserisci</button>
+              <button type="button" class="a2" (click)="clear()">Clear</button>
+              <span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span>
+              <button type="button" class="a4" data-dismiss="modal">Close</button>
+
+            </div>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="a1" (click)="insert(categorytoinsert)" data-dismiss="modal">Inserisci</button>
-            <button type="button" class="a2" (click)="clear()">Clear</button>
-            <button type="button" class="a3" (click)="update(categorytoupdate)">Save changes</button>
-            <button type="button" class="a4" data-dismiss="modal">Close</button>
-            
+        </div>
+      </div>
+      <br><br><br><br>
+
+      <!--  mostra categoria   -->
+
+
+      <div *ngFor="let category of categories">
+        <div class="border">
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-md-4">{{category.name}}</div>
+              <div lass="col-md-2"><button (click)="getprodotti(category.id)" class="fas fa-folder-open"
+                  data-toggle="modal" [attr.data-target]="'#editModal'+category.id"></button>
+
+                <!-- mostra la modal di categoria -->
+
+                <div style="width: 100%;" class="modal fade" id="editModal{{category.id}}" tabindex="-1" role="dialog"
+                  aria-labelledby="editModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="editModalLabel">{{category.name | uppercase }}<span>
+                            {{category.rating}}
+                          </span></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <tr>
+                          <th>Description:</th>
+                          <td [title]="category.description" style="text-align: left;">
+                            {{category.description}}</td>
+                        </tr>
+                        <br>
+                        <div class="prod" *ngFor="let p of prodotti">
+                          {{p.name}}
+                          <a (click)="cancellaprod(p)">&times;</a>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" (click)="editable()"
+                          data-dismiss="modal">Edit</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!--             pulsante cancella    -->
+
+              <div class="col-md-2"><button class="fas fa-trash" style="background-color: red;"
+                  (click)=delete(category)></button></div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-         <br><br><br>   
-
-     <div *ngFor="let category of categories">
-    <!--    <h2 (click)="open(category.id)" [title]="category.name" >
-             {{category.name | uppercase }} 
-              &nbsp;&nbsp;&nbsp;
-           <span [title]="category.rating">
-                    {{category.rating}} </span>
-                <a (click)="delete(category)">	&times; </a>
-          
-           </h2>       
-         <div *ngIf="apri===category.id">
-         <h6 *ngIf="category.description">
-           Description: {{ category.description }}
-           <p class="prod" *ngFor="let p of prodotti">{{p.name}}
-             <a (click)="cancellaprod(p)">&times;</a>
-           </p>       
-         </h6>    
-                      
-                   
-            </div>
-             </div>
-      <br> <br>
-              </div>
-           </div>
-        </div> -->
-        
-        <!-- Button trigger modal -->
-<button class="btn btn-primary"  data-toggle="modal" data-target="#exampleModal">
-  Launch demo modal
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
   </div>
 </div>
-       
-      
+                  <!--        modifica categoria    -->
+                  <div *ngIf="editable===true">
+                  <div style="width: 100%;" class="modal fade" id="editModal{{category.id}}" tabindex="-1" role="dialog"
+                  aria-labelledby="editModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="editModalLabel"><input [(ngModel)]="category.name"><span>
+                          <input [(ngModel)]="category.rating">
+                          </span></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <tr>
+                          <th>Description:</th>
+                          <td style="text-align: left;">
+                           <input [(ngModel)}="category.description"> </td>
+                        </tr>
+                        <br>
+                        <div class="prod" *ngFor="let p of prodotti">
+                          {{p.name}}
+                          <a (click)="cancellaprod(p)">&times;</a>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" (click)="update(category)"
+                          data-dismiss="modal">Edit</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            

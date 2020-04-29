@@ -16,9 +16,9 @@ export class CategoriesComponent implements OnInit {
   proprietario_c: UserDTO;
   categorytoinsert: CategoryDTO = new CategoryDTO();
   category: CategoryDTO = new CategoryDTO();
-  apri: number = 0;
   prodotto: ProdottoDTO;
   prodotti: ProdottoDTO[]=[];
+  editable: boolean = false;
   
 
   constructor(private service: CategoryService, private prodottoservice: ProdottoService) { }
@@ -57,20 +57,9 @@ export class CategoriesComponent implements OnInit {
       clear(){
         this.categorytoinsert = new CategoryDTO();
       }
-
-      open(category_id: number) {
-        if (this.apri === category_id){
-          this.apri = 0;
-        } else {
-        this.apri = category_id;
-        }
-        
-       this.getprodotti(category_id);
-      }
-     
-      getprodotti(category_id: number) {
-      this.prodottoservice.getAll().subscribe(prodotti => 
-        {
+  
+     getprodotti(category_id: number) {
+       this.prodottoservice.getAll().subscribe(prodotti =>  {
           this.prodotti = [];
           for (let p of prodotti){
             if(p.category !== null){
@@ -91,5 +80,13 @@ export class CategoriesComponent implements OnInit {
       this.getprodotti(id_category);      
      });
   }
+   
+ /*  modificacat(){
+     if this.editable === false {
+       this.editable = true;
+     } else {
+       this.editable =false;
+     }
 
+  }*/
 }
