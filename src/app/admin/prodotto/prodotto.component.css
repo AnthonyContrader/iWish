@@ -1,127 +1,150 @@
-*{
-    text-align: center;
-}
-
-button:hover{
-    background-color: crimson;
-}
-@keyframes fadeIn {
-	from {
-	  opacity: 0;
-	}
-  
-	to {
-	  opacity: 1;
-	}
-  }
-  
-  .fadeIn {
-	animation-name: fadeIn;
-  }
-  
-  @keyframes fadeInDown {
-	from {
-	  opacity: 0;
-	  transform: translate3d(0, -100%, 0);
-	}
-  
-	to {
-	  opacity: 1;
-	  transform: translate3d(0, 0, 0);
-	}
-  }
-  
-  .fadeInDown {
-	animation-name: fadeInDown;
-  }
-  table {
-    border-collapse:collapse;
-    width:100%;
-    float: left;
-    border-radius: 4px;
-    -moz-border-radius: 4px;
-    background-image: url('../progress/gift.jpg');
-	animation: fadeInDown;
-	animation-duration: 2s;
-
-}
-.color{
-color: rgb(0, 0, 0);
-
-}
-
-th, td {
-    text-align: center;
-    padding: 2px;
-   color: rgb(255, 255, 255);
-
-  text-shadow: 1px 1px 2px black, 0 0 25px gold, 0 0 5px gold;
-}
-
-td{
-    font-size: 16px;
-}
-
-  
-  .box select {
-    background-color: #0562af00;
-    color: rgb(10, 10, 10);
-    padding: 2px;
-    margin-top: 3px;
-    width: 150px;
-    border: none;
-    font-size: 15px;
-    border-width: 2px;
-    border-style: inset;
-    border-color: initial;
-    border-image: initial;
-
-    -webkit-appearance: button;
-    appearance: button;
-    outline: none;
+     
+     .button {
+       background-color: rgb(22, 70, 143); 
+       border: none;
+       color: gold;
+       padding: 3% 20%;
+       text-align: center;
+       margin: 2%;
+       font-weight: bold;
+       
+       font-size: 20px;
+       
+       transition-duration: 0.4s;
+       cursor: pointer;
+     }
+   
+     card-body {
+       animation-name: fadeInDown;
+       animation-duration: 2s;
+     }
+     .button1 {
+       background-color: white; 
+       color:rgb(22, 70, 143); 
+       border: 2px solid rgb(22, 70, 143);
+     }
+     
+     .button1:hover {
+       background-color:rgb(22, 70, 143);
+       color: white;
+     }
+     
+     .box select {
+       background-color: #0562af00;
+       color: rgb(10, 10, 10);
+       padding: 2% 10%;
+       margin-top: 3px;
+       font-weight: bold;
+     
+       border: none;
+       font-size: 17px;
+       border-width: 2px;
+       border-style: inset;
+       border-color: initial;
+       border-image: initial;
+   
+       -webkit-appearance: button;
+       appearance: button;
+       outline: none;
+       
+     
+     }
+     .box select:hover{
+   
+       border: 2px solid goldenrod;  
+       font-weight: bold;
+     }
+     input, select{
+       background-color: inherit;
+       font-size: inherit;
+       margin: 3%;
+      
+       padding: 2% 10%;
+   }
+   
+   input:hover,  input:active, input:focus{
+       border: 2px solid goldenrod
+   }
+   
+ span{
+     text-align: center;
+     font-size: 20px;
+     color: blue;
+     font-weight: bold;
+   }
+   
+   option{
+     font-weight: bold;
+     text-align: center;
+   }
+   @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translate3d(0, -100%, 0);
+    }
     
-  
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
   }
-  .box select:hover{
+    }
+    
+    .fadeInDown {
+    animation-name: fadeInDown;
+    }
 
-    border: 2px solid goldenrod;  
+    input {
+      text-align: left;
+    }
+
+/*
+   .glyphicon {
+    margin-right: 5px;
+  }
+  .thumbnail {
+    margin-bottom: 20px;
+    padding: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
   }
   
-  
-  .button{
-    background-image: url('../progress/stars-pattern.png');
-    color: rgb(255, 255, 255);
-
-  text-shadow: 1px 1px 2px black, 0 0 5px gold, 0 0 1px gold;
+  .item.list-group-item {
+    float: none;
+    width: 100%;
+    background-color: #fff;
+    margin-bottom: 10px;
   }
-
-  
-  .box select option {
-    padding: 30px;
+  .item.list-group-item:nth-of-type(odd):hover,
+  .item.list-group-item:hover {
+    background: #428bca;
   }
-
-th {
-    background-image: url('../progress/stars-pattern.png');
-}
-
-a:hover {
-	color: #58c1db;
-}
-
-input, select{
-    background-color: inherit;
-    font-size: inherit;
-}
-
-input:hover,  input:active, input:focus{
-    border: 2px solid goldenrod
-}
-
-button:hover{
-    background-color: goldenrod;
-}
- 
-mat-progress-bar {
-  color: blue;
-  background-color: red;
-}
+  
+  .item.list-group-item .list-group-image {
+    margin-right: 10px;
+  }
+  .item.list-group-item .thumbnail {
+    margin-bottom: 0px;
+  }
+  .item.list-group-item .caption {
+    padding: 9px 9px 0px 9px;
+  }
+  .item.list-group-item:nth-of-type(odd) {
+    background: #eeeeee;
+  }
+  
+  .item.list-group-item:before,
+  .item.list-group-item:after {
+    display: table;
+    content: " ";
+  }
+  
+  .item.list-group-item img {
+    float: left;
+  }
+  .item.list-group-item:after {
+    clear: both;
+  }
+  .list-group-item-text {
+    margin: 0 0 11px;
+  } */

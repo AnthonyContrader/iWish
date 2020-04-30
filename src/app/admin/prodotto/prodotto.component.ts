@@ -21,6 +21,7 @@ export class ProdottoComponent implements OnInit {
   category: CategoryDTO;
   wishlists: WishListDTO[]=[];
   categories: CategoryDTO[]=[];
+  class: string = "list-group-item";
 
   constructor(private service: ProdottoService, private wishlistservice: WishListService, private categoryservice: CategoryService) { }
 
@@ -100,3 +101,4 @@ compareWishLists(w1: WishListDTO, w2: WishListDTO){
 }
 
 }
+

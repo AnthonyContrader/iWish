@@ -1,4 +1,4 @@
-<div class="container">
+<!--<div class="container">
   <div class="row mt-5">
     <div class="col-md-1">
  
@@ -45,6 +45,7 @@
         <button class="button" (click)="clear()"> clear </button>
       </td>
     </tr>
+    
     <tr *ngFor="let prodotto of prodotti">
       <td>
         <input class="color" [(ngModel)]="prodotto.name">
@@ -74,13 +75,112 @@
       <td>
         <button class="button" (click)="delete(prodotto)">Delete</button>
       </td>
-    </tr>
+    </tr> 
   </table>
   
   </div>
    
   </div>
-</div>
+</div> -->
 
+<div class="container" animation-name: fadeInDown>
 
+  <div class="row backgro">
 
+    <div class="col-md-12 " style="text-align: center;">
+
+      <button type="button" class="button button1" data-toggle="modal" data-target="#prodotto">
+        <i>Inserisci un Prodotto</i>
+      </button>
+      <!-- Modal -->
+      <div class="modal fade" id="prodotto" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content backbus">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Inserisci il prodotto</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="box">
+                <div class="row">
+                  <div class="col-md-12">
+                    <span style="text-align: center;"> <i class="fas fa-gifts"></i> Nome Prodotto:</span>
+                    <input class="color" [(ngModel)]="prodottotoinsert.name">
+                    <br>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <input class="color" [(ngModel)]="prodottotoinsert.description">
+                    <span style="text-align: center;"> <i class="fas fa-gifts"></i> Descrizione:</span>
+                    <br>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <input class="color" [(ngModel)]="prodottotoinsert.price">
+                    <span style="text-align: center;"> <i class="fas fa-gifts"></i> Prezzo:</span>
+                    <br>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <input class="color" [(ngModel)]="prodottotoinsert.priority">
+                    <span style="text-align: center;"> <i class="fas fa-gifts"></i> Priorità:</span>
+                    <br>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button (click)=insert(prodottotoinsert) type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngFor="let prodotto of prodotti" class="card" style="width: 18rem;">
+      <img class="card-img-top" src="../../../assets/prodotti.jpg" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">{{prodotto.name}}</h5>
+        <p class="card-text">{{prodotto.description}}</p>
+        <p class="card-text">{{prodotto.price}}</p>
+        <p class="card-text">{{prodotto.priority}}</p>
+        <button class="btn btn-primary" (click)=update(prodotto) data-toggle="modal"
+          [attr.data-target]="'#editModal' + prodotto.id">Edit</button>
+        <button class="btn btn-danger fas fa-trash-alt" (click)="delete(prodotto)"></button>
+      </div>
+
+      <!---------------------------------EDIT MODAL --------------------------------------------->
+
+      <div class="modal fade" id="editModal{{prodotto.id}}" tabindex="-1" role="dialog" aria-labelledby="editModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="editModalLabel">Edit Prodotto</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <input class="form-control" type="text" [(ngModel)]="prodotto.name" placeholder="Name"><br>
+              <input class="form-control" [(ngModel)]="prodotto.description"><br>
+              <input class="form-control" type="text" [(ngModel)]="prodotto.price" placeholder="Prezzo"><br>
+              <input class="form-control" type="text" [(ngModel)]="prodotto.priority" placeholder="Priorità"><br>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" (click)="update(w)" data-dismiss="modal">Edit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
