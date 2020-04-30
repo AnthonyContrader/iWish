@@ -4,6 +4,8 @@ import { PortfolioDTO } from 'src/dto/portfoliodto';
 import { UserDTO } from 'src/dto/userdto';
 import { Chart } from 'chart.js';
 import { ViewChild, ElementRef } from '@angular/core';
+import { fillProperties } from '@angular/core/src/util/property';
+import { listeners } from 'cluster';
 
 
 
@@ -94,8 +96,10 @@ export class PortfolioComponent implements OnInit {
         labels: this.date,
         datasets: [{
             label: 'Andamento portafoglio',
+            fill: 'toself',
+            backgroundColor: 'blue',
             
-           
+
             borderColor: 'rgb(000, 255, 000)',
             data: this.saldi
         }]
@@ -106,9 +110,8 @@ export class PortfolioComponent implements OnInit {
 });
   }
 
-  /*grafico1(){
-    this.context = (<HTMLCanvasElement>this.myCanvas.nativeElement).getContext('2d')
-var chart = new Chart(this.context, {
+  grafico1(){
+    this.chart = new Chart("myChart", {
     // The type of chart we want to create
     type: 'bar',
 
@@ -117,7 +120,9 @@ var chart = new Chart(this.context, {
         labels: this.date,
         datasets: [{
             label: 'Andamento entrate',
-            backgroundColor:"green",
+            backgroundColor: "green",
+            
+        
            
             borderColor: 'rgb(000, 255, 000)',
             data: this.entrate
@@ -131,8 +136,7 @@ var chart = new Chart(this.context, {
 
   grafico2(){
     
-    var ctx = document.getElementById('myChart').getContext('2d');
-    var chart = new Chart(ctx, {
+     this.chart = new Chart("myChart", {
     // The type of chart we want to create
     type: 'bar',
 
@@ -151,7 +155,7 @@ var chart = new Chart(this.context, {
     // Configuration options go here
     options: {}
 });
-  }*/
+  }
  
   
 }
