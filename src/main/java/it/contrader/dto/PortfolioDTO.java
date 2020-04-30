@@ -1,6 +1,8 @@
 package it.contrader.dto;
 
 
+import java.sql.Timestamp;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,6 +21,8 @@ public class PortfolioDTO {
 	private float revenue;
 	
 	private float outputs;
+	
+	private Timestamp date;
 	
 	private UserDTO proprietario;
 
