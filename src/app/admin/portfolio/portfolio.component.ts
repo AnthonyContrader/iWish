@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { PortfolioService } from 'src/service/portfolio.service';
 import { PortfolioDTO } from 'src/dto/portfoliodto';
 import { UserDTO } from 'src/dto/userdto';
+import { Chart } from 'chart.js';
+import { ViewChild, ElementRef } from '@angular/core';
+
 
 
 
@@ -16,6 +19,12 @@ export class PortfolioComponent implements OnInit {
   proprietario: UserDTO;
   data : Date;
   saldoAttuale: number = 0;
+  saldi: number[]=[];
+  entrate:number[]=[];
+  uscite: number[]=[];
+  date: Date[]=[];
+  chart: any;
+ 
   constructor(private service: PortfolioService) { }
   
 
@@ -30,11 +39,19 @@ export class PortfolioComponent implements OnInit {
   getPortfolio() {
     this.service.getAll().subscribe(portafogli => {
       this.portfolio=[] ;
+      this.saldi=[];
+      this.date=[];
+      this.entrate=[];
+      this.uscite=[];
       let id=0;
       this.saldoAttuale=0;
       for(let p of portafogli){ 
         if (p.proprietario.username===this.proprietario.username){
           this.portfolio.push(p);
+          this.saldi.push(p.totalmoney);
+          this.entrate.push(p.revenue);
+          this.uscite.push(p.outputs);
+          this.date.push(p.date);
           if (p.id>id){ 
             id=p.id;
             this.saldoAttuale=p.totalmoney;
@@ -64,6 +81,77 @@ export class PortfolioComponent implements OnInit {
   clear(){
     this.portfoliotoinsert = new PortfolioDTO();
   }
+
+  grafico(){
+    
+    
+  this.chart = new Chart("myChart", {
+    // The type of chart we want to create
+    type: 'line',
+
+    // The data for our dataset
+    data: {
+        labels: this.date,
+        datasets: [{
+            label: 'Andamento portafoglio',
+            
+           
+            borderColor: 'rgb(000, 255, 000)',
+            data: this.saldi
+        }]
+    },
+
+    // Configuration options go here
+    options: {}
+});
+  }
+
+  /*grafico1(){
+    this.context = (<HTMLCanvasElement>this.myCanvas.nativeElement).getContext('2d')
+var chart = new Chart(this.context, {
+    // The type of chart we want to create
+    type: 'bar',
+
+    // The data for our dataset
+    data: {
+        labels: this.date,
+        datasets: [{
+            label: 'Andamento entrate',
+            backgroundColor:"green",
+           
+            borderColor: 'rgb(000, 255, 000)',
+            data: this.entrate
+        }]
+    },
+
+    // Configuration options go here
+    options: {}
+});
+  }
+
+  grafico2(){
+    
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'bar',
+
+    // The data for our dataset
+    data: {
+        labels: this.date,
+        datasets: [{
+            label: 'Andamento uscite',
+            backgroundColor: "green",
+           
+            borderColor: 'rgb(000, 255, 000)',
+            data: this.uscite
+        }]
+    },
+
+    // Configuration options go here
+    options: {}
+});
+  }*/
  
   
 }
