@@ -148,7 +148,7 @@
 
 <div class="container">
 
-  <div class="row backgro" style="margin:10%">
+  <div class="row backgro" style="margin:10%; animation-name: fadeInDown;animation-duration: 2s;">
 
     <div class="col-md-12 " style="text-align: center;">
 
@@ -272,17 +272,18 @@
 
 
 
-              <li *ngFor="let p of progressi" class="list-group-item" (click)=show(p) >
+              <li *ngFor="let p of progressi" class="list-group-item" >
                 {{p.prodotto.name}} 
                 
-                <button class="buttonlist"><i class="fas fa-history"></i> </button>
+                <button  (click)=show(p) class="buttonlist"><i class="fas fa-history"></i> </button>
+              <button ><i class="fas fa-wallet"></i> </button>
+              <button (click)="delete(p)"><i class="fas fa-trash-alt"></i></button>
 
-                <button ><i class="fas fa-wallet"></i> </button>
-                <button (click)="delete(progress)"><i class="fas fa-trash-alt"></i></button>
+                
 
 
               </li>
-
+              
             </ul>
           </div>
         </div>
@@ -294,22 +295,27 @@
   
 
 
- <div *ngIf=" progress   "class="col-md-6" style="border: solid 5px blue; border-radius: 10px;margin-top:1% ;font-size: 20px;font-weight: bold;" >
-      <p ><i class="fas fa-bullseye"></i>Target: {{progress.prodotto.name}} </p><p><i class="fas fa-wallet"></i>Prezzo:{{progress.prodotto.price}}€</p>
-      
-
-      <p> <i class="far fa-calendar-alt"></i>Risparima per: {{arrotonda(progress.time)}}giorni</p><p> <i class="fas fa-coins"></i>Risparmia {{arrotonda(progress.cash)}}€ al giorno </p>
-      
+ <div  [class]="x"  *ngIf=" progress" class="col-md-6 " style="border: solid 5px blue; border-radius: 10px;margin:2% ;font-size: 20px;font-weight: bold;padding: 5% ;
+  background-color: white;" >
+      <p ><i class="fas fa-bullseye"></i>Target: {{progress.prodotto.name}} </p>
+      <p> <i  class="fas fa-wallet"></i>Prezzo:{{progress.prodotto.price}}€</p>
       <p><i class="fas fa-chart-pie"></i>Siamo al {{arrotonda(progress.expectation)}}%</p>
+      
       <div class="progress" style="margin:5px; border: solid black 2px;">
-          <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"  aria-valuemin="0" aria-valuemax="100" [style.width]="arrotonda(progress.expectation) + '%'">
-          
-          </div>
-          </div>
+        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"  aria-valuemin="0" aria-valuemax="100" [style.width]="arrotonda(progress.expectation) + '%'">
+        
+        </div>
+        </div>
+        <p></p>
+      <p> <i class="far fa-calendar-alt"></i>Risparima per: {{arrotonda(progress.time)}}giorni</p><p> <i class="fas fa-coins"></i>Risparmia {{arrotonda(progress.cash)}}€ al giorno </p>
+      <button style="color:blue; background-color: white;"(click)="changestatus(x)"><i class="fas fa-times-circle"></i></button>
+      
   </div>
 
 
-  </div>
+  
+
+</div>
 
 
 

@@ -29,6 +29,7 @@ export class ProgressComponent implements OnInit {
    table_visible: boolean  = false;
    y: number;
    progress:ProgressDTO = new ProgressDTO(0,0,0,0,new ProdottoDTO(0,"",0));
+   x: String = "invisible";
 
   constructor(private service: ProgressService, private prodottoservice: ProdottoService) { }
 
@@ -56,8 +57,10 @@ export class ProgressComponent implements OnInit {
   }
 
   delete (progress: ProgressDTO){
-  this.service.delete(progress.id).subscribe(()=>this.getProgress());
   
+    this.service.delete(progress.id).subscribe(()=>this.getProgress());
+    this.progress = new ProgressDTO(0,0,0,0,new ProdottoDTO(0,"",0));
+    this.x="invisible";
   }
   update(progress: ProgressDTO) {
     this.service.update(progress).subscribe(() => this.getProgress());
@@ -67,6 +70,7 @@ export class ProgressComponent implements OnInit {
     
  
     this.service.insert(progress).subscribe(() => this.getProgress());
+ 
   }
   
   
@@ -104,9 +108,13 @@ export class ProgressComponent implements OnInit {
     show(progress: ProgressDTO){
      
       this.progress=progress;
-
+      this.x="visible";
     }
-}
+   
+    changestatus(v:String){
+      if (v==="visible")
+      v="invisible";
+      this.x=v;
+    }
 
-
-
+  }
