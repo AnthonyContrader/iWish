@@ -129,8 +129,8 @@
 
               <h5 class="modal-title" id="myLargeModalLabel">Andamento monetario</h5>
 
-              <canvas id="myChart">{{
-        chart }}
+              <canvas id="myChart1">{{
+        mychart1 }}
               </canvas>
 
 
@@ -142,11 +142,11 @@
       <div class="col-md-4">
         <!-- Button trigger modal -->
         <button (click)=grafico1() type="button" class="btn btn-outline-primary" data-toggle="modal"
-          data-target="#exampleModal">
+          data-target="#exampleModal1">
           Visualizza andamento entrate </button>
 
         <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+        <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
           aria-hidden="true">
           <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -155,8 +155,8 @@
 
               <h5 class="modal-title" id="myLargeModalLabel">Andamento entrate</h5>
 
-              <canvas id="myChart">{{
-    chart
+              <canvas id="myChart2">{{
+    mychart2
   }}
               </canvas>
             </div>
@@ -167,11 +167,11 @@
       <div class="col-md-4">
         <!-- Button trigger modal -->
         <button (click)=grafico2() type="button" class="btn btn-outline-primary" data-toggle="modal"
-          data-target="#exampleModal">
+          data-target="#exampleModal2">
           Visualizza andamento uscite </button>
 
         <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+        <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
           aria-hidden="true">
           <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -180,7 +180,10 @@
 
               <h5 class="modal-title" id="myLargeModalLabel">Andamento uscite</h5>
 
-              <canvas id="myChart"></canvas>
+              <canvas id="myChart3">{{
+                mychart3 }}
+
+              </canvas>
             </div>
           </div>
         </div>

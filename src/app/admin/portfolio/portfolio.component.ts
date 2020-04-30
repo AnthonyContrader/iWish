@@ -24,7 +24,9 @@ export class PortfolioComponent implements OnInit {
   entrate:number[]=[];
   uscite: number[]=[];
   date: Date[]=[];
-  chart: any;
+  mychart1: Chart;
+  mychart2: Chart;
+  mychart3: Chart;
  
   constructor(private service: PortfolioService) { }
   
@@ -84,14 +86,32 @@ export class PortfolioComponent implements OnInit {
   }
 
   grafico(){
+
+    this.mychart1 = new Chart("myChart1",
+      {
+        type: 'line',
+        data: {
+          labels:this.date.map(t => t.toLocaleString([], { month: '2-digit', day: '2-digit', year: '2-digit', hour: '2-digit', minute: '2-digit' })),
+          
+
+          datasets: [
+            {
+              data: this.saldi,
+            }
+          ]
+        },
+        options: {
+        }
     
-    
-  this.chart = new Chart("myChart", {
+      });
+    }
+  /*this.mychart1 = new Chart("myChart1", {
     // The type of chart we want to create
     type: 'line',
 
     // The data for our dataset
     data: {
+      
         labels: this.date,
         datasets: [{
             label: 'Andamento portafoglio',
@@ -106,11 +126,11 @@ export class PortfolioComponent implements OnInit {
 
     // Configuration options go here
     options: {}
-});
-  }
+});*/
+  
 
   grafico1(){
-    this.chart = new Chart("myChart", {
+    this.mychart2 = new Chart("myChart2", {
     // The type of chart we want to create
     type: 'bar',
 
@@ -135,7 +155,7 @@ export class PortfolioComponent implements OnInit {
 
   grafico2(){
     
-     this.chart = new Chart("myChart", {
+     this.mychart3 = new Chart("myChart3", {
     // The type of chart we want to create
     type: 'bar',
 
