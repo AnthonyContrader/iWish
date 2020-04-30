@@ -1,6 +1,8 @@
 package it.contrader.model;
 
 
+import java.sql.Timestamp;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -35,6 +37,10 @@ public class Portfolio {
 	@Column(nullable = false)
 	
 	private float outputs;
+	
+	@Column(nullable = false)
+	
+	private Timestamp date;
 	
 	@OneToOne()
 	@JoinColumn(

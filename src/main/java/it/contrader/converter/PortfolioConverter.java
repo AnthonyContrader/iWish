@@ -15,7 +15,7 @@ public class PortfolioConverter extends AbstractConverter<Portfolio, PortfolioDT
 	public Portfolio toEntity(PortfolioDTO portfolioDTO) {
 		Portfolio portfolio = null;
 		if (portfolioDTO != null) {
-			portfolio = new Portfolio(portfolioDTO.getId(), portfolioDTO.getTotalmoney(), portfolioDTO.getRevenue(), portfolioDTO.getOutputs(),userConverter.toEntity(portfolioDTO.getProprietario()));
+			portfolio = new Portfolio(portfolioDTO.getId(), portfolioDTO.getTotalmoney(), portfolioDTO.getRevenue(), portfolioDTO.getOutputs(), portfolioDTO.getDate(), userConverter.toEntity(portfolioDTO.getProprietario()));
 		}
 		return portfolio;
 	}
@@ -24,7 +24,7 @@ public class PortfolioConverter extends AbstractConverter<Portfolio, PortfolioDT
 	public PortfolioDTO toDTO(Portfolio portfolio) {
 		PortfolioDTO portfolioDTO = null;
 		if (portfolio != null) {
-			portfolioDTO = new PortfolioDTO(portfolio.getId(), portfolio.getTotalmoney(), portfolio.getRevenue(), portfolio.getOutputs(), userConverter.toDTO(portfolio.getProprietario()));
+			portfolioDTO = new PortfolioDTO(portfolio.getId(), portfolio.getTotalmoney(), portfolio.getRevenue(), portfolio.getOutputs(),portfolio.getDate(), userConverter.toDTO(portfolio.getProprietario()));
 
 		}
 		return portfolioDTO;
