@@ -1,0 +1,1 @@
+var CodeMR_ProjectMetrics = {"Project Name":"iwish-springrest", "Number of Highly Problematic Classes":0, "Number of Entities":44, "Number of Problematic Classes":2, "Class Lines of Code":440, "Number of External Packages":6, "Number of Packages":7, "Number of External Entities":18}
