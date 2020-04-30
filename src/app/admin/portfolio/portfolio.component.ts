@@ -3,9 +3,8 @@ import { PortfolioService } from 'src/service/portfolio.service';
 import { PortfolioDTO } from 'src/dto/portfoliodto';
 import { UserDTO } from 'src/dto/userdto';
 import { Chart } from 'chart.js';
-import { ViewChild, ElementRef } from '@angular/core';
-import { fillProperties } from '@angular/core/src/util/property';
-import { listeners } from 'cluster';
+
+
 
 
 
