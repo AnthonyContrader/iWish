@@ -149,39 +149,8 @@ mat-progress-bar {
       .fadeInDown {
     animation-name: fadeInDown;
       }*/
- .backgro{
-   background-image: url(scales.jpg);
-   margin-top: 10%;
-   border: 5px solid blue;
-   background-repeat: repeat;
-
- }
-      .button {
-        background-color: rgb(22, 70, 143); 
-        border: none;
-        color: gold;
-        padding: 3% 20%;
-        text-align: center;
-        margin: 2%;
-        font-weight: bold;
-        
-        font-size: 20px;
-        
-        transition-duration: 0.4s;
-        cursor: pointer;
-      }
-    
-      
-      .button1 {
-        background-color: white; 
-        color:rgb(22, 70, 143); 
-        border: 2px solid rgb(22, 70, 143);
-      }
-      
-      .button1:hover {
-        background-color:rgb(22, 70, 143);
-        color: white;
-      }
+ 
+     
       
       .box select {
         background-color: #0562af00;

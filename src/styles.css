@@ -1,14 +1,42 @@
-button{
-    background-color: cornflowerblue;
-}/* You can add global styles to this file, and also import other style files */
-/*body{
-    background-image: url("../src/assets/pattern-bg.jpg");
-    
-    background-repeat: no-repeat;
-    background-size: 100% 100% ;
-}
-*/
+
+
 body{
     background-image: url("starsback.png");
     background-repeat: repeat;
 }
+.buttoninside {
+    /*rgba(62,59,80,0.9)*/ 
+    border: none;
+    
+    padding: 3% 20%;
+    text-align: center;
+    margin: 2%;
+    font-weight: bold;
+    background-color: rgb(75, 77, 190); 
+    font-size: 20px;
+    color: gold ;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border: 2px solid rgb(22, 70, 143);
+  }
+
+  
+ 
+  
+  .buttoninside:hover {
+    background-color:rgb(55, 117, 211);
+    color:gold ;
+    box-shadow: 1px 1px 2px black, 0 0 50px  rgb(21, 130, 194), 0 0 5px gold;
+
+  }
+
+  .backgro{
+   
+    margin-top: 10% ;
+ 
+    background-repeat: repeat;
+    background-color:rgba(62,59,80,0.9);
+    box-shadow: 1px 1px 2px black, 0 0 50px  rgb(253,233,179), 0 0 5px gold;
+    border-radius: 20px 20px 20px;
+ 
+  }
