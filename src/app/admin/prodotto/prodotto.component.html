@@ -108,7 +108,7 @@
               <div class="box">
                 <div class="row">
                   <div class="col-md-3">
-                    <span style="text-align: center;"> Nome:</span>
+                    <span style="text-align: center;">Nome:</span>
                   </div>
                   <div class="col-md-9">
                     <input class="color" [(ngModel)]="prodottotoinsert.name">
@@ -117,7 +117,7 @@
                 </div>
                 <div class="row">
                   <div class="col-md-3">
-                    <span style="text-align: center;"> Descrizione:</span>
+                    <span style="text-align: center;">Descrizione:</span>
                   </div>
                   <div class="col-md-9">
                     <input class="color" [(ngModel)]="prodottotoinsert.description">
@@ -126,7 +126,7 @@
                 </div>
                 <div class="row">
                   <div class="col-md-3">
-                    <span style="text-align: center;"> Prezzo:</span>
+                    <span style="text-align: center;">Prezzo:</span>
                   </div>
                   <div class="col-md-9">
                     <input class="color" [(ngModel)]="prodottotoinsert.price">
@@ -135,12 +135,31 @@
                 </div>
                 <div class="row">
                   <div class="col-md-3">
-                    <span style="text-align: center;"> Priorità:</span>
+                    <span style="text-align: center;">Priorità:</span>
                   </div>
                   <div class="col-md-9">
                     <input class="color" [(ngModel)]="prodottotoinsert.priority">
-
                     <br>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3">
+                    <span style="text-align: center;">WishList:</span>
+                  </div>
+                  <div class="col-md-9">
+                    <select class="color" [(ngModel)]="prodottotoinsert.wishlist">
+                      <option *ngFor="let w of wishlists" [ngValue]="w">{{ w.name }}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3">
+                    <span style="text-align: center;">Priorità:</span>
+                  </div>
+                  <div class="col-md-9">
+                    <select class="color" [(ngModel)]="prodottotoinsert.category">
+                      <option *ngFor="let c of categories" [ngValue]="c">{{ c.name }}</option>
+                    </select>
                   </div>
                 </div>
               </div>
@@ -158,48 +177,75 @@
     <div class="col-md-1"></div>
     <div class="col-md-10">
       <div class="row">
-    <div *ngFor="let prodotto of prodotti" class="card"
-      style="width: 18rem; margin-right: 3%; margin-bottom: 1%; border: solid 1px black;">
-      <img class="card-img-top" src="../../../assets/prodotti.jpg" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">{{prodotto.name}}</h5>
-        <p class="card-text">{{prodotto.description}}</p>
-        <p class="card-text">{{prodotto.price}}</p>
-        <p class="card-text">{{prodotto.priority}}</p>
-        <button class="btn btn-primary" (click)=update(prodotto) data-toggle="modal"
-          [attr.data-target]="'#editModal' + prodotto.id" style="margin-right: 2%;">Edit</button>
-        <button class="btn btn-danger fas fa-trash-alt" (click)="delete(prodotto)"></button>
-      </div>
+        <div *ngFor="let prodotto of prodotti" class="card"
+          style="width: 18rem; margin-right: 3%; margin-bottom: 1%; border: solid 1px black;">
+          <img class="card-img-top" src="../../../assets/prodotti.jpg" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">{{prodotto.name}}</h5>
+            <p class="card-text">{{prodotto.description}}</p>
+            <p class="card-text">{{prodotto.price}}</p>
+            <p class="card-text">{{prodotto.priority}}</p>
+            <button class="btn btn-primary" data-toggle="modal" [attr.data-target]="'#editModal' + prodotto.id"
+              style="margin-right: 2%;">Edit</button>
+            <button class="btn btn-danger fas fa-trash-alt" (click)="delete(prodotto)"></button>
+          </div>
 
-      <!---------------------------------EDIT MODAL --------------------------------------------->
+          <!---------------------------------EDIT MODAL --------------------------------------------->
 
-      <div class="modal fade" id="editModal{{prodotto.id}}" tabindex="-1" role="dialog" aria-labelledby="editModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="editModalLabel">Edit Prodotto</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <input class="form-control" type="text" [(ngModel)]="prodotto.name" placeholder="Name"><br>
-              <input class="form-control" [(ngModel)]="prodotto.description"><br>
-              <input class="form-control" type="text" [(ngModel)]="prodotto.price" placeholder="Prezzo"><br>
-              <input class="form-control" type="text" [(ngModel)]="prodotto.priority" placeholder="Priorità"><br>
+          <div class="modal fade" id="editModal{{prodotto.id}}" tabindex="-1" role="dialog"
+            aria-labelledby="editModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="editModalLabel">Edit Prodotto</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div class="col-md-3">
+                    <span class="span2" style="text-align: left;">Nome:</span>
+                  </div>
+                  <div class="col-md-9">
+                    <input class="color" type="text" [(ngModel)]="prodotto.name" placeholder="Name"><br>
+                  </div>
+                  <div class="col-md-3">
+                    <span style="text-align: left;">Descrizione:</span>
+                  </div>
+                  <div class="col-md-9">
+                    <input class="color" type="text" [(ngModel)]="prodotto.description"><br>
+                  </div>
+                  <div class="col-md-3">
+                    <span style="text-align: left;">Prezzo:</span>
+                  </div>
+                  <div class="col-md-9">
+                    <input class="color" type="text" [(ngModel)]="prodotto.price" placeholder="Prezzo"><br>
+                  </div>
+                  <div class="col-md-3">
+                    <span style="text-align: left;">Priorità:</span>
+                  </div>
+                  <div class="col-md-9">
+                    <input class="color" type="text" [(ngModel)]="prodotto.priority" placeholder="Priorità"><br>
+                  </div>
+                  <select class="color" [compareWith]="compareWishLists" [(ngModel)]="prodotto.wishlist">
+                    <option *ngFor="let w of wishlists" [ngValue]="w">{{ w.name }}</option>
+                  </select>
+                  <select class="color" [compareWith]="compareFn" [(ngModel)]="prodotto.category">
+                    <option *ngFor="let c of categories" [ngValue]="c">{{ c.name }}</option>
+                  </select>
 
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary" (click)="update(w)" data-dismiss="modal">Edit</button>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" (click)="update(prodotto)"
+                    data-dismiss="modal">Edit</button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <div class="col-md-1"></div>
   </div>
-  </div>
-  <div class="col-md-1"></div>
-</div>
 </div>
