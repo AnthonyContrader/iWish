@@ -74,10 +74,14 @@ export class ProdottoComponent implements OnInit {
   }
 
   update(prodotto: ProdottoDTO) {
+    if(prodotto.wishlist!=null){
     this.wishlist = new WishListDTO(prodotto.wishlist.id, prodotto.wishlist.name);
-    this.category = new CategoryDTO(prodotto.category.id, prodotto.category.name);
     prodotto.wishlist = this.wishlist;
+  }
+    if(prodotto.category!=null){
+    this.category = new CategoryDTO(prodotto.category.id, prodotto.category.name);
     prodotto.category = this.category;
+  }
     console.log(JSON.stringify(prodotto));
     this.service.update(prodotto).subscribe(() => this.getProdotto());
   }
