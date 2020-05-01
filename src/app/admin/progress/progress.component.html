@@ -251,13 +251,13 @@
   </div>
   <!--Finisce la parte di sopra ora modifichiamo quella di sotto-->
 
- <div class="row " >
+ <div class="row backgro" style="margin-bottom: 40px;" >
 
 
-    <div class="col-md-6" >
+   
 
 
-
+<div class="col-md-12 "style="text-align:center">
 
       <div class="panel-group">
         <div class="panel panel-default">
@@ -287,15 +287,15 @@
             </ul>
           </div>
         </div>
-
+</div>
       </div>
+    
     </div>
-
 
   
 
 
- <div  [class]="x"  *ngIf=" progress" class="col-md-6 " style="border: solid 5px blue; border-radius: 10px;margin:2% ;font-size: 20px;font-weight: bold;padding: 5% ;
+ <div  [class]="x"  *ngIf=" progress" class="row backgro" style="border: solid 5px blue; border-radius: 10px;margin:2% ;font-size: 20px;font-weight: bold;padding: 5% ;
   background-color: white;" >
       <p ><i class="fas fa-bullseye"></i>Target: {{progress.prodotto.name}} </p>
       <p> <i  class="fas fa-wallet"></i>Prezzo:{{progress.prodotto.price}}€</p>
@@ -315,7 +315,7 @@
 
   
 
-</div>
+
 
 
 
