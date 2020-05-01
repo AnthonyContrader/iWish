@@ -1,4 +1,4 @@
-import { Component, OnInit, wtfLeave } from '@angular/core';
+import { Component, OnInit, wtfLeave, ElementRef, ViewChild } from '@angular/core';
 import { ProdottoService } from 'src/service/prodotto.service';
 import { ProdottoDTO } from 'src/dto/prodottodto';
 import { UserDTO } from 'src/dto/userdto';
@@ -22,6 +22,9 @@ export class ProdottoComponent implements OnInit {
   wishlists: WishListDTO[]=[];
   categories: CategoryDTO[]=[];
   class: string = "list-group-item";
+  selectedFile: string = '';
+  @ViewChild('inputFile')
+   inputFile: ElementRef;
 
   constructor(private service: ProdottoService, private wishlistservice: WishListService, private categoryservice: CategoryService) { }
 
@@ -80,9 +83,11 @@ export class ProdottoComponent implements OnInit {
   }
 
   insert(prodotto: ProdottoDTO) {
-
     prodotto.proprietario=this.me;
-    console.log(JSON.stringify(prodotto));
+    
+    prodotto.image = this.selectedFile;
+    this.selectedFile ='';//IMPO!!!
+    this.inputFile.nativeElement.value='';
     this.service.insert(prodotto).subscribe(() => this.getProdotto());
     this.clear();
     
@@ -99,6 +104,24 @@ export class ProdottoComponent implements OnInit {
 compareWishLists(w1: WishListDTO, w2: WishListDTO){
   return w1 && w2 ? w1.id === w2.id: w1===w2;
 }
+
+handleInputChange(e) {
+  var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
+  var pattern = /image-*/;
+  var reader = new FileReader();
+  if (!file.type.match(pattern)) {
+    alert('invalid format');
+    return;
+  }
+  reader.onload = this._handleReaderLoaded.bind(this);
+  reader.readAsDataURL(file);
+}
+_handleReaderLoaded(e) {
+  let reader = e.target;
+  this.selectedFile = reader.result;
+  console.log(this.selectedFile)
+}
+ 
 
 }
 

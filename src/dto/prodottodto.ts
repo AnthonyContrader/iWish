@@ -14,6 +14,8 @@ export class ProdottoDTO {
     price: number;
 
     priority: number;
+
+    image: string;
     
     wishlist: WishListDTO;
     
