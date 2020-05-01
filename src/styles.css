@@ -9,6 +9,6 @@ button{
 }
 */
 body{
-    background-image: url("stars-patternnew.png");
-    background-repeat: no-repeat;
+    background-image: url("starsback.png");
+    background-repeat: repeat;
 }
