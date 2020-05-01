@@ -1,22 +1,30 @@
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">WebSiteName</a>
-    </div>
+      <div class="row">
+      <div class="col-md-2" style="margin-right: -12%;">
+        <a href="#">
+        <img src="../../../assets/iwish-logo.png" style="width: 30%;">
+      </a>
+      </div>
+    
+    <div class="col-md-10">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar"><span class="navbar-toggler-icon"></span></button>
     <div class= "collapse navbar-collapse" id= "collapsibleNavbar">
-    <ul class="nav nav-pills">
-      <li class= "nav-item"><a [routerLink]="['/admin-dashboard']" class= "nav-link">Home</a></li>
-      <li class= "nav-item"><a [routerLink]="['/admin-dashboard/users']" class= "nav-link">Utente</a></li>
-      <li class= "nav-item"><a [routerLink]="['/admin-dashboard/portfolio']" class= "nav-link">Portafoglio</a></li>
-      <li class= "nav-item"><a [routerLink]="['/admin-dashboard/wishlists']" class= "nav-link">WishList</a></li>
-      <li class= "nav-item"><a [routerLink]="['/admin-dashboard/categories']" class= "nav-link">Categoria</a></li>
-      <li class= "nav-item"><a [routerLink]="['/admin-dashboard/prodotto']" class= "nav-link">Prodotto</a></li>
-      <li class= "nav-item"><a [routerLink]="['/admin-dashboard/progress']" class= "nav-link">Progresso</a></li>
-    
-    </ul>
+    <div class="container topBotomBordersOut" >
+      <a [routerLink]="['/admin-dashboard']">Home</a>
+      <a [routerLink]="['/admin-dashboard/users']">Utente</a>
+      <a [routerLink]="['/admin-dashboard/portfolio']">Portafoglio</a>
+      <a [routerLink]="['/admin-dashboard/wishlists']" >WishList</a>
+      <a [routerLink]="['/admin-dashboard/categories']">Categoria</a>
+      <a [routerLink]="['/admin-dashboard/prodotto']" >Prodotto</a>
+      <a [routerLink]="['/admin-dashboard/progress']">Progresso</a>
     </div>
-  </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
 </nav>
 
 <!--<nav class="navbar navbar-expand-md bg-dark navbar-dark">
