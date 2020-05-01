@@ -41,7 +41,7 @@ export class CategoriesComponent implements OnInit {
       }
 
       delete(category: CategoryDTO) {
-        this.service.delete(category.id).subscribe(() => this.getCategory());
+          this.service.delete(category.id).subscribe(() => this.getCategory());
       }
 
       update(category: CategoryDTO) {
@@ -87,4 +87,8 @@ export class CategoriesComponent implements OnInit {
    makeNotEditable() {
      this.canEdit = false;
    }
-}
+
+   counter(i:number){
+  return new Array(i);
+     }
+  }

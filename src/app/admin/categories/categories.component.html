@@ -6,7 +6,7 @@
       <button type="button" class="a5" data-toggle="modal" data-target="#Modal">
         Crea Nuova Categoria
       </button>
-
+  
       <!-- Inserisci categoria pop up -->
       <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -40,17 +40,12 @@
                     Valutazione
                   </th>
                   <td class="rating">
-                    <input [(ngModel)]="categorytoinsert.rating" type="radio" id="star5" name="rating"
-                      value="5" /><label for="star5" title="Awesome"></label>
-                    <input [(ngModel)]="categorytoinsert.rating" type="radio" id="star4" name="rating"
-                      value="4" /><label for="star4" title="Pretty good"></label>
-                    <input [(ngModel)]="categorytoinsert.rating" type="radio" id="star3" name="rating"
-                      value="3" /><label for="star3" title="Meh"></label>
-                    <input [(ngModel)]="categorytoinsert.rating" type="radio" id="star2" name="rating"
-                      value="2" /><label for="star2" title="Kinda bad"></label>
-                    <input [(ngModel)]="categorytoinsert.rating" type="radio" id="star1" name="rating"
-                      value="1" /><label for="star1" title="Sucks big time"></label>
-                  </td>
+                    <input [(ngModel)]="categorytoinsert.rating" type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome "></label>
+                    <input [(ngModel)]="categorytoinsert.rating" type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good"></label>
+                    <input [(ngModel)]="categorytoinsert.rating" type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Good"></label>
+                    <input [(ngModel)]="categorytoinsert.rating" type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad"></label>
+                    <input [(ngModel)]="categorytoinsert.rating" type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Bad"></label>
+                   </td>
                 </tr>
                 <tr>
               </table>
@@ -75,8 +70,8 @@
         <div class="border">
           <div class="col-md-12">
             <div class="row">
-              <div class="col-md-4">{{category.name}}</div>
-              <div lass="col-md-2"><button (click)="getprodotti(category.id)" class="fas fa-folder-open"
+              <div class="col-md-6">{{category.name | uppercase }}</div>
+              <div class="col-md-2"><button (click)="getprodotti(category.id)" class="fas fa-folder-open"
                   data-toggle="modal" [attr.data-target]="'#editModal'+category.id"></button>
 
                 <!-- mostra la modal di categoria -->
@@ -88,9 +83,10 @@
                       <!--  non modificabile -->
                       <div *ngIf="canEdit == false">
                       <div class="modal-header">                       
-                          <h5 class="modal-title" id="editModalLabel">{{category.name | uppercase }}<span>
-                              {{category.rating}}
-                            </span></h5>
+                          <h5 class="modal-title" id="editModalLabel">{{category.name | uppercase }}
+                         <span>&nbsp;&nbsp;&nbsp;&nbsp;
+                           <i class="fas fa-star" *ngFor="let rating of counter(category.rating)"> </i>
+                            </span> </h5>
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                           </button>
@@ -109,14 +105,16 @@
                       </div></div>
                         <!--           can edit   -->
                       <div *ngIf="canEdit == true">
-                        <div class="modal-header">                       
-                            <h5 class="modal-title" id="editModalLabel"><input [(ngModel)]="category.name"> <span>
-                              <input [(ngModel)]="category.rating">
-                            </span></h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                          </div>
+                        <div class="modal-header">        
+                                          
+                            <h5 class="modal-title" id="editModalLabel"><input [(ngModel)]="category.name">
+                              <p class="fas fa-star">
+                                  <input [(ngModel)]="category.rating">
+                              </p></h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                               </div>
                           <div class="modal-body">
                             <tr>
                               <th>Description:</th>
@@ -132,7 +130,7 @@
                       <div class="modal-footer">
                         <button class="a6" (click)="makeEditable()">Modifica</button>
                         <button class="a7" (click)="update(category)" data-dismiss="modal">Salva</button>
-                        <button class="a4" data-dismiss="modal">Close</button>
+                        <button class="a4" data-dismiss="modal" (click)="makeNotEditable()">Close</button>
                         
                       </div>
                     </div>
@@ -143,47 +141,12 @@
               <!--             pulsante cancella    -->
 
               <div class="col-md-2"><button class="fas fa-trash" style="background-color: red;"
-                  (click)=delete(category)></button></div>
+                  (click)=delete(category)></button></div></div>
             </div>
           </div>
-        </div>
+        
       </div>
     </div>
   </div>
 </div>
 
-<!--        modifica categoria  
-                  <div *ngIf="editable===true">
-                  <div style="width: 100%;" class="modal fade" id="editModal{{category.id}}" tabindex="-1" role="dialog"
-                  aria-labelledby="editModalLabel" aria-hidden="true">
-                  <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="editModalLabel"><input [(ngModel)]="category.name"><span>
-                          <input [(ngModel)]="category.rating">
-                          </span></h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body">
-                        <tr>
-                          <th>Description:</th>
-                          <td style="text-align: left;">
-                           <input [(ngModel)}="category.description"> </td>
-                        </tr>
-                        <br>
-                        <div class="prod" *ngFor="let p of prodotti">
-                          {{p.name}}
-                          <a (click)="cancellaprod(p)">&times;</a>
-                        </div>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" (click)="update(category)"
-                          data-dismiss="modal">Edit</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>  -->
