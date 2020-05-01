@@ -4,6 +4,7 @@ import { WishListDTO } from 'src/dto/wishlistdto';
 import { ProdottoDTO } from 'src/dto/prodottodto';
 import { WishListService } from 'src/service/wishlist.service';
 import { ProdottoService } from 'src/service/prodotto.service';
+import {CategoryDTO} from 'src/dto/categorydto';
 
 @Component({
   selector: 'app-wishlists',
@@ -55,10 +56,11 @@ export class WishlistsComponent implements OnInit {
   }
 
   remove(p: ProdottoDTO, w: WishListDTO){
+    p.wishlist = new WishListDTO();
     p.wishlist = null;
-    this.prodotto = new ProdottoDTO();
-    this.prodotto = p;
-    
+    if(p.category!=null)   {
+      p.category = new CategoryDTO(p.category.id, p.category.name);
+    }
     this.prodottoService.update(p).subscribe(()=>{
       this.getProdotti(w);
     });
