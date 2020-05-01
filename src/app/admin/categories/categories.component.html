@@ -100,7 +100,7 @@
                            <br>
                         <div class="prod" *ngFor="let p of prodotti">
                           {{p.name}}
-                          <a (click)="cancellaprod(p)">&times;</a>
+                          <a (click)="cancellaprod(p,category.id)">&times;</a>
                         </div>
                       </div></div>
                         <!--           can edit   -->

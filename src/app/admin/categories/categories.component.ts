@@ -74,7 +74,9 @@ export class CategoriesComponent implements OnInit {
      }
      cancellaprod(prodotto: ProdottoDTO) { 
        let id_category = prodotto.category.id;
+       if (prodotto.wishlist != null) {
       prodotto.wishlist = new WishListDTO(prodotto.wishlist.id,prodotto.wishlist.name);
+       }
       this.category = null;
       prodotto.category = this.category;
       this.prodottoservice.update(prodotto).subscribe(() => {        
