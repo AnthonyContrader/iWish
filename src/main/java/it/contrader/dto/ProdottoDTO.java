@@ -1,5 +1,6 @@
 package it.contrader.dto;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,6 +20,8 @@ public class ProdottoDTO {
 	private float price;
 	
 	private int priority;
+	
+	private String image;
 	
 	private WishListDTO wishlist;
 	
