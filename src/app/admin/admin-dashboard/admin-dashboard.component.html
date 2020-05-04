@@ -25,7 +25,8 @@
       <div class="card " style="width: 18rem; box-shadow: 1px 1px 2px black, 0 0 50px gold, 0 0 5px gold; "
         *ngIf="prodotto.price<=saldoAttuale">
 
-        <img class="card-img-top" src="../../../assets/prodotti.jpg" alt="Card image cap">
+        <img class="card-img-top" src="../../../assets/prodotti.jpg" alt="Card image cap" *ngIf="prodotto.image===''">
+          <img class="card-img-top" [src]="prodotto.image" width="275px" height="183px" *ngIf="prodotto.image">
         <div class="card-body ">
           <h5 class="card-title">{{prodotto.name}}</h5>
           
@@ -36,7 +37,8 @@
       <div class="card" style="width: 18rem; margin-right: 3%; margin-bottom: 1%; border: solid 1px black;"
         *ngIf="prodotto.price>saldoAttuale">
 
-        <img class="card-img-top" src="../../../assets/prodotti.jpg" alt="Card image cap">
+        <img class="card-img-top" src="../../../assets/prodotti.jpg" alt="Card image cap" *ngIf="prodotto.image===''">
+          <img class="card-img-top" [src]="prodotto.image" width="275px" height="183px" *ngIf="prodotto.image">
         <div class="card-body ">
           <h5 class="card-title">{{prodotto.name}}</h5>
    
