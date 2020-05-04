@@ -3,7 +3,7 @@
     <div class="col-md-12">
 
       <!-- inserisci categoria button -->
-      <button type="button" class="a5" data-toggle="modal" data-target="#Modal">
+      <button type="button" class="buttoninside" data-toggle="modal" data-target="#Modal">
         Crea Nuova Categoria
       </button>
   
@@ -12,7 +12,7 @@
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="ModalLabel">Crea una nuova categoria</h5>
+              <h5 class="modal-title " id="ModalLabel">Crea una nuova categoria</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -108,9 +108,9 @@
                         <div class="modal-header">        
                                           
                             <h5 class="modal-title" id="editModalLabel"><input [(ngModel)]="category.name">
-                              <p class="fas fa-star">
-                                  <input [(ngModel)]="category.rating">
-                              </p></h5>
+                              <span>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <i class="fas fa-star" *ngFor="let rating of counter(category.rating)"> </i>
+                                 </span> </h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                               </button>
