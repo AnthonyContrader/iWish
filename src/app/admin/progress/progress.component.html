@@ -259,7 +259,7 @@
 
 <div class="col-md-12 "style="text-align:center">
 
-      <div class="panel-group">
+      <div class="panel-group" style="margin-bottom: 20px;">
         <div class="panel panel-default">
 
 
@@ -275,8 +275,8 @@
               <li *ngFor="let p of progressi" class="list-group-item" >
                 {{p.prodotto.name}} 
                 
-                <button  (click)=show(p) class="buttonlist"><i class="fas fa-history"></i> </button>
-              <button ><i class="fas fa-wallet"></i> </button>
+                <button  (click)=show(p) class="buttonlist"><i class="far fa-caret-square-down"></i> </button>
+              
               <button (click)="delete(p)"><i class="fas fa-trash-alt"></i></button>
 
                 
@@ -295,8 +295,8 @@
   
 
 
- <div  [class]="x"  *ngIf=" progress" class="row backgro" style="border: solid 5px blue; border-radius: 10px;margin:2% ;font-size: 20px;font-weight: bold;padding: 5% ;
-  background-color: white;" >
+ <div  [class]="x"  *ngIf=" progress" class="row"  >
+   <div class="col-md-12  backgro" style="color: white; padding:2%; margin-bottom: 60px;">
       <p ><i class="fas fa-bullseye"></i>Target: {{progress.prodotto.name}} </p>
       <p> <i  class="fas fa-wallet"></i>Prezzo:{{progress.prodotto.price}}€</p>
       <p><i class="fas fa-chart-pie"></i>Siamo al {{arrotonda(progress.expectation)}}%</p>
@@ -311,7 +311,7 @@
       <button style="color:blue; background-color: white;"(click)="changestatus(x)"><i class="fas fa-times-circle"></i></button>
       
   </div>
-
+</div>
 
   
 

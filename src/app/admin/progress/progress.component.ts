@@ -4,7 +4,9 @@ import { ProgressDTO } from 'src/dto/progressdto';
 import { ProdottoDTO } from 'src/dto/prodottodto';
 import{ProdottoService} from 'src/service/prodotto.service';
 import { UserDTO } from 'src/dto/userdto';
-import { shallowEqual } from '@angular/router/src/utils/collection';
+
+import { PortfolioDTO } from 'src/dto/portfoliodto';
+
 
 
   
@@ -30,6 +32,8 @@ export class ProgressComponent implements OnInit {
    y: number;
    progress:ProgressDTO = new ProgressDTO(0,0,0,0,new ProdottoDTO(0,"",0));
    x: String = "invisible";
+   data: Date;
+   portfolio_cash_attuale: PortfolioDTO;
 
   constructor(private service: ProgressService, private prodottoservice: ProdottoService) { }
 
@@ -37,6 +41,8 @@ export class ProgressComponent implements OnInit {
     this.getProgress();
     this.me = JSON.parse(localStorage.getItem('currentUser'));
     this.getProdotti();
+    this.data=new Date();
+    
   }
  getProdotti(){
    this.prodottoservice.getAll().subscribe (products=>
@@ -52,6 +58,7 @@ export class ProgressComponent implements OnInit {
        });
  }
 
+
   getProgress(){
     this.service.getAll().subscribe (progressi=>this.progressi=progressi);
   }
@@ -59,28 +66,25 @@ export class ProgressComponent implements OnInit {
   delete (progress: ProgressDTO){
   
     this.service.delete(progress.id).subscribe(()=>this.getProgress());
-    this.progress = new ProgressDTO(0,0,0,0,new ProdottoDTO(0,"",0));
+    this.progress = new ProgressDTO(0,0,0,0,new ProdottoDTO(0,"",0),this.data);
     this.x="invisible";
   }
   update(progress: ProgressDTO) {
     this.service.update(progress).subscribe(() => this.getProgress());
   }
 
-  insert (progress: ProgressDTO){
-    
  
-    this.service.insert(progress).subscribe(() => this.getProgress());
- 
-  }
   
   
   Calcolo_inserisci_giorni(progress:  ProgressDTO){
- 
+    progress.data= new Date();
+    console.log(JSON.stringify(progress));
     this.service.Calcolo_inserisci_giorni(progress).subscribe(()=>this.getProgress());
     
   }
   Calcolo_inserisci_soldi(progress:  ProgressDTO){
- 
+    progress.data= new Date();
+    console.log(JSON.stringify(progress));
     this.service.Calcolo_inserisci_soldi(progress).subscribe(()=>this.getProgress());
     
   }
@@ -108,6 +112,7 @@ export class ProgressComponent implements OnInit {
     show(progress: ProgressDTO){
      
       this.progress=progress;
+       this.aggiornamento(progress);
       this.x="visible";
     }
    
@@ -115,6 +120,19 @@ export class ProgressComponent implements OnInit {
       if (v==="visible")
       v="invisible";
       this.x=v;
+    }
+
+    aggiornamento (progress:ProgressDTO){
+
+   
+   let expectation_value: number=progress.expectation;
+   let soldi_value: number=progress.cash;
+   let giorni: number= progress.time;
+ 
+
+   let differenza= new Date().getDay() - new Date(progress.data).getDay();
+    
+   console.log(differenza);
     }
 
   }

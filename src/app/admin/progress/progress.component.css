@@ -204,14 +204,15 @@ mat-progress-bar {
       text-align: center;
     }
     li{
-      background-color: grey;
+      background-color:white;
       color: black;
       text-align:left;
       font-weight: bold;
       font-size:15px;
       border: solid black 3px;
       margin-right: 22%;
-      margin-left: 2%;
+      margin-left: 22%;
+      margin-bottom: 5px;
 
 
     }
