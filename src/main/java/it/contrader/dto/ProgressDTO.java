@@ -1,5 +1,6 @@
 package it.contrader.dto;
 
+import java.sql.Timestamp;
 
 
 
@@ -22,4 +23,6 @@ public class ProgressDTO {
 		private double time;
 		
 		private ProdottoDTO prodotto; // creo una nuova variabile di tipo prodotto
+		
+		private Timestamp data;
 }

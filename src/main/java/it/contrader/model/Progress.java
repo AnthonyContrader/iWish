@@ -1,7 +1,7 @@
 package it.contrader.model;
 
 
-
+import java.sql.Timestamp;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -43,5 +43,7 @@ private double time;
  @OnDelete(action = OnDeleteAction.CASCADE)
  
  private Prodotto prodotto;
+  @Column(nullable=false)
+  private Timestamp data;
 
 }
