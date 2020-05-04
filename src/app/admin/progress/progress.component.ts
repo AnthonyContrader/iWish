@@ -34,6 +34,10 @@ export class ProgressComponent implements OnInit {
    x: String = "invisible";
    data: Date;
    portfolio_cash_attuale: PortfolioDTO;
+   expectation_value: number;
+   soldi_value: number;
+   giorni:number;
+   differenza: any;
 
   constructor(private service: ProgressService, private prodottoservice: ProdottoService) { }
 
@@ -80,13 +84,13 @@ export class ProgressComponent implements OnInit {
     progress.data= new Date();
     console.log(JSON.stringify(progress));
     this.service.Calcolo_inserisci_giorni(progress).subscribe(()=>this.getProgress());
+   
     
   }
   Calcolo_inserisci_soldi(progress:  ProgressDTO){
     progress.data= new Date();
     console.log(JSON.stringify(progress));
     this.service.Calcolo_inserisci_soldi(progress).subscribe(()=>this.getProgress());
-    
   }
   
  
@@ -114,6 +118,7 @@ export class ProgressComponent implements OnInit {
       this.progress=progress;
        this.aggiornamento(progress);
       this.x="visible";
+      console.log(this.soldi_value);
     }
    
     changestatus(v:String){
@@ -125,14 +130,22 @@ export class ProgressComponent implements OnInit {
     aggiornamento (progress:ProgressDTO){
 
    
-   let expectation_value: number=progress.expectation;
-   let soldi_value: number=progress.cash;
-   let giorni: number= progress.time;
- 
-
-   let differenza= new Date().getDay() - new Date(progress.data).getDay();
-    
-   console.log(differenza);
+    this.expectation_value=progress.expectation;
+    this.soldi_value=progress.cash;
+    this.giorni= progress.time;
+    this.differenza= new Date().getDay() - new Date(progress.data).getDay();
+  
+   if (this.expectation_value<100 && this.differenza>0 )
+   {
+     this.expectation_value= this.expectation_value+ this.differenza *progress.expectation;
+     this.soldi_value=this.soldi_value+ this.differenza *progress.cash;
+     this.giorni= this.giorni-this.differenza;
+     if (this.giorni<=0)
+    this.giorni=0;
+   }
+   else 
+   this.expectation_value=100;
+  
     }
 
   }
