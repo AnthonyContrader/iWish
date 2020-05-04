@@ -273,13 +273,18 @@
 
 
               <li *ngFor="let p of progressi" class="list-group-item" >
-                {{p.prodotto.name}} 
+                <div class="row">
+                  <div class="col-md-8">
+
                 
+                {{p.prodotto.name}} 
+                  </div>
+                <div class="col-md-4">
                 <button  (click)=show(p) class="buttonlist"><i class="far fa-caret-square-down"></i> </button>
               
               <button (click)="delete(p)"><i class="fas fa-trash-alt"></i></button>
 
-                
+                </div></div>
 
 
               </li>
@@ -311,7 +316,7 @@
         <p></p>
       <p> <i class="far fa-calendar-alt"></i> Risparima per: {{arrotonda(progress.time)}}giorni</p>
       <p> <i class="fas fa-coins"></i> Risparmia {{arrotonda(progress.cash)}}€ al giorno </p>
-      <p><i class="far fa-calendar-plus"></i> Inserimento progresso: {{progress.data}}</p>
+      <p><i class="far fa-calendar-plus"></i> Inserimento progresso: {{progress.data |  date: 'dd/MM/yyyy'}}</p>
       <p><i class="fas fa-piggy-bank"></i> Hai risparmiato fino ad ora {{soldi_value}} €</p>
       <p><i class="fas fa-hourglass-half"></i> Ti rimane da risparmiare {{giorni}} giorni</p>
 
