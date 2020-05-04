@@ -130,12 +130,12 @@ export class ProgressComponent implements OnInit {
     aggiornamento (progress:ProgressDTO){
 
    
-    this.expectation_value=progress.expectation;
+    this.expectation_value= this.arrotonda(progress.expectation);
     this.soldi_value=progress.cash;
     this.giorni= progress.time;
     this.differenza= new Date().getDay() - new Date(progress.data).getDay();
   
-   if (this.expectation_value<100 && this.differenza>0 )
+   if (this.expectation_value<100 && this.differenza>=0 )
    {
      this.expectation_value= this.expectation_value+ this.differenza *progress.expectation;
      this.soldi_value=this.soldi_value+ this.differenza *progress.cash;
