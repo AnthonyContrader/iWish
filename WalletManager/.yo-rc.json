@@ -1,0 +1,32 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.it.contrader"
+    },
+    "jhipsterVersion": "5.3.4",
+    "applicationType": "microservice",
+    "baseName": "WalletManager",
+    "packageName": "com.it.contrader",
+    "packageFolder": "com/it/contrader",
+    "serverPort": "8081",
+    "authenticationType": "jwt",
+    "cacheProvider": "hazelcast",
+    "enableHibernateCache": false,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": "consul",
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "ZWJkYmQ0M2M5NTI2ODA3NGZjYjJkNDFlYmZkOGM2MDgwYWQ5MDEwMzM1MzMzOWM4ZTA2ZDZlMzU3ZThmNjkxNTEzOGQyMDJlYjU5ZGIwYWUxNzFjOWM3M2Y4OTRlNjBlZjM3NDBmZWM1MzllZjY2ZmJjZjk1MzQzYThhMzA1YTc=",
+    "enableTranslation": false,
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "clientPackageManager": "npm",
+    "skipClient": true,
+    "skipUserManagement": true
+  }
+}
