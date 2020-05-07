@@ -44,9 +44,9 @@ export class WishlistsComponent implements OnInit {
     this.prodottoService.getAll().subscribe(products => {
       this.prodotti = [];
       for (let p of products) {
-        if (p.proprietario.username === this.proprietario.username) {
-          if (p.wishlist != null) {
-            if (p.wishlist.id === w.id) {
+        if (p.proprietario_id=== this.proprietario.id) {
+          if (p.wishlist_fkId != null) {
+            if (p.wishlist_fkId === w.id) {
               this.prodotti.push(p);
             }
           }
@@ -56,11 +56,8 @@ export class WishlistsComponent implements OnInit {
   }
 
   remove(p: ProdottoDTO, w: WishListDTO){
-    p.wishlist = new WishListDTO();
-    p.wishlist = null;
-    if(p.category!=null)   {
-      p.category = new CategoryDTO(p.category.id, p.category.name);
-    }
+  
+    p.wishlist_fkId = null;
     this.prodottoService.update(p).subscribe(()=>{
       this.getProdotti(w);
     });
