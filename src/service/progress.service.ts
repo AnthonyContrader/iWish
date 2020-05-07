@@ -16,7 +16,8 @@ export class ProgressService extends AbstractService<ProgressDTO>{
   
   constructor(http: HttpClient) {
     super(http);
-    this.type = 'progress';
+    this.microservice_name= 'ProductManager';
+    this.entity_name = 'progresses';
   }
  
 Calcolo_inserisci_soldi(progressdto: ProgressDTO): Observable<any>{

@@ -9,7 +9,8 @@ export class WishListService extends AbstractService<WishListDTO> {
 
   constructor(http: HttpClient) {
     super(http);
-    this.type = 'wishlist';
+    this.microservice_name= 'ProductManager';
+    this.entity_name = 'wish-lists';
    }
 
    

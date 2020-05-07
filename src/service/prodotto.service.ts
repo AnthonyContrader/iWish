@@ -11,7 +11,8 @@ export class ProdottoService extends AbstractService<ProdottoDTO> {
 
   constructor(http: HttpClient) { 
     super(http);
-    this.type = 'prodotto';
+    this.microservice_name= 'ProductManager';
+    this.entity_name = 'products';
   }
 
   

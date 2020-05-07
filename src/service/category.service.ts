@@ -11,6 +11,7 @@ export class CategoryService extends AbstractService<CategoryDTO> {
 
   constructor(http: HttpClient) {
     super(http);
-    this.type = 'category';
+    this.microservice_name= 'ProductManager';
+    this.entity_name = 'categories';
    }
 }

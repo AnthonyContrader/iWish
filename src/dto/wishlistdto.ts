@@ -7,7 +7,7 @@ export class WishListDTO{
 
     description: string;
 
-    proprietario: UserDTO;
+    proprietario_id: number;
 
     constructor(id?: number, name?: string){
         this.id = id;

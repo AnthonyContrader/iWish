@@ -25,15 +25,14 @@ export class LoginComponent implements OnInit {
     this.service.login(this.loginDTO).subscribe((token: any) => {
 
       if (token != null) {
-        localStorage.setItem('token', JSON.stringify({ "authorities": token.id_token }));
+        localStorage.setItem('token',  'Bearer ' +token.id_token );
+       
       
-
-        localStorage.setItem('currentUser', JSON.stringify({ "authorities": token.id_token }));
 
         this.service.userLogged(this.loginDTO.username).subscribe((user: UserDTO) => {
            if (user != null) {  
-                    localStorage.setItem('token', JSON.stringify(user));   
-             console.log(JSON.stringify(localStorage.getItem('token')));   
+                    localStorage.setItem('currentUser', JSON.stringify(user));   
+           
                     
                    this.router.navigate(['/admin-dashboard']);    
                     } 

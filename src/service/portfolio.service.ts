@@ -14,7 +14,8 @@ import { Observable } from 'rxjs';
 
     constructor(http: HttpClient) {
       super(http);
-      this.type = 'portfolio';
+      this.microservice_name= 'WalletManager';
+      this.entity_name = 'wallets';
     }
   
    operazione(portfoliodto:PortfolioDTO, saldoAttuale: number):Observable<PortfolioDTO> {

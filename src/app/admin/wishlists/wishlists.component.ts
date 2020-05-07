@@ -32,7 +32,7 @@ export class WishlistsComponent implements OnInit {
     this.service.getAll().subscribe(wishlists => {
       this.wishlists = [];
       for (let w of wishlists) {
-        if (w.proprietario.username === this.proprietario.username) {
+        if (w.proprietario_id === this.proprietario.id) {
           this.wishlists.push(w);
         }
       }
@@ -76,7 +76,7 @@ export class WishlistsComponent implements OnInit {
   }
 
   insert(wishlist: WishListDTO) {
-    wishlist.proprietario = this.proprietario;
+    wishlist.proprietario_id = this.proprietario.id;
     this.service.insert(wishlist).subscribe(() => this.getWishList());
     this.clear();
   }

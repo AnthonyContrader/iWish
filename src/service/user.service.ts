@@ -21,26 +21,18 @@ export class UserService extends AbstractService<UserDTO>{
 
   constructor(http: HttpClient) {
     super(http);
-    this.type = 'user';
+    
   }
 
   login(loginDTO: LoginDTO): Observable<UserDTO> {
     return this.http.post<any>('http://localhost:8080/api/authenticate' , loginDTO)
   }
 
-   auth() { 
-       const user = JSON.parse(localStorage.getItem('token')) as UserDTO; 
-    if (user) { 
-     return 'Bearer ' + user.authorities;   
- } else { 
-        return '';
-      } 
-   }
 
     userLogged(username: string) { 
        return this.http.get('http://localhost:8080/api/users/' + username, {   
          headers: {  
-              Authorization: this.auth()       }     });  
+              Authorization:  localStorage.getItem('token')       }     });  
        }
 
 }
