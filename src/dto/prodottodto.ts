@@ -4,25 +4,25 @@ import { CategoryDTO } from './categorydto';
 
 
 export class ProdottoDTO {
+    
+    category_fkId: number;
+
+    description: string;
 
     id: number;
 
+    image: string;
+
     name: string;
 
-    description: string;
-    
     price: number;
 
     priority: number;
 
-    image: string;
+    proprietario_id: number;
     
-    wishlist: WishListDTO;
+    wishlist_fkId: number;
     
-    category: CategoryDTO;
-    
-    proprietario: UserDTO;
-
     constructor(id?: number, name?: string,price?:number){
         this.id = id;
         this.name = name;

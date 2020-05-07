@@ -74,23 +74,15 @@ export class ProdottoComponent implements OnInit {
   }
 
   update(prodotto: ProdottoDTO) {
-    if(prodotto.wishlist!=null){
-    this.wishlist = new WishListDTO(prodotto.wishlist.id, prodotto.wishlist.name);
-    prodotto.wishlist = this.wishlist;
-  }
-    if(prodotto.category!=null){
-    this.category = new CategoryDTO(prodotto.category.id, prodotto.category.name);
-    prodotto.category = this.category;
-  }
-    console.log(JSON.stringify(prodotto));
+    
     this.service.update(prodotto).subscribe(() => this.getProdotto());
   }
 
   insert(prodotto: ProdottoDTO) {
-    prodotto.proprietario=this.me;
+    prodotto.proprietario_id=this.me.id;
     
     prodotto.image = this.selectedFile;
-    this.selectedFile ='';//IMPO!!!
+    this.selectedFile ='';//IMPORTANTE!!!
     this.inputFile.nativeElement.value='';
     this.service.insert(prodotto).subscribe(() => this.getProdotto());
     this.clear();

@@ -147,8 +147,8 @@
                     <span style="text-align: center;">WishList:</span>
                   </div>
                   <div class="col-md-9">
-                    <select class="color" [(ngModel)]="prodottotoinsert.wishlist">
-                      <option *ngFor="let w of wishlists" [ngValue]="w">{{ w.name }}</option>
+                    <select class="color" [(ngModel)]="prodottotoinsert.wishlist_fkId">
+                      <option *ngFor="let w of wishlists" [ngValue]="w.id">{{ w.name }}</option>
                     </select>
                   </div>
                 </div>
@@ -157,8 +157,8 @@
                     <span style="text-align: center;">Categoria:</span>
                   </div>
                   <div class="col-md-9">
-                    <select class="color" [(ngModel)]="prodottotoinsert.category">
-                      <option *ngFor="let c of categories" [ngValue]="c">{{ c.name }}</option>
+                    <select class="color" [(ngModel)]="prodottotoinsert.category_fkId">
+                      <option *ngFor="let c of categories" [ngValue]="c.id">{{ c.name }}</option>
                     </select>
                   </div>
                 </div>
@@ -237,11 +237,11 @@
                   <div class="col-md-9">
                     <input class="color" type="text" [(ngModel)]="prodotto.priority" placeholder="Priorità"><br>
                   </div>
-                  <select class="color" [compareWith]="compareWishLists" [(ngModel)]="prodotto.wishlist">
-                    <option *ngFor="let w of wishlists" [ngValue]="w">{{ w.name }}</option>
+                  <select class="color" [compareWith]="compareWishLists" [(ngModel)]="prodotto.wishlist_fkId">
+                    <option *ngFor="let w of wishlists" [ngValue]="w.id">{{ w.name }}</option>
                   </select>
-                  <select class="color" [compareWith]="compareFn" [(ngModel)]="prodotto.category">
-                    <option *ngFor="let c of categories" [ngValue]="c">{{ c.name }}</option>
+                  <select class="color" [compareWith]="compareFn" [(ngModel)]="prodotto.category_fkId">
+                    <option *ngFor="let c of categories" [ngValue]="c.id">{{ c.name }}</option>
                   </select>
 
 
