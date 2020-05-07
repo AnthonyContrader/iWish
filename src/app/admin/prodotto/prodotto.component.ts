@@ -44,7 +44,7 @@ export class ProdottoComponent implements OnInit {
       {
        this.wishlists =[];
         for (let w of wish_lists){
-          if (w.proprietario.username===this.me.username)
+          if (w.proprietario_id===this.me.id)
           {
             
             this.wishlists.push(new WishListDTO(w.id, w.name));
