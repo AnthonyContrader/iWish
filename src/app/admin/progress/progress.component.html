@@ -1,0 +1,336 @@
+<!-- <div class="container">
+  <div class="row mt-5">
+    <div class="col-md-1">
+     
+    </div>
+    <div class="col-md-5">
+      <table>
+        <tr>
+          <th>
+            Prodotto Nome
+          </th>
+          <th>
+          Per quanti giorni vuoi risparmiare
+          </th>
+                 
+          <th>
+            
+          </th>  
+           <th>
+          
+          </th>  
+        </tr>
+        <tr>
+          <div class="box">
+          <select [(ngModel)]="progressinsert.prodotto">
+            <option *ngFor="let p of prodotti" [ngValue]="p">{{ p.name }}</option>
+           
+          </select>
+          </div>
+          
+          <td>
+            <input placeholder="Giorni" class="color"[(ngModel)]="progressinsert.time">
+          </td>
+          <td>
+            <button class="button" (click)="Calcolo_inserisci_giorni(progressinsert)">Insert</button>
+          </td>
+          
+          <td>
+            <button class="button" (click)="clear()">Clear</button>
+          </td>
+        </tr>
+
+      </table>
+    </div>
+      <div class="col-md-5">
+        
+        <table>
+          <tr>
+            <th>
+              Prodotto Nome
+            </th>
+            <th>
+           Quanti soldi vuoi risparmiare al giorno
+            </th>
+                   
+            <th>
+              
+            </th>  
+             <th>
+            
+            </th>  
+          </tr>
+          <tr>
+            <div class="box">
+            <select [(ngModel)]="progressinsert.prodotto">
+              <option *ngFor="let p of prodotti" [ngValue]="p">{{ p.name }}</option>
+             
+            </select>
+            </div>
+            
+            <td>
+              <input placeholder="Soldi €" class="color" [(ngModel)]="progressinsert.cash">
+            </td>
+            <td>
+              <button class="button" (click)="Calcolo_inserisci_soldi(progressinsert)">Insert</button>
+            </td>
+            
+            <td>
+              <button class="button" (click)="clear()">Clear</button>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <br><br><br><br><br><br><br><br><br>
+      <table>
+        <tr>
+          <th>
+            Prodotto Nome
+          </th>
+          <th>
+          soldi
+          </th>
+          <th>
+            progress
+           </th> 
+           <th>
+            tempo
+           </th>
+          <th>
+            
+          </th>  
+           <th>
+          
+          </th>  
+        </tr>
+        <tr>
+        <tr *ngFor="let progress of progressi">
+          <td>
+            <input class="color" [(ngModel)]="progress.prodotto.name" disabled>
+          </td>
+          
+          <td>
+
+            <input class="color" [(ngModel)]="progress.cash"disabled>
+          </td>
+          <td class="color">
+          
+            
+            <progress style="color: red" id="myProgress" [value]="arrotonda(progress.expectation)" max="100">
+            </progress>
+              
+            
+          </td>
+
+          <td>
+            <input class="color"[(ngModel)]="progress.time"disabled>
+          </td>
+        
+          <td>
+            <button class="button"(click)=update(progress)>Save</button>
+          </td>
+          <td>
+            <button class="button" (click)="delete(progress)">Delete</button>
+          </td>
+        
+          
+        </tr>
+        </table>
+
+        </div>
+        <div class="col-md-1">
+          
+        
+      </div>
+    </div>
+
+  -->
+
+<div class="container">
+
+  <div class="row backgro" style="margin:10%; animation-name: fadeInDown;animation-duration: 2s;">
+
+    <div class="col-md-12 " style="text-align: center;">
+
+      <button type="button" class=" buttoninside" data-toggle="modal" data-target="#tempo">
+        <i class="fas fa-euro-sign"></i> Soldi
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="tempo" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content backbus">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Inserisci i dati</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="box">
+                <div class="row">
+                  <div class="col-md-12">
+                    <span style="text-align: center;"> <i class="fas fa-gifts"></i> Nome Prodotto:</span>
+                    <br>
+                    <select style="text-align: center;" [(ngModel)]="progressinsert.prodotto">
+                      <option *ngFor="let p of prodotti" [ngValue]="p">{{ p.name }}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <span style="text-align: center ;color:blue"> <i class="fas fa-coins"></i> Quanti soldi vuoi
+                      risparmiare al giorno?</span>
+                    <input placeholder="Soldi €" class="color" [(ngModel)]="progressinsert.cash">
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="modal-footer">
+
+              <button class="btn btn-primary" data-dismiss="modal"
+                (click)="Calcolo_inserisci_soldi(progressinsert)">Insert</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-12 " style="text-align: center;">
+      <!-- Button trigger modal -->
+      <button class=" buttoninside" data-toggle="modal" data-target="#soldi">
+        <i class="far fa-clock"></i> Giorni
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade " id="soldi" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered " role="document">
+          <div class="modal-content backbus">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Inserisci i dati</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="box">
+                <div class="row">
+                  <div class="col-md-12">
+                    <span style="text-align: center;"> <i class="fas fa-gifts"></i> Nome Prodotto:</span>
+                    <br>
+                    <select style="text-align: center;" [(ngModel)]="progressinsert.prodotto">
+                      <option *ngFor="let p of prodotti" [ngValue]="p">{{ p.name }}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <span style="text-align: center ;color:blue"> <i class="far fa-calendar-alt"></i> Quanti giorni vuoi
+                      risparmiare?</span>
+                    <input placeholder="Giorni" class="color" [(ngModel)]="progressinsert.time">
+                  </div>
+                </div>
+                <div class="modal-footer">
+
+                  <button type="button" class="btn btn-primary" data-dismiss="modal"
+                    (click)="Calcolo_inserisci_giorni(progressinsert)">Insert</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!--Finisce la parte di sopra ora modifichiamo quella di sotto-->
+
+ <div class="row backgro" style="margin-bottom: 40px;" >
+
+
+   
+
+
+<div class="col-md-12 "style="text-align:center">
+
+      <div class="panel-group" style="margin-bottom: 20px;">
+        <div class="panel panel-default">
+
+
+          <button class="buttoninside" data-toggle="collapse" href="#collapse1"><i class="fas fa-chart-line"></i> Lista
+            Progressi</button>
+
+
+          <div id="collapse1" class="panel-collapse collapse">
+            <ul class="list-group">
+
+
+
+              <li *ngFor="let p of progressi" class="list-group-item" >
+                <div class="row">
+                  <div class="col-md-8">
+
+                
+                {{p.prodotto.name}} 
+                  </div>
+                <div class="col-md-4">
+                <button  (click)=show(p) class="buttonlist"><i class="far fa-caret-square-down"></i> </button>
+              
+              <button (click)="delete(p)"><i class="fas fa-trash-alt"></i></button>
+
+                </div></div>
+
+
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+</div>
+      </div>
+    
+    </div>
+
+  
+
+
+ <div  [class]="x"  *ngIf=" progress" class="row"  >
+  
+  <div class="col-md-6  backgro" style="color: white; padding:2%; margin-bottom: 60px">
+      <p ><i class="fas fa-bullseye"></i> Target: {{progress.prodotto.name}} </p>
+      <p> <i  class="fas fa-wallet"></i> Prezzo:{{progress.prodotto.price}}€</p>
+      <p><i class="fas fa-chart-bar"></i> Percentuale di aumento giornaliera: {{progress.expectation}} %</p>
+      <p><i class="fas fa-chart-pie"></i> Siamo al {{arrotonda(expectation_value)}}%</p>
+      
+      <div class="progress" style="margin:5px; border: solid black 2px;">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"  aria-valuemin="0" aria-valuemax="100" [style.width]="arrotonda(expectation_value) + '%'">
+        
+        </div>
+        </div>
+        <p></p>
+      <p> <i class="far fa-calendar-alt"></i> Risparima per: {{arrotonda(progress.time)}}giorni</p>
+      <p> <i class="fas fa-coins"></i> Risparmia {{arrotonda(progress.cash)}}€ al giorno </p>
+      <p><i class="far fa-calendar-plus"></i> Inserimento progresso: {{progress.data |  date: 'dd/MM/yyyy'}}</p>
+      <p><i class="fas fa-piggy-bank"></i> Hai risparmiato fino ad ora {{soldi_value}} €</p>
+      <p><i class="fas fa-hourglass-half"></i> Ti rimane da risparmiare {{giorni}} giorni</p>
+
+      <br><br>
+      <button style="color:blue; background-color: white;"(click)="changestatus(x)"><i class="fas fa-times-circle"></i></button>
+      
+  </div>
+
+</div>
+
+  
+
+
+
+
+
+</div>

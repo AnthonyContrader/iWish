@@ -1,0 +1,104 @@
+*{
+    text-align: center;
+    }
+
+h1 {
+  color: blue;
+
+}
+
+table {
+    border-collapse:collapse;
+    width:100%;
+    float: left;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    background-image: url('gift.jpg');
+
+
+}
+.color{
+color: rgb(0, 0, 0);
+font-weight: 700;
+
+}
+
+th {
+    text-align: center;
+    padding: 2px;
+   color: rgb(255, 255, 255);
+
+
+   text-shadow: 1px 1px 2px black, 0 0 25px rgb(212, 224, 42), 0 0 5px rgb(175, 194, 66);
+}
+
+td{
+    font-size: 18px;
+    text-align: center;
+    padding: 2px;
+   color: rgb(255, 255, 255);
+}
+
+  
+  .box select {
+    background-color: #0562af00;
+    color: rgb(10, 10, 10);
+    padding: 2px;
+    margin-top: 3px;
+    width: 150px;
+    border: none;
+    font-size: 15px;
+    border-width: 2px;
+    border-style: inset;
+    border-color: initial;
+    border-image: initial;
+
+    -webkit-appearance: button;
+    appearance: button;
+    outline: none;
+    
+  
+  }
+  .box select:hover{
+
+    border: 2px solid goldenrod;  
+  }
+  
+  
+  .button{
+    background-image: url('stars-pattern.png');
+    color: rgb(255, 255, 255);
+
+  text-shadow: 1px 1px 2px black, 0 0 5px gold, 0 0 1px gold;
+  }
+
+  
+  .box select option {
+    padding: 30px;
+  }
+
+th {
+    background-image: url('stars-pattern.png');
+}
+
+a:hover {
+	color: #58c1db;
+}
+
+input, select{
+    background-color: inherit;
+    font-size: inherit;
+}
+
+input:hover,  input:active, input:focus{
+    border: 2px solid goldenrod
+}
+
+button:hover{
+    background-color: goldenrod;
+}
+ 
+mat-progress-bar {
+  color: blue;
+  background-color: red;
+}
