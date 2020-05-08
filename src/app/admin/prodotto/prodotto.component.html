@@ -138,7 +138,13 @@
                     <span style="text-align: center;">Priority:</span>
                   </div>
                   <div class="col-md-9">
-                    <input class="color" [(ngModel)]="prodottotoinsert.priority">
+                    <div class="rating">
+                      <input [(ngModel)]="prodottotoinsert.priority" type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome "></label>
+                      <input [(ngModel)]="prodottotoinsert.priority" type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good"></label>
+                      <input [(ngModel)]="prodottotoinsert.priority" type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Good"></label>
+                      <input [(ngModel)]="prodottotoinsert.priority" type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad"></label>
+                      <input [(ngModel)]="prodottotoinsert.priority" type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Bad"></label>
+                    </div>
                     <br>
                   </div>
                 </div>
@@ -194,7 +200,7 @@
             <h5 class="card-title">{{prodotto.name}}</h5>
             <p class="card-text">{{prodotto.description}}</p>
             <p class="card-text">{{prodotto.price}}</p>
-            <p class="card-text">{{prodotto.priority}}</p>
+            <p> <i class="fas fa-star" *ngFor="let rating of counter(prodotto.priority)" style="color:gold;"> </i></p>
             <button class="btn btn-primary" data-toggle="modal" [attr.data-target]="'#editModal' + prodotto.id"
               style="margin-right: 2%;">Edit</button>
             <button class="btn btn-danger fas fa-trash-alt" (click)="delete(prodotto)"></button>

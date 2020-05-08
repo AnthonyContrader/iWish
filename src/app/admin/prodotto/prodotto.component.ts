@@ -117,7 +117,10 @@ _handleReaderLoaded(e) {
   this.selectedFile = reader.result;
   console.log(this.selectedFile)
 }
- 
+
+counter(i:number){
+  return new Array(i);
+     }
 
 }
 
