@@ -19,23 +19,23 @@ export class ProgressService extends AbstractService<ProgressDTO>{
     this.microservice_name= 'ProductManager';
     this.entity_name = 'progresses';
   }
+
  
-Calcolo_inserisci_soldi(progressdto: ProgressDTO): Observable<any>{
+Calcolo_inserisci_soldi(progressdto: ProgressDTO, prodottodto: ProdottoDTO): Observable<any>{
   
- const prodottodto : ProdottoDTO = progressdto.prodotto;
+
  
  
  this.tempo=prodottodto.price/progressdto.cash;
-const p: ProgressDTO=new ProgressDTO(0,progressdto.cash,(1*100/this.tempo),this.tempo,prodottodto,progressdto.data)
- 
+const p: ProgressDTO=new ProgressDTO(progressdto.cash,(1*100/this.tempo),this.tempo,prodottodto.id,progressdto.data)
+ console.log(JSON.stringify(p));
  return this.insert(p);
  
 }
- Calcolo_inserisci_giorni(progressdto: ProgressDTO): Observable<any>{
+ Calcolo_inserisci_giorni(progressdto: ProgressDTO, prodottodto: ProdottoDTO): Observable<any>{
 
-const prodottodto: ProdottoDTO = progressdto.prodotto; 
 this.soldi=prodottodto.price/progressdto.time;
-const p : ProgressDTO= new ProgressDTO(0,this.soldi,(this.soldi*100/prodottodto.price),progressdto.time,prodottodto,progressdto.data)
+const p : ProgressDTO= new ProgressDTO(this.soldi,(this.soldi*100/prodottodto.price),progressdto.time,prodottodto.id,progressdto.data)
 
 return this.insert(p);
  }

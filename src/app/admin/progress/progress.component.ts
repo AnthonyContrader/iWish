@@ -30,7 +30,7 @@ export class ProgressComponent implements OnInit {
    prodotti: ProdottoDTO[]=[];
    table_visible: boolean  = false;
    y: number;
-   progress:ProgressDTO = new ProgressDTO(0,0,0,0,new ProdottoDTO(0,"",0));
+   progress:ProgressDTO = new ProgressDTO(0,0,0,0, new Date(), new ProdottoDTO(0,"",0));
    x: String = "invisible";
    data: Date;
    portfolio_cash_attuale: PortfolioDTO;
@@ -64,13 +64,22 @@ export class ProgressComponent implements OnInit {
 
 
   getProgress(){
-    this.service.getAll().subscribe (progressi=>this.progressi=progressi);
+    this.service.getAll().subscribe (progressi=>{
+      this.progressi = [];
+      for(let progresso of progressi){
+        this.prodottoservice.read(progresso.prodotto_idId).subscribe((prodotto)=>{
+        progresso.prodotto = prodotto;
+        this.progressi.push(progresso);
+        });
+      }
+    
+    });
   }
 
   delete (progress: ProgressDTO){
   
     this.service.delete(progress.id).subscribe(()=>this.getProgress());
-    this.progress = new ProgressDTO(0,0,0,0,new ProdottoDTO(0,"",0),this.data);
+    this.progress = new ProgressDTO(0,0,0,0,this.data);
     this.x="invisible";
   }
   update(progress: ProgressDTO) {
@@ -80,17 +89,17 @@ export class ProgressComponent implements OnInit {
  
   
   
-  Calcolo_inserisci_giorni(progress:  ProgressDTO){
+  Calcolo_inserisci_giorni(progress:  ProgressDTO, prodotto: ProdottoDTO){
     progress.data= new Date();
-    console.log(JSON.stringify(progress));
-    this.service.Calcolo_inserisci_giorni(progress).subscribe(()=>this.getProgress());
+  
+    this.service.Calcolo_inserisci_giorni(progress, prodotto).subscribe(()=>this.getProgress());
    
     
   }
-  Calcolo_inserisci_soldi(progress:  ProgressDTO){
+  Calcolo_inserisci_soldi(progress:  ProgressDTO, prodotto: ProdottoDTO){
     progress.data= new Date();
-    console.log(JSON.stringify(progress));
-    this.service.Calcolo_inserisci_soldi(progress).subscribe(()=>this.getProgress());
+   
+    this.service.Calcolo_inserisci_soldi(progress, prodotto).subscribe(()=>this.getProgress());
   }
   
  
@@ -117,8 +126,7 @@ export class ProgressComponent implements OnInit {
      
       this.progress=progress;
        this.aggiornamento(progress);
-      this.x="visible";
-      console.log(this.soldi_value);
+      this.x="visible"; 
     }
    
     changestatus(v:String){

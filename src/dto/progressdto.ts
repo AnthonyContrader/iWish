@@ -12,17 +12,20 @@ export class ProgressDTO{
 
     time: number;
 
-    prodotto: ProdottoDTO;
+    prodotto_idId: number;
     
     data : Date;
 
-    constructor(id?:number,cash?:number,expectation?:number,time?:number,prodotto?:ProdottoDTO, data?:Date){
-this.id=id;
+    prodotto: ProdottoDTO;
+
+    constructor(cash?:number,expectation?:number,time?:number,prodotto_idId?:number, data?:Date, prodotto?: ProdottoDTO){
+
 this.time=time;
 this.expectation=expectation;
 this.cash=cash;
-this.prodotto=prodotto;
+this.prodotto_idId=prodotto_idId;
 this.data=data;
+this.prodotto = prodotto;
 
     }
 

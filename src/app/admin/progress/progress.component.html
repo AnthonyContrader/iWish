@@ -173,7 +173,7 @@
                   <div class="col-md-12">
                     <span style="text-align: center;"> <i class="fas fa-gifts"></i> Nome Prodotto:</span>
                     <br>
-                    <select style="text-align: center;" [(ngModel)]="progressinsert.prodotto">
+                    <select style="text-align: center;" [(ngModel)]="prodotto">
                       <option *ngFor="let p of prodotti" [ngValue]="p">{{ p.name }}</option>
                     </select>
                   </div>
@@ -191,7 +191,7 @@
             <div class="modal-footer">
 
               <button class="btn btn-primary" data-dismiss="modal"
-                (click)="Calcolo_inserisci_soldi(progressinsert)">Insert</button>
+                (click)="Calcolo_inserisci_soldi(progressinsert, prodotto)">Insert</button>
             </div>
           </div>
         </div>
@@ -221,7 +221,7 @@
                   <div class="col-md-12">
                     <span style="text-align: center;"> <i class="fas fa-gifts"></i> Nome Prodotto:</span>
                     <br>
-                    <select style="text-align: center;" [(ngModel)]="progressinsert.prodotto">
+                    <select style="text-align: center;" [(ngModel)]="prodotto">
                       <option *ngFor="let p of prodotti" [ngValue]="p">{{ p.name }}</option>
                     </select>
                   </div>
@@ -236,7 +236,7 @@
                 <div class="modal-footer">
 
                   <button type="button" class="btn btn-primary" data-dismiss="modal"
-                    (click)="Calcolo_inserisci_giorni(progressinsert)">Insert</button>
+                    (click)="Calcolo_inserisci_giorni(progressinsert, prodotto)">Insert</button>
                 </div>
               </div>
             </div>
@@ -300,7 +300,7 @@
   
 
 
- <div  [class]="x"  *ngIf=" progress" class="row"  >
+ <div  [class]="x"  *ngIf="progress" class="row"  >
   
   <div class="col-md-6  backgro" style="color: white; padding:2%; margin-bottom: 60px">
       <p ><i class="fas fa-bullseye"></i> Target: {{progress.prodotto.name}} </p>
