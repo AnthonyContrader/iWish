@@ -1,5 +1,6 @@
 package com.it.contrader.service.dto;
 
+import java.time.Instant;
 import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.Objects;
@@ -21,7 +22,10 @@ public class WalletDTO implements Serializable {
     private Float outputs;
 
     @NotNull
-    private Long proprietario_id;
+    private Integer proprietario_id;
+
+    @NotNull
+    private Instant date;
 
     public Long getId() {
         return id;
@@ -55,12 +59,20 @@ public class WalletDTO implements Serializable {
         this.outputs = outputs;
     }
 
-    public Long getProprietario_id() {
+    public Integer getProprietario_id() {
         return proprietario_id;
     }
 
-    public void setProprietario_id(Long proprietario_id) {
+    public void setProprietario_id(Integer proprietario_id) {
         this.proprietario_id = proprietario_id;
+    }
+
+    public Instant getDate() {
+        return date;
+    }
+
+    public void setDate(Instant date) {
+        this.date = date;
     }
 
     @Override
@@ -92,6 +104,7 @@ public class WalletDTO implements Serializable {
             ", revenue=" + getRevenue() +
             ", outputs=" + getOutputs() +
             ", proprietario_id=" + getProprietario_id() +
+            ", date='" + getDate() + "'" +
             "}";
     }
 }

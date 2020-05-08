@@ -26,13 +26,20 @@
         },
         {
             "fieldName": "proprietario_id",
-            "fieldType": "Long",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "date",
+            "fieldType": "Instant",
             "fieldValidateRules": [
                 "required"
             ]
         }
     ],
-    "changelogDate": "20200506123801",
+    "changelogDate": "20200508140103",
     "dto": "mapstruct",
     "searchEngine": false,
     "service": "serviceImpl",

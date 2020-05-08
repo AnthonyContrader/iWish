@@ -5,6 +5,7 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import java.io.Serializable;
+import java.time.Instant;
 import java.util.Objects;
 
 /**
@@ -34,7 +35,11 @@ public class Wallet implements Serializable {
 
     @NotNull
     @Column(name = "proprietario_id", nullable = false)
-    private Long proprietario_id;
+    private Integer proprietario_id;
+
+    @NotNull
+    @Column(name = "jhi_date", nullable = false)
+    private Instant date;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -84,17 +89,30 @@ public class Wallet implements Serializable {
         this.outputs = outputs;
     }
 
-    public Long getProprietario_id() {
+    public Integer getProprietario_id() {
         return proprietario_id;
     }
 
-    public Wallet proprietario_id(Long proprietario_id) {
+    public Wallet proprietario_id(Integer proprietario_id) {
         this.proprietario_id = proprietario_id;
         return this;
     }
 
-    public void setProprietario_id(Long proprietario_id) {
+    public void setProprietario_id(Integer proprietario_id) {
         this.proprietario_id = proprietario_id;
+    }
+
+    public Instant getDate() {
+        return date;
+    }
+
+    public Wallet date(Instant date) {
+        this.date = date;
+        return this;
+    }
+
+    public void setDate(Instant date) {
+        this.date = date;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -126,6 +144,7 @@ public class Wallet implements Serializable {
             ", revenue=" + getRevenue() +
             ", outputs=" + getOutputs() +
             ", proprietario_id=" + getProprietario_id() +
+            ", date='" + getDate() + "'" +
             "}";
     }
 }
