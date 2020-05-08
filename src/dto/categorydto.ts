@@ -11,7 +11,7 @@ description: string;
 
 rating: number;
 
-proprietario_c: UserDTO;
+proprietario_id: number;
 
 constructor(id?: number, name?: string){
     this.id = id;

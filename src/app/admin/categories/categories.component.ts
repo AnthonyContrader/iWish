@@ -13,7 +13,7 @@ import { WishListDTO } from 'src/dto/wishlistdto';
 })
 export class CategoriesComponent implements OnInit {
   categories: CategoryDTO[] = [];
-  proprietario_c: UserDTO;
+  proprietario: UserDTO;
   categorytoinsert: CategoryDTO = new CategoryDTO();
   category: CategoryDTO = new CategoryDTO();
   prodotto: ProdottoDTO;
@@ -25,7 +25,7 @@ export class CategoriesComponent implements OnInit {
    
    
   ngOnInit() {
-    this.proprietario_c = JSON.parse(localStorage.getItem('currentUser'));
+    this.proprietario = JSON.parse(localStorage.getItem('currentUser'));
     this.getCategory();
        
   }
@@ -34,7 +34,7 @@ export class CategoriesComponent implements OnInit {
        this.service.getAll().subscribe(categories => {
          this.categories = [];
          for (let c of categories){
-           if(c.proprietario_c.username === this.proprietario_c.username) {
+           if(c.proprietario_id === this.proprietario.id) {
           this.categories.push(c); }
           }
         });
@@ -50,7 +50,7 @@ export class CategoriesComponent implements OnInit {
          }
 
       insert(category: CategoryDTO) {   
-        category.proprietario_c = this.proprietario_c;        
+        category.proprietario_id = this.proprietario.id;        
         this.service.insert(category).subscribe(() => this.getCategory());
         this.clear();
       }
@@ -63,8 +63,8 @@ export class CategoriesComponent implements OnInit {
        this.prodottoservice.getAll().subscribe(prodotti =>  {
           this.prodotti = [];
           for (let p of prodotti){
-            if(p.category !== null){
-            if (p.category.id === category_id)
+            if(p.category_fkId !== null){
+            if (p.category_fkId === category_id)
             {this.prodotti.push(p);}
           }
         }
@@ -72,13 +72,8 @@ export class CategoriesComponent implements OnInit {
         }
       );
      }
-     cancellaprod(prodotto: ProdottoDTO) { 
-       let id_category = prodotto.category.id;
-       if (prodotto.wishlist != null) {
-      prodotto.wishlist = new WishListDTO(prodotto.wishlist.id,prodotto.wishlist.name);
-       }
-      this.category = null;
-      prodotto.category = this.category;
+     cancellaprod(prodotto: ProdottoDTO, id_category: number) { 
+      prodotto.category_fkId = null;
       this.prodottoservice.update(prodotto).subscribe(() => {        
       this.getprodotti(id_category);      
      });

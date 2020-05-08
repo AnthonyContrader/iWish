@@ -52,7 +52,7 @@ export class ProgressComponent implements OnInit {
    this.prodottoservice.getAll().subscribe (products=>
        {
          for (let p of products){   
-            if (p.proprietario.username===this.me.username)
+            if (p.proprietario_id === this.me.id)
             {
                  this.prodotti.push(new ProdottoDTO(p.id, p.name,p.price));
             }

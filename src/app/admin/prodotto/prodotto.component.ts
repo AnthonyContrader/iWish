@@ -61,7 +61,7 @@ export class ProdottoComponent implements OnInit {
       {
         this.categories = [];
         for (let c of categories){
-          if (c.proprietario_c.username===this.me.username)
+          if (c.proprietario_id === this.me.id)
           {this.categories.push(new CategoryDTO(c.id, c.name));}
         }
       }
