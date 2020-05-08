@@ -4,7 +4,7 @@
 
       <!-- inserisci categoria button -->
       <button type="button" class="buttoninside" data-toggle="modal" data-target="#Modal">
-        Crea Nuova Categoria
+        Insert new Category
       </button>
   
       <!-- Inserisci categoria pop up -->
@@ -12,7 +12,7 @@
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title " id="ModalLabel">Crea una nuova categoria</h5>
+              <h5 class="modal-title " id="ModalLabel">Insert new Category</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -21,15 +21,15 @@
               <table style="width:100%">
                 <tr>
                   <th>
-                    Nome
+                    Name
                   </th>
                   <td>
-                    <input placeholder="nome" [(ngModel)]="categorytoinsert.name">
+                    <input placeholder="name" [(ngModel)]="categorytoinsert.name">
                   </td>
                 </tr>
                 <tr>
                   <th>
-                    Descrizione
+                   Description
                   </th>
                   <td>
                     <input placeholder="description" [(ngModel)]="categorytoinsert.description">
@@ -37,7 +37,7 @@
                 </tr>
                 <tr>
                   <th>
-                    Valutazione
+                    Rating
                   </th>
                   <td class="rating">
                     <input [(ngModel)]="categorytoinsert.rating" type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome "></label>
@@ -100,7 +100,7 @@
                            <br>
                         <div class="prod" *ngFor="let p of prodotti">
                           {{p.name}}
-                          <a (click)="cancellaprod(p,category.id)">&times;</a>
+                          <a (click)="cancellaprod(p,category.id)">&otimes;</a>
                         </div>
                       </div></div>
                         <!--           can edit   -->
@@ -128,8 +128,8 @@
                           </div>
                         </div></div>
                       <div class="modal-footer">
-                        <button class="a6" (click)="makeEditable()">Modifica</button>
-                        <button class="a7" (click)="update(category)" data-dismiss="modal">Salva</button>
+                        <button class="a6" (click)="makeEditable()">Edit</button>
+                        <button class="a7" (click)="update(category)" data-dismiss="modal">Save</button>
                         <button class="a4" data-dismiss="modal" (click)="makeNotEditable()">Close</button>
                         
                       </div>
