@@ -195,7 +195,7 @@
     <div class="col-md-12 " style="text-align: center;">
 
       <button type="button" class=" buttoninside" data-toggle="modal" data-target="#tempo">
-        <i class="fas fa-euro-sign"></i> inserisci movimenti
+        <i class="fas fa-euro-sign"></i> insert movements
       </button>
 
       <!-- Modal -->
@@ -204,7 +204,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content backbus">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLongTitle">Inserisci entrate e uscite</h5>
+              <h5 class="modal-title" id="exampleModalLongTitle">Insert revenue and outputs</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -213,11 +213,11 @@
               <div class="box">
                 <div class="row">
                   <div class="col-md-3">
-                    <span style="text-align: center;">Entrate:</span>
+                    <span style="text-align: center;">Revenue:</span>
                   </div><br>
                   <div class= "col-md-9">
                     
-                    <input class="color" style=" margin-bottom: 2%" placeholder="entrate" [(ngModel)]="portfoliotoinsert.revenue">
+                    <input class="color" style=" margin-bottom: 2%" placeholder="revenue" [(ngModel)]="portfoliotoinsert.revenue">
                   </div>
                 </div>
 
@@ -225,10 +225,10 @@
                 
                 <div class="row">
                   <div class="col-md-3">
-                    <span style="text-align: center ;color:blue">Uscite:</span>
+                    <span style="text-align: center ;color:blue">Outputs:</span>
                   </div>
                   <div class= "col-md-9">
-                    <input class="color" placeholder="uscite" [(ngModel)]="portfoliotoinsert.outputs">
+                    <input class="color" placeholder="outputs" [(ngModel)]="portfoliotoinsert.outputs">
                   </div>
                 </div>
               
@@ -267,7 +267,7 @@
 
 
                 <button class="buttoninside" data-toggle="collapse" href="#collapse1"><i ></i>
-                  Visualizza saldo
+                  View Balance
                   </button>
               </div>
 
@@ -290,13 +290,13 @@
                     <table>
                       <tr>
                         <th>
-                          Saldo
+                          Total Money
                         </th>
                         <th>
-                          Entrate
+                          Revenue
                         </th>
                         <th>
-                          Uscite
+                          Outputs
                         </th>
               
                         <th>
@@ -358,7 +358,7 @@
          <!--Button trigger modal -->
         <button (click)=grafico() type="button" class="btn btn-outline-primary" data-toggle="modal"
           data-target="#exampleModal">
-          Visualizza andamento saldo </button>
+          Show Balance Trend </button>
 
          <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
@@ -368,7 +368,7 @@
               <div class="modal-header"></div>
 
 
-              <h5 class="modal-title" id="myLargeModalLabel">Andamento monetario</h5>
+              <h5 class="modal-title" id="myLargeModalLabel">Trend Balance</h5>
 
               <canvas id="myChart1">{{
         mychart1 }}
@@ -384,7 +384,7 @@
         <!-- Button trigger modal -->
         <button (click)=grafico1() type="button" class="btn btn-outline-primary" data-toggle="modal"
           data-target="#exampleModal1">
-          Visualizza andamento entrate </button>
+          Show Revenue Trend </button>
 
          <!-- Modal -->
         <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
@@ -394,7 +394,7 @@
               <div class="modal-header"></div>
 
 
-              <h5 class="modal-title" id="myLargeModalLabel">Andamento entrate</h5>
+              <h5 class="modal-title" id="myLargeModalLabel">Trend Revenue</h5>
 
               <canvas id="myChart2">{{
     mychart2
@@ -409,7 +409,7 @@
         <!-- Button trigger modal -->
         <button (click)=grafico2() type="button" class="btn btn-outline-primary" data-toggle="modal"
           data-target="#exampleModal2">
-          Visualizza andamento uscite </button>
+          Show Outputs Trend </button>
 
         <!-- Modal -->
         <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
@@ -419,7 +419,7 @@
               <div class="modal-header"></div>
 
 
-              <h5 class="modal-title" id="myLargeModalLabel">Andamento uscite</h5>
+              <h5 class="modal-title" id="myLargeModalLabel">Trend Outputs</h5>
 
               <canvas id="myChart3">{{
                 mychart3 }}

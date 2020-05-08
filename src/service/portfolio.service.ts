@@ -20,7 +20,7 @@ import { Observable } from 'rxjs';
   
    operazione(portfoliodto:PortfolioDTO, saldoAttuale: number):Observable<PortfolioDTO> {
      portfoliodto.totalmoney = saldoAttuale + (portfoliodto.revenue - portfoliodto.outputs);
-     console.log (JSON.stringify (portfoliodto));
+     
      return this.insert(portfoliodto);
    }
 }

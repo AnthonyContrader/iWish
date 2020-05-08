@@ -1,4 +1,4 @@
-import { UserDTO } from './userdto';
+
 
 
 export class PortfolioDTO {
@@ -13,7 +13,7 @@ export class PortfolioDTO {
 
     date: Date;
 
-    proprietario: UserDTO;
+    proprietario_id: number;
 
    
     
