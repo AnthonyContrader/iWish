@@ -85,12 +85,12 @@
 
 <div class="container">
 
-  <div class="row backgro">
+  <div class="row backgro" style="margin-bottom: 2%;">
 
     <div class="col-md-12 " style="text-align: center;">
 
       <button class="buttoninside" data-toggle="modal" data-target="#prodotto">
-        <i>Inserisci un Prodotto</i>
+        <i>Create your Product!</i>
       </button>
       <br><br><br><br><br><br>
       <!-- Modal -->
@@ -99,7 +99,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content backbus">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLongTitle">Inserisci il prodotto</h5>
+              <h5 class="modal-title" id="exampleModalLongTitle">Create a product</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -108,7 +108,7 @@
               <div class="box">
                 <div class="row">
                   <div class="col-md-3">
-                    <span style="text-align: center;">Nome:</span>
+                    <span style="text-align: center;">Name:</span>
                   </div>
                   <div class="col-md-9">
                     <input class="color" [(ngModel)]="prodottotoinsert.name">
@@ -117,7 +117,7 @@
                 </div>
                 <div class="row">
                   <div class="col-md-3">
-                    <span style="text-align: center;">Descrizione:</span>
+                    <span style="text-align: center;">Description:</span>
                   </div>
                   <div class="col-md-9">
                     <input class="color" [(ngModel)]="prodottotoinsert.description">
@@ -126,7 +126,7 @@
                 </div>
                 <div class="row">
                   <div class="col-md-3">
-                    <span style="text-align: center;">Prezzo:</span>
+                    <span style="text-align: center;">Price:</span>
                   </div>
                   <div class="col-md-9">
                     <input class="color" [(ngModel)]="prodottotoinsert.price">
@@ -135,7 +135,7 @@
                 </div>
                 <div class="row">
                   <div class="col-md-3">
-                    <span style="text-align: center;">Priorità:</span>
+                    <span style="text-align: center;">Priority:</span>
                   </div>
                   <div class="col-md-9">
                     <input class="color" [(ngModel)]="prodottotoinsert.priority">
@@ -154,7 +154,7 @@
                 </div>
                 <div class="row">
                   <div class="col-md-3">
-                    <span style="text-align: center;">Categoria:</span>
+                    <span style="text-align: center;">Category:</span>
                   </div>
                   <div class="col-md-9">
                     <select class="color" [(ngModel)]="prodottotoinsert.category_fkId">
@@ -164,7 +164,7 @@
                 </div>
                 <div class="row">
                   <div class="col-md-3">
-                    <span style="text-align: center;">Immagine:</span>
+                    <span style="text-align: center;">Image:</span>
                   </div>
                   <div class="col-md-9">
                     <input #inputFile name="imageUrl" type="file" accept="image/*"
@@ -207,32 +207,32 @@
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="editModalLabel">Edit Prodotto</h5>
+                  <h5 class="modal-title" id="editModalLabel">Edit Product</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
                 <div class="modal-body">
                   <div class="col-md-3">
-                    <span class="span2" style="text-align: left;">Nome:</span>
+                    <span class="span2" style="text-align: left;">Name:</span>
                   </div>
                   <div class="col-md-9">
                     <input class="color" type="text" [(ngModel)]="prodotto.name" placeholder="Name"><br>
                   </div>
                   <div class="col-md-3">
-                    <span style="text-align: left;">Descrizione:</span>
+                    <span style="text-align: left;">Description:</span>
                   </div>
                   <div class="col-md-9">
                     <input class="color" type="text" [(ngModel)]="prodotto.description"><br>
                   </div>
                   <div class="col-md-3">
-                    <span style="text-align: left;">Prezzo:</span>
+                    <span style="text-align: left;">Price:</span>
                   </div>
                   <div class="col-md-9">
                     <input class="color" type="text" [(ngModel)]="prodotto.price" placeholder="Prezzo"><br>
                   </div>
                   <div class="col-md-3">
-                    <span style="text-align: left;">Priorità:</span>
+                    <span style="text-align: left;">Priority:</span>
                   </div>
                   <div class="col-md-9">
                     <input class="color" type="text" [(ngModel)]="prodotto.priority" placeholder="Priorità"><br>
