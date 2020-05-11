@@ -58,19 +58,27 @@
                       <ul class="list-group">
                         <li *ngFor="let p of prodotti" class="list-group-item">
                           <div class="row">
-                            <div class="col-md-10">
+                            <div class="col-md-8">
                               {{p.name}}
                             </div>
                             <div class="col-md-2">
-                              <button (click)=remove(p,w) class="btn-danger">&times;</button>
+                              
+                              <button class="fas fa-exchange-alt" (click)=prepareCutBuffer(p)></button>
                             </div>
-                          </div>
+                            <div class="col-md-2">
+                              <button (click)=remove(p,w) class="btn-danger fas fa-times"></button>
+                            </div>
+                            </div>
 
                         </li>
                       </ul>
 
                     </div>
                     <div class="modal-footer">
+                      <div *ngIf="cut_buffer_product">
+                        <button type="button" (click)=paste(w)>Paste</button>
+                        <button type="button" (click)=cancel()>Cancel</button>
+                      </div>
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
                   </div>

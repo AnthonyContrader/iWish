@@ -17,7 +17,7 @@ export class WishlistsComponent implements OnInit {
   prodotto: ProdottoDTO;
   proprietario: UserDTO;
   wishlisttoinsert: WishListDTO = new WishListDTO();
-
+  cut_buffer_product: ProdottoDTO = null;
 
   constructor(private service: WishListService, private prodottoService: ProdottoService) { }
 
@@ -80,6 +80,26 @@ export class WishlistsComponent implements OnInit {
 
   clear() {
     this.wishlisttoinsert = new WishListDTO();
+  }
+
+  prepareCutBuffer(prodotto: ProdottoDTO){
+    this.cut_buffer_product = prodotto;
+
+
+  }
+
+  cancel(){
+
+    this.cut_buffer_product = null;
+  }
+
+  paste( w: WishListDTO){
+    this.cut_buffer_product.wishlist_fkId = w.id;
+    this.prodottoService.update(this.cut_buffer_product).subscribe(()=>{
+      this.getProdotti(w);
+      this.cut_buffer_product =null;
+    });
+
   }
 
 }
