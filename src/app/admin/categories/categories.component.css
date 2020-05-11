@@ -161,7 +161,7 @@ table, th, td {
     margin-top:1%;
     margin-bottom:1%;
     border-radius: 5px;
-    box-shadow: 1px 1px 2px black, 0 0 50px gold, 0 0 5px gold;
+    box-shadow: 1px 1px 2px black, 0 0 50px  rgb(253,233,179), 0 0 5px gold;
   }
 
   .col-md-6, .col-md-2 {
