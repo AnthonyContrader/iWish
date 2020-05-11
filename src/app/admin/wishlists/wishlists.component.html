@@ -59,7 +59,14 @@
                         <li *ngFor="let p of prodotti" class="list-group-item">
                           <div class="row">
                             <div class="col-md-8">
+                              <div *ngIf="product_idCut!==p.id" style="opacity: 1;">
+                                <b> {{p.name}}</b>
+                               </div>
+                               
+                            <div *ngIf="product_idCut===p.id" style="opacity: 0.7;">
                               {{p.name}}
+                            </div>
+                            
                             </div>
                             <div class="col-md-2">
                               
