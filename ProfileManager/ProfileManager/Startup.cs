@@ -79,7 +79,7 @@ namespace ProfileManager
                 c.Path = "/v2/api-docs";
                 c.PostProcess = (document, request) =>
                 {
-                    document.Host = "192.168.43.87:8080";
+                    document.Host = Configuration["Swagger:Host"];
                     document.BasePath = "/" + Configuration["ServiceRegister:ServiceName"];
                     document.Consumes = consumes;
 
