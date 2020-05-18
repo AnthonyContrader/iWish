@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\danim\\Desktop\\iwish\\iwish-microservices\\ProfileManager\\ProfileManager\\ProfileManager.csproj": {}
+    "C:\\Users\\franc\\Desktop\\iWish\\iwish-microservices\\ProfileManager\\ProfileManager\\ProfileManager.csproj": {}
   },
   "projects": {
-    "C:\\Users\\danim\\Desktop\\iwish\\iwish-microservices\\ProfileManager\\ProfileManager\\ProfileManager.csproj": {
+    "C:\\Users\\franc\\Desktop\\iWish\\iwish-microservices\\ProfileManager\\ProfileManager\\ProfileManager.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\danim\\Desktop\\iwish\\iwish-microservices\\ProfileManager\\ProfileManager\\ProfileManager.csproj",
+        "projectUniqueName": "C:\\Users\\franc\\Desktop\\iWish\\iwish-microservices\\ProfileManager\\ProfileManager\\ProfileManager.csproj",
         "projectName": "ProfileManager",
-        "projectPath": "C:\\Users\\danim\\Desktop\\iwish\\iwish-microservices\\ProfileManager\\ProfileManager\\ProfileManager.csproj",
-        "packagesPath": "C:\\Users\\danim\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\danim\\Desktop\\iwish\\iwish-microservices\\ProfileManager\\ProfileManager\\obj\\",
+        "projectPath": "C:\\Users\\franc\\Desktop\\iWish\\iwish-microservices\\ProfileManager\\ProfileManager\\ProfileManager.csproj",
+        "packagesPath": "C:\\Users\\franc\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\franc\\Desktop\\iWish\\iwish-microservices\\ProfileManager\\ProfileManager\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\danim\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\franc\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -41,6 +41,10 @@
             "Consul": {
               "target": "Package",
               "version": "[0.7.2.6, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[3.1.4, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
