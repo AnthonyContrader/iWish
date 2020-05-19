@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using Consul;
 using microserviceA.Consul;
@@ -16,6 +18,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 using ProfileManager.DBContexts;
 using ProfileManager.Repository;
 
@@ -46,10 +49,24 @@ namespace ProfileManager
             services.AddControllers();
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateAudience = false,
+                    ValidateIssuer = false,
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Security:JWT:Secret"])),
+                    
+                };
 
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme);
+            });
 
             services.AddAuthorization();
+
+           
+
+            //services.AddAuthorization();
 
             services.AddConsul(Configuration);
 
@@ -98,6 +115,7 @@ namespace ProfileManager
 
 
 
+            app.UseAuthentication();
 
             app.UseAuthorization();
 
