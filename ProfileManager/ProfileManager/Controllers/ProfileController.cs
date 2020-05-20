@@ -18,7 +18,6 @@ namespace ProfileManager.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Consumes("application/json")]
-    //[EnableCors("MyPolicy")]
     public class ProfileController : ControllerBase
     {
         private readonly ProfileService _profileService;

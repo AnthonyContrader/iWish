@@ -42,7 +42,7 @@ namespace ProfileManager
             // Add Cors
             services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
             {
-                builder.AllowAnyOrigin()
+                builder.WithOrigins("http://localhost:8080")
                        .AllowAnyMethod()
                        .AllowAnyHeader();
             }));
@@ -87,7 +87,7 @@ namespace ProfileManager
 
             app.UseHttpsRedirection();
 
-            app.UseCors("MyPolicy");
+            
 
             string[] consumes = new string[1] { "application/json" };
 
@@ -113,7 +113,7 @@ namespace ProfileManager
             app.UseConsul(lifetime, consulClient, serviceRegisterOptions);
             app.UseRouting();
 
-
+            app.UseCors("MyPolicy");
 
             app.UseAuthentication();
 
