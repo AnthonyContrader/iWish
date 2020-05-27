@@ -22,11 +22,11 @@ namespace ProfileManager.Controllers.Tests
         [Test()]
         public void GetAllTest()
         {
-            var repository = new Mock<AService<ProfileDTO>>();
+            var service = new Mock<AService<ProfileDTO>>();
             List<ProfileDTO> profiles = GetFakeData();
-            repository.Setup(x => x.getAll()).Returns(profiles);
+            service.Setup(x => x.getAll()).Returns(profiles);
       
-            var controller = new ProfileController(repository.Object);
+            var controller = new ProfileController(service.Object);
 
             var results = controller.GetAll() as OkObjectResult;
             var list = results.Value as List<ProfileDTO>;
@@ -37,7 +37,20 @@ namespace ProfileManager.Controllers.Tests
         [Test()]
         public void GetTest()
         {
-            Assert.Fail();
+            long id = 2;
+            var service = new Mock<AService<ProfileDTO>>();
+            List<ProfileDTO> profiles = GetFakeData();
+            ProfileDTO profile = profiles.ElementAt((int)(id-1));
+            service.Setup(x => x.read(id)).Returns(profile);
+
+            var controller = new ProfileController(service.Object);
+
+            var result = (controller.Get(id) as OkObjectResult).Value as ProfileDTO;
+
+
+            Assert.AreEqual(2, result.id);
+
+
         }
 
         [Test()]
@@ -61,8 +74,8 @@ namespace ProfileManager.Controllers.Tests
         private List<ProfileDTO> GetFakeData()
         {
             var profiles = new List<ProfileDTO>();
-            profiles.Add(new ProfileDTO { name = "Luigi"});
-            profiles.Add(new ProfileDTO { name = "Mario" });
+            profiles.Add(new ProfileDTO {id = 1, name = "Luigi"});
+            profiles.Add(new ProfileDTO {id = 2, name = "Mario" });
             return profiles;
         }
     }
