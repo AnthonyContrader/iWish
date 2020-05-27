@@ -20,7 +20,9 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using ProfileManager.DBContexts;
+using ProfileManager.DTO;
 using ProfileManager.Repository;
+using ProfileManager.Service;
 
 namespace ProfileManager
 {
@@ -37,6 +39,7 @@ namespace ProfileManager
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<DatabaseContext>(c => c.UseSqlServer(Configuration.GetConnectionString("ProfileDB")));
+            services.AddTransient<AService<ProfileDTO>, ProfileService>();
             services.AddTransient<ProfileRepository>();
 
             // Add Cors

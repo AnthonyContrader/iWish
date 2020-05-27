@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ProfileManager.DTO;
+using ProfileManager.Models;
 using ProfileManager.Repository;
 using ProfileManager.Service;
 
@@ -20,12 +21,12 @@ namespace ProfileManager.Controllers
     [Consumes("application/json")]
     public class ProfileController : ControllerBase
     {
-        private readonly ProfileService _profileService;
+        private readonly AService<ProfileDTO> _profileService;
 
-        public ProfileController(ProfileRepository profileRepository)
+        public ProfileController(AService<ProfileDTO> service)
         {
 
-            _profileService = new ProfileService(profileRepository);
+            _profileService = service;
         }
         // GET: api/Product
         [HttpGet]

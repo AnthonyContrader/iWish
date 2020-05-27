@@ -1,3 +1,6 @@
 .vs
 ProfileManager/bin
 ProfileManager/obj
+ProfileManagerTests/bin
+ProfileManagerTests/obj
+TestResults
