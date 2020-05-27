@@ -38,7 +38,7 @@ namespace ProfileManager.Controllers
 
         // GET: api/Product/5
         [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        public IActionResult Get(long id)
         {
             var profile = _profileService.read(id);
             return new OkObjectResult(profile);
@@ -77,7 +77,7 @@ namespace ProfileManager.Controllers
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public IActionResult Delete(long id)
         {
             _profileService.delete(id);
             return new OkResult();
