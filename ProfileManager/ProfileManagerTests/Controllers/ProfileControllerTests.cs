@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
 using Moq;
 using NUnit.Framework;
 using ProfileManager.DTO;
@@ -13,11 +14,7 @@ namespace ProfileManager.Controllers.Tests
     [TestFixture()]
     public class ProfileControllerTests
     {
-        [Test()]
-        public void ProfileControllerTest()
-        {
-            Assert.Fail();
-        }
+        
 
         [Test()]
         public void GetAllTest()
@@ -40,7 +37,7 @@ namespace ProfileManager.Controllers.Tests
             long id = 2;
             var service = new Mock<AService<ProfileDTO>>();
             List<ProfileDTO> profiles = GetFakeData();
-            ProfileDTO profile = profiles.ElementAt((int)(id-1));
+            ProfileDTO profile = profiles.FirstOrDefault(obj => obj.id == id);
             service.Setup(x => x.read(id)).Returns(profile);
 
             var controller = new ProfileController(service.Object);
@@ -56,19 +53,50 @@ namespace ProfileManager.Controllers.Tests
         [Test()]
         public void PostTest()
         {
-            Assert.Fail();
+            ProfileDTO dto = new ProfileDTO{id=3 ,name = "Ugo" };
+            var service = new Mock<AService<ProfileDTO>>();
+            List<ProfileDTO> profiles = GetFakeData();
+            service.Setup(x => x.insert(dto)).Callback(() => { profiles.Add(dto); });
+
+            new ProfileController(service.Object).Post(dto);
+            Assert.AreEqual(3, profiles.Count());
         }
 
         [Test()]
         public void PutTest()
         {
-            Assert.Fail();
+            ProfileDTO dto = new ProfileDTO { id = 2, name = "SuperMario" };
+            var service = new Mock<AService<ProfileDTO>>();
+            List<ProfileDTO> profiles = GetFakeData();
+            service.Setup(x => x.update(dto)).Callback(() =>
+            {
+
+                var obj = profiles.FirstOrDefault(x => x.id == dto.id);
+                if (obj != null) {
+                    obj.name = dto.name;
+                    obj.image = dto.image;
+                    obj.surname = dto.surname;
+                }
+            });
+
+            new ProfileController(service.Object).Put(dto);
+            Assert.AreEqual(dto.name, profiles.ElementAt((int)dto.id-1).name);
+
+
+
         }
 
         [Test()]
         public void DeleteTest()
         {
-            Assert.Fail();
+            long id = 2;
+            var service = new Mock<AService<ProfileDTO>>();
+            List<ProfileDTO> profiles = GetFakeData();
+            service.Setup(x => x.delete(id)).Callback(() => { profiles.RemoveAll(element => element.id == id); });
+
+            new ProfileController(service.Object).Delete(id);
+            Assert.AreEqual(1, profiles.Count());
+
         }
 
         private List<ProfileDTO> GetFakeData()
