@@ -19,7 +19,7 @@ export class AdminDashboardComponent implements OnInit {
 
   user: UserDTO;
   portfolio: PortfolioDTO[]=[];
-  saldoAttuale: number = 1;
+  saldoAttuale: number = 0;
   proprietario: UserDTO;
   prodotti: ProdottoDTO[];
   me: UserDTO;
