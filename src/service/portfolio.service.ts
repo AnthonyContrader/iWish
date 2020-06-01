@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AbstractService } from './abstractservice';
-import { PortfolioDTO } from 'src/dto/portfoliodto';
+import { PortfolioDTO } from '../dto/portfoliodto';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 

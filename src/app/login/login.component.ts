@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginDTO } from 'src/dto/logindto';
+import { LoginDTO } from '../../dto/logindto';
 import { NgForm } from '@angular/forms';
-import { UserService } from 'src/service/user.service';
+import { UserService } from '../../service/user.service';
 import { Router } from '@angular/router';
-import { UserDTO } from 'src/dto/userdto';
+import { UserDTO } from '../../dto/userdto';
 
 @Component({
   selector: 'app-login',
@@ -55,4 +55,9 @@ export class LoginComponent implements OnInit {
       }
     }); 
   } 
+
+  signup(){
+
+    this.router.navigate(['/signup']);
+  }
 }

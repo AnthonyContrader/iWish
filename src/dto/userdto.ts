@@ -20,6 +20,7 @@ export class UserDTO {
   
    id?: any;
    username?: string;
+   login?: string;
    firstName?: string;
    lastName?: string;
    email?: string;
@@ -32,6 +33,18 @@ export class UserDTO {
    lastModifiedBy?: string;
    lastModifiedDate?: Date;
    password?: string;
+
+   constructor(login?: string, firstName?: string, lastName?: string, email?:string, password?:string,authorities?:any, createdDate?: Date, lastModifiedDate?: Date, activated?: boolean){
+     this.login = login;
+     this.firstName = firstName;
+     this.lastName = lastName;
+     this.email = email;
+     this.password = password;
+     this.authorities = authorities;
+     this.createdDate = createdDate;
+     this.lastModifiedDate = lastModifiedDate;
+     this.activated = activated;
+   }
     
 
 }

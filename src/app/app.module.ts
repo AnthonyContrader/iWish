@@ -1,13 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginModule } from './login/login.module';
 import { HttpClientModule } from '@angular/common/http';
 import { LayoutModule } from './layout/layout.module';
 import { AdminModule } from './admin/admin.module';
-
+import { SignupComponent } from './signup/signup.component';
 
 /** 
  * Modulo principale dell'applicazione. Qui vengono importati i moduli secondari. L'UNICA component
@@ -18,7 +18,8 @@ import { AdminModule } from './admin/admin.module';
 */
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
@@ -27,6 +28,10 @@ import { AdminModule } from './admin/admin.module';
     HttpClientModule,
     LayoutModule,
     AdminModule,
+    FormsModule,
+    ReactiveFormsModule
+
+
     
   ],
   providers: [],

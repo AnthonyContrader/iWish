@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import {ProgressDTO} from 'src/dto/progressdto'
+import {ProgressDTO} from '../dto/progressdto';
 import { AbstractService } from './abstractservice';
 import { HttpClient } from '@angular/common/http';
-import { ProdottoDTO } from 'src/dto/prodottodto';
+import { ProdottoDTO } from '../dto/prodottodto';
 import { Observable } from 'rxjs';
 
 

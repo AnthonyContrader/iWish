@@ -1,0 +1,21 @@
+.margin{
+    margin: 2%;
+}
+
+.container{
+
+    align-items: center;
+    margin-top: 10%;
+}
+
+.field-icon {
+    float: right;
+    margin-left: -25px;
+    margin-top: -25px;
+    position: relative;
+    z-index: 2;
+  }
+
+.control_error{
+    color: red;
+}

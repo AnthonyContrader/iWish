@@ -1,0 +1,75 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <!-- CONTROLS-->
+      <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+        <div *ngIf="f.password.errors.required">Password is required</div>
+        <div *ngIf="f.password.errors.minlength">Password must be at least {{min_length_password}} characters</div>
+      </div>
+      <!--FORM -->
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <!--Login-->
+        <div class="form-group">
+          <input type="text" class="form-control margin" name="login" formControlName="login" placeholder="Username"
+            [ngClass]="{ 'is-invalid': submitted && f.login.errors }">
+          <div *ngIf="submitted && f.login.errors" class="invalid-feedback">
+            <div *ngIf="f.login.errors.required">Username is required</div>
+          </div>
+        </div>
+        <!--First name-->
+        <div class="form-group">
+          <input type="text" class="form-control margin" name="firstName" formControlName="firstName" placeholder="First name"
+            [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }">
+          <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+            <div *ngIf="f.firstName.errors.required">First name is required</div>
+          </div>
+        </div>
+        <!--Last name-->
+        <div class="form-group">
+          <input type="text" class="form-control margin" name="lastName"formControlName="lastName" placeholder="Last name"
+            [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }">
+          <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+            <div *ngIf="f.lastName.errors.required">Last name is required</div>
+          </div>
+        </div>
+        <!--Email-->
+        <div class="form-group">
+          <input type="email" class="form-control margin" name="email" formControlName="email" placeholder="Email"
+            [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+          <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+            <div *ngIf="f.email.errors.required">Email is required</div>
+            <div *ngIf="f.email.errors.email">Email not valid</div>
+          </div>
+        </div>
+        <!--Password-->
+        <div class="form-group">
+
+          <input type={{inputType}} placeholder="Password" name="password" id="password-field" formControlName="password"
+            class="form-control margin" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+          <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password" (click)=toggle()></span>
+          <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.password.errors.required">Password is required</div>
+            <div *ngIf="f.password.errors.minlength">Password must be at least {{min_length_password}} characters</div>
+          </div>
+        </div>
+        <!--Repeat password-->
+        <div class="form-group">
+          <input type="password" class="form-control margin" name="psw_confirm" formControlName="psw_confirm" placeholder="Repeat password"
+            [ngClass]="{ 'is-invalid': submitted && f.psw_confirm.errors }">
+
+          <div *ngIf="submitted && f.psw_confirm.errors" class="invalid-feedback">
+            <div *ngIf="f.psw_confirm.errors.required">Password confirm is required</div>
+            <div *ngIf="f.psw_confirm.errors.minlength">Password must be at least {{min_length_password}} characters
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-primary">SIGN UP</button>
+      </form>
+    </div>
+    <div class="col-md-3">
+      <!--  <div *ngIf="f.email.errors.required">Email is required</div>
+        <div *ngIf="f.email.errors.email">Email must be a valid email address</div>-->
+    </div>
+  </div>
+</div>

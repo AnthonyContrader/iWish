@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {WishListDTO}  from 'src/dto/wishlistdto';
+import {WishListDTO}  from '../dto/wishlistdto';
 import { AbstractService } from './abstractservice';
 @Injectable({
   providedIn: 'root'
