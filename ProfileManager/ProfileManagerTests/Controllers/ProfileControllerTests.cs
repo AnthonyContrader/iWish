@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Routing;
 using Moq;
 using NUnit.Framework;
 using ProfileManager.DTO;
+using ProfileManager.Models;
 using ProfileManager.Service;
 
 using System.Collections.Generic;
@@ -38,7 +39,7 @@ namespace ProfileManager.Controllers.Tests
             var service = new Mock<AService<ProfileDTO>>();
             List<ProfileDTO> profiles = GetFakeData();
             ProfileDTO profile = profiles.FirstOrDefault(obj => obj.id == id);
-            service.Setup(x => x.read(id)).Returns(profile);
+            service.Setup(x => x.read(It.IsAny<long>())).Returns<long>((ID)=>profiles.FirstOrDefault(profile => profile.id == ID));
 
             var controller = new ProfileController(service.Object);
 
@@ -56,8 +57,8 @@ namespace ProfileManager.Controllers.Tests
             ProfileDTO dto = new ProfileDTO{id=3 ,name = "Ugo" };
             var service = new Mock<AService<ProfileDTO>>();
             List<ProfileDTO> profiles = GetFakeData();
-            service.Setup(x => x.insert(dto)).Callback(() => { profiles.Add(dto); });
-
+            service.Setup(x => x.insert(It.IsAny<ProfileDTO>())).Callback(() => profiles.Add(It.IsAny<ProfileDTO>()));
+            
             new ProfileController(service.Object).Post(dto);
             Assert.AreEqual(3, profiles.Count());
         }
@@ -68,14 +69,14 @@ namespace ProfileManager.Controllers.Tests
             ProfileDTO dto = new ProfileDTO { id = 2, name = "SuperMario" };
             var service = new Mock<AService<ProfileDTO>>();
             List<ProfileDTO> profiles = GetFakeData();
-            service.Setup(x => x.update(dto)).Callback(() =>
+            service.Setup(x => x.update(It.IsAny<ProfileDTO>())).Callback<ProfileDTO>((profileDTO) =>
             {
 
-                var obj = profiles.FirstOrDefault(x => x.id == dto.id);
+                var obj = profiles.FirstOrDefault(x => x.id == profileDTO.id);
                 if (obj != null) {
-                    obj.name = dto.name;
-                    obj.image = dto.image;
-                    obj.surname = dto.surname;
+                    obj.name = profileDTO.name;
+                    obj.image = profileDTO.image;
+                    obj.surname = profileDTO.surname;
                 }
             });
 
@@ -92,7 +93,7 @@ namespace ProfileManager.Controllers.Tests
             long id = 2;
             var service = new Mock<AService<ProfileDTO>>();
             List<ProfileDTO> profiles = GetFakeData();
-            service.Setup(x => x.delete(id)).Callback(() => { profiles.RemoveAll(element => element.id == id); });
+            service.Setup(x => x.delete(It.IsAny<long>())).Callback<long>((ID) => { profiles.RemoveAll(element => element.id == ID); });
 
             new ProfileController(service.Object).Delete(id);
             Assert.AreEqual(1, profiles.Count());
