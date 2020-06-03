@@ -44,7 +44,7 @@ public class WishListServiceImplTest {
         
         List<WishList> wishlists = GetFakeData();
        
-        when(wlr.findByProprietario_id(anyLong())).thenAnswer(invocation->{
+        when(wlr.findAllByProprietarioId(anyLong())).thenAnswer(invocation->{
            long proprietario = invocation.getArgument(0);
            
            return wishlists.stream().filter(e-> e.getProprietario_id() == proprietario).collect(Collectors.toList());
