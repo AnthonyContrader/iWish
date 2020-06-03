@@ -38,7 +38,7 @@ namespace ProfileManager.Controllers.Tests
             long id = 2;
             var service = new Mock<AService<ProfileDTO>>();
             List<ProfileDTO> profiles = GetFakeData();
-            ProfileDTO profile = profiles.FirstOrDefault(obj => obj.id == id);
+            
             service.Setup(x => x.read(It.IsAny<long>())).Returns<long>((ID)=>profiles.FirstOrDefault(profile => profile.id == ID));
 
             var controller = new ProfileController(service.Object);
