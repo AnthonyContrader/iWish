@@ -57,10 +57,10 @@ namespace ProfileManager.Controllers.Tests
             ProfileDTO dto = new ProfileDTO{id=3 ,name = "Ugo" };
             var service = new Mock<AService<ProfileDTO>>();
             List<ProfileDTO> profiles = GetFakeData();
-            service.Setup(x => x.insert(It.IsAny<ProfileDTO>())).Callback(() => profiles.Add(It.IsAny<ProfileDTO>()));
+            service.Setup(x => x.insert(It.IsAny<ProfileDTO>())).Callback<ProfileDTO>((pDTO) => profiles.Add(pDTO));
             
             new ProfileController(service.Object).Post(dto);
-            Assert.AreEqual(3, profiles.Count());
+            Assert.AreEqual(dto.name, profiles.FirstOrDefault(p=>p.id==dto.id).name);
         }
 
         [Test()]
@@ -81,7 +81,7 @@ namespace ProfileManager.Controllers.Tests
             });
 
             new ProfileController(service.Object).Put(dto);
-            Assert.AreEqual(dto.name, profiles.ElementAt((int)dto.id-1).name);
+            Assert.AreEqual(dto.name, profiles.FirstOrDefault(p => p.id==dto.id).name);
 
 
 
