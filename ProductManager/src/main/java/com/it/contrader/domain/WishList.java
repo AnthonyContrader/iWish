@@ -29,7 +29,7 @@ public class WishList implements Serializable {
 
     @NotNull
     @Column(name = "proprietario_id", nullable = false)
-    private Long proprietario_id;
+    private Long proprietarioId;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -67,16 +67,16 @@ public class WishList implements Serializable {
     }
 
     public Long getProprietario_id() {
-        return proprietario_id;
+        return proprietarioId;
     }
 
     public WishList proprietario_id(Long proprietario_id) {
-        this.proprietario_id = proprietario_id;
+        this.proprietarioId = proprietario_id;
         return this;
     }
 
     public void setProprietario_id(Long proprietario_id) {
-        this.proprietario_id = proprietario_id;
+        this.proprietarioId = proprietario_id;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

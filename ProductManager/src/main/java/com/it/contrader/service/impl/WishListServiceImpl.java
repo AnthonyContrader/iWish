@@ -5,6 +5,7 @@ import com.it.contrader.domain.WishList;
 import com.it.contrader.repository.WishListRepository;
 import com.it.contrader.service.dto.WishListDTO;
 import com.it.contrader.service.mapper.WishListMapper;
+import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -85,5 +86,10 @@ public class WishListServiceImpl implements WishListService {
     public void delete(Long id) {
         log.debug("Request to delete WishList : {}", id);
         wishListRepository.deleteById(id);
+    }
+    
+    public List<WishList> findByProprietario(long id){
+     return wishListRepository.findAllByProprietarioId(id);
+  
     }
 }
