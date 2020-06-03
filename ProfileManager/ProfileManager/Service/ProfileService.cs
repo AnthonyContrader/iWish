@@ -13,9 +13,9 @@ namespace ProfileManager.Service
     public class ProfileService: AService<ProfileDTO>
     {
         private readonly ProfileConverter profileConverter;
-        private readonly ProfileRepository profileRepository;
-        public ProfileService(ProfileRepository profileRepository) {
-            this.profileRepository = profileRepository;
+        private readonly ARepository<Profile> profileRepository;
+        public ProfileService(ARepository<Profile>  repository) {
+            this.profileRepository = repository;
             this.profileConverter = new ProfileConverter();
         }
         override
