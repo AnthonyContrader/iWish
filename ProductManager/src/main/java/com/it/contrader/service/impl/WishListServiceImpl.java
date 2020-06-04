@@ -88,6 +88,7 @@ public class WishListServiceImpl implements WishListService {
         wishListRepository.deleteById(id);
     }
     
+    @Override
     public List<WishListDTO> findByProprietario(long id){
      return wishListMapper.toDto(wishListRepository.findAllByProprietarioId(id));
   

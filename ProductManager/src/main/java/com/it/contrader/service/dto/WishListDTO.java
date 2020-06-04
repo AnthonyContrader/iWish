@@ -18,6 +18,14 @@ public class WishListDTO implements Serializable {
 
     @NotNull
     private Long proprietario_id;
+    
+    public WishListDTO(){}
+    
+    public WishListDTO(Long id, String name, Long proprietario_id){
+        this.id = id;
+        this.name = name;
+        this.proprietario_id = proprietario_id;
+    }
 
     public Long getId() {
         return id;

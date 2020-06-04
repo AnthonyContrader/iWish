@@ -1,6 +1,7 @@
 package com.it.contrader.service;
 
 import com.it.contrader.service.dto.WishListDTO;
+import java.util.List;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -43,4 +44,9 @@ public interface WishListService {
      * @param id the id of the entity
      */
     void delete(Long id);
+    /**
+     * Get list of wishLists by owner
+     */
+    public List<WishListDTO> findByProprietario(long id);
+    
 }

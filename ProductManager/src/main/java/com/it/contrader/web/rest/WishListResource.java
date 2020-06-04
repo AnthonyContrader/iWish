@@ -124,4 +124,17 @@ public class WishListResource {
         wishListService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
+    /**
+     * GET /wish-lists/byOwner/:id
+     * 
+     * @param owner_id
+     * @return the ResponseEntity with status 200 (OK) and with body the wishListDTO list, or with status 404 (Not Found)
+     */
+    
+    @GetMapping("/wish-lists/byOwner/{owner_id}")
+    @Timed
+    public ResponseEntity<List<WishListDTO>> getAllByOwner(@PathVariable Long owner_id){
+        List<WishListDTO> wishlists = wishListService.findByProprietario(owner_id);
+        return ResponseEntity.ok().body(wishlists);
+    }
 }
