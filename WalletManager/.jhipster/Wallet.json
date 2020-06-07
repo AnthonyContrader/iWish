@@ -25,15 +25,15 @@
             ]
         },
         {
-            "fieldName": "proprietario_id",
-            "fieldType": "Integer",
+            "fieldName": "date",
+            "fieldType": "Instant",
             "fieldValidateRules": [
                 "required"
             ]
         },
         {
-            "fieldName": "date",
-            "fieldType": "Instant",
+            "fieldName": "ownerUsername",
+            "fieldType": "String",
             "fieldValidateRules": [
                 "required"
             ]

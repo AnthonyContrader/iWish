@@ -4,6 +4,7 @@ import com.it.contrader.WalletManagerApp;
 
 import com.it.contrader.domain.Wallet;
 import com.it.contrader.repository.WalletRepository;
+import com.it.contrader.service.SecurityService;
 import com.it.contrader.service.WalletService;
 import com.it.contrader.service.dto.WalletDTO;
 import com.it.contrader.service.mapper.WalletMapper;
@@ -53,20 +54,25 @@ public class WalletResourceIntTest {
     private static final Float DEFAULT_OUTPUTS = 1F;
     private static final Float UPDATED_OUTPUTS = 2F;
 
-    private static final Integer DEFAULT_PROPRIETARIO_ID = 1;
-    private static final Integer UPDATED_PROPRIETARIO_ID = 2;
-
     private static final Instant DEFAULT_DATE = Instant.ofEpochMilli(0L);
     private static final Instant UPDATED_DATE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+
+    private static final String DEFAULT_OWNER_USERNAME = "AAAAAAAAAA";
+    private static final String UPDATED_OWNER_USERNAME = "BBBBBBBBBB";
 
     @Autowired
     private WalletRepository walletRepository;
 
+
     @Autowired
     private WalletMapper walletMapper;
     
+
     @Autowired
     private WalletService walletService;
+    
+    @Autowired
+    private SecurityService securityService;
 
     @Autowired
     private MappingJackson2HttpMessageConverter jacksonMessageConverter;
@@ -87,7 +93,7 @@ public class WalletResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final WalletResource walletResource = new WalletResource(walletService);
+        final WalletResource walletResource = new WalletResource(walletService, securityService);
         this.restWalletMockMvc = MockMvcBuilders.standaloneSetup(walletResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
@@ -106,8 +112,8 @@ public class WalletResourceIntTest {
             .totalmoney(DEFAULT_TOTALMONEY)
             .revenue(DEFAULT_REVENUE)
             .outputs(DEFAULT_OUTPUTS)
-            .proprietario_id(DEFAULT_PROPRIETARIO_ID)
-            .date(DEFAULT_DATE);
+            .date(DEFAULT_DATE)
+            .ownerUsername(DEFAULT_OWNER_USERNAME);
         return wallet;
     }
 
@@ -135,8 +141,8 @@ public class WalletResourceIntTest {
         assertThat(testWallet.getTotalmoney()).isEqualTo(DEFAULT_TOTALMONEY);
         assertThat(testWallet.getRevenue()).isEqualTo(DEFAULT_REVENUE);
         assertThat(testWallet.getOutputs()).isEqualTo(DEFAULT_OUTPUTS);
-        assertThat(testWallet.getProprietario_id()).isEqualTo(DEFAULT_PROPRIETARIO_ID);
         assertThat(testWallet.getDate()).isEqualTo(DEFAULT_DATE);
+        assertThat(testWallet.getOwnerUsername()).isEqualTo(DEFAULT_OWNER_USERNAME);
     }
 
     @Test
@@ -218,10 +224,10 @@ public class WalletResourceIntTest {
 
     @Test
     @Transactional
-    public void checkProprietario_idIsRequired() throws Exception {
+    public void checkDateIsRequired() throws Exception {
         int databaseSizeBeforeTest = walletRepository.findAll().size();
         // set the field null
-        wallet.setProprietario_id(null);
+        wallet.setDate(null);
 
         // Create the Wallet, which fails.
         WalletDTO walletDTO = walletMapper.toDto(wallet);
@@ -237,10 +243,10 @@ public class WalletResourceIntTest {
 
     @Test
     @Transactional
-    public void checkDateIsRequired() throws Exception {
+    public void checkOwnerUsernameIsRequired() throws Exception {
         int databaseSizeBeforeTest = walletRepository.findAll().size();
         // set the field null
-        wallet.setDate(null);
+        wallet.setOwnerUsername(null);
 
         // Create the Wallet, which fails.
         WalletDTO walletDTO = walletMapper.toDto(wallet);
@@ -268,10 +274,11 @@ public class WalletResourceIntTest {
             .andExpect(jsonPath("$.[*].totalmoney").value(hasItem(DEFAULT_TOTALMONEY.doubleValue())))
             .andExpect(jsonPath("$.[*].revenue").value(hasItem(DEFAULT_REVENUE.doubleValue())))
             .andExpect(jsonPath("$.[*].outputs").value(hasItem(DEFAULT_OUTPUTS.doubleValue())))
-            .andExpect(jsonPath("$.[*].proprietario_id").value(hasItem(DEFAULT_PROPRIETARIO_ID)))
-            .andExpect(jsonPath("$.[*].date").value(hasItem(DEFAULT_DATE.toString())));
+            .andExpect(jsonPath("$.[*].date").value(hasItem(DEFAULT_DATE.toString())))
+            .andExpect(jsonPath("$.[*].ownerUsername").value(hasItem(DEFAULT_OWNER_USERNAME.toString())));
     }
     
+
     @Test
     @Transactional
     public void getWallet() throws Exception {
@@ -286,10 +293,9 @@ public class WalletResourceIntTest {
             .andExpect(jsonPath("$.totalmoney").value(DEFAULT_TOTALMONEY.doubleValue()))
             .andExpect(jsonPath("$.revenue").value(DEFAULT_REVENUE.doubleValue()))
             .andExpect(jsonPath("$.outputs").value(DEFAULT_OUTPUTS.doubleValue()))
-            .andExpect(jsonPath("$.proprietario_id").value(DEFAULT_PROPRIETARIO_ID))
-            .andExpect(jsonPath("$.date").value(DEFAULT_DATE.toString()));
+            .andExpect(jsonPath("$.date").value(DEFAULT_DATE.toString()))
+            .andExpect(jsonPath("$.ownerUsername").value(DEFAULT_OWNER_USERNAME.toString()));
     }
-
     @Test
     @Transactional
     public void getNonExistingWallet() throws Exception {
@@ -314,8 +320,8 @@ public class WalletResourceIntTest {
             .totalmoney(UPDATED_TOTALMONEY)
             .revenue(UPDATED_REVENUE)
             .outputs(UPDATED_OUTPUTS)
-            .proprietario_id(UPDATED_PROPRIETARIO_ID)
-            .date(UPDATED_DATE);
+            .date(UPDATED_DATE)
+            .ownerUsername(UPDATED_OWNER_USERNAME);
         WalletDTO walletDTO = walletMapper.toDto(updatedWallet);
 
         restWalletMockMvc.perform(put("/api/wallets")
@@ -330,8 +336,8 @@ public class WalletResourceIntTest {
         assertThat(testWallet.getTotalmoney()).isEqualTo(UPDATED_TOTALMONEY);
         assertThat(testWallet.getRevenue()).isEqualTo(UPDATED_REVENUE);
         assertThat(testWallet.getOutputs()).isEqualTo(UPDATED_OUTPUTS);
-        assertThat(testWallet.getProprietario_id()).isEqualTo(UPDATED_PROPRIETARIO_ID);
         assertThat(testWallet.getDate()).isEqualTo(UPDATED_DATE);
+        assertThat(testWallet.getOwnerUsername()).isEqualTo(UPDATED_OWNER_USERNAME);
     }
 
     @Test
@@ -342,7 +348,7 @@ public class WalletResourceIntTest {
         // Create the Wallet
         WalletDTO walletDTO = walletMapper.toDto(wallet);
 
-        // If the entity doesn't have an ID, it will throw BadRequestAlertException
+        // If the entity doesn't have an ID, it will throw BadRequestAlertException 
         restWalletMockMvc.perform(put("/api/wallets")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
             .content(TestUtil.convertObjectToJsonBytes(walletDTO)))

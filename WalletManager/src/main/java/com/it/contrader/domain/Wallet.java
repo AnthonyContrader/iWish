@@ -34,12 +34,12 @@ public class Wallet implements Serializable {
     private Float outputs;
 
     @NotNull
-    @Column(name = "proprietario_id", nullable = false)
-    private Integer proprietario_id;
-
-    @NotNull
     @Column(name = "jhi_date", nullable = false)
     private Instant date;
+
+    @NotNull
+    @Column(name = "owner_username", nullable = false)
+    private String ownerUsername;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -89,19 +89,6 @@ public class Wallet implements Serializable {
         this.outputs = outputs;
     }
 
-    public Integer getProprietario_id() {
-        return proprietario_id;
-    }
-
-    public Wallet proprietario_id(Integer proprietario_id) {
-        this.proprietario_id = proprietario_id;
-        return this;
-    }
-
-    public void setProprietario_id(Integer proprietario_id) {
-        this.proprietario_id = proprietario_id;
-    }
-
     public Instant getDate() {
         return date;
     }
@@ -113,6 +100,19 @@ public class Wallet implements Serializable {
 
     public void setDate(Instant date) {
         this.date = date;
+    }
+
+    public String getOwnerUsername() {
+        return ownerUsername;
+    }
+
+    public Wallet ownerUsername(String ownerUsername) {
+        this.ownerUsername = ownerUsername;
+        return this;
+    }
+
+    public void setOwnerUsername(String ownerUsername) {
+        this.ownerUsername = ownerUsername;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -143,8 +143,8 @@ public class Wallet implements Serializable {
             ", totalmoney=" + getTotalmoney() +
             ", revenue=" + getRevenue() +
             ", outputs=" + getOutputs() +
-            ", proprietario_id=" + getProprietario_id() +
             ", date='" + getDate() + "'" +
+            ", ownerUsername='" + getOwnerUsername() + "'" +
             "}";
     }
 }

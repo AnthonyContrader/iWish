@@ -1,6 +1,8 @@
 package com.it.contrader.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.it.contrader.security.SecurityUtils;
+import com.it.contrader.service.SecurityService;
 import com.it.contrader.service.WalletService;
 import com.it.contrader.web.rest.errors.BadRequestAlertException;
 import com.it.contrader.web.rest.util.HeaderUtil;
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 
 import java.util.List;
 import java.util.Optional;
@@ -35,9 +38,12 @@ public class WalletResource {
     private static final String ENTITY_NAME = "walletManagerWallet";
 
     private final WalletService walletService;
+    
+    private final SecurityService securityService;
 
-    public WalletResource(WalletService walletService) {
+    public WalletResource(WalletService walletService, SecurityService ss) {
         this.walletService = walletService;
+        this.securityService = ss;
     }
 
     /**
@@ -124,4 +130,21 @@ public class WalletResource {
         walletService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
+    /**
+     * GET /wallets/byOwner/:login
+     */
+    @GetMapping("/wallets/byOwner/{login}")
+    @Timed
+    public ResponseEntity<List<WalletDTO>> findByOwner(@PathVariable String login){
+        Optional<String> currentUserLogin = securityService.getCurrentUserLogin();
+        if(currentUserLogin.isPresent()){
+      if(currentUserLogin.get().equals(login)){
+          return ResponseEntity.ok().body(walletService.findAllByOwner(login));
+      }
+        }
+      
+      return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new ArrayList<WalletDTO>());
+      
+    }
+    
 }

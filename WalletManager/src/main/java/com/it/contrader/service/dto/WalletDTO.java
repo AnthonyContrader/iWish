@@ -22,10 +22,10 @@ public class WalletDTO implements Serializable {
     private Float outputs;
 
     @NotNull
-    private Integer proprietario_id;
+    private Instant date;
 
     @NotNull
-    private Instant date;
+    private String ownerUsername;
 
     public Long getId() {
         return id;
@@ -59,20 +59,20 @@ public class WalletDTO implements Serializable {
         this.outputs = outputs;
     }
 
-    public Integer getProprietario_id() {
-        return proprietario_id;
-    }
-
-    public void setProprietario_id(Integer proprietario_id) {
-        this.proprietario_id = proprietario_id;
-    }
-
     public Instant getDate() {
         return date;
     }
 
     public void setDate(Instant date) {
         this.date = date;
+    }
+
+    public String getOwnerUsername() {
+        return ownerUsername;
+    }
+
+    public void setOwnerUsername(String ownerUsername) {
+        this.ownerUsername = ownerUsername;
     }
 
     @Override
@@ -103,8 +103,8 @@ public class WalletDTO implements Serializable {
             ", totalmoney=" + getTotalmoney() +
             ", revenue=" + getRevenue() +
             ", outputs=" + getOutputs() +
-            ", proprietario_id=" + getProprietario_id() +
             ", date='" + getDate() + "'" +
+            ", ownerUsername='" + getOwnerUsername() + "'" +
             "}";
     }
 }

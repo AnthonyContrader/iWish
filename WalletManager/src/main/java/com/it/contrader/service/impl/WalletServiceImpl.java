@@ -5,6 +5,7 @@ import com.it.contrader.domain.Wallet;
 import com.it.contrader.repository.WalletRepository;
 import com.it.contrader.service.dto.WalletDTO;
 import com.it.contrader.service.mapper.WalletMapper;
+import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,8 +14,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Optional;
 
+import java.util.Optional;
 /**
  * Service Implementation for managing Wallet.
  */
@@ -85,5 +86,12 @@ public class WalletServiceImpl implements WalletService {
     public void delete(Long id) {
         log.debug("Request to delete Wallet : {}", id);
         walletRepository.deleteById(id);
+    }
+    /**
+     * 
+     */
+    @Override
+    public List<WalletDTO> findAllByOwner(String login){
+        return walletMapper.toDto(walletRepository.findAllByOwnerUsername(login));
     }
 }
