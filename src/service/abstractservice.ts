@@ -12,9 +12,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
  * @author Vittorio Valent
  */
 export abstract class AbstractService<DTO> implements Service<DTO> {
-
+  
     microservice_name: string;
     entity_name: string;
+    proprietarioUsername: string = JSON.parse(localStorage.getItem('currentUser')).login;
     authorization: string = localStorage.getItem('token');
     headerAuth = new HttpHeaders({
         'Authorization': this.authorization

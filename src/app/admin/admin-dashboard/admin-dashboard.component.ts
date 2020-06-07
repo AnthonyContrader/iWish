@@ -43,14 +43,14 @@ export class AdminDashboardComponent implements OnInit {
       let id=0;
       this.saldoAttuale=0;
       for(let p of portafogli){ 
-        if (p.proprietario_id===this.proprietario.id){
+        
           this.portfolio.push(p);
          
           if (p.id>id){ 
             id=p.id;
             this.saldoAttuale=p.totalmoney;
           }
-        }
+        
       }
    
     });}

@@ -3,6 +3,7 @@ import { AbstractService } from './abstractservice';
 import { PortfolioDTO } from '../dto/portfoliodto';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { overrideComponentView } from '@angular/core/src/view';
 
 
 @Injectable({
@@ -11,7 +12,6 @@ import { Observable } from 'rxjs';
   export class PortfolioService extends AbstractService<PortfolioDTO>{
   
     
-
     constructor(http: HttpClient) {
       super(http);
       this.microservice_name= 'WalletManager';
@@ -23,4 +23,9 @@ import { Observable } from 'rxjs';
      
      return this.insert(portfoliodto);
    }
+
+   getAll(): Observable<PortfolioDTO[]> {
+    return this.http.get<PortfolioDTO[]>(`http://localhost:8080/${this.microservice_name}/api/${this.entity_name}/byOwner/${this.proprietarioUsername}`, {headers: this.headerAuth});
+}
+
 }

@@ -49,7 +49,7 @@ export class PortfolioComponent implements OnInit {
       let id=0;
       this.saldoAttuale=0;
       for(let p of portafogli){ 
-        if (p.proprietario_id===this.proprietario.id){
+       
           this.portfolio.push(p);
           this.saldi.push(p.totalmoney);
           this.entrate.push(p.revenue);
@@ -59,7 +59,7 @@ export class PortfolioComponent implements OnInit {
             id=p.id;
             this.saldoAttuale=p.totalmoney;
           }
-        }
+        
       }
       
     });
@@ -75,7 +75,7 @@ export class PortfolioComponent implements OnInit {
   }
 
   insert(portfolio: PortfolioDTO) {
-  portfolio.proprietario_id = this.proprietario.id;
+  portfolio.ownerUsername = this.proprietario.login;
   this.data = new Date();
   portfolio.date = this.data;
   this.service.operazione(portfolio, this.saldoAttuale).subscribe(() => this.getPortfolio());

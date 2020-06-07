@@ -13,7 +13,7 @@ export class PortfolioDTO {
 
     date: Date;
 
-    proprietario_id: number;
+    ownerUsername: string;
 
    
     
