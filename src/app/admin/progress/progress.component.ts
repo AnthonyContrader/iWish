@@ -141,7 +141,16 @@ export class ProgressComponent implements OnInit {
     this.expectation_value= this.arrotonda(progress.expectation);
     this.soldi_value=progress.cash;
     this.giorni= progress.time;
-    this.differenza= new Date().getDay() - new Date(progress.data).getDay();
+    let oggi = new Date();
+    let inizioCalcolo = new Date(progress.data);
+    let diff = Math.abs(oggi.getTime() - inizioCalcolo.getTime());
+    this.differenza= Math.ceil(diff/(1000*3600*24));
+    //----------TEST-----------------
+    console.log("Da oggi: " + oggi);
+    console.log("Da inizio calcolo: " + inizioCalcolo);
+    console.log("Differenza in giorni: " +  this.differenza);
+    //------------------------------
+   
   
    if (this.expectation_value<100 && this.differenza>=0 )
    {
@@ -153,6 +162,7 @@ export class ProgressComponent implements OnInit {
    }
    else 
    this.expectation_value=100;
+   
   
     }
 
