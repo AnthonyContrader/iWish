@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
-import { UsersComponent } from './users/users.component';
 import { WorkInProgressComponent } from './work-in-progress/work-in-progress.component';
 import { ProdottoComponent } from './prodotto/prodotto.component';
 import {WishlistsComponent} from './wishlists/wishlists.component';
@@ -20,7 +19,7 @@ import { PageNotFoundComponent } from "./page-not-found/page-not-found.component
  * @see AdminRoutingModule
  */
 @NgModule({
-  declarations: [AdminDashboardComponent, UsersComponent, WorkInProgressComponent, ProdottoComponent,
+  declarations: [AdminDashboardComponent, WorkInProgressComponent, ProdottoComponent,
      WishlistsComponent, CategoriesComponent, PortfolioComponent, ProgressComponent, PageNotFoundComponent],
   imports: [
     CommonModule,

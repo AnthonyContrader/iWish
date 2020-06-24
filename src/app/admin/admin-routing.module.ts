@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminLayoutComponent } from '../layout/admin-layout/admin-layout.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
-import { UsersComponent } from './users/users.component';
 import { WorkInProgressComponent } from './work-in-progress/work-in-progress.component';
 import { ProdottoComponent } from './prodotto/prodotto.component';
 import {WishlistsComponent} from './wishlists/wishlists.component';
@@ -25,7 +24,6 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 const routes: Routes = [
   { path: 'admin-dashboard', component: AdminLayoutComponent, children:[
     { path: '', component: AdminDashboardComponent},
-    { path: 'users', component: UsersComponent},
     { path: 'work-in-progress', component: WorkInProgressComponent},
     { path: 'prodotto', component: ProdottoComponent},
     {path: 'wishlists', component: WishlistsComponent},
