@@ -1,5 +1,5 @@
 import { AppPage } from './app.po';
-import { browser, logging } from 'protractor';
+import { browser,by, logging, element } from 'protractor';
 
 describe('workspace-project App', () => {
   let page: AppPage;
@@ -8,9 +8,26 @@ describe('workspace-project App', () => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
+  it('should display login page', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('Welcome to SampleAngular!');
+    let par = element(by.tagName('p'));
+    expect(par.getText()).toContain("Insert username and password to Login or Sign Up");
+  });
+
+  it('should login',()=>{
+    let adminInput = element(by.id("user"));
+    let pswInput = element(by.id("pass"));
+    let loginButton = element(by.id("login"));
+    adminInput.sendKeys("admin");
+    pswInput.sendKeys("admin");
+    loginButton.click();
+    expect(browser.getCurrentUrl()).toEqual(browser.baseUrl + '/admin-dashboard');
+    expect()
+  });
+
+  it('should display welcome message', () => {
+    let el = element(by.tagName('h3'));
+    expect(el.getText()).toContain("Welcome admin");
   });
 
   afterEach(async () => {
